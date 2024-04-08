@@ -21,7 +21,7 @@
 
 	<body>
 		<div class="card">
-			<div class="card-header">header</div>
+			<div class="card-header">viewport_mini</div>
 		  	<div class="card-body">
 				content
 		  </div>

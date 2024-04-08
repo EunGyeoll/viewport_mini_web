@@ -19,9 +19,9 @@
 	src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 
 <!-- 사용자 정의 자바 스크립트-->
+<link rel="stylesheet" href="/viewport_mini_web/resources/css/main.css">
 <link rel="stylesheet"
 	href="/viewport_mini_web/resources/css/app_style.css">
-<link rel="stylesheet" href="/viewport_mini_web/resources/css/main.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 <link rel="stylesheet"

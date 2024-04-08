@@ -1,7 +1,7 @@
             
             <section class="container-fluid">
                 <!-- Footer -->
-                <footer class="text-center text-md-start">
+                <footer class="text-center text-md-start  bg-light">
                     <!-- Grid container -->
                     <div class="container text-center text-md-start">
                         <!-- Grid row -->

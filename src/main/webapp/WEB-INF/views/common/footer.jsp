@@ -10,7 +10,7 @@
                           <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                             <!-- Content -->
                             <h6 class="text-body text-uppercase fw-bold mb-4 text-center" style="font-size: 30px;" >
-                              <i class="text-bodyfas fa-gem me-3"></i>Viewport
+                             Viewport
                             </h6>
                             <p class="text-center">
                              in Paris

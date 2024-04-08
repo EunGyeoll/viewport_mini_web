@@ -20,6 +20,7 @@
 
 	</head>
 
+<<<<<<< HEAD
 	 <body>
 	 	<%@ include file="/WEB-INF/views/common/nav.jsp"%>
       
@@ -124,4 +125,14 @@
         </main>
       	<script src="/viewport_mini_web/resources/js/app.js"></script>
     </body>
+=======
+	<body>
+		<div class="card">
+			<div class="card-header">viewport_mini</div>
+		  	<div class="card-body">
+				content
+		  </div>
+		</div>
+	</body>
+>>>>>>> branch 'master' of https://github.com/mingyeongwon/viewport_mini_web.git
 </html>

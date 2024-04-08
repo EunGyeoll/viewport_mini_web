@@ -1,48 +1,69 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Insert title here</title>
-		
-		<!-- Bootstrap 5를 위한 외부 라이브러리 설정 -->
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-		
-		<!-- jQuery 외부 라이브러리 설정 -->
-		<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert title here</title>
 
-		<!-- 사용자 정의 자바 스크립트-->
- 	 <link rel="stylesheet" href="/viewport_mini_web/resources/css/app_style.css">
+<!-- Bootstrap 5를 위한 외부 라이브러리 설정 -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- jQuery 외부 라이브러리 설정 -->
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
+<!-- 사용자 정의 자바 스크립트-->
+<link rel="stylesheet"
+	href="/viewport_mini_web/resources/css/app_style.css">
+<link rel="stylesheet" href="/viewport_mini_web/resources/css/main.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<style>
+body {
+	background-image: url("/viewport_mini_web/resources/image/image18.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+</style>
+
+</head>
+
+<body>
+	<%@ include file="/WEB-INF/views/common/nav.jsp"%>
+
+	<main>
+	<section class="section1 container-fluid">
 
 
-	</head>
 
-	 <body>
-	 	<%@ include file="/WEB-INF/views/common/nav.jsp"%>
-      
-        <main>
-            <section class="section1 container-fluid">
-                <div class="video-background">
-                    <iframe
-                        src="https://www.youtube.com/embed/nGzDI4ShrhQ?autoplay=1&mute=1&loop=1&playlist=nGzDI4ShrhQ&controls=0&showinfo=0"
-                        frameborder="0" allow="autoplay; encrypted-media; fullscreen"
-                        style=" width:100%; height:100%;"></iframe>
-                </div>
-                <div class="overlay-text">
-                    <h2>This is your VIEWPORT</h2>
-                </div>
-            </section>
+<div class="content">
+  <header class="space">The new arrival</header>
+  <div class="space text">
+    Lorem ipsum dolor sit
+  </div>
+  <div class="space text">
+    amet consectetur.
+  </div>
+</div>
+	</section>
 
-            <section class="section2 container-fluid">
-                <h2 class="section-title">Featured Items</h2>
-                <div class="">
-                    <!-- 한줄에 3개의 카드가 들어가도록 부트스트랩을 사용 -->
-                <div class="card-container d-flex row row-cols-1 row-cols-md-3 g-4" id="featuredItems">
-                
-                    <!-- <div class="card" style="width: 18rem;">
+	<section class="section2 container-fluid">
+		<h2 class="section-title">Featured Items</h2>
+		<div class="">
+			<!-- 한줄에 3개의 카드가 들어가도록 부트스트랩을 사용 -->
+			<div class="card-container d-flex row row-cols-1 row-cols-md-3 g-4"
+				id="featuredItems">
+
+				<!-- <div class="card" style="width: 18rem;">
                         <a href="">
                             <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_GC10_2.jpg"
                                 class="card-img" alt="...">
@@ -75,8 +96,8 @@
                             </div>
                         </a>
                     </div> -->
-                              
-                    <!-- <div class="card" style="width: 18rem;">
+
+				<!-- <div class="card" style="width: 18rem;">
                         <a href="">
                             <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_TTA_01_2.jpg"
                                 class="card-img" alt="...">
@@ -109,19 +130,19 @@
                             </div>
                         </a>
                     </div> -->
-         <!-- test -->
-                </div>
-                
-            </div>
-            
-                <div class="text-center">
-                    
-                    <button class="btn btn-outline-light mb-5">View More</button>
-                </div>
-                
-            </section>
+				<!-- test -->
+			</div>
+
+		</div>
+
+		<div class="text-center">
+
+			<button class="btn btn-outline-light mb-5">View More</button>
+		</div>
+
+	</section>
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
-        </main>
-      	<script src="/viewport_mini_web/resources/js/app.js"></script>
-    </body>
+	</main>
+	<script src="/viewport_mini_web/resources/js/app.js"></script>
+</body>
 </html>

@@ -210,6 +210,23 @@ nav .logo.space{
   margin: 10px 0;
 }
 
+.section-title{
+  font-size: 30px;
+}
+
+.section-title {
+  animation: pulse 1s infinite alternate; /* 애니메이션 효과 추가 */
+}
+
+@keyframes pulse {
+  from {
+      transform: scale(1);
+  }
+  to {
+      transform: scale(1.1);
+  }
+}
+
 @media (max-width: 550px) {
 .content header{ 
     font-size: 30px;

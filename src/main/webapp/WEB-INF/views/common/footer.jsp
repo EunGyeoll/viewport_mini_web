@@ -3,9 +3,9 @@
                 <!-- Footer -->
                 <footer class="bg-body-tertiary text-center text-md-start">
                     <!-- Grid container -->
-                    <div class="container text-center text-md-start mt-5">
+                    <div class="container text-center text-md-start">
                         <!-- Grid row -->
-                        <div class="row mt-3">
+                        <div class="row pt-4">
                           <!-- Grid column -->
                           <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                             <!-- Content -->

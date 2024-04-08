@@ -61,8 +61,8 @@ body {
 		<div class="">
 			<!-- 한줄에 3개의 카드가 들어가도록 부트스트랩을 사용 -->
 			<div class="card-container d-flex row row-cols-1 row-cols-md-3 g-4"
-				id="featuredItems">
-
+				id="featuredItems" style="width: 1400px; margin: 0 auto;">
+ 
 				<!-- <div class="card" style="width: 18rem;">
                         <a href="">
                             <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_GC10_2.jpg"

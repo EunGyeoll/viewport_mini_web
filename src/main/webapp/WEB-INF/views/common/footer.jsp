@@ -1,7 +1,7 @@
             
             <section class="container-fluid">
                 <!-- Footer -->
-                <footer class="bg-body-tertiary text-center text-md-start">
+                <footer class="text-center text-md-start">
                     <!-- Grid container -->
                     <div class="container text-center text-md-start mt-5">
                         <!-- Grid row -->
@@ -25,7 +25,7 @@
                               About us
                             </h6>
                             <p class="text-center">
-                              <a href="#!" class="text-reset" style="font-size: 12px" >our story</a>
+                              <a href="/WEB-INF/views/styles.jsp" class="text-reset" style="font-size: 12px" >our story</a>
                             </p>
                    
                           </div>
@@ -39,7 +39,7 @@
                             </h6>
                     
                             <p class="text-center">
-                              <a href="https://chat.openai.com/" class="text-reset">1:1 문의</a>
+                              <a href="https://chat.openai.com/" class="text-reset">1:1 chat</a>
                             </p>
                           </div>    
                           <!-- Grid column -->

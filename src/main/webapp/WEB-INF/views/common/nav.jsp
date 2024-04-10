@@ -6,11 +6,10 @@
        VIEWPORT
     </div>
     <div class="nav-items">
-       <li><a href="#">Home</a></li>
-       <li><a href="#">Products</a></li>
-       <li><a href="#">Styles</a></li>
-       <li><a href="#">find stores</a></li>
-
+       <li><a href="/viewport_mini_web">Home</a></li>
+       <li><a href="/products">Products</a></li>
+       <li><a href="styles">Styles</a></li>
+       <li><a href="/find">find stores</a></li>
     </div>
     <div class="search-icon">
        <span class="fas fa-search"></span>

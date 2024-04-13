@@ -1,0 +1,136 @@
+@charset "UTF-8";
+
+nav {
+	background-color: #000;
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+#container {
+    display: flex;
+    align-items: flex-start;
+}
+
+#images img {
+    width: 45%;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.sidebar {
+    position: sticky;
+    top: 20px;
+    margin-top: 20px;
+    margin-right: 60px;
+    margin-bottom: 40px;
+    padding: 10px;
+    width: 350px;
+}
+
+.namePrice {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+#productName {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+
+.sidebar .btn {
+    background-color: #fff;
+    border: 1px solid #000;
+    color: #000;
+    padding: 13px;
+    margin: 10px;
+    text-align: center;
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 18px;
+    width: 300px;
+    height: 50px;
+}
+
+.sidebarImgs {
+    margin-bottom: 20px;
+}
+
+.sidebarImgs img {
+    width: 75px;
+    height: 75px;
+}
+
+.sidebarImgs #nowImg {
+	border: 1px solid #000;
+}
+
+.sidebar .btn1 {
+    background-color: #000;
+    color: #fff;
+}
+
+#productInfo {
+    font-size: 13px;
+    line-height: 2;
+    padding: 10px;
+}
+
+
+.accordion-button {
+    font-size: 13px;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #fff;
+}
+
+.accordion-body {
+    font-size: 12px;
+}
+
+
+.modal .modalText {
+    text-align: center;
+    font-size: 17px;
+    margin-top: 60px;
+}
+
+.modalButtons {
+    text-align: center;
+}
+
+.modalButtons button {
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    width: 150px;
+    height: 40px;
+    margin-bottom: 60px;
+    border-radius: 8px;
+}
+
+.modalButtons .continueBtn {
+    background-color: #8c8a8a;
+    
+}
+
+.modalButtons .cartBtn {
+    background-color: #000;
+}

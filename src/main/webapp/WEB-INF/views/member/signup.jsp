@@ -26,18 +26,18 @@
                     <div class="card-body p-md-5 text-black">
                       <h3 class="mb-3 text-uppercase">회원가입</h3>
                       <div data-mdb-input-init class="form-outline mb-4">
-                        <label class="form-label" for="signupId">아이디</label>
-                        <input type="text"name="signupId" id="signupId" class="form-control form-control-lg" />
+                        <label class="form-label" for="signupId ">아이디</label>
+                        <input type="text" name="signupId" id="signupId" placeholder ="영어 대소문자 5~10자"  class="form-control form-control-lg" />
                         <small id="idError"></small> 
                     </div>
                       <div data-mdb-input-init class="form-outline mb-4">
                         <label class="form-label" for="signupPw">비밀번호</label>
-                        <input type="password" id="signupPw" class="form-control form-control-lg" />
+                        <input type="password" id="signupPw" placeholder ="영어 대,소문자 숫자 혼용하여 8~15자"class="form-control form-control-lg" />
                         <small id="pw1Error"></small>  
                     </div>
                       <div data-mdb-input-init class="form-outline mb-4">
                         <label class="form-label" for="signupPwCheck">비밀번호 확인</label>
-                        <input type="password" id="signupPwCheck" class="form-control form-control-lg" />
+                        <input type="password" id="signupPwCheck" placeholder ="비밀번호 확인을 입력하세요" class="form-control form-control-lg" />
                         <small id="pw2Error"></small> 
                     </div>
                       <div data-mdb-input-init class="form-outline mb-4">
@@ -69,12 +69,11 @@
                           </div>
    
    
-                    
-                      
+ 
                     </div>
                       <div data-mdb-input-init class="form-outline mb-4">
                         <label class="form-label" for="signupPhoneNum">휴대폰 번호</label>
-                        <input type="text" id="signupPhoneNum" class="form-control form-control-lg"  maxlength="13"/>
+                        <input type="text" id="signupPhoneNum" class="form-control form-control-lg"  placeholder = "숫자를 입력하세요"  maxlength="13"/>
                         <small id="phoneNumError"></small>  
                     </div>
                       <div class="d-md-flex justify-content-start align-items-center mb-2 py-2">

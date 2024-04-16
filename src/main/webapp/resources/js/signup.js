@@ -35,7 +35,7 @@ form1.addEventListener('submit', function (e) {
     }
 
     //패스워드
-    const pwPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$/; //영어 대문자 소문자 숫자 필수
+    const pwPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$/; //영어 대문자 소문자 숫자 필수 8~15자
 
     const pw1Error = document.querySelector("#pw1Error");
     const pw1Result = pwPattern.test(pw1.value);

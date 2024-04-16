@@ -11,7 +11,6 @@
 </head>
 
 <body>
-<%@ include file="/WEB-INF/views/common/nav.jsp"%>
     <form method="post" name="signupForm" action="/viewport_mini_web/login" id="signupForm" class="h-100 bg-dark" >
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">

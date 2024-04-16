@@ -31,7 +31,7 @@ const cartItems = [
     },
 ];
 
-
+// 로고 홈 버튼
 const logo = document.querySelector(".logo");
 logo.addEventListener('click', () => {
     location.href = "/viewport_mini_web";
@@ -45,6 +45,7 @@ const displayCartItems = () => {
 
     if (cartItems.length === 0) {
         // 아이템이 없을 경우 "장바구니가 비어있습니다." 메시지를 표시
+      itemNum.innerHTML= `<span>${cartItems.length} items</span>`;
         cartItemsList.innerHTML = '<div class="row main align-items-center"><div class="col text-center">장바구니가 비어있습니다.</div></div>';
         updateTotalPrice(0); // 장바구니가 비었을 경우 총 금액을 0으로 업데이트
     } else {

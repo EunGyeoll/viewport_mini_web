@@ -25,7 +25,6 @@ const displayProductImages = () => {
         productImages.innerHTML += `<img src="${item.imgSrc}">`;
     });
 };
-displayProductImages();
 
 // 사이드바 출력 함수
 const displaySidebar = () => {
@@ -38,6 +37,10 @@ const displaySidebar = () => {
     const sidebarProductInfo = document.getElementById('productInfo');
     sidebarProductInfo.innerHTML = `${product.info}`;
 };
+
+
+displayProductImages();
+
 displaySidebar();
 
 // 모달 출력 함수 

@@ -14,4 +14,5 @@ public class Users {
   private String uemail;
   private Date editDate;
   private String urole;
+  private String uphone;
 }

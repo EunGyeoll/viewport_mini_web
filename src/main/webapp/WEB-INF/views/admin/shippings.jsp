@@ -20,7 +20,7 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNavDropdown">
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link"  href="users">사용자 관리</a></li>
+						<li class="nav-item"><a class="nav-link" href="users">사용자 관리</a></li>
 						<li class="nav-item"><a class="nav-link" href="products">상품 관리</a></li>
 						<li class="nav-item"><a class="nav-link active" aria-current="page" href="shippings">배송 관리</a></li>
 					</ul>
@@ -42,30 +42,24 @@
 		<table class="table table-hover text-center align-middle" id="user-table">
 			<thead>
 				<tr>
-					<th scope="col">배송번호#</th>
-					<th scope="col">이름</th>
-					<th scope="col">아이디</th>
+					<th scope="col">배송ID#</th>
+					<th scope="col">배송지</th>
+					<th scope="col">운송번호</th>
 					<th scope="col">배송상태</th>
 					<th scope="col">배송일자</th>
-					<th scope="col"><button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#createUserModal">유저 생성</button></th>
+					<th scope="col"><button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#createUserModal">배송 생성</button></th>
 
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="user" items="${users}">
+				<c:forEach var="shipping" items="${shippings}">
 					<tr>
-						<th scope="row">${user.uid}</th>
-						<td>${user.uname}</td>
-						<td>${user.uemail}</td>
-						<c:if test="${user.urole == 'Admin'}">
-							<td>Admin</td>
-						</c:if>
-						<c:if test="${user.urole == 'User'}">
-							<td>User</td>
-						</c:if>
-						<td><fmt:formatDate value="${user.editDate}" pattern="yyyy-MM-dd" /></td>
+						<th scope="row">${shipping.sid}</th>
+						<td>${shipping.sname}</td>
+						<td>${shipping.snumber}</td>
+						<td>${shipping.sstatus}</td>
 						<td>
-							<button type="button" class="btn btn-dark edit-btn btn-sm userDataEditBtn" onclick="clickEvent(${user.uid},'${user.uname}','${user.uemail}','${user.urole}')" data-bs-toggle="modal" data-bs-target="#editUserModal">회원 정보 수정</button>
+							<button type="button" class="btn btn-dark edit-btn btn-sm userDataEditBtn" onclick="clickEvent(${shipping.sid},'${shipping.sname}','${shipping.snumber}','${shipping.sstatus}')" data-bs-toggle="modal" data-bs-target="#editUserModal">배송 정보 수정</button>
 							<button class="btn btn-danger edit-btn btn-sm" data-bs-toggle="modal" data-bs-target="#deleteUserModal">삭제</button>
 						</td>
 					</tr>
@@ -135,16 +129,13 @@
 				<div class="modal-body">
 					<form id="users" method="post" action="editUserData">
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="uname">유저 이름</label> 
-							<input type="text" id="uname"name="uname" class="form-control form-control-lg"  /> <small id="birthError"></small>
+							<label class="form-label" for="uname">유저 이름</label> <input type="text" id="uname" name="uname" class="form-control form-control-lg" /> <small id="birthError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="uemail">아이디</label> 
-							<input type="text" id="uemail"name="uemail" class="form-control form-control-lg" /> <small id="birthError"></small>
+							<label class="form-label" for="uemail">아이디</label> <input type="text" id="uemail" name="uemail" class="form-control form-control-lg" /> <small id="birthError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="urole">역할</label> 
-							<input type="text" id="urole"name="urole" class="form-control form-control-lg" /> <small id="birthError"></small>
+							<label class="form-label" for="urole">역할</label> <input type="text" id="urole" name="urole" class="form-control form-control-lg" /> <small id="birthError"></small>
 						</div>
 					</form>
 
@@ -175,7 +166,7 @@
 					<p>삭제하시겠습니까?</p>
 				</div>
 				<div class="modal-footer">
-					<a href="/viewport_mini_web/admin/deleteUserData" type="button" class="btn btn-dark" >삭제</a>
+					<a href="/viewport_mini_web/admin/deleteUserData" type="button" class="btn btn-dark">삭제</a>
 					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
 				</div>
 

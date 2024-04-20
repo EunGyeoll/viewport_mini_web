@@ -21,7 +21,7 @@
 				<div class="collapse navbar-collapse" id="navbarNavDropdown">
 					<ul class="navbar-nav">
 						<li class="nav-item"><a class="nav-link" href="users">사용자 관리</a></li>
-						<li class="nav-item"><a class="nav-link active" aria-current="page" href="products" >상품 관리</a></li>
+						<li class="nav-item"><a class="nav-link active" aria-current="page" href="products">상품 관리</a></li>
 						<li class="nav-item"><a class="nav-link" href="shippings">배송 관리</a></li>
 					</ul>
 				</div>
@@ -47,25 +47,20 @@
 					<th scope="col">아이디</th>
 					<th scope="col">역할</th>
 					<th scope="col">수정일자</th>
-					<th scope="col"><button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#createUserModal">유저 생성</button></th>
+					<th scope="col"><button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#createUserModal">상품 정보 생성</button></th>
 
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="user" items="${users}">
+				<c:forEach var="product" items="${products}">
 					<tr>
-						<th scope="row">${user.uid}</th>
-						<td>${user.uname}</td>
-						<td>${user.uemail}</td>
-						<c:if test="${user.urole == 'Admin'}">
-							<td>Admin</td>
-						</c:if>
-						<c:if test="${user.urole == 'User'}">
-							<td>User</td>
-						</c:if>
-						<td><fmt:formatDate value="${user.editDate}" pattern="yyyy-MM-dd" /></td>
+						<th scope="row">${product.pid}</th>
+						<td>${product.pname}</td>
+						<td>${product.pinfo}</td>
+						<td>${product.pprice}</td>
+						<td>${product.pcategory}</td>
 						<td>
-							<button type="button" class="btn btn-dark edit-btn btn-sm userDataEditBtn" onclick="clickEvent(${user.uid},'${user.uname}','${user.uemail}','${user.urole}')" data-bs-toggle="modal" data-bs-target="#editUserModal">회원 정보 수정</button>
+							<button type="button" class="btn btn-dark edit-btn btn-sm userDataEditBtn" onclick="clickEvent(${product.pid},'${product.pname}','${product.pinfo}',${product.pprice},'${product.pcategory}')" data-bs-toggle="modal" data-bs-target="#editUserModal">상품 정보 수정</button>
 							<button class="btn btn-danger edit-btn btn-sm" data-bs-toggle="modal" data-bs-target="#deleteUserModal">삭제</button>
 						</td>
 					</tr>
@@ -91,24 +86,27 @@
 
 				<!-- Modal Header -->
 				<div class="modal-header">
-					<h4 class="modal-title">유저 정보</h4>
+					<h4 class="modal-title">상품 정보</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 				</div>
 
 				<!-- Modal body -->
 				<div class="modal-body">
 					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="userNum">유저 번호</label> <input type="text" id="userNum" class="form-control form-control-lg" value="${users[1].uid}" readonly />
+						<label class="form-label" for="userNum">상품 번호</label> <input type="text" id="userNum" class="form-control form-control-lg" readonly />
 					</div>
 					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="userName">유저 이름</label> <input type="text" id="userName" class="form-control form-control-lg" /> <small id="birthError"></small>
+						<label class="form-label" for="userName">상품 이름</label> <input type="text" id="userName" class="form-control form-control-lg" /> <small id="birthError"></small>
 					</div>
 					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="userId">아이디</label> <input type="text" id="userId" class="form-control form-control-lg" /> <small id="birthError"></small>
+						<label class="form-label" for="userId">상품 설명</label> <input type="text" id="userId" class="form-control form-control-lg" /> <small id="birthError"></small>
 					</div>
 					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="UserRole">역할</label> <input type="text" id="UserRole" class="form-control form-control-lg" /> <small id="birthError"></small>
-					</div> 
+						<label class="form-label" for="UserRole">가격</label> <input type="text" id="UserRole" class="form-control form-control-lg" /> <small id="birthError"></small>
+					</div>
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="UserRole">카테고리</label> <input type="text" id="UserRole" class="form-control form-control-lg" /> <small id="birthError"></small>
+					</div>
 				</div>
 
 				<!-- Modal footer -->
@@ -127,7 +125,7 @@
 
 				<!-- Modal Header -->
 				<div class="modal-header">
-					<h4 class="modal-title">유저 생성</h4>
+					<h4 class="modal-title">상품 생성</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 				</div>
 
@@ -135,16 +133,19 @@
 				<div class="modal-body">
 					<form id="users" method="post" action="editUserData">
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="uname">유저 이름</label> 
-							<input type="text" id="uname"name="uname" class="form-control form-control-lg"  /> <small id="birthError"></small>
+							<label class="form-label" for="uname">상품 이름</label> <input type="text" id="uname" name="uname" class="form-control form-control-lg" /> <small id="birthError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="uemail">아이디</label> 
-							<input type="text" id="uemail"name="uemail" class="form-control form-control-lg" /> <small id="birthError"></small>
+							<label class="form-label" for="uemail">상품 설명</label> <input type="text" id="uemail" name="uemail" class="form-control form-control-lg" /> <small id="birthError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="urole">역할</label> 
-							<input type="text" id="urole"name="urole" class="form-control form-control-lg" /> <small id="birthError"></small>
+							<label class="form-label" for="urole">상품 가격</label> <input type="text" id="urole" name="urole" class="form-control form-control-lg" /> <small id="birthError"></small>
+						</div>
+						<div data-mdb-input-init class="form-outline mb-4">
+							<label class="form-label" for="urole">상품 카테고리</label> <input type="text" id="urole" name="urole" class="form-control form-control-lg" /> <small id="birthError"></small>
+						</div>
+						<div data-mdb-input-init class="form-outline mb-4">
+							<label class="form-label" for="urole">상품 가격</label> <input type="text" id="urole" name="urole" class="form-control form-control-lg" /> <small id="birthError"></small>
 						</div>
 					</form>
 
@@ -175,7 +176,7 @@
 					<p>삭제하시겠습니까?</p>
 				</div>
 				<div class="modal-footer">
-					<a href="/viewport_mini_web/admin/deleteUserData" type="button" class="btn btn-dark" >삭제</a>
+					<a href="/viewport_mini_web/admin/deleteUserData" type="button" class="btn btn-dark">삭제</a>
 					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
 				</div>
 

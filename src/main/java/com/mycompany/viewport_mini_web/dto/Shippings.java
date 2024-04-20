@@ -11,5 +11,5 @@ public class Shippings {
   private int sid;
   private String sname;
   private String snumber;
-  
+  private String sstatus;
 }

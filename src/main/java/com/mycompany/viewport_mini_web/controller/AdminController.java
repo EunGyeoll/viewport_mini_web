@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.mycompany.viewport_mini_web.dto.Products;
+import com.mycompany.viewport_mini_web.dto.Shippings;
 import com.mycompany.viewport_mini_web.dto.Users;
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,9 +24,9 @@ public class AdminController {
     List<Users> users = new ArrayList<> (); 
     for (int i = 1; i <= 4; i++) {
       if(i==1)
-      users.add(new Users(i, "name" + i,"email"+i,new Date(),"Admin"));
+      users.add(new Users(i, "name" + i,"email"+i,new Date(),"Admin","010-0000-000"+i));
       else {
-        users.add(new Users(i, "name" + i,"email"+i,new Date(),"User"));
+        users.add(new Users(i, "name" + i,"email"+i,new Date(),"User","010-0000-000"+i));
       }
     }
     model.addAttribute("users",users);
@@ -33,29 +35,29 @@ public class AdminController {
   
   @GetMapping("/products")
   public String adminProductsPage(Model model) {
-    List<Users> users = new ArrayList<> (); 
+    List<Products> products = new ArrayList<> (); 
     for (int i = 1; i <= 4; i++) {
       if(i==1)
-      users.add(new Users(i, "name" + i,"email"+i,new Date(),"Admin"));
+      products.add(new Products(i, "name" + i,"info"+i,330000,"Glasses"));
       else {
-        users.add(new Users(i, "name" + i,"email"+i,new Date(),"User"));
+        products.add(new Products(i, "name" + i,"email"+i,300000,"Sunglasses"));
       }
     }
-    model.addAttribute("users",users);
+    model.addAttribute("products",products);
     return "admin/products";
   }
   
   @GetMapping("/shippings")
   public String adminShippingsPage(Model model) {
-    List<Users> users = new ArrayList<> (); 
+    List<Shippings> shippings = new ArrayList<> (); 
     for (int i = 1; i <= 4; i++) {
       if(i==1)
-      users.add(new Users(i, "name" + i,"email"+i,new Date(),"Admin"));
+        shippings.add(new Shippings(i, "name" + i,"email"+i,"In progress"));
       else {
-        users.add(new Users(i, "name" + i,"email"+i,new Date(),"User"));
+        shippings.add(new Shippings(i, "name" + i,"email"+i,"Done"));
       }
     }
-    model.addAttribute("users",users);
+    model.addAttribute("shippings",shippings);
     return "admin/shippings";
   }
 

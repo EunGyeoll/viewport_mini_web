@@ -3,12 +3,14 @@ package com.mycompany.viewport_mini_web.controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import com.mycompany.viewport_mini_web.dto.Products;
 import com.mycompany.viewport_mini_web.dto.Shippings;
 import com.mycompany.viewport_mini_web.dto.Users;
@@ -18,68 +20,77 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequestMapping("/admin")
 public class AdminController {
-  
+
   @GetMapping("/users")
   public String adminUserPage(Model model) {
-    List<Users> users = new ArrayList<> (); 
+    List<Users> users = new ArrayList<>();
     for (int i = 1; i <= 4; i++) {
-      if(i==1)
-      users.add(new Users(i, "name" + i,"email"+i,new Date(),"Admin","010-0000-000"+i));
+      if (i == 1)
+        users.add(new Users(i, "name" + i, "email" + i, new Date(), "Admin", "010-0000-000" + i));
       else {
-        users.add(new Users(i, "name" + i,"email"+i,new Date(),"User","010-0000-000"+i));
+        users.add(new Users(i, "name" + i, "email" + i, new Date(), "User", "010-0000-000" + i));
       }
     }
-    model.addAttribute("users",users);
+    model.addAttribute("users", users);
     return "admin/users";
   }
-  
+
   @GetMapping("/products")
   public String adminProductsPage(Model model) {
-    List<Products> products = new ArrayList<> (); 
+    List<Products> products = new ArrayList<>();
     for (int i = 1; i <= 4; i++) {
-      if(i==1)
-      products.add(new Products(i, "name" + i,"info"+i,330000,"Glasses"));
+      if (i == 1)
+        products.add(new Products(i, "name" + i, "info" + i, 330000, "Glasses"));
       else {
-        products.add(new Products(i, "name" + i,"email"+i,300000,"Sunglasses"));
+        products.add(new Products(i, "name" + i, "email" + i, 300000, "Sunglasses"));
       }
     }
-    model.addAttribute("products",products);
+    model.addAttribute("products", products);
     return "admin/products";
   }
-  
+
   @GetMapping("/shippings")
   public String adminShippingsPage(Model model) {
-    List<Shippings> shippings = new ArrayList<> (); 
+    List<Shippings> shippings = new ArrayList<>();
     for (int i = 1; i <= 4; i++) {
-      if(i==1)
-        shippings.add(new Shippings(i, "name" + i,"email"+i,"In progress"));
+      if (i == 1)
+        shippings.add(new Shippings(i, "name" + i, "email" + i, "In progress"));
       else {
-        shippings.add(new Shippings(i, "name" + i,"email"+i,"Done"));
+        shippings.add(new Shippings(i, "name" + i, "email" + i, "Done"));
       }
     }
-    model.addAttribute("shippings",shippings);
+    model.addAttribute("shippings", shippings);
     return "admin/shippings";
   }
 
-  @PostMapping("/editUserData")
-  public String postAdminEditData(Model model, @ModelAttribute("userForm") Users userForm) {
-    log.info("edit post 실행됨");
-    userForm.setEditDate(new Date());
-    log.info(userForm.toString());
+  @PostMapping(value="/editUserData",produces="application/json; charset=UTF-8")
+  public String postAdminEditData(Model model, Users users) {
+    log.info("user edit post 실행");
+    
+    users.setEditDate(new Date());
+    log.info(users.toString());
     return "redirect:users";
   }
-  @PostMapping("/createUserData")
-  public String postAdminCreateData(Model model, @ModelAttribute("userForm") Users userForm) {
-    log.info("edit post 실행됨");
-    userForm.setEditDate(new Date());
-    return "redirect:users";
+
+  @PostMapping(value = "/createUserData", produces = "application/json; charset=UTF-8")
+  @ResponseBody
+  public String postAdminCreateData(Model model,Users users) {
+    JSONObject jsonObject = new JSONObject();
+    log.info("create user post 실행됨");
+    jsonObject.put("uname", users.getUname());
+    jsonObject.put("uemail", users.getUemail());
+    jsonObject.put("urole", users.getUrole());
+    jsonObject.put("uid", users.getUid());
+    jsonObject.put("udate", users.getUid());
+    return jsonObject.toString();
   }
+
   @PostMapping("/deleteUserData")
   public String adminDeleteData() {
     log.info("get 실행됨");
     return "redirect:users";
   }
 
-  
-  
+
+
 }

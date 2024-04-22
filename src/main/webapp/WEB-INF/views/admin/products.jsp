@@ -12,7 +12,7 @@
 </head>
 <body>
 	<header>
-		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="#">관리자 페이지</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,9 +20,11 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNavDropdown">
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link" href="users">사용자 관리</a></li>
-						<li class="nav-item"><a class="nav-link active" aria-current="page" href="products">상품 관리</a></li>
-						<li class="nav-item"><a class="nav-link" href="shippings">배송 관리</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin">대시보드</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/users">사용자 관리</a></li>
+						<li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/admin/products">상품 관리</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/shippings">배송 관리</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/posts">게시글 관리</a></li>
 					</ul>
 				</div>
 			</div>
@@ -42,11 +44,11 @@
 		<table class="table table-hover text-center align-middle" id="user-table">
 			<thead>
 				<tr>
-					<th scope="col">번호#</th>
+					<th scope="col">상품#</th>
+					<th scope="col">사진</th>
 					<th scope="col">이름</th>
-					<th scope="col">아이디</th>
-					<th scope="col">역할</th>
-					<th scope="col">수정일자</th>
+					<th scope="col">가격</th>
+					<th scope="col">카테고리</th>
 					<th scope="col"><button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#createUserModal">상품 정보 생성</button></th>
 
 				</tr>
@@ -55,8 +57,8 @@
 				<c:forEach var="product" items="${products}">
 					<tr>
 						<th scope="row">${product.pid}</th>
+						<td><img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/f/i/fishtail-br3_2_1.jpg" height="50" width="50" /></td>
 						<td>${product.pname}</td>
-						<td>${product.pinfo}</td>
 						<td>${product.pprice}</td>
 						<td>${product.pcategory}</td>
 						<td>
@@ -96,19 +98,21 @@
 						<label class="form-label" for="userNum">상품 번호</label> <input type="text" id="userNum" class="form-control form-control-lg" readonly />
 					</div>
 					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="userName">상품 이름</label> <input type="text" id="userName" class="form-control form-control-lg" /> <small id="birthError"></small>
+						<label class="form-label" for="userName">상품 이름</label> <input type="text" id="userName" class="form-control form-control-lg" /> <small id="nameError"></small>
 					</div>
 					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="userId">상품 설명</label> <input type="text" id="userId" class="form-control form-control-lg" /> <small id="birthError"></small>
+						<label class="form-label" for="userId">상품 설명</label> <input type="text" id="userId" class="form-control form-control-lg" /> <small id="descriptionError"></small>
 					</div>
 					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="UserRole">가격</label> <input type="text" id="UserRole" class="form-control form-control-lg" /> <small id="birthError"></small>
+						<label class="form-label" for="userPrice">가격</label> <input type="text" id="userPrice" class="form-control form-control-lg" /> <small id="priceError"></small>
 					</div>
 					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="UserRole">카테고리</label> <input type="text" id="UserRole" class="form-control form-control-lg" /> <small id="birthError"></small>
+						<label class="form-label" for="userCategory">카테고리</label> <input type="text" id="userCategory" class="form-control form-control-lg" /> <small id="categoryError"></small>
+					</div>
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="userImage">상품 사진</label> <input type="file" id="userImage" class="form-control form-control-lg" accept="image/*" /> <small id="imageError"></small>
 					</div>
 				</div>
-
 				<!-- Modal footer -->
 
 				<div class="modal-footer">
@@ -131,24 +135,24 @@
 
 				<!-- Modal body -->
 				<div class="modal-body">
-					<form id="users" method="post" action="editUserData">
-						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="uname">상품 이름</label> <input type="text" id="uname" name="uname" class="form-control form-control-lg" /> <small id="birthError"></small>
-						</div>
-						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="uemail">상품 설명</label> <input type="text" id="uemail" name="uemail" class="form-control form-control-lg" /> <small id="birthError"></small>
-						</div>
-						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="urole">상품 가격</label> <input type="text" id="urole" name="urole" class="form-control form-control-lg" /> <small id="birthError"></small>
-						</div>
-						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="urole">상품 카테고리</label> <input type="text" id="urole" name="urole" class="form-control form-control-lg" /> <small id="birthError"></small>
-						</div>
-						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="urole">상품 가격</label> <input type="text" id="urole" name="urole" class="form-control form-control-lg" /> <small id="birthError"></small>
-						</div>
-					</form>
-
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="userNum">상품 번호</label> <input type="text" id="userNum" class="form-control form-control-lg" readonly />
+					</div>
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="userName">상품 이름</label> <input type="text" id="userName" class="form-control form-control-lg" /> <small id="nameError"></small>
+					</div>
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="userId">상품 설명</label> <input type="text" id="userId" class="form-control form-control-lg" /> <small id="descriptionError"></small>
+					</div>
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="userPrice">가격</label> <input type="text" id="userPrice" class="form-control form-control-lg" /> <small id="priceError"></small>
+					</div>
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="userCategory">카테고리</label> <input type="text" id="userCategory" class="form-control form-control-lg" /> <small id="categoryError"></small>
+					</div>
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="userImage">상품 사진</label> <input type="file" id="userImage" class="form-control form-control-lg" accept="image/*" /> <small id="imageError"></small>
+					</div>
 				</div>
 
 				<!-- Modal footer -->

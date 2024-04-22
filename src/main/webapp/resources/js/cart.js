@@ -31,11 +31,7 @@ const cartItems = [
     },
 ];
 
-// 로고 홈 버튼
-const logo = document.querySelector(".logo");
-logo.addEventListener('click', () => {
-    location.href = "/viewport_mini_web";
-});
+
 //카트에 담은 아이템들을 출력하는 함수
 const displayCartItems = () => {
     const cartItemsList = document.getElementById('cart-list-container');

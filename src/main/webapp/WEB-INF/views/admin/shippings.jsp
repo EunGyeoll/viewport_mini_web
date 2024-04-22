@@ -12,7 +12,7 @@
 </head>
 <body>
 	<header>
-		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="#">관리자 페이지</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,9 +20,11 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNavDropdown">
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link" href="users">사용자 관리</a></li>
-						<li class="nav-item"><a class="nav-link" href="products">상품 관리</a></li>
-						<li class="nav-item"><a class="nav-link active" aria-current="page" href="shippings">배송 관리</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin">대시보드</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/users">사용자 관리</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/products">상품 관리</a></li>
+						<li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/admin/shippings">배송 관리</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/posts">게시글 관리</a></li>
 					</ul>
 				</div>
 			</div>

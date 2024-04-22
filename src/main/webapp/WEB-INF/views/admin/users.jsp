@@ -13,7 +13,7 @@
 </head>
 <body>
 	<header>
-		<nav class="navbar navbar-expand-lg bg-body-tertiary">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="#">관리자 페이지</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,9 +21,11 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNavDropdown">
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link active" aria-current="page" href="users">사용자 관리</a></li>
-						<li class="nav-item"><a class="nav-link" href="products">상품 관리</a></li>
-						<li class="nav-item"><a class="nav-link" href="shippings">배송 관리</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin">대시보드</a></li>
+						<li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/admin/users">사용자 관리</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/products">상품 관리</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/shippings">배송 관리</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/posts">게시글 관리</a></li>
 					</ul>
 				</div>
 			</div>
@@ -100,9 +102,9 @@
 				</div>
 
 				<!-- Modal body -->
-				<form action="editUserData"method="post" class="modal-body" id="userModal">
+				<form action="editUserData" method="post" class="modal-body" id="userModal">
 					<!-- 데이터 출력 -->
-					
+
 				</form>
 
 
@@ -123,24 +125,19 @@
 				<div class="modal-body">
 					<form id="userForm" method="post" action="createUserData">
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="uname">유저 이름</label> 
-							<input type="text" id="uname" name="uname" class="form-control form-control-lg" value="${userForm.uid}" /> <small id="birthError"></small>
+							<label class="form-label" for="uname">유저 이름</label> <input type="text" id="uname" name="uname" class="form-control form-control-lg" value="${userForm.uid}" /> <small id="birthError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="uemail">아이디</label> 
-							<input type="text" id="uemail" name="uemail" class="form-control form-control-lg" value="${userForm.uemail}"/> <small id="birthError"></small>
+							<label class="form-label" for="uemail">아이디</label> <input type="text" id="uemail" name="uemail" class="form-control form-control-lg" value="${userForm.uemail}" /> <small id="birthError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="urole">생년월일</label> 
-							<input type="text" id="ubirth" name="ubirth" class="form-control form-control-lg" /> <small id="birthError"></small>
+							<label class="form-label" for="urole">생년월일</label> <input type="text" id="ubirth" name="ubirth" class="form-control form-control-lg" /> <small id="birthError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="urole">전화번호</label> 
-							<input type="text" id="uphone" name="uphone" class="form-control form-control-lg"/> <small id="birthError"></small>
+							<label class="form-label" for="urole">전화번호</label> <input type="text" id="uphone" name="uphone" class="form-control form-control-lg" /> <small id="birthError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="urole">역할</label> 
-							<input type="text" id="urole" name="urole" class="form-control form-control-lg" value="${userForm.urole}"/> <small id="birthError"></small>
+							<label class="form-label" for="urole">역할</label> <input type="text" id="urole" name="urole" class="form-control form-control-lg" value="${userForm.urole}" /> <small id="birthError"></small>
 						</div>
 						<button type="button" onclick="createUserDataEvent()" class="btn btn-dark">생성</button>
 						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
@@ -164,9 +161,7 @@
 				<div class="modal-body">
 					<p>삭제하시겠습니까?</p>
 				</div>
-				<div class="modal-footer" id="delete-model-footer">
-					
-				</div>
+				<div class="modal-footer" id="delete-model-footer"></div>
 
 			</div>
 		</div>

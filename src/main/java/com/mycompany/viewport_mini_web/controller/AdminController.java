@@ -20,7 +20,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequestMapping("/admin")
 public class AdminController {
-
+@GetMapping
+public String adminMainPage(Model model) {
+  return "admin/admin";
+}
   @GetMapping("/users")
   public String adminUserPage(Model model) {
     List<Users> users = new ArrayList<>();
@@ -61,6 +64,12 @@ public class AdminController {
     }
     model.addAttribute("shippings", shippings);
     return "admin/shippings";
+  }
+  @GetMapping("/posts")
+  public String adminPostPage(Model model) {
+   
+    
+    return "admin/posts";
   }
 
   @PostMapping(value="/editUserData",produces="application/json; charset=UTF-8")

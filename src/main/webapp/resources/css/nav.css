@@ -1,0 +1,81 @@
+#nav-logo, #nav-menu, #nav-icon {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000000;
+    width: 100%;
+  }
+
+  
+#nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+#nav li a:hover {
+    color: #646363;
+    font-weight: bold;
+}
+
+#nav-logo {
+    padding-left: 50px;
+}
+
+#nav-icon {
+    padding-right: 50px;
+}
+
+#nav-logo-text {
+    font-weight: bold;
+    font-size: large;
+}
+
+.content{
+  color: red;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 10%);
+}
+.content header{
+  font-size: 90px;
+  font-weight: 700;
+}
+.content .text{
+  font-size: 30px;
+  font-weight: 700;
+}
+.space{
+  margin: 10px 0;
+}
+
+.section-title{
+  font-size: 30px;
+}
+
+.section-title {
+  animation: pulse 1s infinite alternate; /* 애니메이션 효과 추가 */
+}
+
+@keyframes pulse {
+  from {
+      transform: scale(1);
+  }
+  to {
+      transform: scale(1.1);
+  }
+}
+
+@media (max-width: 550px) {
+.content header{ 
+    font-size: 30px;
+  }
+.content .text {
+  font-size: 15px;
+}
+
+}

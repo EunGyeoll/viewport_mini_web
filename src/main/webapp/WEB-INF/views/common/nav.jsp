@@ -1,27 +1,32 @@
-		 
-		  <nav>
-    <div class="menu-icon">
-       <span class="fas fa-bars"></span>
-    </div>
-    <div class="logo">
-       VIEWPORT
-    </div>
-    <div class="nav-items">
-       <li><a href="/viewport_mini_web">Home</a></li>
-       <li><a href="/products">Products</a></li>
-       <li><a href="styles">Styles</a></li>
-       <li><a href="/find">find stores</a></li>
-    </div>
-    <div class="search-icon">
-       <span class="fas fa-search"></span>
-    </div>
-    <div class="cancel-icon">
-       <span class="fas fa-times"></span>
-    </div>
-    <form action="#">
-       <input type="search" class="search-data" placeholder="Search" required>
-    </form>
- </nav>
+    <div class="d-flex justify-content-around fixed-top" id="nav">
+        <ul class="d-flex" id="nav-logo">
+            <li><a href="#"><span id="nav-logo-text">VIEWPORT</span></a></li>
+        </ul>
+        <ul id="nav-menu" class="d-flex">
+            <li><a href="#"><span>GLASSES</span></a></li>
+            <li><a href="#"><span>SUNGLASSES</span></a></li>
+            <li><a href="#"><span>STYLES</span></a></li>
+            <li><a href="#"><span>FIND STORES</span></a></li>
+        </ul>
+        <ul class="d-flex justify-content-end" id="nav-icon">
+                <li><a href="#">
+                    <span><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></span>
+                </a></li>
+                <li><a href="#">
+                    <span><i class="fa-solid fa-user" style="color: #ffffff;"></i></span>
+                </a></li>
+                <li><a href="#">
+                    <span><i class="fa-solid fa-user-plus" style="color: #ffffff;"></i></span>
+                </a></li>
+                <li><a href="#">
+                    <span><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></span>
+                </a></li>
 
- <script src="/viewport_mini_web/resources/js/main.js"></script>
+        </ul>        
+    </div>
+
+    
+    
+
+    <!-- JS 설정 -->
  

@@ -19,13 +19,16 @@
 	src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 
 <!-- 사용자 정의 자바 스크립트-->
-<link rel="stylesheet" href="/viewport_mini_web/resources/css/main.css">
+<link rel="stylesheet" href="/viewport_mini_web/resources/css/nav.css">
 <link rel="stylesheet"
 	href="/viewport_mini_web/resources/css/app_style.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+<!-- 아이콘 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
 body {
 	background-image: url("/viewport_mini_web/resources/image/image18.jpg");

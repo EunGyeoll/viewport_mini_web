@@ -13,8 +13,12 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 
 <!-- css 설정 -->
-<link rel="stylesheet" href="/viewport_mini_web/resources/css/main.css?ver=1">
+<link rel="stylesheet" href="/viewport_mini_web/resources/css/nav.css?ver=1">
 <link rel="stylesheet" href="/viewport_mini_web/resources/css/productDetail.css?ver=1">
+
+<!-- 아이콘 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
@@ -101,6 +105,10 @@
 			</div>
 		</div>
 	</div>
+	
+	<!-- Footer -->
+	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+	
 
 	<!-- JS 설정 -->
 	<script src="/viewport_mini_web/resources/js//productDetail.js"></script>

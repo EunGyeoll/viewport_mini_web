@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,152 +9,176 @@
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 		<!-- Latest compiled JavaScript -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-		<!-- JQuery ø‹∫Œ ∂Û¿Ã∫Í∑Ø∏Æ -->
+		<!-- JQuery Ïô∏Î∂Ä ÎùºÏù¥Î∏åÎü¨Î¶¨ -->
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 		
-		<!-- css º≥¡§ -->
+		<!-- css ÏÑ§Ï†ï -->
 		<link rel="stylesheet" href="/viewport_mini_web/resources/css/nav.css?ver=1">
 		<link rel="stylesheet" href="/viewport_mini_web/resources/css/productsList.css?ver=1">	
 		
-		<!-- æ∆¿Ãƒ‹ -->
+		<!-- ÏïÑÏù¥ÏΩò -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	
 	</head>
 	<body>
-		<!-- ≥◊∫Ò∞‘¿Ãº« πŸ  -->
+		<!-- ÎÑ§ÎπÑÍ≤åÏù¥ÏÖò Î∞î  -->
 		<%@ include file="/WEB-INF/views/common/nav.jsp"%>
 
 			    <div class="wrap">
         <div class="filter-block">
             <form action="" method="post">
                 <div class="filter-category">
-                    <h5>ƒ´≈◊∞Ì∏Æ</h5>
+                    <h5>Ïπ¥ÌÖåÍ≥†Î¶¨</h5>
                     <ul>
                         <li>
                             <input type="checkbox" class="form-check-input" id="glasses" name="glasses-option" value="glasses">
-                            <label class="form-check-label" for="glasses">æ»∞Ê</label>
+                            <label class="form-check-label" for="glasses">ÏïàÍ≤Ω</label>
                         </li>
                         <li>
                             <input type="checkbox" class="form-check-input" id="sunglasses" name="glasses-option" value="sunglasses">
-                            <label class="form-check-label" for="sunglasses">º±±€∂ÛΩ∫</label>
+                            <label class="form-check-label" for="sunglasses">ÏÑ†Í∏ÄÎùºÏä§</label>
                         </li>
                     </ul>
                 </div>
                 <div class="filter-price">
-                    <h5>∞°∞›</h5>
+                    <h5>Í∞ÄÍ≤©</h5>
                     <ul>
                         <li>
                             <input type="checkbox" class="form-check-input" id="lowPrice" name="price-option" value="lowPrice">
-                            <label class="form-check-label" for="lowPrice">≥∑¿∫ ∞°∞›º¯</label>
+                            <label class="form-check-label" for="lowPrice">ÎÇÆÏùÄ Í∞ÄÍ≤©Ïàú</label>
                         </li>
                         <li>
                             <input type="checkbox" class="form-check-input" id="highPrice" name="price-option" value="highPrice">
-                            <label class="form-check-label" for="highPrice">≥Ù¿∫ ∞°∞›º¯</label>
+                            <label class="form-check-label" for="highPrice">ÎÜíÏùÄ Í∞ÄÍ≤©Ïàú</label>
                         </li>
                     </ul>
                 </div>
                 <div class="filter-sort">
-                    <h5>¡§∑ƒ</h5>
+                    <h5>Ï†ïÎ†¨</h5>
                     <ul>
                         <li>
                             <input type="checkbox" class="form-check-input" id="lowPrice" name="sort-option" value="lowPrice">
-                            <label class="form-check-label" for="lowPrice">√÷Ω≈º¯</label>
+                            <label class="form-check-label" for="lowPrice">ÏµúÏã†Ïàú</label>
                         </li>
                         <li>
                             <input type="checkbox" class="form-check-input" id="highPrice" name="sort-option" value="highPrice">
-                            <label class="form-check-label" for="highPrice">∆«∏≈º¯</label>
+                            <label class="form-check-label" for="highPrice">ÌåêÎß§Ïàú</label>
                         </li>
                     </ul>
                 </div>
                 <div class="filter-button">
-                    <button type="reset">√ ±‚»≠</button>
-                    <button type="submit">∞Àªˆ</button>   
+                    <button type="reset">Ï¥àÍ∏∞Ìôî</button>
+                    <button type="submit">Í≤ÄÏÉâ</button>   
                 </div>        
             </form>
         </div>
         <div class="list-block">
             <ul class="card-list">
                 <li>
-                    <div>
-                        <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_01_2.jpg">
-                    </div>
-                    <div>
-                        <p>∏Û≈∏ 01</p>
-                        <p>330,000</p>
-                    </div>
+                	<a href="#">
+                		<div>
+	                        <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_01_2.jpg">
+	                    </div>
+	                    <div>
+	                        <p>Î™¨ÌÉÄ 01</p>
+	                        <p>330,000</p>
+	                    </div>
+                	</a>
+
                 </li>
                 <li>
-                    <div>
-                        <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_01_2.jpg">
-                    </div>
-                    <div>
-                        <p>∏Û≈∏ 01</p>
-                        <p>330,000</p>
-                    </div>
+                	<a href="#">
+	                    <div>
+	                        <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_NUBO_01_2.jpg">
+	                    </div>
+	                    <div>
+	                        <p>ÎàÑÎ≥¥ 01</p>
+	                        <p>259,000</p>
+	                    </div>               	
+                	</a>
+
                 </li>
                 <li>
-                    <div>
-                        <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_01_2.jpg">
-                    </div>
-                    <div>
-                        <p>∏Û≈∏ 01</p>
-                        <p>330,000</p>
-                    </div>
+                	<a href="#">
+	                    <div>
+	                        <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_FEAR_X_GR9_2.jpg">
+	                    </div>
+	                    <div>
+	                        <p>ÌîºÏñ¥ X 03</p>
+	                        <p>360,000</p>
+	                    </div>              	
+                	</a>
                 </li>
                 <li>
-                    <div>
-                        <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_NUBO_01_2.jpg">
-                    </div>
-                    <div>
-                        <p>¥©∫∏ 01</p>
-                        <p>259,000</p>
-                    </div>
+                	<a href="#">
+                		<div>
+	                        <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_01_2.jpg">
+	                    </div>
+	                    <div>
+	                        <p>Î™¨ÌÉÄ 01</p>
+	                        <p>330,000</p>
+	                    </div>
+                	</a>
+
                 </li>
                 <li>
-                    <div>
-                        <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_NUBO_01_2.jpg">
-                    </div>
-                    <div>
-                        <p>¥©∫∏ 01</p>
-                        <p>259,000</p>
-                    </div>
-                </li>                 
-                <li>
-                    <div>
-                        <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_NUBO_01_2.jpg">
-                    </div>
-                    <div>
-                        <p>¥©∫∏ 01</p>
-                        <p>259,000</p>
-                    </div>
-                </li>     
-                <li>
-                    <div>
-                        <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_FEAR_X_GR9_2.jpg">
-                    </div>
-                    <div>
-                        <p>««æÓ X 03</p>
-                        <p>360,000</p>
-                    </div>
+                	<a href="#">
+	                    <div>
+	                        <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_NUBO_01_2.jpg">
+	                    </div>
+	                    <div>
+	                        <p>ÎàÑÎ≥¥ 01</p>
+	                        <p>259,000</p>
+	                    </div>               	
+                	</a>
+
                 </li>
                 <li>
-                    <div>
-                        <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_FEAR_X_GR9_2.jpg">
-                    </div>
-                    <div>
-                        <p>««æÓ X 03</p>
-                        <p>360,000</p>
-                    </div>
-                </li>  
+                	<a href="#">
+	                    <div>
+	                        <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_FEAR_X_GR9_2.jpg">
+	                    </div>
+	                    <div>
+	                        <p>ÌîºÏñ¥ X 03</p>
+	                        <p>360,000</p>
+	                    </div>              	
+                	</a>
+                </li>
                 <li>
-                    <div>
-                        <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_FEAR_X_GR9_2.jpg">
-                    </div>
-                    <div>
-                        <p>««æÓ X 03</p>
-                        <p>360,000</p>
-                    </div>
-                </li>              
+                	<a href="#">
+                		<div>
+	                        <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_01_2.jpg">
+	                    </div>
+	                    <div>
+	                        <p>Î™¨ÌÉÄ 01</p>
+	                        <p>330,000</p>
+	                    </div>
+                	</a>
+
+                </li>
+                <li>
+                	<a href="#">
+	                    <div>
+	                        <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_NUBO_01_2.jpg">
+	                    </div>
+	                    <div>
+	                        <p>ÎàÑÎ≥¥ 01</p>
+	                        <p>259,000</p>
+	                    </div>               	
+                	</a>
+
+                </li>
+                <li>
+                	<a href="#">
+	                    <div>
+	                        <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_FEAR_X_GR9_2.jpg">
+	                    </div>
+	                    <div>
+	                        <p>ÌîºÏñ¥ X 03</p>
+	                        <p>360,000</p>
+	                    </div>              	
+                	</a>
+                </li>
             </ul>
             <div class="pagination-center">
                 <div class="pagination">
@@ -169,8 +193,12 @@
             </div>
         </div>
     </div>	
+    
+		<!-- Footer -->
+		<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 	
-		<!-- JS º≥¡§ -->
+		
+		<!-- JS ÏÑ§Ï†ï -->
 		<script src="/viewport_mini_web/resources/js//productsList.js"></script>
 	</body>
 </html>

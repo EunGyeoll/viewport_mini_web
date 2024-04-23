@@ -6,7 +6,7 @@
 .filter-block {
     grid-column: auto / span 3;
     position: sticky;
-    
+    top: 20px;
     padding: 80px;
     height: 100vh;
     background-color: #F9F9F9;
@@ -29,6 +29,7 @@
 
 .list-block {
     grid-column: auto / span 9;
+    margin-top: 70px;
 }
 
 .card-list {
@@ -97,3 +98,14 @@ li {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
   }
+  
+.list-block a {
+	text-decoration: none;
+	color: #000
+}  
+  
+@media (max-width: 1086px) {
+	.list-block {
+		grid-column: auto / span 6;
+	}
+}

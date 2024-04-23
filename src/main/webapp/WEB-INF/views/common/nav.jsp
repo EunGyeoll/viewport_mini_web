@@ -7,7 +7,7 @@
             <li><a href="#"><span>GLASSES</span></a></li>
             <li><a href="#"><span>SUNGLASSES</span></a></li>
             <li><a href="${pageContext.request.contextPath}/styles"><span>STYLES</span></a></li>
-            <li><a href="${pageContext.request.contextPath}/findStores"><span>FIND STORES</span></a></li>
+            <li><a href="${pageContext.request.contextPath}/findStores"><span>STORES</span></a></li>
         </ul>
         <ul class="d-flex justify-content-end" id="nav-icon">
                 <li><a href="#">

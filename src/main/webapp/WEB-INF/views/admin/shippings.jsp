@@ -60,6 +60,7 @@
 						<td>${shipping.sname}</td>
 						<td>${shipping.snumber}</td>
 						<td>${shipping.sstatus}</td>
+						<td>2024.12.10</td>
 						<td>
 							<button type="button" class="btn btn-dark edit-btn btn-sm userDataEditBtn" onclick="clickEvent(${shipping.sid},'${shipping.sname}','${shipping.snumber}','${shipping.sstatus}')" data-bs-toggle="modal" data-bs-target="#editUserModal">배송 정보 수정</button>
 							<button class="btn btn-danger edit-btn btn-sm" data-bs-toggle="modal" data-bs-target="#deleteUserModal">삭제</button>

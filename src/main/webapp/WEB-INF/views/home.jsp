@@ -141,7 +141,7 @@ body {
 
 		<div class="text-center">
 
-			<button class="btn btn-outline-light mb-5">View More</button>
+			<a class="btn btn-outline-light mb-5" href="${pageContext.request.contextPath}/products/productsList">View More</a>
 		</div>
 
 	</section>

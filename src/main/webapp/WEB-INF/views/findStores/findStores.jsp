@@ -7,7 +7,7 @@
 <title>Document</title>
 <!-- Bootstrap 5를 위한 외부 라이브러리 설정 -->
 <!-- css 설정 -->
-<link rel="stylesheet" href="/findStores.css" />
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/nav.css">
@@ -21,7 +21,7 @@
 <body class="">
 	<%@ include file="/WEB-INF/views/common/nav.jsp"%>
 	<section class="container text-center">
-		<div class="d-flex flex-row justify-content-center" style="margin-top:70px;">
+		<div class="d-flex flex-row justify-content-center" style="margin-top:90px;">
 			<div class="branch">
 				<img src="https://inhouse-resource.gentlemonster.com/store/166754976340490_hongdae_menu_2021-01-07_15_59_35.jpeg" class="rounded-circle" width="85" height="85" alt="..." />
 				<p>대한민국</p>

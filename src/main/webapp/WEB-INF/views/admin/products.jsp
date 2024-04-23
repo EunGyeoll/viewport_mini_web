@@ -111,6 +111,7 @@
 					</div>
 					<div data-mdb-input-init class="form-outline mb-4">
 						<label class="form-label" for="userImage">상품 사진</label> <input type="file" id="userImage" class="form-control form-control-lg" accept="image/*" /> <small id="imageError"></small>
+					<img alt="" src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/f/i/fishtail-br3_2_1.jpg" width="100" height="80">
 					</div>
 				</div>
 				<!-- Modal footer -->
@@ -152,6 +153,7 @@
 					</div>
 					<div data-mdb-input-init class="form-outline mb-4">
 						<label class="form-label" for="userImage">상품 사진</label> <input type="file" id="userImage" class="form-control form-control-lg" accept="image/*" /> <small id="imageError"></small>
+						
 					</div>
 				</div>
 

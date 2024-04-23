@@ -35,11 +35,14 @@
                           <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                             <!-- Links -->
                             <h6 class="text-body text-center text-uppercase fw-bold mb-4">
-                              Useful link
+                              Help
                             </h6>
                     
                             <p class="text-center">
                               <a href="https://chat.openai.com/" class="text-reset">1:1 chat</a>
+                            </p>
+                            <p class="text-center">
+                              <a href="${pageContext.request.contextPath}/board" class="text-reset">Q&A</a>
                             </p>
                           </div>    
                           <!-- Grid column -->

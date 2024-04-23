@@ -95,10 +95,10 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>1234</td>
-					<td>2022-04-01</td>
-					<td>Shipped</td>
-					<td>$150</td>
+					<td class="align-middle">1234</td>
+					<td class="align-middle">2022-04-01</td>
+					<td class="align-middle">Shipped</td>
+					<td class="align-middle">$150</td>
 					<td><button class="btn btn-info">View</button></td>
 				</tr>
 				<!-- More rows -->

@@ -75,7 +75,7 @@
         <div class="list-block">
             <ul class="card-list">
                 <li>
-                	<a href="#">
+                	<a href="${pageContext.request.contextPath}/products/productDetail">
                 		<div>
 	                        <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_01_2.jpg">
 	                    </div>

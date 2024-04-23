@@ -1,0 +1,30 @@
+@charset "UTF-8";
+.image-box {
+    cursor: pointer;
+}
+.container{
+	margin-top:100px;
+}
+.item-info-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    
+}
+.item-info-box img {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.item-info-box .btn{
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    height: 40px;
+    vertical-align: middle;
+
+}
+.item-info-box .btn span {
+    vertical-align: middle;
+}

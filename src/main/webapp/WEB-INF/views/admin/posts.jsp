@@ -61,7 +61,7 @@
 				</thead>
 				<tbody>
 					<%-- <c:set var="posts" value="${[{'id':1, 'title':'First Post', 'author':'ian', 'date':'2022-04-01'},{'id':2, 'title':'Second Post', 'author':'sunghwan', 'date':'2022-04-02'}]}" />
-				  --%>	<c:forEach var="post" items="${posts}">
+					 --%><c:forEach var="post" items="${posts}">
 						<tr>
 							<td>${post.id}</td>
 							<td>${post.title}</td>

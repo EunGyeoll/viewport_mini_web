@@ -7,22 +7,10 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
-@RequestMapping("/board")
-public class BoardController {
-	
-  @GetMapping("/writeQNA")
-  public String CreateNewBoard() {
-    return "board/writeQNA";
-  }
-  
-  @GetMapping("/QNA")
+@RequestMapping("/QNA")
+public class QNAController {
+  @GetMapping
   public String QNA() {
-    return "board/QNA";
+    return "QNA/QNA";
   }
-  
-  @GetMapping("/FAQ")
-  public String Qna() {
-    return "board/FAQ";
-  }
-  
 }

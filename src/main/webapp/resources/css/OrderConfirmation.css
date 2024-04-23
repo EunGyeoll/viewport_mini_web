@@ -1,0 +1,47 @@
+
+
+.center {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    /* height: 300px; */
+    padding: 150px;
+    margin: 70px;
+    margin: auto;
+    max-width: 1250px;
+    width: 90%;
+    margin-top: 60px;
+    border: none;
+}
+
+
+.billingInfo{
+}
+
+.orderedProducts{
+    justify-content: space-between;
+}
+
+
+.orderLeft{
+    width:70px;
+}
+.orderRight{
+    width: 100px;
+    background-color: #E4E4E4;
+    padding-top: 40px;
+    padding-right: 50px;
+    padding-bottom: 40px;
+    padding-left: 50px;
+     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+    }
+
+}
+
+.container{
+    width:500px;
+    margin: 100px;
+    align-items: center;
+    justify-content: center;
+}
+

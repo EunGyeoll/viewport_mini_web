@@ -39,10 +39,10 @@
                             </h6>
                     
                             <p class="text-center">
-                              <a href="https://chat.openai.com/" class="text-reset">1:1 chat</a>
+                              <a href="${pageContext.request.contextPath}/board/FAQ" class="text-reset">FAQ</a>
                             </p>
                             <p class="text-center">
-                              <a href="${pageContext.request.contextPath}/board" class="text-reset">Q&A</a>
+                              <a href="${pageContext.request.contextPath}/board/QNA" class="text-reset">Q&A</a>
                             </p>
                           </div>    
                           <!-- Grid column -->

@@ -15,4 +15,10 @@ public class PaymentController {
 		log.info("payment() 실행");
 		return "payment/payment";
 	}
+	
+	@RequestMapping("/OrderConfirmation")
+	public String OrderConfirmation() {
+		log.info("OrderConfirmation() 실행");
+		return "payment/OrderConfirmation";
+	}
 }

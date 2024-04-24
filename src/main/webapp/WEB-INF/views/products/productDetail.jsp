@@ -27,7 +27,8 @@
 
 	<div id="container">
 		<!-- 이미지 출력  -->
-		<div id="images"></div>
+		<div id="images">
+		</div>
 
 		<!-- 사이드바 -->
 		<aside class="sidebar">

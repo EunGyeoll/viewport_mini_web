@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
 body {
-	background-image: url("/viewport_mini_web/resources/image/image18.jpg");
+	background-image: url("/viewport_mini_web/resources/image/main2.png");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-size: 100% 100%;
@@ -49,15 +49,6 @@ body {
 
 
 
-<div class="content">
-  <header class="space">The new arrival</header>
-  <div class="space text">
-    Lorem ipsum dolor sit
-  </div>
-  <div class="space text">
-    amet consectetur.
-  </div>
-</div>
 	</section>
 
 	<section class="section2 container-fluid">

@@ -16,33 +16,46 @@
 #container {
     display: flex;
     align-items: flex-start;
-    justify-content: space-around;
+/*     justify-content: space-between; */
 }
 
 #images img {
 	width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .sidebar {
-    position: sticky;
-    top: 20px;
-    margin-top: 20px;
+ /*     position: sticky;
+    top: 70px;
+   margin-top: 20px;
     margin-right: 60px;
     margin-bottom: 40px;
-    padding: 10px;
-    /* width:350px */
+    padding-left : 50px; */
+    position: sticky;
+    top: 70px;
+}
+
+.sidebar {
+    /* 기존 스타일 유지 */
+    padding-left: 0; /* 기존 여백 제거 */
+    padding-right: 0; /* 기존 여백 제거 */
+    margin: auto; /* 좌우 여백을 자동으로 맞추기 */
+    max-width: 50%; /* 사이드바의 최대 너비를 설정 */
+}
+
+.sidebar .sidebar-context {
+    width: 29.687vw;
+    margin: auto;
+    padding-top: 30px;
 }
 
 .namePrice {
-    display: flex;
-    justify-content: space-between;
     margin-bottom: 30px;
 }
 
 #productName {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 22px;
 }
 
 

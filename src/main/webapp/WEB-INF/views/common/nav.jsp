@@ -11,16 +11,16 @@
         </ul>
         <ul class="d-flex justify-content-end" id="nav-icon">
                 <li><a href="#">
-                    <span><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i></span>
+                    <span><i class="fa-solid fa-magnifying-glass" style="color: #000;"></i></span>
                 </a></li>
                 <li><a href="${pageContext.request.contextPath}/login">
-                    <span><i class="fa-solid fa-user" style="color: #ffffff;"></i></span>
+                    <span><i class="fa-solid fa-user" style="color: #000;"></i></span>
                 </a></li>
                 <li><a href="${pageContext.request.contextPath}/signup">
-                    <span><i class="fa-solid fa-user-plus" style="color: #ffffff;"></i></span>
+                    <span><i class="fa-solid fa-user-plus" style="color: #000;"></i></span>
                 </a></li>
                 <li><a href="${pageContext.request.contextPath}/cart">
-                    <span><i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i></span>
+                    <span><i class="fa-solid fa-cart-shopping" style="color: #000;"></i></span>
                 </a></li>
 
         </ul>        

@@ -36,8 +36,9 @@
 	<%@ include file="/WEB-INF/views/common/nav.jsp"%>
 
 	<div id="container">
-		<!-- 이미지 출력  -->
-		<div id="images"></div>
+		<div id="images">
+			<!-- js에서 이미지 출력  -->
+		</div>
 
 		<!-- 사이드바 -->
 		<aside class="sidebar">
@@ -136,6 +137,7 @@
 			</div>
 		</div>
 	</div>
+
 
 	<!-- Footer -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>

@@ -4,10 +4,10 @@
             <li><a href="${pageContext.request.contextPath}/"><span id="nav-logo-text">VIEWPORT</span></a></li>
         </ul>
         <ul id="nav-menu" class="d-flex">
-            <li><a href="#"><span>GLASSES</span></a></li>
-            <li><a href="#"><span>SUNGLASSES</span></a></li>
-            <li><a href="${pageContext.request.contextPath}/styles"><span>STYLES</span></a></li>
-            <li><a href="${pageContext.request.contextPath}/findStores"><span>STORES</span></a></li>
+            <li><a href="#"><span>안경</span></a></li>
+            <li><a href="#"><span>선글라스</span></a></li>
+            <li><a href="${pageContext.request.contextPath}/styles"><span>스타일</span></a></li>
+            <li><a href="${pageContext.request.contextPath}/findStores"><span>스토어</span></a></li>
         </ul>
         <ul class="d-flex justify-content-end" id="nav-icon">
                 <li><a href="#">

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.mycompany.viewport_mini_web.dto.Products;
-import com.mycompany.viewport_mini_web.dto.Shippings;
-import com.mycompany.viewport_mini_web.dto.Users;
+import com.mycompany.viewport_mini_web.dto.Shipment;
+import com.mycompany.viewport_mini_web.dto.User;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -26,12 +26,12 @@ public String adminMainPage(Model model) {
 }
   @GetMapping("/users")
   public String adminUserPage(Model model) {
-    List<Users> users = new ArrayList<>();
+    List<User> users = new ArrayList<>();
     for (int i = 1; i <= 4; i++) {
       if (i == 1)
-        users.add(new Users(i, "name" + i, "email" + i, new Date(), "Admin", "010-0000-000" + i));
+        users.add(new User(i, "name" + i, "email" + i, new Date(), "Admin", "010-0000-000" + i));
       else {
-        users.add(new Users(i, "name" + i, "email" + i, new Date(), "User", "010-0000-000" + i));
+        users.add(new User(i, "name" + i, "email" + i, new Date(), "User", "010-0000-000" + i));
       }
     }
     model.addAttribute("users", users);
@@ -54,12 +54,12 @@ public String adminMainPage(Model model) {
 
   @GetMapping("/shippings")
   public String adminShippingsPage(Model model) {
-    List<Shippings> shippings = new ArrayList<>();
+    List<Shipment> shippings = new ArrayList<>();
     for (int i = 1; i <= 4; i++) {
       if (i == 1)
-        shippings.add(new Shippings(i, "name" + i, "email" + i, "In progress"));
+        shippings.add(new Shipment(i, "name" + i, "email" + i, "In progress"));
       else {
-        shippings.add(new Shippings(i, "name" + i, "email" + i, "Done"));
+        shippings.add(new Shipment(i, "name" + i, "email" + i, "Done"));
       }
     }
     model.addAttribute("shippings", shippings);
@@ -73,7 +73,7 @@ public String adminMainPage(Model model) {
   }
 
   @PostMapping(value="/editUserData",produces="application/json; charset=UTF-8")
-  public String postAdminEditData(Model model, Users users) {
+  public String postAdminEditData(Model model, User users) {
     log.info("user edit post 실행");
     
     users.setEditDate(new Date());
@@ -83,7 +83,7 @@ public String adminMainPage(Model model) {
 
   @PostMapping(value = "/createUserData", produces = "application/json; charset=UTF-8")
   @ResponseBody
-  public String postAdminCreateData(Model model,Users users) {
+  public String postAdminCreateData(Model model,User users) {
     JSONObject jsonObject = new JSONObject();
     log.info("create user post 실행됨");
     jsonObject.put("uname", users.getUname());

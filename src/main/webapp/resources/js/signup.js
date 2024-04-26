@@ -121,10 +121,10 @@ form1.addEventListener('submit', function (e) {
 email2.addEventListener("change", (event) => {
     console.log(event.target.value);
     if (event.target.value == "type") {
-        // email3.className = "show"; 
+      
         email3.className = 'show';
     } else {
-        email3.className = "display"
+        email3.className = "hide"
     }
 });
 

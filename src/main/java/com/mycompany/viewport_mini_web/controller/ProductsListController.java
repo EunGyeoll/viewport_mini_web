@@ -10,9 +10,15 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequestMapping("/products")
 public class ProductsListController {
-	@RequestMapping("/productsList")
-	public String productsList() {
-		log.info("productsList() 실행");
-		return "products/productsList";
-	}
+  @RequestMapping("/productsList")
+  public String productsList() {
+    log.info("productsList() 실행");
+    return "products/productsList";
+  }
+
+  @RequestMapping("/productDetail")
+  public String productDetail() {
+    log.info("productDetail() 실행");
+    return "products/productDetail";
+  }
 }

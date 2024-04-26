@@ -27,13 +27,7 @@ public String adminMainPage(Model model) {
   @GetMapping("/users")
   public String adminUserPage(Model model) {
     List<User> users = new ArrayList<>();
-    for (int i = 1; i <= 4; i++) {
-      if (i == 1)
-        users.add(new User(i, "name" + i, "email" + i, new Date(), "Admin", "010-0000-000" + i));
-      else {
-        users.add(new User(i, "name" + i, "email" + i, new Date(), "User", "010-0000-000" + i));
-      }
-    }
+ 
     model.addAttribute("users", users);
     return "admin/users";
   }
@@ -56,11 +50,7 @@ public String adminMainPage(Model model) {
   public String adminShippingsPage(Model model) {
     List<Shipment> shippings = new ArrayList<>();
     for (int i = 1; i <= 4; i++) {
-      if (i == 1)
-        shippings.add(new Shipment(i, "name" + i, "email" + i, "In progress"));
-      else {
-        shippings.add(new Shipment(i, "name" + i, "email" + i, "Done"));
-      }
+ 
     }
     model.addAttribute("shippings", shippings);
     return "admin/shippings";
@@ -76,7 +66,6 @@ public String adminMainPage(Model model) {
   public String postAdminEditData(Model model, User users) {
     log.info("user edit post 실행");
     
-    users.setEditDate(new Date());
     log.info(users.toString());
     return "redirect:users";
   }
@@ -88,7 +77,6 @@ public String adminMainPage(Model model) {
     log.info("create user post 실행됨");
     jsonObject.put("uname", users.getUname());
     jsonObject.put("uemail", users.getUemail());
-    jsonObject.put("urole", users.getUrole());
     jsonObject.put("uid", users.getUid());
     jsonObject.put("udate", users.getUid());
     return jsonObject.toString();

@@ -3,6 +3,7 @@ const form1 = document.querySelector("#signupForm");
 const id = document.querySelector("#signupId");
 const pw1 = document.querySelector("#signupPw");
 const pw2 = document.querySelector("#signupPwCheck");
+const name = document.querySelector("#signupName");
 const birth = document.querySelector("#signupBirth");
 const phoneNum = document.querySelector("#signupPhoneNum");
 const email1 = document.querySelector("#signupEmail1");
@@ -20,7 +21,7 @@ form1.addEventListener('submit', function (e) {
 
   
     //아이디
-    const idPattern = /^[a-z]+[a-z0-9]{4,10}$/g; //영어 대소문자 5~10자
+/*    const idPattern = /^[a-z]+[a-z0-9]{4,10}$/g; //영어 대소문자 5~10자
 
     const idError = document.querySelector("#idError");
     const idResult = idPattern.test(id.value);
@@ -32,8 +33,23 @@ form1.addEventListener('submit', function (e) {
         idError.classList.add("text-danger");
         
         resultCheck = false;
+    }*/
+
+    
+
+    //이메일
+    const emailPattern = /^[a-zA-Z0-9]*$/; //영어 대소문자와 숫자만 허용
+    const emailError = document.querySelector("#emailError");
+    const emailResult = emailPattern.test(email1.value);
+
+    if(email1.value == "" || !emailResult) {
+        const emailError = document.querySelector("#emailError")
+        emailError.innerHTML = "올바른 이메일을 입력해 주세요";
+        emailError.classList.add("text-danger");
     }
 
+
+    
     //패스워드
     const pwPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$/; //영어 대문자 소문자 숫자 필수 8~15자
 
@@ -59,7 +75,23 @@ form1.addEventListener('submit', function (e) {
         pw2Error.classList.add("text-danger");
         resultCheck = false;
     }
-
+    
+    
+    //이름
+    const namePattern = /^[a-z|A-Z|ㄱ-ㅎ|가-힣]*$/	; //영어 대소문자와 한글 허용
+    const nameError = document.querySelector("#nameError");
+    const nameResult = namePattern.test(name.value);
+    
+    if (nameResult && email1.value != "") {
+    	nameError.innerHTML = "";
+    }
+    else {
+        nameError.innerHTML = "올바른 이름을 입력해 주세요";
+        nameError.classList.add("text-danger");
+        resultCheck = false;
+    }
+    
+    
 
     //생년월일
     //자동으로 하이픈 추가되게
@@ -69,7 +101,7 @@ form1.addEventListener('submit', function (e) {
     const birthResult = birthPattern.test(birth.value);
     console.log(birth.value);
     if (birthResult) {
-    
+    	birthError.innerHTML = "";
     }
     else {
         birthError.innerHTML = "올바른 생년월일을 입력해 주세요";
@@ -92,17 +124,6 @@ form1.addEventListener('submit', function (e) {
     }
 
 
-    //이메일
-    const emailPattern = /^[a-zA-Z0-9]*$/; //영어 대소문자와 숫자만 허용
-    const emailError = document.querySelector("#emailError");
-    const emailResult = emailPattern.test(email1.value);
-
-    if(email1.value == "" || !emailResult) {
-        const emailError = document.querySelector("#emailError")
-        emailError.innerHTML = "올바른 이메일을 입력해 주세요";
-        emailError.classList.add("text-danger");
-    }
-
 
 
     //공백 없이 다 입력되었는지 확인하는 함수 실행
@@ -118,11 +139,12 @@ form1.addEventListener('submit', function (e) {
 
 
 
+
 email2.addEventListener("change", (event) => {
     console.log(event.target.value);
     if (event.target.value == "type") {
-      
-        email3.className = 'show';
+        // email3.className = "show"; 
+        email3.className = "show";
     } else {
         email3.className = "hide"
     }
@@ -190,5 +212,6 @@ birth.addEventListener("input", () => {
 
     birth.value = result;
 });
+
 
 

@@ -34,7 +34,7 @@
 				<button type="button" class="btn btn-dark me-4">글쓰기</button>
 			</div>
 		</div>
-		<div class="row no-gutters row-cols-4 gx-0">
+		<div class="row no-gutters row-cols-4 gx-0 justify-content-center">
 			<div class="col m-1 image-box" style="width: 310px; height: auto;" data-bs-toggle="modal" data-bs-target="#myModal">
 				<img src="https://web-resource.gentlemonster.com/event/1712297920.jpg" class="card-img" height="100%" width="100%" />
 			</div>
@@ -94,5 +94,6 @@
 			</div>
 		</div>
 	</div>
+	<%@ include file="/WEB-INF/views/common/footer.jsp"%> 
 </body>
 </html>

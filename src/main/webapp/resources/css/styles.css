@@ -4,6 +4,7 @@
 }
 .container{
 	margin-top:100px;
+	justify-content:center;
 }
 .item-info-box {
     display: flex;
@@ -74,4 +75,10 @@
 .pagination a:last-child {
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .justify-content-end {
+        justify-content: center;
+    }
 }

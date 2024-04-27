@@ -25,7 +25,7 @@
                               About us
                             </h6>
                             <p class="text-center">
-                              <a href="/WEB-INF/views/styles.jsp" class="text-reset" style="font-size: 12px" >our story</a>
+                              <a href="${pageContext.request.contextPath}/styles" class="text-reset" style="font-size: 12px; text-decoration: none;" >our story</a>
                             </p>
                    
                           </div>
@@ -39,10 +39,10 @@
                             </h6>
                     
                             <p class="text-center">
-                              <a href="${pageContext.request.contextPath}/board/FAQ" class="text-reset">FAQ</a>
+                              <a href="${pageContext.request.contextPath}/board/FAQ" style="text-decoration: none;" class="text-reset">FAQ</a>
                             </p>
                             <p class="text-center">
-                              <a href="${pageContext.request.contextPath}/board/QNA" class="text-reset">Q&A</a>
+                              <a href="${pageContext.request.contextPath}/board/QNA"style="text-decoration: none;" class="text-reset">Q&A</a>
                             </p>
                           </div>    
                           <!-- Grid column -->
@@ -51,12 +51,12 @@
                           <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                             <!-- Links -->
                             <h6 class="text-body text-center text-uppercase fw-bold mb-4">Contact</h6>
-                            <p class="text-reset text-center"><i class="fas fa-home me-3"></i> Song-pa Gu, Seoul, Kor </p>
-                            <p class="text-reset text-center">
+                            <p class="text-reset text-left"><i class="fas fa-home me-3"></i> Song-pa Gu, Seoul, Kor </p>
+                            <p class="text-reset text-left">
                               <i class="fas fa-envelope me-3"></i>
                               info@example.com
                             </p>
-                            <p class="text-reset text-center text-primary" ><i class=" fas fa-phone me-3"></i> 02-3222 </p>
+                            <p class="text-reset text-left text-primary" ><i class=" fas fa-phone me-3"></i> 02-3222 </p>
                 
                           </div>
                           <!-- Grid column -->

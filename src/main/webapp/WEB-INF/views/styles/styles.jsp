@@ -21,24 +21,48 @@
 <body>
 	<%@ include file="/WEB-INF/views/common/nav.jsp"%>
 	<section class="container">
-		<div class="row no-gutters row-cols-3 gx-0">
-			<div class="col m-1 image-box" style="width: 416px; height: 564px" data-bs-toggle="modal" data-bs-target="#myModal">
+	<div class="text-center"><h2>Styles</h2>
+	<p>뷰포트와 함께한 다양한 순간을 만나보세요.
+여기에 당신의 스타일을 공유해보세요.</p></div>
+		<div class="row">
+			<div class="col-md-12 d-flex justify-content-end">
+				<select id="sortOptions" class="form-select form-select-sm" style="width: 200px;" aria-label="Sort by">
+					<option selected>정렬</option>
+					<option value="newest">최신순</option>
+					<option value="oldest">오래된순</option>
+				</select>
+				<button type="button" class="btn btn-dark me-4">글쓰기</button>
+			</div>
+		</div>
+		<div class="row no-gutters row-cols-4 gx-0">
+			<div class="col m-1 image-box" style="width: 310px; height: auto;" data-bs-toggle="modal" data-bs-target="#myModal">
 				<img src="https://web-resource.gentlemonster.com/event/1712297920.jpg" class="card-img" height="100%" width="100%" />
 			</div>
-			<div class="col m-1 image-box" style="width: 416px; height: 564px" data-bs-toggle="modal" data-bs-target="#myModal">
+			<div class="col m-1 image-box" style="width: 310px; height: auto;" data-bs-toggle="modal" data-bs-target="#myModal">
 				<img src="https://web-resource.gentlemonster.com/event/1712299527.jpg" class="card-img" height="100%" width="100%" />
 			</div>
-			<div class="col m-1 image-box" style="width: 416px; height: 564px" data-bs-toggle="modal" data-bs-target="#myModal">
+			<div class="col m-1 image-box" style="width: 310px; height: auto;" data-bs-toggle="modal" data-bs-target="#myModal">
 				<img src="https://web-resource.gentlemonster.com/event/1712299602.jpg" class="card-img" height="100%" width="100%" />
 			</div>
-			<div class="col m-1 image-box" style="width: 416px; height: 564px" data-bs-toggle="modal" data-bs-target="#myModal">
+			<div class="col m-1 image-box" style="width: 310px; height: auto;" data-bs-toggle="modal" data-bs-target="#myModal">
 				<img src="https://web-resource.gentlemonster.com/event/1702951231.jpg" class="card-img" height="100%" width="100%" />
 			</div>
-			<div class="col m-1 image-box" style="width: 416px; height: 564px" data-bs-toggle="modal" data-bs-target="#myModal">
+			<div class="col m-1 image-box" style="width: 310px; height: auto;" data-bs-toggle="modal" data-bs-target="#myModal">
 				<img src="https://web-resource.gentlemonster.com/event/1695705698.jpg" class="card-img" height="100%" width="100%" />
 			</div>
-			<div class="col m-1 image-box" style="width: 416px; height: 564px" data-bs-toggle="modal" data-bs-target="#myModal">
+			<div class="col m-1 image-box" style="width: 310px; height: auto;" data-bs-toggle="modal" data-bs-target="#myModal">
 				<img src="https://web-resource.gentlemonster.com/event/1700704228.jpg" class="card-img" height="100%" width="100%" />
+			</div>
+			<div class="col m-1 image-box" style="width: 310px; height: auto;" data-bs-toggle="modal" data-bs-target="#myModal">
+				<img src="https://web-resource.gentlemonster.com/event/1695705760.jpg" class="card-img" height="100%" width="100%" />
+			</div>
+			<div class="col m-1 image-box" style="width: 310px; height: auto;" data-bs-toggle="modal" data-bs-target="#myModal">
+				<img src="https://web-resource.gentlemonster.com/event/1695706203.jpg" class="card-img" height="100%" width="100%" />
+			</div>
+		</div>
+		<div class="pagination-center">
+			<div class="pagination">
+				<a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a> <a href="#">&raquo;</a>
 			</div>
 		</div>
 	</section>

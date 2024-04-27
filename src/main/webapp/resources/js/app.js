@@ -79,3 +79,4 @@ const displayFeaturedItems = () => {
 
 // 문서가 로드되면 실행
 displayFeaturedItems();
+AOS.init(); 

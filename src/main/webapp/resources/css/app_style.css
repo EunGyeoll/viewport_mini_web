@@ -183,7 +183,10 @@ a{
 .section-title {
   animation: pulse 1s infinite alternate; /* 애니메이션 효과 추가 */
 }
-
+.section3 {
+    height: auto;
+	background-color: #fff;
+}
 @keyframes pulse {
   from {
       transform: scale(1);

@@ -72,13 +72,15 @@
 			<div class="modal-content rounded-0">
 				<!-- Modal Header -->
 				<div class="modal-header border-0">
-
+<div class="">as***@****.com</div>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 				</div>
 
 				<!-- Modal body -->
 				<div class="modal-body">
+				
 					<div class="d-flex flex-row justify-content-center">
+					
 						<img src="https://web-resource.gentlemonster.com/event/1700704228.jpg" class="card-img row-2" style="width: 50%" />
 						<div class="row-2 item-info-box text-center ">
 							<img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/h/u/hush-01_2_1.jpg" class="card-img row-2" style="width: 50%" />

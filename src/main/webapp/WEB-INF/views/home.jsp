@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
+<!-- 추가할부분 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 추가할부분 -->
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Insert title here</title>
 
 <!-- Bootstrap 5를 위한 외부 라이브러리 설정 -->
@@ -146,7 +149,7 @@ body {
 			</div>
 		</div>
 		<div class="text-center">
-			<a href="${pageContext.request.contextPath}/styles"class="btn btn-dark ">더보기</a>
+			<a href="${pageContext.request.contextPath}/styles" class="btn btn-dark ">더보기</a>
 		</div>
 	</section>
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%> </main>

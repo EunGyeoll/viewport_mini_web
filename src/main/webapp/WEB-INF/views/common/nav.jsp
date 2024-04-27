@@ -1,4 +1,6 @@
 
+    <%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
     <div class="d-flex justify-content-around fixed-top" id="nav">
         <ul class="d-flex" id="nav-logo">
             <li><a href="${pageContext.request.contextPath}/"><span id="nav-logo-text">VIEWPORT</span></a></li>

@@ -22,9 +22,11 @@
 }
 
 #nav-logo {
-    padding-left: 80px;
+    padding-left:50px;
 }
-
+#nav-menu {
+	flex-grow:2;
+}
 #nav-icon {
     padding-right: 80px;
 }

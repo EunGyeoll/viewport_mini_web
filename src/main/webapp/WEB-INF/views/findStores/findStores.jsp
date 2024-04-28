@@ -21,7 +21,7 @@
 <body class="">
 	<%@ include file="/WEB-INF/views/common/nav.jsp"%>
 	<section class="container text-center">
-		<div class="d-flex flex-row justify-content-center" style="margin-top:90px;">
+		<div class="d-flex flex-row justify-content-center" style="margin-top: 90px;">
 			<div class="branch">
 				<img src="https://inhouse-resource.gentlemonster.com/store/166754976340490_hongdae_menu_2021-01-07_15_59_35.jpeg" class="rounded-circle" width="85" height="85" alt="..." />
 				<p>대한민국</p>
@@ -52,10 +52,10 @@
 						<img src="https://inhouse-resource.gentlemonster.com/store/17102963412966_HAUSNOWHERE_SH_1920x1080_1.jpg" class="d-block w-100" alt="..." />
 					</div>
 					<div class="carousel-item">
-						<img src="https://inhouse-resource.gentlemonster.com/store/171029634935631_HAUSNOWHERE_SH_1920x1080_2.jpg" class="d-block w-100" alt="..." />
+						<img src="http://www.designtwoply.com/wp-content/uploads/2018/01/designtwoply-project092-1.jpg" class="d-block w-100" height="730" alt="..." />
 					</div>
 					<div class="carousel-item">
-						<img src="https://inhouse-resource.gentlemonster.com/store/171029635441898_HAUSNOWHERE_SH_1920x1080_3.jpg" class="d-block w-100" alt="..." />
+						<img src="http://www.designtwoply.com/wp-content/uploads/2018/01/designtwoply-project092-3-8.jpg" height="730" class="d-block w-100" alt="..." />
 					</div>
 				</div>
 				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
@@ -83,13 +83,13 @@
 			<div id="carouselControlsNoTouching1" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-						<img src="https://inhouse-resource.gentlemonster.com/store/170988870011204_Space3.jpg" class="d-block w-100" alt="..." />
+						<img src="https://cdn.shopify.com/s/files/1/0352/4571/9597/files/StoreImage_UpperCanadaMall_862x576_2.jpg?v=1599160091" height="730"class="d-block w-100" alt="..." />
 					</div>
 					<div class="carousel-item">
-						<img src="https://inhouse-resource.gentlemonster.com/store/170988871510894_Space5.jpg" class="d-block w-100" alt="..." />
+						<img src="https://cdn.shopify.com/s/files/1/0352/4571/9597/files/Store_Generic_10.jpg?v=1596657687" height="730" class="d-block w-100" alt="..." />
 					</div>
 					<div class="carousel-item">
-						<img src="https://inhouse-resource.gentlemonster.com/store/170988870756196_Space4.jpg" class="d-block w-100" alt="..." />
+						<img src="https://i.pinimg.com/originals/59/72/28/59722810631a950b14fe2a4992c14076.jpg"height="730" class="d-block w-100" alt="..." />
 					</div>
 				</div>
 				<button class="carousel-control-prev" type="button" data-bs-target="#carouselControlsNoTouching1" data-bs-slide="prev">
@@ -115,6 +115,7 @@
 			</div>
 		</div>
 	</section>
+	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 	<script src="${pageContext.request.contextPath}/resources/js/findStores.js"></script>
 </body>
 </html>

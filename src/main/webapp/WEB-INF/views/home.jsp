@@ -18,9 +18,9 @@
 
 <!-- 사용자 정의 자바 스크립트-->
 <link rel="stylesheet" href="/viewport_mini_web/resources/css/nav.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 <link rel="stylesheet" href="/viewport_mini_web/resources/css/app_style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 <!-- 외부 스크롤 라이브러리 -->
 <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 <!-- 아이콘 -->
@@ -129,10 +129,10 @@ body {
 	</section>
 
 	<section class="section3 container-fluid text-center">
-		<h3 class="pt-5 pb-5">당신의 스타일 위한 뷰포트</h3>
+		<h3 class="pt-5">당신의 스타일 위한 뷰포트</h3>
 		<div class="row align-items-center mb-3 hideme">
 			<div data-aos-once="true" data-aos="fade-up" data-aos-anchor-placement="center-center" class="col-md-6">
-				<img src="https://web-resource.gentlemonster.com/event/1687331001.jpg" width="100%" height="300" class="img-fluid " alt="Description for Image 1">
+				<img src="https://web-resource.gentlemonster.com/event/1687331001.jpg" width="637" height="864" class="img-fluid " alt="Description for Image 1">
 			</div>
 			<div class="col-md-6 ">
 				<h5>제품 사용 경험을 공유하세요!</h5>
@@ -141,7 +141,7 @@ body {
 		</div>
 		<div class="row align-items-center mb-3 hideme">
 			<div data-aos-once="true" data-aos="fade-up" data-aos-anchor-placement="center-center" class="col-md-6 order-md-2">
-				<img src="https://web-resource.gentlemonster.com/event/1685952120.jpg" width="100%" height="300" class="img-fluid " alt="Description for Image 2">
+				<img src="https://web-resource.gentlemonster.com/event/1685952120.jpg"  width="637" height="864" class="img-fluid " alt="Description for Image 2">
 			</div>
 			<div class="col-md-6 order-md-1">
 				<h5>당신의 순간, 우리와 함께하세요</h5>
@@ -149,7 +149,7 @@ body {
 			</div>
 		</div>
 		<div class="text-center">
-			<a href="${pageContext.request.contextPath}/styles" class="btn btn-dark ">더보기</a>
+			<a href="${pageContext.request.contextPath}/styles" class="btn btn-dark mb-5">더보기</a>
 		</div>
 	</section>
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%> </main>

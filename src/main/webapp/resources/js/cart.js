@@ -56,10 +56,10 @@ const displayCartItems = () => {
                     </div>
                     <div class="col">
                         <button onclick='editCount(${index}, "minus")' class="btn">-</button>
-                        <span class="border count-box">${item.count}</span>
+                        <span class="border-0 count-box">${item.count}</span>
                         <button onclick='editCount(${index}, "plus")' class="btn">+</button>
                     </div>
-                    <div class="col">${(parseInt(item.price) * item.count).toLocaleString('kr-KR')}원 <span class="item-close-btn" onclick="removeItem(${index})">&#10005;</span></div>
+                    <div class="col">${(parseInt(item.price) * item.count).toLocaleString('kr-KR')}원 <button type="button" class="btn-close ms-2" onclick="removeItem(${index})"  aria-label="Close"></button></div>
                 </div>
             `;
  

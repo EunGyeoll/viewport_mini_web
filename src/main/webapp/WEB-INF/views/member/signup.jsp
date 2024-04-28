@@ -17,9 +17,9 @@
     <form method="post" name="signupForm" action="/viewport_mini_web/login" id="signupForm" class="h-100 bg-dark">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col">
-                    <div class="card card-registration my-4">
-                        <div class="row g-0">
+                <div class="col" style="margin-top:50px">
+                    <div class="card card-registration my-4 border-0">
+                        <div class="row g-0" >
                             <div class="col-xl-6 d-none d-xl-block">
                                 <img src="/viewport_mini_web/resources/image/signup.jpg" alt="Sample photo" class="img-fluid" style="height:100%; border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
                             </div>
@@ -112,6 +112,7 @@
         </div>
        </div>
     </form>
+    <%@ include file="/WEB-INF/views/common/footer.jsp"%>
     <script src="/viewport_mini_web/resources/js/signup.js"></script>
 </body>
 </html>

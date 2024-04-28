@@ -70,7 +70,7 @@
                     <!-- Copyright -->
                     <div class="text-light p-4 text-center" style="background-color: rgb(37, 37, 37);">
                       © 2024 Copyright:
-                      <a class="text-light fw-bold" href="#"> VIEWPORT.com</a>
+                      <a class="text-light fw-bold" href="${pageContext.request.contextPath}"> VIEWPORT.com</a>
                     </div>
               
                     <!-- Copyright -->

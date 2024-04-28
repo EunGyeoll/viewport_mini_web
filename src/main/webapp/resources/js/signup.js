@@ -11,7 +11,10 @@ const email2 = document.querySelector("#signupEmail2");
 const emailSelect = document.querySelector("#emailSelect"); //select
 const email3 = document.querySelector("#signupEmail3"); //이메일 직접 입력받는칸
 const gender = document.querySelector("input[type=radio]");
-
+const elZonecode = document.querySelector("#zonecode");
+const elRoadAddress = document.querySelector("#roadAddress");
+const elRoadAddressDetail = document.querySelector("#roadAddressDetail");
+const elResults = document.querySelectorAll(".el_result");
 
 //회원가입 버튼을 제출하면 유효성 검사가 실행되도록 addEventListner 사용
 form1.addEventListener('submit', function (e) {
@@ -214,4 +217,16 @@ birth.addEventListener("input", () => {
 });
 
 
+// 주소검색창 열기 함수
+const onClickSearch = () => {
+  new daum.Postcode({
+    oncomplete: function (data) {
+      // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+      // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+      console.log(data);
+      elZonecode.setAttribute("value", data.zonecode);
+      elRoadAddress.setAttribute("value", data.address);
+    },
+  }).open();
+};
 

@@ -12,6 +12,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/nav.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 	<!-- 여기에 네비게이션 바 삽입 예정 -->
@@ -21,7 +22,7 @@
 			<div class="col-md-3 sidebar">
 				<div class="list-group rounded-0">
 					<a href="#profile" class="border-0 list-group-item list-group-item-action active" aria-current="true" data-bs-toggle="tab"> 프로필 </a>
-					<hr class="my-1" >
+					<hr class="my-1">
 					<a href="#password" class="border-0 list-group-item list-group-item-action" data-bs-toggle="tab">비밀번호 변경</a>
 					<hr class="my-1">
 					<a href="#orders" class="border-0 list-group-item list-group-item-action" data-bs-toggle="tab">주문 내역</a>
@@ -29,6 +30,8 @@
 					<a href="#shipment" class="border-0 list-group-item list-group-item-action" data-bs-toggle="tab">배송내역</a>
 					<hr class="my-1">
 					<a href="#myqna" class="border-0 list-group-item list-group-item-action" data-bs-toggle="tab">문의 내역</a>
+					<hr class="my-1">
+					<a href="#deleteAccount" class="border-0 list-group-item list-group-item-action" data-bs-toggle="tab">회원 탈퇴</a>
 				</div>
 			</div>
 			<div class="col-md-9">
@@ -198,6 +201,22 @@
 							</div>
 						</div>
 
+					</div>
+					<div class="tab-pane" id="deleteAccount" role="tabpanel">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="card-title">회원 탈퇴</h4>
+								<form>
+									<div class="mb-3">
+										<label for="current-password" class="form-label">현재 비밀번호</label> <input type="password" class="form-control" id="current-password">
+									</div>
+									<div class="mb-3">
+										<label for="new-password" class="form-label">새 비밀번호</label> <input type="password" class="form-control" id="new-password">
+									</div>
+									<button type="submit" class="btn btn-dark">변경하기</button>
+								</form>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

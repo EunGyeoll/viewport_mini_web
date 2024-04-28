@@ -129,7 +129,7 @@ body {
 	</section>
 
 	<section class="section3 container-fluid text-center">
-		<h3 class="pt-5">당신의 스타일 위한 뷰포트</h3>
+		<h3 class="pt-5">당신의 스타일을 위한 뷰포트</h3>
 		<div class="row align-items-center mb-3 hideme">
 			<div data-aos-once="true" data-aos="fade-up" data-aos-anchor-placement="center-center" class="col-md-6">
 				<img src="https://web-resource.gentlemonster.com/event/1687331001.jpg" width="637" height="864" class="img-fluid " alt="Description for Image 1">

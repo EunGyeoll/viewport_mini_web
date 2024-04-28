@@ -45,6 +45,9 @@
                                 <input type="checkbox" name="login-remember" id="login-remember">
                                 <label class="text-light" for="login-remember">로그인 기억하기</label>
                             </div>
+                              <div class="col-lg-12 mt-3">
+                              
+                              </div>
                             <div class="col-lg-12 loginbttm row  mt-5">
                                 <small class="text-light signup-info-msg mb-1 user-select-none">VIEWPORT 회원이 아니신가요?</small>
                                 <button type="button" onclick="location.href='signup'" id ="signup-btn" class="btn btn-outline-light text-center">회원가입</a></button>

@@ -16,7 +16,7 @@
                     <span class="align-middle"><i class="fa-solid fa-magnifying-glass" style="color: #000;"></i></span>
                 </a></li>
                 <li class="h-100"><a href="${pageContext.request.contextPath}/login">
-                    <span class="align-middle"><i class="fa-solid fa-user" style="color: #000;"></i></span>
+                    <span ><i class="fa-solid fa-user" style="color: #000;"></i></span>
                 </a></li>
                 <li class="h-100"><a href="${pageContext.request.contextPath}/signup">
                     <span class="align-middle"><i class="fa-solid fa-user-plus" style="color: #000;"></i></span>

@@ -8,9 +8,7 @@ body {
     align-items: center;
     height: 100vh;
     font-family: 'Roboto', sans-serif;
-    background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ),url("../image/background.png");
-    background-repeat :repeat;
-    background-size : contain;
+	background-color:#000;
 }
 .login-wrapper {
     display: flex;
@@ -75,7 +73,7 @@ body {
     padding: 60px 110px;
     margin-top: 75px;
     height: auto;
-    background: #000;
+    background: #fff;
     opacity: 0.9;
     text-align: center;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);

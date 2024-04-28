@@ -13,12 +13,13 @@ public class PaymentController {
 	@RequestMapping("/payment")
 	public String payment() {
 		log.info("payment() 실행");
+		log.info("this is test");
 		return "payment/payment";
 	}
 	
-	@RequestMapping("/OrderConfirmation")
+	@RequestMapping("/orderConfirmation")
 	public String OrderConfirmation() {
 		log.info("OrderConfirmation() 실행");
-		return "payment/OrderConfirmation";
+		return "payment/orderConfirmation";
 	}
 }

@@ -23,6 +23,25 @@
     font-weight: bold;
 }
 
+.fa-magnifying-glass:hover {
+	color: #646363 !important;
+}
+
+.fa-user:hover {
+	color: #646363 !important;
+}
+
+.fa-user-plus:hover {
+	color: #646363 !important;
+}
+
+.fa-cart-shopping:hover {
+	color: #646363 !important;
+}
+
+
+
+
 #nav-logo {
     padding-left:50px;
 }
@@ -30,7 +49,7 @@
 	flex-grow:2;
 }
 #nav-icon {
-    padding-right: 80px;
+    padding-right: 50px;
 }
 
 #nav-logo-text {

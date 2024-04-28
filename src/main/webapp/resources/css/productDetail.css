@@ -7,26 +7,26 @@
     padding: 0;
 }
 
+#container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
 
 #images {
     max-width: 50%; /* 최대 너비를 50%로 설정 */
     margin-top: 80px;
-}
-
-#container {
-    display: flex;
-    align-items: flex-start;
+    margin-bottom: 40px;
 }
 
 #images img {
-	width: 100%;
-	height: 50vw;
+	width: 80%;
+	height: 85vh;
     margin-bottom: 10px;
     border-radius: 13px;
 }
 
 .sidebar {
-    margin: 0 auto; /* 좌우 여백을 자동으로 맞추기 */
     max-width: 50%; /* 사이드바의 최대 너비를 설정 */
     position: sticky;
     top: 70px;
@@ -76,7 +76,7 @@ a {
 .sidebarImgs img {
     width: 4.895vw;
     height: 6.25vw;
-    border-radius: .26vw;
+    border-radius: 10px;
 }
 
 .sidebarImgs #nowImg {

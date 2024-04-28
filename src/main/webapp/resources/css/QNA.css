@@ -1,32 +1,44 @@
-
-/* .qnalist{
-    overflow-y: scroll; 
-    height: 300px;
-    width: 500px;
-} */
-
-.postBtnContainer{
-    float: right;
-}
-
-.button{
-    float: right;
-    margin-right: 17px;
-    margin-left: 17px;
-    margin-bottom: 20px;
-}
-
 .card {
 	margin: auto;
-	max-width: 1050px;
-	width: 90%;
-	margin-top: 80px;
-	box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	border-radius: 1rem;
-	border: transparent;
-  
+	width: 1050px;
 }
 
 .upper{
     margin-top: 100px;
+}
+
+.pagination-center {
+	text-align: center;
+	margin: 30px;
+}
+
+.pagination {
+	display: inline-block;
+}
+
+.pagination a {
+	color: #656464;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+}
+
+.pagination a.active {
+	color: #000;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.pagination a:hover:not (.active ) {
+	font-weight: bold;
+}
+
+.pagination a:first-child {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.pagination a:last-child {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
 }

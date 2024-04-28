@@ -107,8 +107,8 @@ li {
 @media screen and (max-width: 1200px) {
     
     .filter-block {
-        position: static; /* 필터 영역이 자체의 공간을 차지하도록 설정 */
-        height: auto;
+        position: sticky; 
+        top:20px;
     }
 
     .card-list {

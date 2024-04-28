@@ -65,8 +65,6 @@
 
 				<button type="button" class="btn btn1" data-bs-toggle="modal"
 					data-bs-target="#myModal1">장바구니에 추가</button>
-				<button type="button" class="btn btn2" data-bs-toggle="modal"
-					data-bs-target="#myModal2">매장 재고 확인하기</button>
 
 				<!-- 부트스트랩 accordion 사용 -->
 				<div class="accordion accordion-flush" id="accordionFlushExample">
@@ -116,23 +114,6 @@
 						계속하기</button>
 					<button type="button" class="cartBtn" onclick="location.href='' ">장바구니로
 						이동</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="modal" id="myModal2">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
-				<div class="modal-content">
-					<div class="modalText">
-						<p>
-							이용 가능한 매장이<br /> 없습니다.
-						</p>
-					</div>
-					<div class="modalButtons">
-						<button type="button" class="continueBtn" data-bs-dismiss="modal">쇼핑
-							계속하기</button>
-					</div>
 				</div>
 			</div>
 		</div>

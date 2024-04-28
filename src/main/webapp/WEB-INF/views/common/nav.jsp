@@ -6,23 +6,23 @@
             <li><a href="${pageContext.request.contextPath}/"><span id="nav-logo-text">VIEWPORT</span></a></li>
         </ul>
         <ul id="nav-menu" class="d-flex justify-content-center">
-            <li><a href="#"><span>안경</span></a></li>
-            <li><a href="#"><span>선글라스</span></a></li>
-            <li><a href="${pageContext.request.contextPath}/styles"><span>스타일</span></a></li>
-            <li><a href="${pageContext.request.contextPath}/findStores"><span>스토어</span></a></li>
+            <li class="h-100"><a href="#"><span class="align-middle">안경</span></a></li>
+            <li class="h-100"><a href="#"><span class="align-middle">선글라스</span></a></li>
+            <li class="h-100"><a href="${pageContext.request.contextPath}/styles"><span class="align-middle">스타일</span></a></li>
+            <li class="h-100"><a href="${pageContext.request.contextPath}/findStores"><span class="align-middle">스토어</span></a></li>
         </ul>
         <ul class="d-flex justify-content-end" id="nav-icon">
-                <li><a href="#">
-                    <span><i class="fa-solid fa-magnifying-glass" style="color: #000;"></i></span>
+                <li class="h-100"><a href="#">
+                    <span class="align-middle"><i class="fa-solid fa-magnifying-glass" style="color: #000;"></i></span>
                 </a></li>
-                <li><a href="${pageContext.request.contextPath}/login">
-                    <span><i class="fa-solid fa-user" style="color: #000;"></i></span>
+                <li class="h-100"><a href="${pageContext.request.contextPath}/login">
+                    <span class="align-middle"><i class="fa-solid fa-user" style="color: #000;"></i></span>
                 </a></li>
-                <li><a href="${pageContext.request.contextPath}/signup">
-                    <span><i class="fa-solid fa-user-plus" style="color: #000;"></i></span>
+                <li class="h-100"><a href="${pageContext.request.contextPath}/signup">
+                    <span class="align-middle"><i class="fa-solid fa-user-plus" style="color: #000;"></i></span>
                 </a></li>
-                <li><a href="${pageContext.request.contextPath}/cart">
-                    <span><i class="fa-solid fa-cart-shopping" style="color: #000;"></i></span>
+                <li class="h-100"><a href="${pageContext.request.contextPath}/cart">
+                    <span class="align-middle"><i class="fa-solid fa-cart-shopping" style="color: #000;"></i></span>
                 </a></li>
 
         </ul>        

@@ -6,7 +6,9 @@
     background-color: #fff;
     width: 100%;
   }
-
+#nav {
+	height:65px;
+}
   
 #nav li a {
     display: block;

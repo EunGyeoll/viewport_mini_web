@@ -1,15 +1,45 @@
-.card {
+.qTitle {
+	padding-bottom: 10px;
+	border-bottom: 1px solid #000;
+}
+
+.button-container {
+    margin-bottom: 20px;
+}
+
+.button{
+    margin-bottom: 20px;
+}
+
+#writeQna-button {
+	margin-right: 17px;
+}
+
+#myQna-button:hover {
+	background-color: #000;
+	color: #fff;
+}
+
+.qna {
 	margin: auto;
-	width: 1050px;
+	max-width: 1050px;
+	margin-top: 80px;
+}
+
+td {
+	 width:20%;  
+	 text-overflow:ellipsis; 
+	 overflow:hidden; 
+	 white-space:nowrap;"
 }
 
 .upper{
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .pagination-center {
 	text-align: center;
-	margin: 30px;
+	margin-bottom: 30px;
 }
 
 .pagination {

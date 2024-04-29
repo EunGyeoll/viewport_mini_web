@@ -1,29 +1,34 @@
+
+
+.qna a {
+	text-decoration: none;
+	color: #616161;
+	font-size: 18px;
+	margin-top: 30px;
+}
+
+.qna i {
+	margin-right: 10px;
+}
+
+.qna th {
+	color: #fff;
+	background-color: #000;
+}
+
 .qTitle {
 	padding-bottom: 10px;
 	border-bottom: 1px solid #000;
 }
 
-.button-container {
-    margin-bottom: 20px;
-}
-
-.button{
-    margin-bottom: 20px;
-}
-
-#writeQna-button {
-	margin-right: 17px;
-}
-
-#myQna-button:hover {
-	background-color: #000;
-	color: #fff;
+#qna-button {
+	border-bottom: 1px solid #000;
+	padding-bottom: 10px;
 }
 
 .qna {
-	margin: auto;
+	margin: 80px auto 99px auto;
 	max-width: 1050px;
-	margin-top: 80px;
 }
 
 td {
@@ -39,7 +44,6 @@ td {
 
 .pagination-center {
 	text-align: center;
-	margin-bottom: 30px;
 }
 
 .pagination {

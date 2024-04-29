@@ -18,7 +18,7 @@
 
 <!-- css 설정 -->
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/QNA.css">
+	href="${pageContext.request.contextPath}/resources/css/qnaList.css">
 <link rel="stylesheet"
 	href="/viewport_mini_web/resources/css/nav.css?ver=1">
 
@@ -48,7 +48,7 @@
 						<a href="#" class="mx-3">공지사항</a> 
 						<a href="#" class="mx-3">FAQ</a> 
 						<a href="#" class="mx-3" id="qna-button">Q&A</a>
-						<a href="#" class="mx-3">1:1 문의</a>
+						<a href="${pageContext.request.contextPath}/board/qna" class="mx-3">1:1 문의</a>
 					</div>
 				</div>
 			</div>

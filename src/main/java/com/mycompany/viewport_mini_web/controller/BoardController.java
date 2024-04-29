@@ -15,14 +15,19 @@ public class BoardController {
     return "board/writeQNA";
   }
   
-  @GetMapping("/QNA")
-  public String QNA() {
-    return "board/QNA";
+  @GetMapping("/qnaList")
+  public String QnaList() {
+    return "board/qnaList";
   }
   
   @GetMapping("/FAQ")
-  public String Qna() {
+  public String FAQ() {
     return "board/FAQ";
+  }
+  
+  @GetMapping("/qna")
+  public String Qna() {
+    return "board/qna";
   }
   
 }

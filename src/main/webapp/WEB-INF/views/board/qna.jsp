@@ -40,15 +40,15 @@
 			<div class="upper row justify-content-center align-items-center mb-5">
 				<div class="col text-center">
 					<h2 class="mt-5">
-						<b class="qTitle">FAQ</b>
+						<b class="qTitle">1:1 문의</b>
 					</h2>
 				</div>
 				<div>
 					<div class="d-flex justify-content-center">
 						<a href="#" class="mx-3">공지사항</a> 
-						<a href="#" class="mx-3" id="qna-button">FAQ</a> 
+						<a href="#" class="mx-3">FAQ</a> 
 						<a href="${pageContext.request.contextPath}/board/qnaList" class="mx-3">Q&A</a>
-						<a href="${pageContext.request.contextPath}/board/qna" class="mx-3">1:1 문의</a>
+						<a href="#" class="mx-3" id="qna-button">1:1 문의</a>
 					</div>
 				</div>
 			</div>
@@ -62,10 +62,11 @@
 						style="table-layout: fixed;">
 						<thead>
 							<tr>
-								<th scope="col">No</th>
+								<th scope="col">No <i class="fa-solid fa-sort" style="color: #fff;"></i></th>
 								<th scope="col">카테고리</th>
 								<!--상품 / 주문 / 기타-->
 								<th scope="col">제목</th>
+								<th scope="col">계정</th>
 								<th scope="col">작성날짜</th>
 							</tr>
 						</thead>
@@ -73,31 +74,36 @@
 							<tr>
 								<td>5</td>
 								<td>상품</td>
-								<td>선글라스 피팅 문의</td>
+								<td><i class="fa-solid fa-lock"></i>선글라스 피팅 문의</td>
+								<td>mg0212@naver.com</td>
 								<td>2004.05.23</td>
 							</tr>
 							<tr>
 								<td>4</td>
 								<td>상품</td>
-								<td>안경 피팅 문의</td>
+								<td><i class="fa-solid fa-lock"></i>안경 피팅 문의</td>
+								<td>mg0212@naver.com</td>
 								<td>2003.04.23</td>
 							</tr>
 							<tr>
 								<td>3</td>
 								<td>상품</td>
-								<td>선글라스 고장 문의</td>
+								<td><i class="fa-solid fa-lock"></i>선글라스 고장 문의</td>
+								<td>mg0212@naver.com</td>
 								<td>2002.03.23</td>
 							</tr>
 							<tr>
 								<td>2</td>
 								<td>주문</td>
-								<td>안녕하세요. 주문했는데 옵션 변경하고 싶어요</td>
+								<td><i class="fa-solid fa-lock"></i>안녕하세요. 주문했는데 옵션 변경하고 싶어요</td>
+								<td>mg0212@naver.com</td>
 								<td>2001.02.23</td>
 							</tr>
 							<tr>
 								<td>1</td>
 								<td>기타</td>
-								<td>오프라인 매장 문의</td>
+								<td><i class="fa-solid fa-lock"></i>오프라인 매장 문의</td>
+								<td>mg0212@naver.com</td>
 								<td>2000.01.23</td>
 							</tr>
 

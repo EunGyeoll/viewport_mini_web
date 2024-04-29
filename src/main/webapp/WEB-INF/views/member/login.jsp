@@ -23,7 +23,7 @@
                 <div class="col-lg-12 login-title">
                     LOGIN
                 </div>
-                <div class="col-lg-12 login-form ">
+                <div class="col-lg-12 login-form">
                         <form method="post" id= "idform" action="/viewport_mini_web" class="" onsubmit="loginValidate()" novalidate>
                             <div class="form-group col" >
                                 <label class="form-control-label user-select-none">USERNAME</label>

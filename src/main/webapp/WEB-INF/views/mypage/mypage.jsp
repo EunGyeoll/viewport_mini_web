@@ -17,7 +17,7 @@
 <body>
 	<!-- 여기에 네비게이션 바 삽입 예정 -->
 	<%@ include file="/WEB-INF/views/common/nav.jsp"%>
-	<div class="container-fluid">
+	<div class="container-fluid g-0">
 		<div class="row">
 			<div class="col-md-3 sidebar">
 				<div class="list-group rounded-0">
@@ -34,7 +34,7 @@
 					<a href="#deleteAccount" class="border-0 list-group-item list-group-item-action" data-bs-toggle="tab">회원 탈퇴</a>
 				</div>
 			</div>
-			<div class="col-md-9">
+			<div class="col-md-9 right-box">
 				<div class="tab-content">
 					<div class="tab-pane active" id="profile" role="tabpanel">
 						<div class="card">
@@ -213,7 +213,7 @@
 									<div class="mb-3">
 										<label for="new-password" class="form-label">새 비밀번호</label> <input type="password" class="form-control" id="new-password">
 									</div>
-									<button type="submit" class="btn btn-dark">변경하기</button>
+									<button type="submit" class="btn btn-dark">탈퇴하기</button>
 								</form>
 							</div>
 						</div>

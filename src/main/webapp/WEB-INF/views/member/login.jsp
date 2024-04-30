@@ -9,55 +9,91 @@
 
     <link rel="stylesheet" href="/viewport_mini_web/resources/css/login.css" />
 
+
     <title>login</title>
 
 </head>
 
-<body >
-
+<body>
+<div class="wrapper">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-2"></div>
-            <div class="col-lg-6 col-md-8 login-box">
-          
-                <div class="col-lg-12 login-title">
-                    LOGIN
-                </div>
-                <div class="col-lg-12 login-form">
-                        <form method="post" id= "idform" action="/viewport_mini_web" class="" onsubmit="loginValidate()" novalidate>
-                            <div class="form-group col" >
-                                <label class="form-control-label user-select-none">USERNAME</label>
-                                <input type="text" name="loginId" id="loginId" placeholder = "ID" class="form-control" >
-                                <small class="error-message" id="idError"></small>
-                                
-                            </div>
+        <div class="sign-up-container">
+            <!-- <form action="">
+                <button class="submit"><span class="entypo-lock"><i class="fa fa-lock"></i></span></button>
+                <span class="entypo-user inputUserIcon">
+                   <i class="fa fa-user"></i>
+                 </span>
+                <input type="text" class="user" placeholder="ursername" class="logininput"/>
+                <span class="entypo-key inputPassIcon">
+                   <i class="fa fa-key"></i>
+                 </span>
+                <input type="password" class="pass" placeholder="password" class="logininput"/>
+            </form> -->
+        </div>
+        
+        <div class="sign-in-container">
+            <form>
+                <h1 class="logintitle"><b>Sign In</b></h1>
 
-                            <div class="form-group col">
-                                <label class="form-control-label user-select-none">PASSWORD</label>
-                                <input type="password" name="loginPw" id="loginPw"class="form-control" placeholder = "PW"  >
-                                <small class="error-message" id="pwError" ></small>
-                            </div>
+                <input type="email" placeholder="Email" class="logininput mb-4">
+                <span class="inputUserIcon">
+                   <i class="fa fa-key"></i>
+               </span> 
+                <input type="password" placeholder="Password" class="logininput mb-4">
 
-                            <div class="col-lg-12 loginbttm row">
-                                <button type="submit" id = "login-btn" class="btn btn-outline-light text-center ">로그인</button>
-                            </div>
-                            <div class="col-lg-12 mt-3">
-                                <input type="checkbox" name="login-remember" id="login-remember">
-                                <label class="text-light" for="login-remember">로그인 기억하기</label>
-                            </div>
-                              <div class="col-lg-12 mt-3">
-                              
-                              </div>
-                            <div class="col-lg-12 loginbttm row  mt-5">
-                                <small class="text-light signup-info-msg mb-1 user-select-none">VIEWPORT 회원이 아니신가요?</small>
-                                <button type="button" onclick="location.href='signup'" id ="signup-btn" class="btn btn-outline-light text-center">회원가입</a></button>
-                            </div>
-                        
-                        </form>
+                <div class="login-remember mb-4 mt-3">
+                     <input type="checkbox" name="login-remember" id="login-rememberbox"> 
+                    <label for="login-remember"><h5>Remember ID</h5></label>
                 </div>
-                <div class="col-lg-3 col-md-2"></div>
+                
+                <!-- <div class="social-links">
+                    <div>
+                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    </div>
+                    <div>
+                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    </div>
+                    <div>
+                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                    </div>
+                </div> -->
+
+                <div class="width: 300px mb-3 ">
+                  <button class="form_btn_login justify-content-center align-content-center">LOGIN</button>
+                </div>
+
+                
+
+                <div class="width: 300px mb-3 ">
+                    <button class="form_btn_signup justify-content-center align-content-center">SIGN UP</button>
+                  </div> 
+
+                <div class="kakaologin mt-3">
+                  <img src="./image/kakaotalkcircle.png" class="height: 30px width:30px;">
+                </div>
+                
+
+                <div class="forgot row mt-5 mb-5">
+                  <div class="col text-center">
+                      <a href="#" class="forgotpassword"><b>Forgot Password?</b></a>
+                  </div>
+               </div>
+            </form>
+        </div>
+        
+        <div class="overlay-container">
+            <div class="overlay-left">
+                <h2>V I E W P O R T</h2>
+                <p>To keep connected with us, please login with your personal info</p>
+                <button id="signIn" class="overlay_btn">Sign In</button>
+            </div>
+            <div class="overlay-right">
+                <h2>V I E W P O R T</h2>
+                 <button id="signUp" class="overlay_btn"></button>
             </div>
         </div>
-<script src = "/viewport_mini_web/resources/js/login.js"></script>
+    </div>
+</div>
+<script src = "./newlogin.js"></script>
 </body>
 </html>

@@ -9,6 +9,6 @@ public class Orders {
   private Date odate;
   private String ophone;
   private String oname;
-  private int ouserNum;
-  private int ototalPrice;
+  private int ousernum;
+  private int ototalprice;
 }

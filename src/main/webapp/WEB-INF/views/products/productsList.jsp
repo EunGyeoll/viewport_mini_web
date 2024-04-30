@@ -52,10 +52,10 @@
 					<ul>
 						<li><input type="checkbox" class="form-check-input"
 							id="lowPrice" name="price-option" value="lowPrice"> <label
-							class="form-check-label" for="lowPrice">낮은 가격순</label></li>
+							class="form-check-label" for="price-option">낮은 가격순</label></li>
 						<li><input type="checkbox" class="form-check-input"
 							id="highPrice" name="price-option" value="highPrice"> <label
-							class="form-check-label" for="highPrice">높은 가격순</label></li>
+							class="form-check-label" for="price-option">높은 가격순</label></li>
 					</ul>
 				</div>
 				<div class="filter-sort">

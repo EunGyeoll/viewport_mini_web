@@ -43,7 +43,7 @@
                               <a href="${pageContext.request.contextPath}/board/FAQ" style="text-decoration: none;" class="text-reset">FAQ</a>
                             </p>
                             <p class="text-center">
-                              <a href="${pageContext.request.contextPath}/board/QNA"style="text-decoration: none;" class="text-reset">Q&A</a>
+                              <a href="${pageContext.request.contextPath}/board/qnaList"style="text-decoration: none;" class="text-reset">Q&A</a>
                             </p>
                           </div>    
                           <!-- Grid column -->

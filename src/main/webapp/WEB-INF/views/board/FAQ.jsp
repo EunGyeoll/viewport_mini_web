@@ -18,7 +18,7 @@
 
 <!-- css 설정 -->
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/qna.css">
+	href="${pageContext.request.contextPath}/resources/css/FAQ.css">
 <link rel="stylesheet"
 	href="/viewport_mini_web/resources/css/nav.css?ver=1">
 

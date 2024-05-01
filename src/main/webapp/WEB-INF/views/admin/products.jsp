@@ -45,9 +45,11 @@
 			<thead>
 				<tr>
 					<th scope="col">상품#</th>
-					<th scope="col">사진</th>
 					<th scope="col">이름</th>
 					<th scope="col">가격</th>
+					<th scope="col">사진</th>
+					<th scope="col">설명</th>
+					<th scope="col">상세 설명</th>
 					<th scope="col">카테고리</th>
 					<th scope="col"><button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#createUserModal">상품 정보 생성</button></th>
 
@@ -57,12 +59,14 @@
 				<c:forEach var="product" items="${products}">
 					<tr>
 						<th scope="row">${product.pid}</th>
-						<td><img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/f/i/fishtail-br3_2_1.jpg" height="50" width="50" /></td>
 						<td>${product.pname}</td>
-						<td>${product.pprice}</td>
-						<td>${product.pcategory}</td>
+						<td>${product.pprice}</td>						
+						<td><img src="attachDownload?pid=${product.pid}" width="150"/></td>
+						<td>${product.pinfo}</td>
+						<td>${product.pdetail}</td>
+						<td>${product.pcno}</td>
 						<td>
-							<button type="button" class="btn btn-dark edit-btn btn-sm userDataEditBtn" onclick="clickEvent(${product.pid},'${product.pname}','${product.pinfo}',${product.pprice},'${product.pcategory}')" data-bs-toggle="modal" data-bs-target="#editUserModal">상품 정보 수정</button>
+							<button type="button" class="btn btn-dark edit-btn btn-sm userDataEditBtn" onclick="clickEvent(${product.pid},'${product.pname}', ${product.pprice},'${product.pinfo}', ${product.pdetail}, '${product.pcategory}')" data-bs-toggle="modal" data-bs-target="#editUserModal">상품 정보 수정</button>
 							<button class="btn btn-danger edit-btn btn-sm" data-bs-toggle="modal" data-bs-target="#deleteUserModal">삭제</button>
 						</td>
 					</tr>
@@ -101,18 +105,22 @@
 						<label class="form-label" for="userName">상품 이름</label> <input type="text" id="userName" class="form-control form-control-lg" /> <small id="nameError"></small>
 					</div>
 					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="userId">상품 설명</label> <input type="text" id="userId" class="form-control form-control-lg" /> <small id="descriptionError"></small>
-					</div>
-					<div data-mdb-input-init class="form-outline mb-4">
 						<label class="form-label" for="userPrice">가격</label> <input type="text" id="userPrice" class="form-control form-control-lg" /> <small id="priceError"></small>
-					</div>
-					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="userCategory">카테고리</label> <input type="text" id="userCategory" class="form-control form-control-lg" /> <small id="categoryError"></small>
-					</div>
+					</div>		
 					<div data-mdb-input-init class="form-outline mb-4">
 						<label class="form-label" for="userImage">상품 사진</label> <input type="file" id="userImage" class="form-control form-control-lg" accept="image/*" /> <small id="imageError"></small>
 					<img alt="" src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/f/i/fishtail-br3_2_1.jpg" width="100" height="80">
+					</div>								
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="userInfo">상품 설명</label> <input type="text" id="userInfo" class="form-control form-control-lg" /> <small id="infoError"></small>
 					</div>
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="userDetail">상품 상세 설명</label> <input type="text" id="userDetail" class="form-control form-control-lg" /> <small id="detailError"></small>
+					</div>					
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="userCategory">카테고리</label> <input type="text" id="userCategory" class="form-control form-control-lg" /> <small id="categoryError"></small>
+					</div>
+
 				</div>
 				<!-- Modal footer -->
 
@@ -143,17 +151,20 @@
 						<label class="form-label" for="userName">상품 이름</label> <input type="text" id="userName" class="form-control form-control-lg" /> <small id="nameError"></small>
 					</div>
 					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="userId">상품 설명</label> <input type="text" id="userId" class="form-control form-control-lg" /> <small id="descriptionError"></small>
-					</div>
-					<div data-mdb-input-init class="form-outline mb-4">
 						<label class="form-label" for="userPrice">가격</label> <input type="text" id="userPrice" class="form-control form-control-lg" /> <small id="priceError"></small>
-					</div>
-					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="userCategory">카테고리</label> <input type="text" id="userCategory" class="form-control form-control-lg" /> <small id="categoryError"></small>
-					</div>
+					</div>		
 					<div data-mdb-input-init class="form-outline mb-4">
 						<label class="form-label" for="userImage">상품 사진</label> <input type="file" id="userImage" class="form-control form-control-lg" accept="image/*" /> <small id="imageError"></small>
-						
+					<img alt="" src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/f/i/fishtail-br3_2_1.jpg" width="100" height="80">
+					</div>								
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="userInfo">상품 설명</label> <input type="text" id="userInfo" class="form-control form-control-lg" /> <small id="infoError"></small>
+					</div>
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="userDetail">상품 상세 설명</label> <input type="text" id="userDetail" class="form-control form-control-lg" /> <small id="detailError"></small>
+					</div>					
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="userCategory">카테고리</label> <input type="text" id="userCategory" class="form-control form-control-lg" /> <small id="categoryError"></small>
 					</div>
 				</div>
 

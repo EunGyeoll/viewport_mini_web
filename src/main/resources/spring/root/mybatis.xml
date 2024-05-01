@@ -14,7 +14,7 @@
    </bean>
    
    <!-- MyBatis를 이용하는 DAO 객체를 관리 객체로 생성 -->
-   <mybatis-spring:scan base-package="com.mycompany.viewport_mini_web.dao.mybatis"
+   <mybatis-spring:scan base-package="com.mycompany.viewport_mini_web.dao"
    annotation="org.apache.ibatis.annotations.Mapper"/>
    
    

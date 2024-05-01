@@ -58,18 +58,19 @@
 			<tbody id="user-table-body">
 				<c:forEach var="user" items="${users}">
 					<tr>
-						<th scope="row">${user.uid}</th>
+						<th scope="row">${user.usid}</th>
 						<td>${user.uname}</td>
 
 						<td>${user.uemail}</td>
-						<c:if test="${user.urole == 'Admin'}">
+						<%-- 	<c:if test="${user.urole == 'Admin'}">
 							<td>Admin</td>
 						</c:if>
 						<c:if test="${user.urole == 'User'}">
 							<td>User</td>
-						</c:if>
-						<td>010-0000-0000</td>
-						<td><fmt:formatDate value="${user.editDate}" pattern="yyyy-MM-dd" /></td>
+						</c:if> --%>
+						<td>${user.uphonenumber}</td>
+						<td>${user.uaddress}</td>
+						<%-- 	<td><fmt:formatDate value="${user.uaddress}" pattern="yyyy-MM-dd" /></td> --%>
 						<td>
 							<button type="button" class="btn btn-dark edit-btn btn-sm userDataEditBtn" onclick="clickEvent(${user.uid},'${user.uname}','${user.uemail}','${user.urole}')" data-bs-toggle="modal" data-bs-target="#editUserModal">회원 정보 수정</button>
 							<button class="btn btn-danger edit-btn btn-sm" data-bs-toggle="modal" onclick="deleteUserData(${user.uid})" data-bs-target="#deleteUserModal">삭제</button>
@@ -125,19 +126,22 @@
 				<div class="modal-body">
 					<form id="userForm" method="post" action="createUserData">
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="uname">유저 이름</label> <input type="text" id="uname" name="uname" class="form-control form-control-lg" value="${userForm.uid}" /> <small id="birthError"></small>
+							<label class="form-label" for="uname">유저 이름</label> <input type="text" id="uname" name="uname" class="form-control form-control-lg"/> <small id="birthError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="uemail">아이디</label> <input type="text" id="uemail" name="uemail" class="form-control form-control-lg" value="${userForm.uemail}" /> <small id="birthError"></small>
+							<label class="form-label" for="uemail">아이디</label> <input type="text" id="uemail" name="uemail" class="form-control form-control-lg" /> <small id="birthError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="urole">생년월일</label> <input type="text" id="ubirth" name="ubirth" class="form-control form-control-lg" /> <small id="birthError"></small>
+							<label class="form-label" for="upassword">비밀번호</label> <input type="password" id="upassword" name="upassword" class="form-control form-control-lg" /> <small id="birthError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="urole">전화번호</label> <input type="text" id="uphone" name="uphone" class="form-control form-control-lg" /> <small id="birthError"></small>
+							<label class="form-label" for="uphonenumber">전화번호</label> <input type="text" id="uphonenumber" name="uphonenumber" class="form-control form-control-lg" /> <small id="birthError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="urole">역할</label> <input type="text" id="urole" name="urole" class="form-control form-control-lg" value="${userForm.urole}" /> <small id="birthError"></small>
+							<label class="form-label" for="uaddress">주소</label> <input type="text" id="uaddress" name="uaddress" class="form-control form-control-lg" /> <small id="birthError"></small>
+						</div>
+						<div data-mdb-input-init class="form-outline mb-4">
+							<label class="form-label" for="ugender">성별</label> <input type="text" id="ugender" name="ugender" class="form-control form-control-lg" value="true" /> <small id="birthError"></small>
 						</div>
 						<button type="button" onclick="createUserDataEvent()" class="btn btn-dark">생성</button>
 						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>

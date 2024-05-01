@@ -1,19 +1,22 @@
 package com.mycompany.viewport_mini_web.controller;
 
-import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import com.mycompany.viewport_mini_web.dto.User;
+import com.mycompany.viewport_mini_web.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
 @RequestMapping("/admin")
 public class AdminController {
+  @Autowired
+  private UserService service;
+  
 @GetMapping
 public String adminMainPage(Model model) {
   return "admin/admin";
@@ -34,8 +37,6 @@ public String adminMainPage(Model model) {
   }
   @GetMapping("/posts")
   public String adminPostPage(Model model) {
-   
-    
     return "admin/posts";
   }
 
@@ -45,12 +46,11 @@ public String adminMainPage(Model model) {
     return "redirect:users";
   }
 
-  @PostMapping(value = "/createUserData", produces = "application/json; charset=UTF-8")
-  @ResponseBody
-  public String postAdminCreateData(Model model,User users) {
-    JSONObject jsonObject = new JSONObject();
+  @PostMapping("/createUserData")
+  public String postAdminCreateData(Model model,User user) {
     log.info("create user post 실행됨");
-    return jsonObject.toString();
+    service.createUser(user);
+    return "redirect:/admin/users";
   }
 
   @PostMapping("/deleteUserData")

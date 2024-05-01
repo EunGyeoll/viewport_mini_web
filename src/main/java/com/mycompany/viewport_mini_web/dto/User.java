@@ -4,12 +4,12 @@ import lombok.Data;
 
 @Data
 public class User {
-  private int uid;
+  private int usid;
   private String upassword;
   private String uname;
   private String uemail;
-  private String ugender;
+  private boolean ugender;
   private String uphonenumber;
   private String uaddress;
-  private String uaddressDetail;
+  private String uaddressdetail;
 }

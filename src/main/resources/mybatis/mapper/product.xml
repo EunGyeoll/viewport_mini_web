@@ -3,4 +3,15 @@
 
 <mapper namespace="com.mycompany.viewport_mini_web.dao.ProductDao">
 
+	<insert id="insert" parameterType="Product">
+		<selectKey keyProperty="pid" order="BEFORE" resultType="int">
+			select seq_pid.nextval from dual
+		</selectKey>	
+		insert into product(
+			pid, pname, pprice, pimage, pinfo, pdetail, pcno
+		) values(
+			#{pid}, #{pname}, #{pprice}, #{pimage}, #{pinfo}, #{pdetail}, #{pcno}
+		)
+	</insert>
+	
 </mapper>

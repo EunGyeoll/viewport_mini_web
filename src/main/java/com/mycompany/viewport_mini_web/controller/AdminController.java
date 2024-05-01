@@ -58,7 +58,7 @@ public String adminMainPage(Model model) {
     log.info("get 실행됨");
     return "redirect:users";
   }
-
-
+  
+  
 
 }

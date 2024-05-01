@@ -141,9 +141,13 @@
 							<label class="form-label" for="uaddress">주소</label> <input type="text" id="uaddress" name="uaddress" class="form-control form-control-lg" /> <small id="birthError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
+							<label class="form-label" for="uaddressdetail">상세주소</label> <input type="text" id="uaddressdetail" name="uaddressdetail" class="form-control form-control-lg" value="상세주소" /> <small id="birthError"></small>
+						</div>
+						<div data-mdb-input-init class="form-outline mb-4">
 							<label class="form-label" for="ugender">성별</label> <input type="text" id="ugender" name="ugender" class="form-control form-control-lg" value="true" /> <small id="birthError"></small>
 						</div>
-						<button type="button" onclick="createUserDataEvent()" class="btn btn-dark">생성</button>
+						
+						<button type="submit" class="btn btn-dark">생성</button>
 						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
 					</form>
 

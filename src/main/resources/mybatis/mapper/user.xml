@@ -8,7 +8,7 @@
 		</selectKey>
 		insert into
 		users(usid,upassword,uname,uemail,ugender,uphonenumber,uaddress,uaddressdetail)
-		values(#{usid}, #{upassword},#{uname},#{ugender},#{uphonenumber},#{uaddress}, #{uaddressdetail}
+		values(#{usid}, #{upassword},#{uname},#{uemail},#{ugender},#{uphonenumber},#{uaddress}, #{uaddressdetail}
 		)
 	</insert>
 </mapper>

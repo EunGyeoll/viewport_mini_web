@@ -58,7 +58,7 @@ const deleteModalFooter = document.getElementById('delete-model-footer');
       const urole= $('#urole').val();
       const uemail = $('#uemail').val();
 
-      const userDataTemp = {uid,uname,urole,uemail};
+      const userDataTemp = {uid,uname,urole,uemail,upassowrd};
       console.log(userDataTemp);
       $.ajax({
         url: "createUserData",

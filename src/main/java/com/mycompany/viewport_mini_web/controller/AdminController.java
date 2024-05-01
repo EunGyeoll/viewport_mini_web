@@ -16,11 +16,12 @@ import lombok.extern.slf4j.Slf4j;
 public class AdminController {
   @Autowired
   private UserService service;
-  
-@GetMapping
-public String adminMainPage(Model model) {
-  return "admin/admin";
-}
+
+  @GetMapping
+  public String adminMainPage(Model model) {
+    return "admin/admin";
+  }
+
   @GetMapping("/users")
   public String adminUserPage(Model model) {
     return "admin/users";
@@ -35,20 +36,24 @@ public String adminMainPage(Model model) {
   public String adminShippingsPage(Model model) {
     return "admin/shippings";
   }
+
   @GetMapping("/posts")
   public String adminPostPage(Model model) {
     return "admin/posts";
   }
 
-  @PostMapping(value="/editUserData",produces="application/json; charset=UTF-8")
+  @PostMapping(value = "/editUserData", produces = "application/json; charset=UTF-8")
   public String postAdminEditData(Model model, User users) {
     log.info("user edit post 실행");
     return "redirect:users";
   }
 
   @PostMapping("/createUserData")
-  public String postAdminCreateData(Model model,User user) {
+  public String postAdminCreateData(Model model, User user) {
     log.info("create user post 실행됨");
+    log.info(user.getUname());
+    log.info(user.getUpassword());
+    log.info(user.getUaddressdetail());
     service.createUser(user);
     return "redirect:/admin/users";
   }

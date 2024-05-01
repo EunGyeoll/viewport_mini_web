@@ -6,8 +6,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.mycompany.viewport_mini_web.dto.User" alias="User"/>
-	</typeAliases>
-	<typeAliases>
 		<typeAlias type="com.mycompany.viewport_mini_web.dto.Product" alias="Product"/>
 	</typeAliases>
 </configuration>

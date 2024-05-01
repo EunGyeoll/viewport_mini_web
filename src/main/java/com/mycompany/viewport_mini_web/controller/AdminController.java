@@ -6,8 +6,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.mycompany.viewport_mini_web.dto.Product;
 import com.mycompany.viewport_mini_web.dto.User;
+import com.mycompany.viewport_mini_web.service.ProductService;
 import com.mycompany.viewport_mini_web.service.UserService;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -16,6 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 public class AdminController {
   @Autowired
   private UserService service;
+  private ProductService productService;
 
   @GetMapping
   public String adminMainPage(Model model) {
@@ -62,6 +67,16 @@ public class AdminController {
   public String adminDeleteData() {
     log.info("get 실행됨");
     return "redirect:users";
+  }
+  
+  
+  @PostMapping("/createProductData")
+  public String createProductData(Product product) {
+	  log.info("create product data 실행");
+	  log.info("product name : " + product.getPname());
+	  
+	  productService.createProduct(product);
+	  return "redirect:/admin/products";
   }
   
   

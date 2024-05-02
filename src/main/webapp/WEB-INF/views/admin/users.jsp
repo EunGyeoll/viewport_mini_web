@@ -126,25 +126,32 @@
 				<div class="modal-body">
 					<form id="userForm" method="post" action="createUserData">
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="uname">유저 이름</label> <input type="text" id="uname" name="uname" class="form-control form-control-lg"/> <small id="birthError"></small>
+							<label class="form-label" for="uname">유저 이름</label> 
+							<input type="text" id="uname" name="uname" class="form-control form-control-lg"/> <small id="birthError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="uemail">아이디</label> <input type="text" id="uemail" name="uemail" class="form-control form-control-lg" /> <small id="birthError"></small>
+							<label class="form-label" for="uemail">아이디</label> 
+							<input type="text" id="uemail" name="uemail" class="form-control form-control-lg" /> <small id="birthError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="upassword">비밀번호</label> <input type="password" id="upassword" name="upassword" class="form-control form-control-lg" /> <small id="birthError"></small>
+							<label class="form-label" for="upassword">비밀번호</label> 
+							<input type="password" id="upassword" name="upassword" class="form-control form-control-lg" /> <small id="birthError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="uphonenumber">전화번호</label> <input type="text" id="uphonenumber" name="uphonenumber" class="form-control form-control-lg" /> <small id="birthError"></small>
+							<label class="form-label" for="uphonenumber">전화번호</label> 
+							<input type="text" id="uphonenumber" name="uphonenumber" class="form-control form-control-lg" /> <small id="birthError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="uaddress">주소</label> <input type="text" id="uaddress" name="uaddress" class="form-control form-control-lg" /> <small id="birthError"></small>
+							<label class="form-label" for="uaddress">주소</label> 
+							<input type="text" id="uaddress" name="uaddress" class="form-control form-control-lg" /> <small id="birthError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="uaddressdetail">상세주소</label> <input type="text" id="uaddressdetail" name="uaddressdetail" class="form-control form-control-lg" value="상세주소" /> <small id="birthError"></small>
+							<label class="form-label" for="uaddressdetail">상세주소</label> 
+							<input type="text" id="uaddressdetail" name="uaddressdetail" class="form-control form-control-lg" value="상세주소" /> <small id="birthError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="ugender">성별</label> <input type="text" id="ugender" name="ugender" class="form-control form-control-lg" value="true" /> <small id="birthError"></small>
+							<label class="form-label" for="ugender">성별</label> 
+							<input type="text" id="ugender" name="ugender" class="form-control form-control-lg" value="true" /> <small id="birthError"></small>
 						</div>
 						
 						<button type="submit" class="btn btn-dark">생성</button>

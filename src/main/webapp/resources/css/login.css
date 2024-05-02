@@ -1,11 +1,13 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
+@charset "UTF-8";
+
 
 * {
   box-sizing: border-box;
- 
 }
+
 body {
-  font-family: "Montserrat", sans-serif;
+   font-family: "Open Sans", sans-serif; 
   margin: 0;
   padding: 0;
 }
@@ -21,15 +23,20 @@ body {
 .container {    
   border-radius: 10px;
   box-shadow: 7px 8px 10px #dddddd, 5px 5px 30px #808080;
-  position: absolute;
-  width: 768px;
+  width: 90%;
   min-height: 800px;
   overflow: hidden;
 }
 
+<!--안됨-->
+@media (min-width: 768px) {  .container {    width: 750px;  }}@media (min-width: 992px) {  .container {    width: 940px;  }}/*사실 이 
+/* 출처: https://dgkim5360.tistory.com/entry/bootstrap-adjust-container-width [개발새발로그:티스토리] */
+
+
+
 .logintitle{
     margin-bottom: 50px;
-    
+    MARGIN-TOP:70PX;
 }
 
 .login-rememberbox{
@@ -210,7 +217,8 @@ button {
   transition: all 0.5s;
 }
 
-.overlay-right { background: url("/viewport_mini_web/resources/image/finger.jpg"); }
+.overlay-right { background: url("/viewport_mini_web/resources/image/finger.jpg"); 
+background-size:cover;}
 
 
 .overlay_right:hover {
@@ -268,7 +276,7 @@ span {
   cursor: pointer;
 }
 .social-links a {
-  color: #000;
+  color: #000;	
 }
 .social-links div:active {
   box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;

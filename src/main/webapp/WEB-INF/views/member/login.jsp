@@ -49,12 +49,14 @@
                 </div>
                 
                 <div class="width: 300px mb-3 ">
-                  <button type="submit" class="form_btn_login justify-content-center align-content-center">LOGIN</button> 	
+                  <button type="submit" class="form_btn_login justify-content-center align-content-center">
+                  LOGIN</button> 	
                 </div>
 
 
                 <div class="width: 300px mb-3 ">
-                    <button type="button" class="form_btn_signup justify-content-center align-content-center"  onclick="location.href='signup'">SIGN UP</button>
+                    <button type="button" class="form_btn_signup justify-content-center align-content-center"  onclick="location.href='signup'">
+                    SIGN UP</button>
                   </div> 
 
                 <div class="kakaologin mt-3">

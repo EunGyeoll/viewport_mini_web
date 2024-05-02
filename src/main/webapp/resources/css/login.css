@@ -23,6 +23,7 @@ body {
 .container {    
   border-radius: 10px;
   box-shadow: 7px 8px 10px #dddddd, 5px 5px 30px #808080;
+  position: absolute;
   width: 90%;
   min-height: 800px;
   overflow: hidden;

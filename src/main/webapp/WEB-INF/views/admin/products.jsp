@@ -188,7 +188,7 @@
 
 				<!-- Modal body -->
 				<div class="modal-body">
-					<form id="createProductForm" method="post" action="createProduct" enctype="multipart/form-data">
+					<form method="post" action="/viewport_mini_web/createProduct">
 						<div data-mdb-input-init class="form-outline mb-4">
 							<label class="form-label" for="pname">상품 이름</label> <input
 								type="text" id="pname" name="pname"
@@ -221,7 +221,7 @@
 								class="form-control form-control-lg" /> <small
 								id="categoryError"></small>
 						</div>
-						<button type="submit" class="btn btn-danger">생성</button>
+						<button class="btn btn-danger" data-bs-dismiss="modal">생성</button>
 						<button class="btn btn-danger" data-bs-dismiss="modal">취소</button>
 					</form>
 				</div>

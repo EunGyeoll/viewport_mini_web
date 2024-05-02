@@ -193,7 +193,7 @@
 
 				<!-- Modal body -->
 				<div class="modal-body">
-					<form method="post" action="createProductData">
+					<form method="post" action="createProduct">
 						<div data-mdb-input-init class="form-outline mb-4">
 							<label class="form-label" for="userNum">상품 번호</label> <input
 								type="text" id="userNum" class="form-control form-control-lg"

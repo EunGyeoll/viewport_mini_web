@@ -8,9 +8,9 @@
 			select seq_pid.nextval from dual
 		</selectKey>	
 		insert into product(
-			pid, pname, pprice, pinfo, pdetail, pcatno, pattachoname, pattachsname, pattachtype, pattachdata
+			pid, pname, pprice, pinfo, pdetail, pcatno, pattachoname, pattachtype, pattachdata
 		) values(
-			#{pid}, #{pname}, #{pprice}, #{pinfo}, #{pdetail}, #{pcatno}, #{pattachoname}, #{pattachtype}, #{pattachdata}
+			#{pid}, #{pname}, #{pprice}, #{pinfo}, #{pdetail}, 1, #{pattachoname}, #{pattachtype}, #{pattachdata}
 		)
 	</insert>
 	

@@ -82,17 +82,9 @@
 						<th scope="row">${product.pid}</th>
 						<td>${product.pname}</td>
 						<td>${product.pprice}</td>
-
 						<c:if test="${product.pattachoname != null}">
-							<div class="mb-2">
-								<p>
-									첨부파일: <a href="attachDownload?bno=${board.bno}">${board.battachoname}</a>
-								</p>
-								<img src="attachDownload?bno=${board.bno}" width="150" />
-							</div>
+							<td><img src="attachDownload?pid=${product.pid}" width="150" /></td>
 						</c:if>
-
-						<td><img src="attachDownload?pid=${product.pid}" width="150" /></td>
 						<td>${product.pinfo}</td>
 						<td>${product.pdetail}</td>
 						<td>${product.pcno}</td>

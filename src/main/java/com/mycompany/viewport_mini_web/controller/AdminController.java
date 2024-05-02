@@ -73,7 +73,7 @@ public class AdminController {
   public String createProduct(Product product) {
     // 요청 데이터의 유효성 검사
     log.info("실행");
-    log.info("original filename : " + product.getPattach());
+    log.info("original filename : " + product.getPattach().getOriginalFilename());
     log.info("filetype : " + product.getPattach().getContentType());
 
     // 첨부 파일이 있는지 여부 조사
@@ -87,7 +87,7 @@ public class AdminController {
       }
     }
 
-    productService.createProduct(product);
+   // productService.createProduct(product);
     return "redirect:/admin/products";
   }
 

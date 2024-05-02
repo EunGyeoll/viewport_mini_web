@@ -15,6 +15,6 @@ public class Product {
   private String pattachsname;
   private String pattachtype;
   private byte[] pattachdata;
-//	
+	
   private MultipartFile pattach;
 }

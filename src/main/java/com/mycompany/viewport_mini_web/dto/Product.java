@@ -10,7 +10,7 @@ public class Product {
   private int pprice;
   private String pinfo;
   private String pdetail;
-  private int pcno;
+  private int pcatno;
   private String pattachoname;
   private String pattachsname;
   private String pattachtype;

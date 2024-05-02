@@ -91,7 +91,7 @@
 						<td>
 							<button type="button"
 								class="btn btn-dark edit-btn btn-sm userDataEditBtn"
-								onclick="clickEvent(${product.pid},'${product.pname}', ${product.pprice},'${product.pinfo}', ${product.pdetail}, '${product.pcategory}')"
+								onclick="clickEvent(${product.pid},'${product.pname}', ${product.pprice},'${product.pinfo}', ${product.pdetail}, '${product.pcatno}')"
 								data-bs-toggle="modal" data-bs-target="#editUserModal">상품
 								정보 수정</button>
 							<button class="btn btn-danger edit-btn btn-sm"
@@ -157,8 +157,8 @@
 							class="form-control form-control-lg" /> <small id="detailError"></small>
 					</div>
 					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="pcno">카테고리</label> <input
-							type="text" id="pcno" name="pcno"
+						<label class="form-label" for="pcatno">카테고리</label> <input
+							type="text" id="pcatno" name="pcatno"
 							class="form-control form-control-lg" /> <small
 							id="categoryError"></small>
 					</div>
@@ -216,8 +216,8 @@
 								class="form-control form-control-lg" /> <small id="detailError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="pcno">카테고리</label> <input
-								type="text" id="pcno" name="pcno"
+							<label class="form-label" for="pcatno">카테고리</label> <input
+								type="text" id="pcatno" name="pcatno"
 								class="form-control form-control-lg" /> <small
 								id="categoryError"></small>
 						</div>

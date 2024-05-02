@@ -87,7 +87,7 @@ public class AdminController {
       }
     }
 
-   // productService.createProduct(product);
+   	productService.createProduct(product);
     return "redirect:/admin/products";
   }
 

@@ -12,12 +12,17 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class ProductService {
-  @Resource
-  private ProductDao productDao;
-  
-  public void createProduct(Product product) {
-    int rowNum = productDao.insert(product);
-    log.info("rowNum: " + rowNum + ", pid: " + product.getPid());
-  }
-  
+	@Resource
+	private ProductDao productDao;
+
+	public void createProduct(Product product) {
+		int rowNum = productDao.insert(product);
+		log.info("rowNum: " + rowNum + ", pid: " + product.getPid());
+	}
+
+/*	public byte[] getPttachData(int pid) {
+		Product product = productDao.selectAttachData(pid);
+		return product.getPattachdata();
+	}*/
+
 }

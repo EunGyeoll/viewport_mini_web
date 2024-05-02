@@ -130,40 +130,35 @@
 				<!-- Modal body -->
 				<div class="modal-body">
 					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="userNum">상품 번호</label> <input
-							type="text" id="userNum" class="form-control form-control-lg"
-							readonly />
+						<label class="form-label" for="pname">상품 이름</label> <input
+							type="text" id="pname" name="pname"
+							class="form-control form-control-lg" /> <small id="nameError"></small>
 					</div>
 					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="userName">상품 이름</label> <input
-							type="text" id="userName" class="form-control form-control-lg" />
-						<small id="nameError"></small>
+						<label class="form-label" for="pprice">가격</label> <input
+							type="text" id="pprice" name="pprice"
+							class="form-control form-control-lg" /> <small id="priceError"></small>
 					</div>
 					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="userPrice">가격</label> <input
-							type="text" id="userPrice" class="form-control form-control-lg" />
-						<small id="priceError"></small>
+						<label class="form-label" for="pattachdata">상품 사진</label> <input
+							type="file" id="pattachdata" name="pattachdata"
+							class="form-control form-control-lg" accept="image/*" /> <small
+							id="imageError"></small> <img alt="" src="" width="100"
+							height="80">
 					</div>
 					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="userImage">상품 사진</label> <input
-							type="file" id="userImage" class="form-control form-control-lg"
-							accept="image/*" /> <small id="imageError"></small> <img alt=""
-							src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/f/i/fishtail-br3_2_1.jpg"
-							width="100" height="80">
+						<label class="form-label" for="pinfo">상품 설명</label> <input
+							type="text" id="pinfo" name="pinfo"
+							class="form-control form-control-lg" /> <small id="infoError"></small>
 					</div>
 					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="userInfo">상품 설명</label> <input
-							type="text" id="userInfo" class="form-control form-control-lg" />
-						<small id="infoError"></small>
+						<label class="form-label" for="pdetail">상품 상세 설명</label> <input
+							type="text" id="pdetail" name="pdetail"
+							class="form-control form-control-lg" /> <small id="detailError"></small>
 					</div>
 					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="userDetail">상품 상세 설명</label> <input
-							type="text" id="userDetail" class="form-control form-control-lg" />
-						<small id="detailError"></small>
-					</div>
-					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="userCategory">카테고리</label> <input
-							type="text" id="userCategory"
+						<label class="form-label" for="pcno">카테고리</label> <input
+							type="text" id="pcno" name="pcno"
 							class="form-control form-control-lg" /> <small
 							id="categoryError"></small>
 					</div>
@@ -195,51 +190,45 @@
 				<div class="modal-body">
 					<form method="post" action="createProduct">
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="userNum">상품 번호</label> <input
-								type="text" id="userNum" class="form-control form-control-lg"
-								readonly />
+							<label class="form-label" for="pname">상품 이름</label> <input
+								type="text" id="pname" name="pname"
+								class="form-control form-control-lg" /> <small id="nameError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="userName">상품 이름</label> <input
-								type="text" id="userName" class="form-control form-control-lg" />
-							<small id="nameError"></small>
+							<label class="form-label" for="pprice">가격</label> <input
+								type="text" id="pprice" name="pprice"
+								class="form-control form-control-lg" /> <small id="priceError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="userPrice">가격</label> <input
-								type="text" id="userPrice" class="form-control form-control-lg" />
-							<small id="priceError"></small>
+							<label class="form-label" for="pattach">상품 사진</label> <input
+								type="file" id="pattach" name="pattach"
+								class="form-control form-control-lg"/> <small
+								id="imageError"></small> 
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="userImage">상품 사진</label> <input
-								type="file" id="userImage" class="form-control form-control-lg"
-								accept="image/*" /> <small id="imageError"></small>
+							<label class="form-label" for="pinfo">상품 설명</label> <input
+								type="text" id="pinfo" name="pinfo"
+								class="form-control form-control-lg" /> <small id="infoError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="userInfo">상품 설명</label> <input
-								type="text" id="userInfo" class="form-control form-control-lg" />
-							<small id="infoError"></small>
+							<label class="form-label" for="pdetail">상품 상세 설명</label> <input
+								type="text" id="pdetail" name="pdetail"
+								class="form-control form-control-lg" /> <small id="detailError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="userDetail">상품 상세 설명</label> <input
-								type="text" id="userDetail" class="form-control form-control-lg" />
-							<small id="detailError"></small>
-						</div>
-						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="userCategory">카테고리</label> <input
-								type="text" id="userCategory"
+							<label class="form-label" for="pcno">카테고리</label> <input
+								type="text" id="pcno" name="pcno"
 								class="form-control form-control-lg" /> <small
 								id="categoryError"></small>
 						</div>
+						<button class="btn btn-danger" data-bs-dismiss="modal">생성</button>
+						<button class="btn btn-danger" data-bs-dismiss="modal">취소</button>
 					</form>
 				</div>
 
 				<!-- Modal footer -->
 
-				<div class="modal-footer">
-					<a href="admin/editUserData" type="submit" class="btn btn-dark">생성</a>
-					<button type="button" class="btn btn-danger"
-						data-bs-dismiss="modal">취소</button>
-				</div>
+				<div class="modal-footer"></div>
 
 			</div>
 		</div>

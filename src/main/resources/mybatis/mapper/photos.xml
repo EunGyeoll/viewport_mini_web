@@ -4,13 +4,13 @@
 
 <mapper namespace="com.mycompany.viewport_mini_web.dao.PhotosDao">
 	<insert id="insert" parameterType="Photos">
-		<selectKey keyProperty="pid" order="BEFORE" resultType="int">
-			select seq_pid.nextval from dual
+		<selectKey keyProperty="ptid" order="BEFORE" resultType="int">
+			select seq_ptid.nextval from dual
 		</selectKey>	
-		insert into product(
-			pid, pname, pprice, pinfo, pdetail, pcatno
+		insert into photos(
+			ptid, pattachoname, pattachtype, pattachdata
 		) values(
-			#{pid}, #{pname}, #{pprice}, #{pinfo}, #{pdetail}, 1
+			#{ptid}, #{pattachoname}, #{pattachtype}, #{pattachdata}
 		)
 	</insert>
 </mapper>

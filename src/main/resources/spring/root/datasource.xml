@@ -3,7 +3,7 @@
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-   <!-- datasource (connection pool) 설정 -->
+   <!-- datasource (connection pool)설정 -->
    <bean id="dataSource"
         class="org.apache.commons.dbcp2.BasicDataSource"
         destroy-method="close">

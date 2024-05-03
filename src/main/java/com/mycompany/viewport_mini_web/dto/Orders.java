@@ -7,8 +7,10 @@ import lombok.Data;
 public class Orders {
   private int oid;
   private Date odate;
+  private String oaddress;
   private String ophone;
   private String oname;
-  private int ousernum;
+  private int ouserid;
+  private int oshipid;
   private int ototalprice;
 }

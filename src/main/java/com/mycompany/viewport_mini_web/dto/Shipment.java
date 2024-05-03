@@ -11,6 +11,6 @@ public class Shipment {
   private Date sdate;
   private String sstatus;
   private String saddress;
+  private String spostcode;
   private int suserid;
-  private int soid;
 }

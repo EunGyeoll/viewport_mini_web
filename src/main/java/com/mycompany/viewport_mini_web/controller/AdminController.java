@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.mycompany.viewport_mini_web.dto.Product;
-import com.mycompany.viewport_mini_web.dto.User;
+import com.mycompany.viewport_mini_web.dto.Users;
 import com.mycompany.viewport_mini_web.service.ProductService;
 import com.mycompany.viewport_mini_web.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -48,13 +48,13 @@ public class AdminController {
   }
 
   @PostMapping(value = "/editUserData", produces = "application/json; charset=UTF-8")
-  public String postAdminEditData(Model model, User users) {
+  public String postAdminEditData(Model model, Users users) {
     log.info("user edit post 실행");
     return "redirect:users";
   }
 
   @PostMapping("/createUserData")
-  public String postAdminCreateData(Model model, User user) {
+  public String postAdminCreateData(Model model, Users user) {
     log.info("create user post 실행됨");
     log.info(user.getUname());
     log.info(user.getUpassword());

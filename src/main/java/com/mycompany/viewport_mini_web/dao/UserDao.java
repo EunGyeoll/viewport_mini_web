@@ -3,14 +3,14 @@ package com.mycompany.viewport_mini_web.dao;
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import com.mycompany.viewport_mini_web.dto.Pager;
-import com.mycompany.viewport_mini_web.dto.User;
+import com.mycompany.viewport_mini_web.dto.Users;
 
 @Mapper
 public interface UserDao {
 
-  int insert(User user);
+  int insert(Users user);
 
-  List<User> selectByPage(Pager pager);
+  List<Users> selectByPage(Pager pager);
 
   int count();
 

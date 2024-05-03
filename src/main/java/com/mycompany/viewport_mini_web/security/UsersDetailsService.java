@@ -18,12 +18,12 @@ import lombok.extern.slf4j.Slf4j;
 public class UsersDetailsService implements UserDetailsService {
 
   @Autowired
-  private UserDao memberDao;
+  private UserDao userDao;
 
   @Override // username은 PK값의 userID를 의미한다고 생각하면 됨
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     log.info("실행");
-    Users member = memberDao.selectByUemail(username);
+    Users member = userDao.selectByUemail(username);
     if (member == null) {
       throw new UsernameNotFoundException("아이디가 존재하지 않습니다");
     }

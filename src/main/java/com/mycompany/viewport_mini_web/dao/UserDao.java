@@ -8,12 +8,12 @@ import com.mycompany.viewport_mini_web.dto.Users;
 @Mapper
 public interface UserDao {
 
-  int insert(Users user);
+  public int insert(Users user);
 
-  List<Users> selectByPage(Pager pager);
+  public List<Users> selectByPage(Pager pager);
 
-  int count();
+  public int count();
 
-  Users selectByUemail(String useremail);
+  public Users selectByUemail(String useremail);
 
 }

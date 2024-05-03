@@ -11,4 +11,10 @@
 		values(#{usid}, #{upassword},#{uname},#{uemail},#{ugender},#{uphonenumber},#{uaddress}, #{uaddressdetail},#{urole}
 		)
 	</insert>
+	
+	<select id="selectByUemail" parameterType="String" resultType="User">
+		select usid, uemail,upassword,uname,ugender,uphonenumber,uaddress,uaddressdetail,urole,uenabled
+		from users 
+		where uemail = #{uemail}
+	</select>
 </mapper>

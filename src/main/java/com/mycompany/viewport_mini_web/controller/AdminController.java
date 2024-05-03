@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mycompany.viewport_mini_web.dto.Photos;
 import com.mycompany.viewport_mini_web.dto.Product;
@@ -80,10 +81,14 @@ public class AdminController {
   public String createProduct(Product product, Photos photos) {
     // 요청 데이터의 유효성 검사
     log.info("실행");
-    log.info("original filename : " + photos.getPattach().getOriginalFilename());
-    log.info("filetype : " + photos.getPattach().getContentType());
+/*    log.info("original filename : " + photos.getPattach()..getOriginalFilename());
+    log.info("filetype : " + photos.getPattach().getContentType());*/
+    log.info(product.toString());
+    List<MultipartFile> files = photos.getPattach(); 
+    log.info("List<MultipartFile> files 실행 확인 : " + files);
     
-    //List<Photos> list = productService.
+    productService.createProduct(product, photos);
+    
     		
     return "redirect:/admin/products";
   }

@@ -1,5 +1,7 @@
 package com.mycompany.viewport_mini_web.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +26,7 @@ public class AdminController {
 
   @Autowired
   private ProductService productService;
+  
 
   @GetMapping("")
   public String adminMainPage(Model model) {
@@ -71,26 +74,17 @@ public class AdminController {
     log.info("get 실행됨");
     return "redirect:users";
   }
-
+  
+  
   @PostMapping("/createProduct")
   public String createProduct(Product product, Photos photos) {
     // 요청 데이터의 유효성 검사
     log.info("실행");
     log.info("original filename : " + photos.getPattach().getOriginalFilename());
     log.info("filetype : " + photos.getPattach().getContentType());
-
-    // 첨부 파일이 있는지 여부 조사
-   if (photos.getPattach() != null && !photos.getPattach().isEmpty()) {
-      // DTO 추가 설정
-	   photos.setPattachoname(photos.getPattach().getOriginalFilename());
-	   photos.setPattachtype(photos.getPattach().getContentType());
-      try {
-    	  photos.setPattachdata(photos.getPattach().getBytes());
-      } catch (Exception e) {
-      }
-    }
-
-/*   	productService.createProduct(product);*/
+    
+    //List<Photos> list = productService.
+    		
     return "redirect:/admin/products";
   }
 

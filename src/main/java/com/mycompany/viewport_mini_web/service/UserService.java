@@ -2,6 +2,8 @@ package com.mycompany.viewport_mini_web.service;
 
 import java.util.List;
 import javax.annotation.Resource;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.mycompany.viewport_mini_web.dao.UserDao;
 import com.mycompany.viewport_mini_web.dto.Pager;
@@ -25,5 +27,15 @@ public class UserService {
   public int getTotalRows() {
       int totalRows = userDao.count();
       return totalRows;
+  }
+
+  
+  public void signup(Users user) {
+    PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    user.setUpassword(passwordEncoder.encode(user.getUpassword()));
+    
+    user.setUenabled(true);
+    userDao.insert(user);
+    
   }
 }

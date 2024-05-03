@@ -1,10 +1,7 @@
-const el_idform = document.querySelector("#idform");
-const idInput = document.querySelector("#loginId");
-const pwInput = document.querySelector("#loginPw");
+/*const el_idform = document.querySelector("#idform");
+const idInput = document.querySelector("#uemail");
+const pwInput = document.querySelector("#upassword");
 
-
-
-console.log(idInput.value);
 
 const loginValidate = (event) => {
     event.preventDefault();
@@ -37,18 +34,4 @@ const loginValidate = (event) => {
 
 }
 
-el_idform.addEventListener('submit', loginValidate);
-
-
-
-//옆으로 넘기는 기능
-const signUpBtn = document.getElementById("signUp");
-const seeMoreBtn = document.getElementById("seeMore");
-const container = document.querySelector(".container");
-
-signUpBtn.addEventListener("click", () => {
-  container.classList.add("right-panel-active");
-});
-signInBtn.addEventListener("click", () => {
-  container.classList.remove("right-panel-active");
-}); 
+el_idform.addEventListener('submit', loginValidate);*/

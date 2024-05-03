@@ -12,11 +12,11 @@ const emailSelect = document.querySelector("#emailSelect"); //select
 const email3 = document.querySelector("#signupEmail3"); //이메일 직접 입력받는칸
 const gender = document.querySelector("input[type=radio]");
 const elZonecode = document.querySelector("#zonecode");
-const elRoadAddress = document.querySelector("#roadAddress");
-const elRoadAddressDetail = document.querySelector("#roadAddressDetail");
+const elRoadAddress = document.querySelector("#uaddress");
+const elRoadAddressDetail = document.querySelector("#uaddressdetail");
 const elResults = document.querySelectorAll(".el_result");
 
-//회원가입 버튼을 제출하면 유효성 검사가 실행되도록 addEventListner 사용
+/*//회원가입 버튼을 제출하면 유효성 검사가 실행되도록 addEventListner 사용
 form1.addEventListener('submit', function (e) {
     event.preventDefault(); //
 
@@ -24,7 +24,7 @@ form1.addEventListener('submit', function (e) {
 
   
     //아이디
-/*    const idPattern = /^[a-z]+[a-z0-9]{4,10}$/g; //영어 대소문자 5~10자
+    const idPattern = /^[a-z]+[a-z0-9]{4,10}$/g; //영어 대소문자 5~10자
 
     const idError = document.querySelector("#idError");
     const idResult = idPattern.test(id.value);
@@ -36,14 +36,15 @@ form1.addEventListener('submit', function (e) {
         idError.classList.add("text-danger");
         
         resultCheck = false;
-    }*/
+    }
 
     
 
     //이메일
     const emailPattern = /^[a-zA-Z0-9]*$/; //영어 대소문자와 숫자만 허용
     const emailError = document.querySelector("#emailError");
-    const emailResult = emailPattern.test(email1.value);
+    console.log(email1.value+email2.value);
+    const emailResult = emailPattern.test(email1.value+email2.value);
 
     if(email1.value == "" || !emailResult) {
         const emailError = document.querySelector("#emailError")
@@ -135,7 +136,7 @@ form1.addEventListener('submit', function (e) {
 
     //최종
     if (resultCheck) {
-        form1.submit();
+        uemail: email
     }
 
 });
@@ -215,7 +216,7 @@ birth.addEventListener("input", () => {
 
     birth.value = result;
 });
-
+*/
 
 // 주소검색창 열기 함수
 const onClickSearch = () => {
@@ -226,6 +227,7 @@ const onClickSearch = () => {
       console.log(data);
       elZonecode.setAttribute("value", data.zonecode);
       elRoadAddress.setAttribute("value", data.address);
+      elZonecode.value=data.address;
     },
   }).open();
 };

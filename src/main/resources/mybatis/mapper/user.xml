@@ -7,8 +7,8 @@
 			select seq_usid.nextval from dual
 		</selectKey>
 		insert into
-		users(usid,upassword,uname,uemail,ugender,uphonenumber,uaddress,uaddressdetail,urole)
-		values(#{usid}, #{upassword},#{uname},#{uemail},#{ugender},#{uphonenumber},#{uaddress}, #{uaddressdetail},#{urole}
+		users(usid,upassword,uname,uemail,ugender,uphonenumber,uaddress,uaddressdetail,urole,uenabled)
+		values(#{usid}, #{upassword},#{uname},#{uemail},#{ugender},#{uphonenumber},#{uaddress}, #{uaddressdetail},#{urole},#{uenabled}
 		)
 	</insert>
 	

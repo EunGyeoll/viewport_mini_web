@@ -16,7 +16,7 @@
 		<div class="container container-md">
 			<div class="sign-up-container">
 				<form method="post" name="signupForm"
-					action="/viewport_mini_web/login" id="signupForm" class="h-100">
+					action="signup" id="signupForm" class="h-100">
 					<div class="container py-5 h-100">
 						<div
 							class="row d-flex justify-content-center align-items-center h-100">
@@ -34,17 +34,17 @@
 												</h1>
 
 												<div data-mdb-input-init class="form-outline mb-4">
-													<label class="form-label" for="signupEmail1">이메일</label>
+													<label class="form-label" for="uemail">이메일</label>
 													<!-- 이메일 -->
 													<div class="row">
-														<div class="col-md-4 mb-4">
+														<div class="col-md-8 mb-4">
 															<div data-mdb-input-init class="form-outline">
-																<input type="text" id="signupEmail1"
+																<input type="text" id="uemail" name="uemail"
 																	class="form-control form-control-sm" /> <small
 																	id="emailError"></small>
 															</div>
 														</div>
-														<div class="col-md-4 mb-4">
+									<!-- 					<div class="col-md-4 mb-4">
 															<div data-mdb-input-init class="form-outline">
 																<select class="form-control input-sm"
 																	name="signupEmail2" id="signupEmail2" class="show">
@@ -57,9 +57,9 @@
 																
 																<input type="text" name="signupEmail3"
 																	id="signupEmail3" class="hide" />
-																<!-- css에서 hide를 설정함 -->
+																css에서 hide를 설정함
 															</div>
-														</div>
+														</div> -->
 														<div class="col-md-4 mb-4">
 															<button type="button" id="checkDuplicateEmail"
 																onclick="emailCheck();"
@@ -72,8 +72,8 @@
 												<div class="column d-flex">
 													<div data-mdb-input-init
 														class="column form-outline mb-4 me-3">
-														<label class="form-label" for="signupPw">비밀번호</label> <input
-															type="password" id="signupPw"
+														<label class="form-label" for="upassword">비밀번호</label> <input
+															type="password" id="upassword" name="upassword"
 															placeholder="영어 대,소문자 숫자 혼용하여 8~15자"
 															class="form-control form-control-lg" /> <small
 															id="pw1Error"></small>
@@ -89,22 +89,22 @@
 
 												<!-- 이름 -->
 												<div data-mdb-input-init class="form-outline mb-4">
-													<label class="form-label" for="signupName">이름</label> <input
-														type="text" id="signupName"
+													<label class="form-label" for="uname">이름</label> <input
+														type="text" id="uname" name="uname"
 														class="form-control form-control-lg" maxlength="10" /> <small
 														id="nameError"></small>
 												</div>
 
-												<div data-mdb-input-init class="form-outline mb-4">
+											<!-- 	<div data-mdb-input-init class="form-outline mb-4">
 													<label class="form-label" for="signupBirth">생일</label> <input
 														type="text" id="signupBirth"
 														class="form-control form-control-lg"
 														placeholder="YYYYMMDD" maxlength="10" /> <small
 														id="birthError"></small>
-												</div>
+												</div> -->
 												<div data-mdb-input-init class="form-outline mb-5">
 													<label class="form-label" for="signupPhoneNum">휴대폰
-														번호</label> <input type="text" id="signupPhoneNum"
+														번호</label> <input type="text" id="uphonenumber" name="uphonenumber"
 														class="form-control form-control-lg"
 														placeholder="숫자를 입력하세요" maxlength="13" /> <small
 														id="phoneNumError"></small>
@@ -122,8 +122,8 @@
 															찾기</button>
 													</div>
 													<input type="text" class="el_input" placeholder="" disabled
-														id="roadAddress" /> <input type="text" class="el_input"
-														placeholder="상세주소를 입력해주세요." id="roadAddressDetail" />
+														id="uaddress" name="uaddress"/> <input type="text" class="el_input"
+														placeholder="상세주소를 입력해주세요." id="uaddressdetail" name="uaddressdetail"/>
 												</div>
 
 
@@ -132,14 +132,14 @@
 													<h6 class="mb-0 me-4">성별:</h6>
 													<div class="form-check form-check-inline mb-0 me-4">
 														<input class="form-check-input" type="radio"
-															name="inlineRadioOptions" id="femaleGender"
-															value="option1" checked /> <label
+															name="ugender" id="ugender"
+															value="1" checked /> <label
 															class="form-check-label" for="femaleGender">여자</label>
 													</div>
 													<div class="form-check form-check-inline mb-0 me-4">
 														<input class="form-check-input" type="radio"
-															name="inlineRadioOptions" id="maleGender" value="option2" />
-														<label class="form-check-label" for="maleGender">남자</label>
+															name="ugender" id="maleGender" value="0" />
+														<label class="form-check-label" for="ugender">남자</label>
 													</div>
 												</div>
 												<div class="d-flex justify-content-end pt-3">

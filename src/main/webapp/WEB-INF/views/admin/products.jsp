@@ -202,7 +202,7 @@
 						<div data-mdb-input-init class="form-outline mb-4">
 							<label class="form-label" for="pattach">상품 사진</label> <input
 								type="file" id="pattach" name="pattach"
-								class="form-control form-control-lg"/> <small
+								class="form-control form-control-lg" multiple/> <small
 								id="imageError"></small> 
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">

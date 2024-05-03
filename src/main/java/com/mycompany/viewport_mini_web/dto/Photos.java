@@ -1,5 +1,7 @@
 package com.mycompany.viewport_mini_web.dto;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
@@ -12,5 +14,5 @@ public class Photos {
   private String pattachtype;
   private byte[] pattachdata;
   
-  private MultipartFile pattach;
+  private List<MultipartFile> pattach;
 }

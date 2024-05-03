@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mycompany.viewport_mini_web.dao.PhotosDao;
 import com.mycompany.viewport_mini_web.dao.ProductDao;

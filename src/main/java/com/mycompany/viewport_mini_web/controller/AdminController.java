@@ -6,10 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.mycompany.viewport_mini_web.dto.Photos;
 import com.mycompany.viewport_mini_web.dto.Product;
 import com.mycompany.viewport_mini_web.dto.Users;
 import com.mycompany.viewport_mini_web.service.ProductService;
 import com.mycompany.viewport_mini_web.service.UserService;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -70,24 +73,24 @@ public class AdminController {
   }
 
   @PostMapping("/createProduct")
-  public String createProduct(Product product) {
+  public String createProduct(Product product, Photos photos) {
     // 요청 데이터의 유효성 검사
     log.info("실행");
-    log.info("original filename : " + product.getPattach().getOriginalFilename());
-    log.info("filetype : " + product.getPattach().getContentType());
+    log.info("original filename : " + photos.getPattach().getOriginalFilename());
+    log.info("filetype : " + photos.getPattach().getContentType());
 
     // 첨부 파일이 있는지 여부 조사
-   if (product.getPattach() != null && !product.getPattach().isEmpty()) {
+   if (photos.getPattach() != null && !photos.getPattach().isEmpty()) {
       // DTO 추가 설정
-      product.setPattachoname(product.getPattach().getOriginalFilename());
-      product.setPattachtype(product.getPattach().getContentType());
+	   photos.setPattachoname(photos.getPattach().getOriginalFilename());
+	   photos.setPattachtype(photos.getPattach().getContentType());
       try {
-        product.setPattachdata(product.getPattach().getBytes());
+    	  photos.setPattachdata(photos.getPattach().getBytes());
       } catch (Exception e) {
       }
     }
 
-   	productService.createProduct(product);
+/*   	productService.createProduct(product);*/
     return "redirect:/admin/products";
   }
 

@@ -9,9 +9,11 @@
 		<setting name="mapUnderscoreToCamelCase" value="true" />
 	</settings>
 	<typeAliases>
-		<typeAlias type="com.mycompany.viewport_mini_web.dto.User"
+		<typeAlias type="com.mycompany.viewport_mini_web.dto.Users"
 			alias="User" />
 		<typeAlias
 			type="com.mycompany.viewport_mini_web.dto.Product" alias="Product" />
+		<typeAlias
+			type="com.mycompany.viewport_mini_web.dto.Photos" alias="Photos" />
 	</typeAliases>
 </configuration>

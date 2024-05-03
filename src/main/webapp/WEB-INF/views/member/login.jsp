@@ -32,15 +32,15 @@
         
         <div class="sign-in-container">
         <!-- 로그인!!!!!!!!!!!! -->
-            <form method="post" id= "idform" action="/viewport_mini_web" class="" onsubmit="loginValidate()" novalidate>
+            <form method="post" id= "idform" action="${pageContext.request.contextPath}/login" class="" novalidate>
                 <h1 class="logintitle"><b>Sign in</b></h1>
 
-                <input type="text" placeholder="Email" id="loginId" class="logininput mb-4">
+                <input type="text" placeholder="Email" id="uemail" name="uemail" class="logininput mb-4">
 			    <small class="error-message" id="idError"></small>
 <!--               아이콘 넣으려고 했는데 못함  <span class="inputUserIcon">
                    <i class="fa fa-key"></i>
                </span>  -->
-                <input type="password" placeholder="Password" id="loginPw" class="logininput mb-4">
+                <input type="password" placeholder="Password" id="upassword" name="upassword" class="logininput mb-4">
                  <small class="error-message" id="pwError" ></small>
 
                 <div class="login-remember mb-4 mt-3">
@@ -89,6 +89,6 @@
         </div>
     </div>
 </div>
-<script src = "/viewport_mini_web/resources/js//login.js"></script>
+<!-- <script src = "/viewport_mini_web/resources/js//login.js"></script> -->
 </body>
 </html>

@@ -14,4 +14,6 @@ public interface UserDao {
 
   int count();
 
+  Users selectByUemail(String useremail);
+
 }

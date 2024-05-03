@@ -1,6 +1,7 @@
 package com.mycompany.viewport_mini_web.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import lombok.extern.slf4j.Slf4j;
 
@@ -13,13 +14,13 @@ public class HomeController {
     return "home";
   }
   //로그인
-  @RequestMapping("/login")
+  @GetMapping("/loginForm")
   public String login() {
     log.info("실행");
     return "member/login";
   }
   //회원가입
-  @RequestMapping("/signup")
+  @GetMapping("/signup")
   public String signup() {
     log.info("실행");
     return "member/signup";

@@ -11,11 +11,11 @@ const email2 = document.querySelector("#signupEmail2");
 const emailSelect = document.querySelector("#emailSelect"); //select
 const email3 = document.querySelector("#signupEmail3"); //이메일 직접 입력받는칸
 const gender = document.querySelector("input[type=radio]");
-const elZonecode = document.querySelector("#zonecode");
-const elRoadAddress = document.querySelector("#uaddress");
-const elRoadAddressDetail = document.querySelector("#uaddressdetail");
+const uzonecode = document.querySelector("#zonecode");
+const uaddress = document.querySelector("#uaddress");
+const uaddressdetail = document.querySelector("#uaddressdetail");
 const elResults = document.querySelectorAll(".el_result");
-
+const formData = new FormData(document.getElementById('signupForm'));
 /*//회원가입 버튼을 제출하면 유효성 검사가 실행되도록 addEventListner 사용
 form1.addEventListener('submit', function (e) {
     event.preventDefault(); //
@@ -225,10 +225,37 @@ const onClickSearch = () => {
       // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
       // 예제를 참고하여 다양한 활용법을 확인해 보세요.
       console.log(data);
-      elZonecode.setAttribute("value", data.zonecode);
-      elRoadAddress.setAttribute("value", data.address);
-      elZonecode.value=data.address;
+      uzonecode.value = data.zonecode;
+      uaddress.value = data.address;
     },
   }).open();
 };
+
+
+//회원가입 버튼을 클릭했을 때 호출되는 함수
+document.getElementById('signupButton').addEventListener('click', function(event) {
+    // 폼 전송을 중지하여 페이지가 새로고침되는 것을 방지
+    event.preventDefault();
+
+    // 회원가입 폼 데이터를 새로운 FormData 객체로 생성
+    const formData = new FormData(document.getElementById('signupForm'));
+
+    // 주소 데이터 업데이트
+    formData.set('uzonecode', uzonecode.value);
+    formData.set('uaddress', uaddress.value);
+
+    // 서버로 데이터 전송 로직
+    var xhr = new XMLHttpRequest();
+    var url = 'http://localhost:8080/viewport_mini_web/signup'; // 실제 컨트롤러의 URL을 입력하세요
+    xhr.open('POST', url, true);
+    xhr.onreadystatechange = function() {
+        if(xhr.readyState == 4 && xhr.status == 200) {
+            // 성공적으로 회원가입이 처리되었을 때의 처리
+            console.log('회원가입이 성공적으로 처리되었습니다.');
+            window.location.href = 'http://localhost:8080/viewport_mini_web/loginForm';
+        }
+    }
+    xhr.send(formData);
+});
+
 

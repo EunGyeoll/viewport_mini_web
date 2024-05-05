@@ -147,7 +147,7 @@
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
 							<label class="form-label" for="uaddressdetail">상세주소</label> 
-							<input type="text" id="uaddressdetail" name="uaddressdetail" class="form-control form-control-lg" value="상세주소" /> <small id="birthError"></small>
+							<input type="text" id="uaddressdetail" name="uaddressdetail" class="form-control form-control-lg" value="" /> <small id="birthError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
 							<label class="form-label" for="ugender">성별</label> 

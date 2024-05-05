@@ -91,6 +91,23 @@ const deleteModalFooter = document.getElementById('delete-model-footer');
         }
       });
     }
+    
+	const dataTransfer = new DataTransfer();
+
+    $("#pattach").change(function(){
+       
+        let fileArr = document.getElementById("pattach").files
+
+        if(fileArr != null && fileArr.length>0){
+
+          // =====DataTransfer 파일 관리========
+            for(var i=0; i<fileArr.length; i++){
+                dataTransfer.items.add(fileArr[i])
+            }
+            document.getElementById("pattach").files = dataTransfer.files;       
+        }
+         
+    })
 
  
     

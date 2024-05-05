@@ -84,7 +84,7 @@ public class AdminController {
 /*    log.info("original filename : " + photos.getPattach()..getOriginalFilename());
     log.info("filetype : " + photos.getPattach().getContentType());*/
     log.info(product.toString());
-    List<MultipartFile> files = photos.getPattach(); 
+    List<MultipartFile> files = photos.getPtattach(); 
     log.info("List<MultipartFile> files 실행 확인 : " + files);
     
     //productService.createProduct(product, photos);

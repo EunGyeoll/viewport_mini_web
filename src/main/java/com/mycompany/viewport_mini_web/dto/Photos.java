@@ -9,10 +9,11 @@ import lombok.Data;
 @Data
 public class Photos {
   private int ptid;
-  private String pattachoname;
-  private String pattachsname;
-  private String pattachtype;
-  private byte[] pattachdata;
+  private String ptattachoname;
+  private String ptattachsname;
+  private String ptattachtype;
+  private byte[] ptattachdata;
+  private int ptpid;
   
-  private List<MultipartFile> pattach;
+  private List<MultipartFile> ptattach;
 }

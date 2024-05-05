@@ -150,11 +150,11 @@
 							<label class="form-label" for="pprice">가격</label> <input type="text" id="pprice" name="pprice" class="form-control form-control-lg" /> <small id="priceError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="pattach">썸네일 사진</label> <input type="file" id="pthumbnail" name="pthumbnail" class="form-control form-control-lg" /> <small id="imageError"></small>
+							<label class="form-label" for="pattach">썸네일 사진</label> <input type="file" id="pattach" name="pattach" class="form-control form-control-lg" /> <small id="imageError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="pattach">상품 사진</label> 
-							<input type="file" id="pattach" name="pattach" class="form-control form-control-lg" multiple="multiple" /> 
+							<label class="form-label" for="ptattach">상품 사진</label> 
+							<input type="file" id="ptattach" name="ptattach" class="form-control form-control-lg" multiple="multiple" /> 
 							<small id="imageError"><a href="#">file1</a></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">

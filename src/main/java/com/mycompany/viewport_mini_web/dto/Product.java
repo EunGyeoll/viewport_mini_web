@@ -1,6 +1,6 @@
 package com.mycompany.viewport_mini_web.dto;
 
-import java.sql.Blob;
+import org.springframework.web.multipart.MultipartFile;
 import lombok.Data;
 
 @Data
@@ -11,5 +11,11 @@ public class Product {
   private String pinfo;
   private String pdetail;
   private int pcatno;
-  private Blob pthumbnail;
+  private String pattachoname;
+  private String pattachsname;
+  private String pattachtype;
+  private byte[] pattachdata;
+  private int pptid;
+  
+  private MultipartFile pattach;
 }

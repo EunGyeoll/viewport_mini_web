@@ -1,7 +1,14 @@
 package com.mycompany.viewport_mini_web.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +46,9 @@ public class AdminController {
 
   @GetMapping("/products")
   public String adminProductsPage(Model model) {
+    List<Product> products = productService.getProductList();
+    File destDir = new File("C:/Temp/uploadFiles");
+    model.addAttribute("products",products);
     return "admin/products";
   }
 
@@ -87,6 +97,12 @@ public class AdminController {
     product.setPattachtype(product.getPattach().getContentType());
     product.setPattachdata(product.getPattach().getBytes());
     log.info(""+product.getPattach().getContentType());
+    File destDir = new File("C:/Temp/uploadFiles");
+    if (!destDir.exists()) {
+      destDir.mkdirs();
+    }
+    
+    File destFile = new File(destDir, product.getPattachoname());
     productService.createProduct(product);
     
     List<MultipartFile> files = photos.getPtattach();
@@ -100,5 +116,26 @@ public class AdminController {
 
     return "redirect:/admin/products";
   }
+  @GetMapping("/downloadFile")
+  public void downloadFile(Product product, HttpServletRequest request,
+      HttpServletResponse response) throws Exception {
+    String filePath = "C:/Temp/uploadFiles/" + fileName;
+    String fileType = request.getServletContext().getMimeType(fileName);
+    // 한글로 되어 있는 파일 이름=> ISO-8859-1 문자셋으로 구성된 파일 이름
+    fileName = new String(product.getPattachoname().getBytes("UTF-8"), "ISO-8859-1");
 
+    // 응답 헤더에 저장할 내용
+    response.setContentType(fileType);
+    response.setHeader("Content-Disposition",
+        "attachment; filename=\"fileName\"" + fileName + "\" ");
+    //응답 본문에 파일 데이터 출력
+    OutputStream os = response.getOutputStream();
+    Path path = Paths.get(filePath);
+    Files.copy(path,os);
+    
+    os.flush();
+    os.close();
+  }
+
+  
 }

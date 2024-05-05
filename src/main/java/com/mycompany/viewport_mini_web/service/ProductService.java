@@ -33,6 +33,10 @@ public class ProductService {
 	        photos.setPtpid(CurPid);
 	          photosDao.insert(photos);
 	    }
+    public List<Product> getProductList() {
+      List<Product> products = productDao.selectProductList();
+      return products;
+    }
 
 
 }

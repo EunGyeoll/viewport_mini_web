@@ -17,6 +17,11 @@
 	<select id="selectCurrPid" parameterType="Product" resultType="int">
 	select seq_pid.currval from dual
 	</select>
+
+	<select id="selectProductList" resultType="Product">
+	select pid,pname,pprice,pinfo,pdetail,pcatno,pattachoname,pattachtype,p.pattachdata from product p
+	
+	</select>
 </mapper>
 
 

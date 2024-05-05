@@ -87,7 +87,7 @@ public class AdminController {
     List<MultipartFile> files = photos.getPattach(); 
     log.info("List<MultipartFile> files 실행 확인 : " + files);
     
-    productService.createProduct(product, photos);
+    //productService.createProduct(product, photos);
     
     		
     return "redirect:/admin/products";

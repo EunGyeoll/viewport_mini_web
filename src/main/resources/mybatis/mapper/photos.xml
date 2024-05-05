@@ -10,9 +10,9 @@
 		</selectKey>
 
 		insert into photos(
-		ptid,ptpid
+		ptid,ptpid,ptattachoname,ptattachtype,ptattachdata
 		) values(
-		#{ptid},#{ptpid}
+		#{ptid},#{ptpid},#{ptattachoname},#{ptattachtype},#{ptattachdata}
 		)
 	</insert>
 </mapper>

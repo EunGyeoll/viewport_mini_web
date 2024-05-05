@@ -86,15 +86,17 @@ public class AdminController {
     product.setPattachoname(product.getPattach().getOriginalFilename());
     product.setPattachtype(product.getPattach().getContentType());
     product.setPattachdata(product.getPattach().getBytes());
-
+    log.info(""+product.getPattach().getContentType());
+    productService.createProduct(product);
     
     List<MultipartFile> files = photos.getPtattach();
-    
-    
+    for (MultipartFile file : files) {
+      photos.setPtattachoname(file.getOriginalFilename());
+      photos.setPtattachtype(file.getContentType());
+      photos.setPtattachdata(file.getBytes());
+      productService.createProductImg(photos);
+    }
     log.info("List<MultipartFile> files 실행 확인 : " + files);
-
-    productService.createProduct(product, files);
-
 
     return "redirect:/admin/products";
   }

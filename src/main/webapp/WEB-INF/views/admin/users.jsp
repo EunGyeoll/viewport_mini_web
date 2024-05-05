@@ -151,9 +151,16 @@
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
 							<label class="form-label" for="ugender">성별</label> 
-							<input type="text" id="ugender" name="ugender" class="form-control form-control-lg" value="true" /> <small id="birthError"></small>
+							<input type="radio" id="man" name="ugender"  value="true" />남자
+							<input type="radio" id="woman" name="ugender"  value="false" />여자
+							<small id="birthError"></small>
 						</div>
-						
+						<div data-mdb-input-init class="form-outline mb-4">
+							<label class="form-label" for="ugender">역할</label> 
+							<input type="radio" id="admin" name="urole"  value="ROLE_ADMIN"/> 관리자
+							<input type="radio" id="user" name="urole" value="ROLE_USER" checked/> 유저
+							<small id="birthError"></small>
+						</div>
 						<button type="submit" class="btn btn-dark">생성</button>
 						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
 					</form>

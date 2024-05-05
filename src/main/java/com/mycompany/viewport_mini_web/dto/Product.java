@@ -12,10 +12,8 @@ public class Product {
   private String pdetail;
   private int pcatno;
   private String pattachoname;
-  private String pattachsname;
   private String pattachtype;
   private byte[] pattachdata;
-  private int pptid;
   
   private MultipartFile pattach;
 }

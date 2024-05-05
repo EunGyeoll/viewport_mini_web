@@ -1,7 +1,7 @@
 package com.mycompany.viewport_mini_web.controller;
 
+import java.io.IOException;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,13 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.mycompany.viewport_mini_web.dto.Photos;
 import com.mycompany.viewport_mini_web.dto.Product;
 import com.mycompany.viewport_mini_web.dto.Users;
 import com.mycompany.viewport_mini_web.service.ProductService;
 import com.mycompany.viewport_mini_web.service.UserService;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -27,7 +25,7 @@ public class AdminController {
 
   @Autowired
   private ProductService productService;
-  
+
 
   @GetMapping("")
   public String adminMainPage(Model model) {
@@ -75,21 +73,29 @@ public class AdminController {
     log.info("get 실행됨");
     return "redirect:users";
   }
-  
-  
+
+
   @PostMapping("/createProduct")
-  public String createProduct(Product product, Photos photos) {
+  public String createProduct(Product product, Photos photos) throws IOException {
     // 요청 데이터의 유효성 검사
     log.info("실행");
-/*    log.info("original filename : " + photos.getPattach()..getOriginalFilename());
-    log.info("filetype : " + photos.getPattach().getContentType());*/
-    log.info(product.toString());
-    List<MultipartFile> files = photos.getPtattach(); 
+    /*
+     * log.info("original filename : " + photos.getPattach()..getOriginalFilename());
+     * log.info("filetype : " + photos.getPattach().getContentType());
+     */
+    product.setPattachoname(product.getPattach().getOriginalFilename());
+    product.setPattachtype(product.getPattach().getContentType());
+    product.setPattachdata(product.getPattach().getBytes());
+
+    
+    List<MultipartFile> files = photos.getPtattach();
+    
+    
     log.info("List<MultipartFile> files 실행 확인 : " + files);
-    
-    //productService.createProduct(product, photos);
-    
-    		
+
+    productService.createProduct(product, files);
+
+
     return "redirect:/admin/products";
   }
 

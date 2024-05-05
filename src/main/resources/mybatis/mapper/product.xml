@@ -10,10 +10,13 @@
 		insert into product(
 			pid, pname, pprice, pinfo, pdetail, pcatno
 		) values(
-			#{pid}, #{pname}, #{pprice}, #{pinfo}, #{pdetail}, 1
+			#{pid}, #{pname}, #{pprice}, #{pinfo}, #{pdetail}, #{pcatno}
 		)
 	</insert>
 	
+	<select id="selectCurrPid" parameterType="Product" resultType="int">
+	select seq_pid.currval from dual
+	</select>
 </mapper>
 
 

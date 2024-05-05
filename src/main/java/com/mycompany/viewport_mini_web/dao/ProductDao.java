@@ -9,5 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Mapper
 public interface ProductDao {
-	public int insert(Product product); 
+	public int insert(Product product);
+
+  public int selectCurrPid(); 
 }

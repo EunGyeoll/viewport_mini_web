@@ -23,11 +23,18 @@ public class ProductService {
 	@Resource
 	private PhotosDao photosDao;
 
-	public void createProduct(Product product, Photos photos) {
+	public void createProduct(Product product, List<MultipartFile> files) {
+	  
 		int rowNum1 = productDao.insert(product);
-		int rowNum2 = photosDao.insert(photos);
-		log.info("rowNum1: " + rowNum1 + ", pid: " + product.getPid());
-		log.info("rowNum2: " + rowNum2 + ", ptid: " + photos.getPtid());
+		int CurPid= productDao.selectCurrPid();
+		log.info(""+CurPid);
+		for(MultipartFile file : files ) {
+		  
+		  photosDao.insert(file,CurPid);
+		}
+		//int rowNum2 = photosDao.insert(photos);
+		//log.info("rowNum1: " + rowNum1 + ", pid: " + product.getPid());
+		//log.info("rowNum2: " + rowNum2 + ", ptid: " + photos.getPtid());
 		
 /*		for() {
 		    // 첨부 파일이 있는지 여부 조사

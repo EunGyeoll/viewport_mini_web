@@ -10,11 +10,9 @@
             <li class="h-100"><a href="#"><span class="align-middle">선글라스</span></a></li>
             <li class="h-100"><a href="${pageContext.request.contextPath}/styles"><span class="align-middle">스타일</span></a></li>
             <li class="h-100"><a href="${pageContext.request.contextPath}/findStores"><span class="align-middle">스토어</span></a></li>
+        	<li class="h-100"><a href="${pageContext.request.contextPath}/admin"><span class="align-middle">어드민</span></a></li>
         </ul>
         <ul class="d-flex justify-content-end" id="nav-icon">
-                <li class="h-100"><a href="#">
-                    <span class="align-middle"><i class="fa-solid fa-magnifying-glass" style="color: #000;"></i></span>
-                </a></li>
                 <li class="h-100"><a href="${pageContext.request.contextPath}/loginForm">
                     <span class="align-middle"><i class="fa-solid fa-user" style="color: #000;"></i></span>
                 </a></li>

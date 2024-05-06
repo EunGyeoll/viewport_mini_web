@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.mycompany.viewport_mini_web.dao.UserDao;
 import com.mycompany.viewport_mini_web.dto.Pager;
+import com.mycompany.viewport_mini_web.dto.Product;
 import com.mycompany.viewport_mini_web.dto.Users;
 import lombok.extern.slf4j.Slf4j;
 
@@ -37,5 +38,9 @@ public class UserService {
     user.setUenabled(true);
     userDao.insert(user);
     
+  }
+  public List<Users> getUserList() {
+    List<Users> users = userDao.selectuserAll();
+    return users;
   }
 }

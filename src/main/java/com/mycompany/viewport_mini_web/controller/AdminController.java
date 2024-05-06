@@ -28,7 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/admin")
 public class AdminController {
   @Autowired
-  private UserService service;
+  private UserService usersService;
 
   @Autowired
   private ProductService productService;
@@ -41,6 +41,9 @@ public class AdminController {
 
   @GetMapping("/users")
   public String adminUserPage(Model model) {
+    List<Users> users = usersService.getUserList();
+    File destDir = new File("C:/Temp/uploadFiles");
+    model.addAttribute("users",users);
     return "admin/users";
   }
 
@@ -74,7 +77,7 @@ public class AdminController {
     log.info(user.getUname());
     log.info(user.getUpassword());
     log.info(user.getUaddressdetail());
-    service.createUser(user);
+    usersService.createUser(user);
     return "redirect:/admin/users";
   }
 
@@ -116,26 +119,26 @@ public class AdminController {
 
     return "redirect:/admin/products";
   }
-  @GetMapping("/downloadFile")
-  public void downloadFile(Product product, HttpServletRequest request,
-      HttpServletResponse response) throws Exception {
-    String filePath = "C:/Temp/uploadFiles/" + fileName;
-    String fileType = request.getServletContext().getMimeType(fileName);
-    // 한글로 되어 있는 파일 이름=> ISO-8859-1 문자셋으로 구성된 파일 이름
-    fileName = new String(product.getPattachoname().getBytes("UTF-8"), "ISO-8859-1");
-
-    // 응답 헤더에 저장할 내용
-    response.setContentType(fileType);
-    response.setHeader("Content-Disposition",
-        "attachment; filename=\"fileName\"" + fileName + "\" ");
-    //응답 본문에 파일 데이터 출력
-    OutputStream os = response.getOutputStream();
-    Path path = Paths.get(filePath);
-    Files.copy(path,os);
-    
-    os.flush();
-    os.close();
-  }
+//  @GetMapping("/downloadFile")
+//  public void downloadFile(Product product, HttpServletRequest request,
+//      HttpServletResponse response) throws Exception {
+//    String filePath = "C:/Temp/uploadFiles/" + fileName;
+//    String fileType = request.getServletContext().getMimeType(fileName);
+//    // 한글로 되어 있는 파일 이름=> ISO-8859-1 문자셋으로 구성된 파일 이름
+//    fileName = new String(product.getPattachoname().getBytes("UTF-8"), "ISO-8859-1");
+//
+//    // 응답 헤더에 저장할 내용
+//    response.setContentType(fileType);
+//    response.setHeader("Content-Disposition",
+//        "attachment; filename=\"fileName\"" + fileName + "\" ");
+//    //응답 본문에 파일 데이터 출력
+//    OutputStream os = response.getOutputStream();
+//    Path path = Paths.get(filePath);
+//    Files.copy(path,os);
+//    
+//    os.flush();
+//    os.close();
+//  }
 
   
 }

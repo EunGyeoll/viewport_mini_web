@@ -16,4 +16,6 @@ public interface UserDao {
 
   public Users selectByUemail(String useremail);
 
+  public List<Users> selectuserAll();
+
 }

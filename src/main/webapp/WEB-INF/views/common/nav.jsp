@@ -18,13 +18,13 @@
 	</ul>
 	<ul class="d-flex justify-content-end" id="nav-icon">
 
-		<sec:authorize access="isAnonymous()">
+<%-- 		<sec:authorize access="isAnonymous()"> --%>
 			<li class="h-100"><a href="${pageContext.request.contextPath}/loginForm"> <span class="align-middle"><i class="fa-solid fa-right-to-bracket" style="color: #000000;"></i></span>
 			</a></li>
 			<li class="h-100"><a href="${pageContext.request.contextPath}/signup"> <span class="align-middle"><i class="fa-solid fa-user-plus" style="color: #000;"></i></span>
 			</a></li>
-		</sec:authorize>
-		<sec:authorize access="isAuthenticated()">
+<%-- 		</sec:authorize>
+		<sec:authorize access="isAuthenticated()"> --%>
 			<div class="h-100 d-flex align-items-center">
 				<div>
 					<b class="text-dark me-2"> <sec:authentication property="principal.username" /></b>
@@ -39,7 +39,7 @@
 
 			<li class="h-100"><a href="${pageContext.request.contextPath}/logout"> <span class="align-middle"><i class="fa-solid fa-right-from-bracket" style="color: #000000;"></i></span>
 			</a></li>
-		</sec:authorize>
+	<%-- 	</sec:authorize> --%>
 
 	</ul>
 </div>

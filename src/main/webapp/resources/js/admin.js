@@ -2,7 +2,10 @@ const modal = document.querySelector('#userModal');
 const myModal = document.querySelectorAll('.userDataEditBtn');
 const myInput = document.getElementById('myInput');
 const deleteModalFooter = document.getElementById('delete-model-footer');
+
+const deleteProductModalFooter = document.getElementById('deleteProduct-modal-footer');
  
+
     function clickEvent(usid,uemail,uname,uphonenumber,uaddress,uaddressdetail,ugender,urole) {
       modal.innerHTML=`<div data-mdb-input-init class="form-outline mb-4">
         <label class="form-label" for="userNum">유저 번호</label> 
@@ -127,6 +130,11 @@ const deleteModalFooter = document.getElementById('delete-model-footer');
 // }
 //         
 // })
+    
+    function deleteProduct(pid) {
+    	deleteProductModalFooter.innerHTML=`<button type="submit" name="pid" value="${pid}" class="btn btn-dark">삭제</button>
+		<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>`
+    }
 
  
     

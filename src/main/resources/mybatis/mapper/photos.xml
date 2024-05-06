@@ -15,5 +15,10 @@
 		#{ptid},#{ptpid},#{ptattachoname},#{ptattachtype},#{ptattachdata}
 		)
 	</insert>
+
+	<delete id="deleteByPtpid" parameterType="int">
+		delete from photos
+		where ptpid=#{ptpid}
+	</delete>
 </mapper>
 

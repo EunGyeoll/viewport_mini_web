@@ -29,10 +29,7 @@
 
 	</select>
 
-	<delete id="deleteByPtpid" parameterType="int">
-		delete from photos
-		where ptpid=#{pid}
-	</delete>
+
 
 	<delete id="deleteByPid" parameterType="int">
 		delete from product

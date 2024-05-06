@@ -28,4 +28,9 @@
 		uemail,upassword,uname,ugender,uphonenumber,uaddress,uaddressdetail,urole,uenabled
 		from users
 	</select>
+	
+	<update id="update" parameterType="User">
+	update users set uname=#{uname},uemail=#{uemail},ugender=#{ugender},uphonenumber=#{uphonenumber},uaddress=#{uaddress},uaddressdetail=#{uaddressdetail},urole=#{urole}
+	where usid=#{usid}
+	</update>
 </mapper>

@@ -18,4 +18,6 @@ public interface UserDao {
 
   public List<Users> selectuserAll();
 
+  public int update(Users user);
+
 }

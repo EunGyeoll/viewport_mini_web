@@ -43,4 +43,8 @@ public class UserService {
     List<Users> users = userDao.selectuserAll();
     return users;
   }
+  public void updateUserData(Users user) {
+    int rowNum = userDao.update(user);
+    
+  }
 }

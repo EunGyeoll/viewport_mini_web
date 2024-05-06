@@ -176,7 +176,7 @@
 							<small id="categoryError"></small>
 						</div>
 						<button type="submit" class="btn btn-danger">생성</button>
-						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
+						<button type="button"class="btn btn-danger" data-bs-dismiss="modal">취소</button>
 					</form>
 				</div>
 			</div>

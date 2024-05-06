@@ -2,13 +2,8 @@ package com.mycompany.viewport_mini_web.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,9 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+import com.mycompany.viewport_mini_web.dto.Pager;
 import com.mycompany.viewport_mini_web.dto.Photos;
 import com.mycompany.viewport_mini_web.dto.Product;
 import com.mycompany.viewport_mini_web.dto.Users;
+import com.mycompany.viewport_mini_web.service.CommonService;
 import com.mycompany.viewport_mini_web.service.ProductService;
 import com.mycompany.viewport_mini_web.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +28,9 @@ public class AdminController {
   private UserService usersService;
 
   @Autowired
+  private CommonService service;
+  
+  @Autowired
   private ProductService productService;
 
 
@@ -40,9 +40,27 @@ public class AdminController {
   }
 
   @GetMapping("/users")
-  public String adminUserPage(Model model) {
-    List<Users> users = usersService.getUserList();
+  public String adminUserPage(String pageNo,Model model,HttpSession session) {
+    
+    if(pageNo == null) {
+      pageNo = (String) session.getAttribute("pageNo");
+      if(pageNo == null) {
+        pageNo ="1";
+      }
+    }
+    
+    session.setAttribute("pageNo",pageNo);
+    
+    int intPageNo = Integer.parseInt(pageNo);
+    
+    int rowsPagingTarget = service.getUserTotalRows();
+    Pager pager = new Pager(10,10,rowsPagingTarget,intPageNo);
+    
+    
+    List<Users> users = usersService.getUserList(pager);
     File destDir = new File("C:/Temp/uploadFiles");
+    
+    model.addAttribute("pager",pager);
     model.addAttribute("users",users);
     return "admin/users";
   }

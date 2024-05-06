@@ -37,4 +37,23 @@
 	<delete id="deleteByUsid" parameterType="int">
 	delete from users where usid=#{usid}
 	</delete>
+	<select id="count">
+	select count(*) from users
+	</select>
+	
+	<select id="selectByPage" parameterType="Pager" resultType="User">
+		<![CDATA[
+		select usid,uname,uemail,upassword,ugaddress,uaddressdetail,ugender,urole 
+		from (
+			select rownum as rnum, usid,uname,uemail,upassword,ugaddress,uaddressdetail,ugender,urole
+			from (
+				select  usid,uname,uemail,upassword,ugaddress,uaddressdetail,ugender,urole
+				from users
+				order by usid desc
+				)
+			where rownum <= #{endRowNo}
+			)
+		where rnum >= #{startRowNo}
+		]]>
+	</select>
 </mapper>

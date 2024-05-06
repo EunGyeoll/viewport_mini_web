@@ -13,7 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class HomeController {
   @Autowired
-  private UserService service;
+  private UserService userService;
+  
   @RequestMapping("/")
   public String index() {
     log.info("실행");
@@ -35,7 +36,7 @@ public class HomeController {
   @PostMapping("/signup")
   public String signup(Users users) {
     users.setUrole("ROLE_USER");
-    //service.signup(users);
+    userService.signup(users);
     log.info(users.toString());
     return "redirect:/loginForm";
   }

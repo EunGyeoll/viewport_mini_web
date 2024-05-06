@@ -12,7 +12,8 @@
 		pid, pname, pprice, pinfo, pdetail,
 		pcatno,pattachoname,pattachtype,pattachdata
 		) values(
-		#{pid}, #{pname}, #{pprice}, #{pinfo}, #{pdetail},
+		#{pid}, #{pname},
+		#{pprice}, #{pinfo}, #{pdetail},
 		#{pcatno},#{pattachoname},#{pattachtype},#{pattachdata}
 		)
 	</insert>
@@ -29,11 +30,16 @@
 
 	</select>
 
-
+	<update id="update" parameterType="Product">
+		update product set
+		pname=#{pname},pprice=#{pprice},pinfo=#{pinfo},pdetail=#{pdetail},pcatno=#{pcatno}
+		where pid=#{pid}
+	</update>
 
 	<delete id="deleteByPid" parameterType="int">
 		delete from product
-		where pid=#{pid}
+		where
+		pid=#{pid}
 	</delete>
 </mapper>
 

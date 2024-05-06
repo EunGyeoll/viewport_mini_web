@@ -84,14 +84,14 @@
 						<th scope="row">${product.pid}</th>
 						<td>${product.pname}</td>
 						<td>${product.pprice}</td>
-						<td><img src="attachDownload?pid=${product.pid}" width="150" /></td>
+						<td><img src="attachProduct?pid=${product.pid}" width="150" /></td>
 						<td>${product.pinfo}</td>
 						<td>${product.pdetail}</td>
 						<td>${product.pcatno}</td>
 						<td>
 							<button type="button"
 								class="btn btn-dark edit-btn btn-sm productDataEditBtn"
-								onclick="clickEvent(${product.pid},'${product.pname}', ${product.pprice},'${product.pinfo}', ${product.pdetail}, '${product.pcatno}')"
+								onclick="clickEventProduct('${product.pname}', ${product.pprice},'${product.pinfo}', ${product.pdetail}, '${product.pcatno}')"
 								data-bs-toggle="modal" data-bs-target="#editUserModal">상품 정보 수정
 							</button>
 							<button class="btn btn-danger edit-btn btn-sm"
@@ -128,52 +128,9 @@
 				</div>
 
 				<!-- Modal body -->
-				<div class="modal-body">
-					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="pname">상품 이름</label> <input
-							type="text" id="pname" name="pname"
-							class="form-control form-control-lg" /> <small id="nameError"></small>
-					</div>
-					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="pprice">가격</label> <input
-							type="text" id="pprice" name="pprice"
-							class="form-control form-control-lg" /> <small id="priceError"></small>
-					</div>
-					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="pattachdata">상품 사진</label> <input
-							type="file" id="pattachdata" name="pattachdata"
-							class="form-control form-control-lg" accept="image/*" /> <small
-							id="imageError"></small> <img alt="" src="" width="100"
-							height="80">
-					</div>
-					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="pinfo">상품 설명</label> <input
-							type="text" id="pinfo" name="pinfo"
-							class="form-control form-control-lg" /> <small id="infoError"></small>
-					</div>
-					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="pdetail">상품 상세 설명</label> <input
-							type="text" id="pdetail" name="pdetail"
-							class="form-control form-control-lg" /> <small id="detailError"></small>
-					</div>
-					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="pcatno">카테고리</label> <input
-							type="text" id="pcatno" name="pcatno"
-							class="form-control form-control-lg" /> <small
-							id="categoryError"></small>
-					</div>
-
-				</div>
-				<!-- Modal footer -->
-
-				<div class="modal-footer">
-					<a href="#" type="button" class="btn btn-dark"
-						data-bs-dismiss="modal">수정</a>
-					<button type="button" class="btn btn-danger"
-						data-bs-dismiss="modal">취소</button>
-				</div>
-
-			</div>
+				<form method="post" action="editProduct" class="model-body" id="productModal">
+					<!-- js 출력 -->
+				</form>
 		</div>
 	</div>
 	<div class="modal" id="createUserModal">

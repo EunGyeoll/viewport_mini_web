@@ -4,7 +4,7 @@ const myInput = document.getElementById('myInput');
 const deleteModalFooter = document.getElementById('delete-model-footer');
 
 const deleteProductModalFooter = document.getElementById('deleteProduct-modal-footer');
- 
+const editProductModal = document.querySelector('#productModal'); 
 
     function clickEvent(usid,uemail,uname,uphonenumber,uaddress,uaddressdetail,ugender,urole) {
       modal.innerHTML=`<div data-mdb-input-init class="form-outline mb-4">
@@ -131,10 +131,53 @@ const deleteProductModalFooter = document.getElementById('deleteProduct-modal-fo
 //         
 // })
     
+    function clickEventProduct(pname, pprice,pinfo, pdetail, pcatno){
+    	editProductModal.innerHTML=`<div data-mdb-input-init class="form-outline mb-4">
+							<label class="form-label" for="pname">상품 이름</label> 
+							<input type="text" id="pname" name="pname" class="form-control form-control-lg" /> <small id="nameError"></small>
+						</div>
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="pprice">가격</label> <input
+							type="text" id="pprice" name="pprice"
+							class="form-control form-control-lg" /> <small id="priceError"></small>
+					</div>
+
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="pinfo">상품 설명</label> <input
+							type="text" id="pinfo" name="pinfo"
+							class="form-control form-control-lg" /> <small id="infoError"></small>
+					</div>
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="pdetail">상품 상세 설명</label> <input
+							type="text" id="pdetail" name="pdetail"
+							class="form-control form-control-lg" /> <small id="detailError"></small>
+					</div>
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="pcatno">카테고리</label> <input
+							type="text" id="pcatno" name="pcatno"
+							class="form-control form-control-lg" /> <small
+							id="categoryError"></small>
+					</div>
+
+				</div>
+					<button  type="submit" class="btn btn-dark" data-bs-dismiss="modal">수정</button>
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>`
+    }
+    
     function deleteProduct(pid) {
     	deleteProductModalFooter.innerHTML=`<button type="submit" name="pid" value="${pid}" class="btn btn-dark">삭제</button>
 		<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>`
     }
 
  
-    
+//<div data-mdb-input-init class="form-outline mb-4">
+//<label class="form-label" for="pattach">썸네일 사진</label> <input
+//	type="file" id="pattach" name="pattach"
+//	class="form-control form-control-lg" /> <small id="imageError"></small>
+//</div>
+//<div data-mdb-input-init class="form-outline mb-4">
+//<label class="form-label" for="ptattach">상품 사진</label> <input
+//	type="file" id="ptattach" name="ptattach"
+//	class="form-control form-control-lg" multiple="multiple" /> <small
+//	id="imageError"><a href="#">file1</a></small>
+//</div>

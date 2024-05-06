@@ -7,5 +7,7 @@ import com.mycompany.viewport_mini_web.dto.Photos;
 
 @Mapper
 public interface PhotosDao {
-	public int insert(Photos photo); 
+	public int insert(Photos photo);
+
+	public int deleteByPtpid(int pid); 
 }

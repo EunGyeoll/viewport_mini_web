@@ -38,5 +38,11 @@ public class ProductService {
       return products;
     }
 
+	public void removeProduct(int pid) {
+		photosDao.deleteByPtpid(pid);
+		productDao.deleteByPid(pid);
+		
+	}
+
 
 }

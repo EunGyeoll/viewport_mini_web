@@ -147,5 +147,10 @@ public class AdminController {
 //    os.close();
 //  }
 
-  
+	@GetMapping("/deleteProduct")
+	public String deleteProduct() {
+		log.info("실행");
+/*		productService.removeProduct(pid);*/
+		return "redirect:/admin/products";
+	}
 }

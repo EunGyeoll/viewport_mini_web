@@ -194,7 +194,9 @@ x
 				<div class="modal-body">
 					<p>삭제하시겠습니까?</p>
 				</div>
-				<div class="modal-footer" id="delete-model-footer"></div>
+				<form method="post" action="deleteUserData" class="modal-footer" id="delete-model-footer">
+				
+				</form>
 
 			</div>
 		</div>

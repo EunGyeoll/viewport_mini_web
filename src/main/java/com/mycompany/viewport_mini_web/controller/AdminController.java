@@ -89,8 +89,9 @@ public class AdminController {
     return "redirect:/admin/users";
   }
   @PostMapping("/deleteUserData")
-  public String adminDeleteData() {
-    log.info("get 실행됨");
+  public String adminDeleteData(int usid) {
+    log.info("실행됨");
+    log.info(usid+"");
     return "redirect:users";
   }
 

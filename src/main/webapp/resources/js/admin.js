@@ -40,11 +40,11 @@ const deleteModalFooter = document.getElementById('delete-model-footer');
       `
     }
     function deleteBtn(index) {
-      console.log(index-1);
+      
     }
-    function deleteUserData(index) {
-      console.log(index);
-      deleteModalFooter.innerHTML =`<button type="button" onclick="deleteBtn(${index})" class="btn btn-dark">삭제</button>
+    function deleteUserData(usid) {
+      console.log(usid);
+      deleteModalFooter.innerHTML =`<button type="submit"  name="usid" value="${usid}" class="btn btn-dark">삭제</button>
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>`
     }
     

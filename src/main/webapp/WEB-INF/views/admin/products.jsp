@@ -197,7 +197,7 @@
 					<p>삭제하시겠습니까?</p>
 				</div>
 				<div class="modal-footer">
-					<a href="/viewport_mini_web/admin/deleteUserData" type="button" class="btn btn-dark">삭제</a>
+					<a href="deleteProduct?pid=${product.pid}" type="button" class="btn btn-dark">삭제</a>
 					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
 				</div>
 

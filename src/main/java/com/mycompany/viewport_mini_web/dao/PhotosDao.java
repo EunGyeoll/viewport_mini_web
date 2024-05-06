@@ -9,5 +9,5 @@ import com.mycompany.viewport_mini_web.dto.Photos;
 public interface PhotosDao {
 	public int insert(Photos photo);
 
-	public int deleteByPtpid(int pid); 
+	public int deleteByPtpid(int ptpid); 
 }

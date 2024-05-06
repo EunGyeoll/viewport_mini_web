@@ -14,7 +14,7 @@ public class CommonService {
 
   public int getUserTotalRows() {
     int totalRows = userDao.count();
-    return 0;
+    return totalRows;
   }
 
 }

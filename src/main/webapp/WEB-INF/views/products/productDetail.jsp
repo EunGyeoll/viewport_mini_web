@@ -125,7 +125,7 @@
 
 
 	<!-- JS 설정 -->
-	<script src="/viewport_mini_web/resources/js//productDetail.js"></script>
+	<script src="/viewport_mini_web/resources/js/productDetail.js"></script>
 
 
 </body>

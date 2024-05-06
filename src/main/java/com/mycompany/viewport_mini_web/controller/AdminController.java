@@ -66,6 +66,7 @@ public class AdminController {
     
     model.addAttribute("pager",pager);
     model.addAttribute("users",users);
+    log.info(users.toString());
     return "admin/users";
   }
 

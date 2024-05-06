@@ -43,11 +43,11 @@
 	
 	<select id="selectByPage" parameterType="Pager" resultType="User">
 		<![CDATA[
-		select usid,uname,uemail,upassword,ugaddress,uaddressdetail,ugender,urole 
+		select usid,uname,uemail,upassword,uaddress,uaddressdetail,ugender,urole,uphonenumber 
 		from (
-			select rownum as rnum, usid,uname,uemail,upassword,ugaddress,uaddressdetail,ugender,urole
+			select rownum as rnum, usid,uname,uemail,upassword,uaddress,uaddressdetail,ugender,urole,uphonenumber
 			from (
-				select  usid,uname,uemail,upassword,ugaddress,uaddressdetail,ugender,urole
+				select  usid,uname,uemail,upassword,uaddress,uaddressdetail,ugender,urole,uphonenumber
 				from users
 				order by usid desc
 				)

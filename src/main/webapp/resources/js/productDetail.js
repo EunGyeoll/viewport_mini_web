@@ -1,6 +1,6 @@
 
 
-//  상품
+//상품
 const product = {
         title: "몬타 04",
         price: 330000,

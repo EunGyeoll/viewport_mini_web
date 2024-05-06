@@ -3,11 +3,11 @@ package com.mycompany.viewport_mini_web.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+
 import com.mycompany.viewport_mini_web.dto.Pager;
 import com.mycompany.viewport_mini_web.dto.Photos;
 import com.mycompany.viewport_mini_web.dto.Product;
@@ -22,6 +23,7 @@ import com.mycompany.viewport_mini_web.dto.Users;
 import com.mycompany.viewport_mini_web.service.CommonService;
 import com.mycompany.viewport_mini_web.service.ProductService;
 import com.mycompany.viewport_mini_web.service.UserService;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -171,7 +173,25 @@ public class AdminController {
 //    os.flush();
 //    os.close();
 //  }
-
+  	
+	@GetMapping("/attachProduct")
+	public void attachProduct(int pid, HttpServletResponse response) throws Exception {
+		// 다운로드할 데이터를 준비
+		Product product = productService.getProduct(pid);
+		byte[] data = productService.getPattachData(pid);
+		
+		// 응답 헤더 구성
+		response.setContentType(product.getPattachtype());
+		String fileName = new String(product.getPattachoname().getBytes("UTF-8"), "ISO-8859-1");
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
+		
+		// 응답 본문에 파일 데이터 출력
+		OutputStream os = response.getOutputStream();
+		os.write(data);
+		os.flush();
+		os.close();
+	}
+  
 	@PostMapping("/deleteProduct")
 	public String deleteProduct(int pid) {
 		log.info("deleteProduct 실행");

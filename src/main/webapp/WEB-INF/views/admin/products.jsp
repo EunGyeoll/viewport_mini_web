@@ -84,12 +84,7 @@
 						<th scope="row">${product.pid}</th>
 						<td>${product.pname}</td>
 						<td>${product.pprice}</td>
-						<c:if test="${product.pattachoname != null}">
-							<td><img src="attachDownload?pid=${product.pid}" width="150" /></td>
-						</c:if>
-						<c:if test="${product.pattachoname == null}">
-							<td></td>
-						</c:if>
+						<td><img src="attachDownload?pid=${product.pid}" width="150" /></td>
 						<td>${product.pinfo}</td>
 						<td>${product.pdetail}</td>
 						<td>${product.pcatno}</td>
@@ -97,8 +92,8 @@
 							<button type="button"
 								class="btn btn-dark edit-btn btn-sm productDataEditBtn"
 								onclick="clickEvent(${product.pid},'${product.pname}', ${product.pprice},'${product.pinfo}', ${product.pdetail}, '${product.pcatno}')"
-								data-bs-toggle="modal" data-bs-target="#editUserModal">상품
-								정보 수정</button>
+								data-bs-toggle="modal" data-bs-target="#editUserModal">상품 정보 수정
+							</button>
 							<button class="btn btn-danger edit-btn btn-sm"
 								data-bs-toggle="modal"
 								onclick="deleteProduct(${product.pid})"
@@ -128,7 +123,7 @@
 
 				<!-- Modal Header -->
 				<div class="modal-header">
-					<h4 class="modal-title">상품 정보</h4>
+					<h4 class="modal-title">상품 정보 수정</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 				</div>
 
@@ -261,7 +256,9 @@
 					<p>삭제하시겠습니까?</p>
 				</div>
 				<form method="post" action="deleteProduct" class="modal-footer"
-					id="deleteProduct-modal-footer"></form>
+					id="deleteProduct-modal-footer">
+					<!-- js -->
+				</form>
 
 
 			</div>

@@ -16,4 +16,8 @@ public interface ProductDao {
 	public List<Product> selectProductList();
 
 	public int deleteByPid(int pid);
+
+	public Product selectByPid(int pid);
+
+	public Product selectPattachData(int pid);
 }

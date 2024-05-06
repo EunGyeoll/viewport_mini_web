@@ -67,7 +67,7 @@
 						<td>${user.uaddress}</td>
 						<%-- 	<td><fmt:formatDate value="${user.uaddress}" pattern="yyyy-MM-dd" /></td> --%>
 						<td>
-							<button type="button" class="btn btn-dark edit-btn btn-sm userDataEditBtn" onclick="clickEvent('${user.usid}','${user.uemail}','${user.uname}','${user.uaddress}','${user.uaddressdetail}','${user.ugender}','${user.urole}')" data-bs-toggle="modal" data-bs-target="#editUserModal">회원 정보 수정</button>
+							<button type="button" class="btn btn-dark edit-btn btn-sm userDataEditBtn" onclick="clickEvent('${user.usid}','${user.uemail}','${user.uname}','${user.uphonenumber}','${user.uaddress}','${user.uaddressdetail}','${user.ugender}','${user.urole}')" data-bs-toggle="modal" data-bs-target="#editUserModal">회원 정보 수정</button>
 							<button class="btn btn-danger edit-btn btn-sm" data-bs-toggle="modal" onclick="deleteUserData(${user.usid})" data-bs-target="#deleteUserModal">삭제</button>
 						</td>
 					</tr>
@@ -100,7 +100,7 @@
 				<!-- Modal body -->
 				<form action="editUserData" method="post" class="modal-body" id="userModal">
 					<!-- 데이터 출력 -->
-				<%-- 	<div data-mdb-input-init class="form-outline mb-4">
+					<%-- 	<div data-mdb-input-init class="form-outline mb-4">
 						<label class="form-label" for="uname">유저 이름</label> 
 						<input type="text" id="uname" name="uname" class="form-control form-control-lg"  value="${user.uname}"/> <small id="birthError"></small>
 					</div>
@@ -175,7 +175,7 @@
 						<button type="submit" class="btn btn-dark">생성</button>
 						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
 					</form>
-x
+					x
 				</div>
 			</div>
 		</div>
@@ -194,9 +194,7 @@ x
 				<div class="modal-body">
 					<p>삭제하시겠습니까?</p>
 				</div>
-				<form method="post" action="deleteUserData" class="modal-footer" id="delete-model-footer">
-				
-				</form>
+				<form method="post" action="deleteUserData" class="modal-footer" id="delete-model-footer"></form>
 
 			</div>
 		</div>

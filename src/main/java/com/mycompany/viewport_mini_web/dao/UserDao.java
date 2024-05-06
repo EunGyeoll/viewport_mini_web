@@ -20,4 +20,6 @@ public interface UserDao {
 
   public int update(Users user);
 
+  public int deleteByUsid(int usid);
+
 }

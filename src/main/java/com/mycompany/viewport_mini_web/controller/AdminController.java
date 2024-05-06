@@ -92,6 +92,7 @@ public class AdminController {
   public String adminDeleteData(int usid) {
     log.info("실행됨");
     log.info(usid+"");
+    usersService.removeUser(usid);
     return "redirect:users";
   }
 

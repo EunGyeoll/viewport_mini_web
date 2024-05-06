@@ -3,7 +3,7 @@ const myModal = document.querySelectorAll('.userDataEditBtn');
 const myInput = document.getElementById('myInput');
 const deleteModalFooter = document.getElementById('delete-model-footer');
  
-    function clickEvent(usid,uemail,uname,uaddress,uaddressdetail,ugender,urole) {
+    function clickEvent(usid,uemail,uname,uphonenumber,uaddress,uaddressdetail,ugender,urole) {
       modal.innerHTML=`<div data-mdb-input-init class="form-outline mb-4">
         <label class="form-label" for="userNum">유저 번호</label> 
         <input type="text" id="userNum" name="usid" class="form-control form-control-lg" value="${usid}" readonly/>
@@ -26,7 +26,7 @@ const deleteModalFooter = document.getElementById('delete-model-footer');
       </div>
          <div data-mdb-input-init class="form-outline mb-4">
         <label class="form-label" for="userId">연락처</label>
-        <input type="text" id="userPhone" name="uphonenumber"class="form-control form-control-lg" value="${uaddressdetail}"/> <small id="birthError"></small>
+        <input type="text" id="uphonenumber" name="uphonenumber"class="form-control form-control-lg" value="${uphonenumber}"/> <small id="birthError"></small>
       </div>
         <div data-mdb-input-init class="form-outline mb-4">
               <label class="form-label" for="ugender">성별</label> <input type="radio" id="man" name="ugender" value="true" ${ugender=== 'true'? "checked" : ""} />남자 <input type="radio" id="woman" name="ugender" value="false" ${ugender==='false' ? "checked" : ""} />여자 <small id="birthError"></small>

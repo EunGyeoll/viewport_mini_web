@@ -47,4 +47,8 @@ public class UserService {
     int rowNum = userDao.update(user);
     
   }
+  public void removeUser(int usid) {
+    int rowNum = userDao.deleteByUsid(usid);
+    
+  }
 }

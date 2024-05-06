@@ -33,4 +33,8 @@
 	update users set uname=#{uname},uemail=#{uemail},ugender=#{ugender},uphonenumber=#{uphonenumber},uaddress=#{uaddress},uaddressdetail=#{uaddressdetail},urole=#{urole}
 	where usid=#{usid}
 	</update>
+	
+	<delete id="deleteByUsid" parameterType="int">
+	delete from users where usid=#{usid}
+	</delete>
 </mapper>

@@ -27,6 +27,7 @@
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/products">상품 관리</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/shippings">배송 관리</a></li>
 						<li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/admin/posts">게시글 관리</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/">홈으로 돌아가기</a></li>
 					</ul>
 				</div>
 			</div>
@@ -61,7 +62,8 @@
 				</thead>
 				<tbody>
 					<%-- <c:set var="posts" value="${[{'id':1, 'title':'First Post', 'author':'ian', 'date':'2022-04-01'},{'id':2, 'title':'Second Post', 'author':'sunghwan', 'date':'2022-04-02'}]}" />
-					 --%><c:forEach var="post" items="${posts}">
+					 --%>
+					<c:forEach var="post" items="${posts}">
 						<tr>
 							<td>${post.id}</td>
 							<td>${post.title}</td>

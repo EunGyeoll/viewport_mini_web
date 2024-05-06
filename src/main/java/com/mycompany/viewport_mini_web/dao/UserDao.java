@@ -14,7 +14,7 @@ public interface UserDao {
 
   public int count();
 
-  public Users selectByUemail(String useremail);
+  public Users selectByUemail(String uemail);
 
   public List<Users> selectuserAll();
 

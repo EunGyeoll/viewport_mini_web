@@ -50,4 +50,8 @@ public class UserService {
     int rowNum = userDao.deleteByUsid(usid);
     
   }
+  public Users getUser(String uemail) {
+    Users user = userDao.selectByUemail(uemail);
+    return user;
+  }
 }

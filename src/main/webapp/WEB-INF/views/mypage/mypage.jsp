@@ -42,16 +42,19 @@
 								<h4 class="card-title">프로필 정보</h4>
 								<form id="myPageInfo" method="post" action="mypage/myPageInfo">
 									<div class="mb-3">
-										<label for="user-name" class="form-label">이름</label> <input type="text" class="form-control" id="user-name" value="홍길동">
+										<label for="user-name" class="form-label">이름</label> <input type="text" class="form-control" id="user-name" value="${user.uname }">
 									</div>
 									<div class="mb-3">
-										<label for="user-email" class="form-label">이메일</label> <input type="email" class="form-control" id="user-email" value="example@example.com">
+										<label for="user-email" class="form-label">이메일</label> <input type="email" class="form-control" id="user-email" value="${user.uemail}">
 									</div>
 									<div class="mb-3">
-										<label for="user-email" class="form-label">기본주소</label> <input type="text" class="form-control" id="user-address" value="서울시 강남구 서초구">
+										<label for="user-address" class="form-label">기본주소</label> <input type="text" class="form-control" id="user-address" value="${user.uaddress }">
 									</div>
 									<div class="mb-3">
-										<label for="user-email" class="form-label">상세주소</label> <input type="text" class="form-control" id="user-address-detail" value="112-902">
+										<label for="user-addressdetail" class="form-label">상세주소</label> <input type="text" class="form-control" id="user-address-detail" value="${user.uaddressdetail }">
+									</div>
+									<div class="mb-3">
+										<label for="user-phonenumber" class="form-label">전화번호</label> <input type="text" class="form-control" id="user-phone-number" value="${user.uphonenumber}">
 									</div>
 									<button type="submit" class="btn btn-dark">저장하기</button>
 								</form>

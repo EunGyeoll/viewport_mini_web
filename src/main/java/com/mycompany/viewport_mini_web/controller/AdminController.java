@@ -108,7 +108,6 @@ public class AdminController {
 	public String editUserData(Model model, Users user) {
 		log.info("edit user post 실행");
 		user.setUenabled(true);
-		log.info(user.toString());
 		usersService.updateUserData(user);
 		return "redirect:/admin/users";
 	}

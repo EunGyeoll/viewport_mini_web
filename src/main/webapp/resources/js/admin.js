@@ -114,7 +114,7 @@ const editProduct = document.querySelector('#productModal');
 // })
     
     function clickEventProduct(pid, pname, pprice, pinfo, pdetail, pcatno){
-    	editProduct.innerHTML=`	<div data-mdb-input-init class="form-outline mb-4">
+    	editProduct.innerHTML=`<div data-mdb-input-init class="form-outline mb-4">
 							<label class="form-label" for="pid">상품 번호</label> <input
 								type="text" id="pid" name="pid"
 								class="form-control form-control-lg" /> <small id="idError"></small>

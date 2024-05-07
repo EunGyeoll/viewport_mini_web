@@ -15,6 +15,14 @@
 		#{ptid},#{ptpid},#{ptattachoname},#{ptattachtype},#{ptattachdata}
 		)
 	</insert>
+	
+	<update id="updateImg" parameterType="Photos">
+		update photos set
+				ptattachoname=#{ptattachoname},
+				ptattachtype=#{ptattachtype},
+				ptattachdata=#{ptattachdata}		
+		where ptpid=#{ptpid}
+	</update>	
 
 	<delete id="deleteByPtpid" parameterType="int">
 		delete from photos

@@ -136,7 +136,7 @@ const editProduct = document.querySelector('#productModal');
 						<div data-mdb-input-init class="form-outline mb-4">
 							<label class="form-label" for="ptattach">상품 사진</label> <input
 								type="file" id="ptattach" name="ptattach"
-								class="form-control form-control-lg" multiple="multiple" value="${ptattach}" /> <small
+								class="form-control form-control-lg" multiple="multiple" /> <small
 								id="imageError"><a href="#">file1</a></small>
 						</div>						    
 

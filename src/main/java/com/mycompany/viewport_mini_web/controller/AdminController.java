@@ -2,10 +2,8 @@ package com.mycompany.viewport_mini_web.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -192,7 +190,7 @@ public class AdminController {
 	}*/
 
 	@PostMapping("/editProduct")
-	public String editProduct(Model model, Product product, Photos photos) throws IOException {
+	public String editProduct(Product product, Photos photos) throws IOException {
 		log.info("editProduct 실행");
 		
 		// 첨부 파일이 있는지 여부 조사
@@ -202,15 +200,21 @@ public class AdminController {
 			product.setPattachtype(product.getPattach().getContentType());
 			product.setPattachdata(product.getPattach().getBytes());
 		}
+		
 		if(photos.getPtattach() != null && !photos.getPtattach().isEmpty()) {
+
 			List<MultipartFile> files = photos.getPtattach();
 			for (MultipartFile file : files) {
 				photos.setPtattachoname(file.getOriginalFilename());
 				photos.setPtattachtype(file.getContentType());
 				photos.setPtattachdata(file.getBytes());
+				photos.setPtpid(product.getPid());
+				log.info(file.getOriginalFilename());
+				
 				productService.updateProductImg(photos);
 			}
 		}
+		log.info("photos 실행");
 		
 		productService.updateProduct(product);
 

@@ -39,11 +39,6 @@ public class ProductService {
 		return products;
 	}
 
-	public void removeProduct(int pid) {
-		photosDao.deleteByPtpid(pid);
-		productDao.deleteByPid(pid);
-
-	}
 
 /*	public Product getProduct(int pid) {
 		Product product = productDao.selectByPid(pid);
@@ -61,13 +56,13 @@ public class ProductService {
 	}
 
 	public void updateProductImg(Photos photos) {
-		// TODO Auto-generated method stub
-		
+		int rowNum = photosDao.updateImg(photos);
 	}
+	
+	public void removeProduct(int pid) {
+		photosDao.deleteByPtpid(pid);
+		productDao.deleteByPid(pid);
 
-//	public void updateProductImg(Photos photos) {
-//		int rowNum = photosDao.updateImg(photos);
-//
-//	}
+	}	
 
 }

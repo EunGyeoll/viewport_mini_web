@@ -63,7 +63,7 @@
 						<td>${product.pname}</td>
 						<td>${product.pprice}</td>
 						<td>
-							<%-- <img src="attachProduct?pid=${product.pid}" width="150" /> --%>
+							<img src="attachProduct?pid=${product.pid}" width="150" />
 						</td>
 						<td>${product.pinfo}</td>
 						<td>${product.pdetail}</td>
@@ -140,10 +140,10 @@
 						<div data-mdb-input-init class="form-outline mb-4">
 							<label class="form-label" for="pcatno">카테고리</label>
 							<div class="col">
-								<input type="radio" id="glasses" name="pcatno" value=1 checked /> <label for="glasses">안경</label>
+								<input type="radio" id="glasses" name="pcatno" value="1" checked /> <label for="glasses">안경</label>
 							</div>
 							<div class="col">
-								<input type="radio" id="sunglasses" name="pcatno" value=2 /> <label for="sunglasses">선글라스</label>
+								<input type="radio" id="sunglasses" name="pcatno" value="2" /> <label for="sunglasses">선글라스</label>
 							</div>
 							<small id="categoryError"></small>
 						</div>

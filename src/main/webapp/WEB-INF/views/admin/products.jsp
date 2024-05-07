@@ -100,7 +100,7 @@
 				</div>
 
 				<!-- Modal body -->
-				<form method="post" action="editProduct" class="modal-body" id="productModal">
+				<form method="post" action="editProduct" class="modal-body" id="productModal"  enctype="multipart/form-data">
 					<!-- js 출력 -->
 				</form>
 			</div>

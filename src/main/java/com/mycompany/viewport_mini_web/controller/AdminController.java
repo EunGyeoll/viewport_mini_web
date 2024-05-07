@@ -192,12 +192,28 @@ public class AdminController {
 	}*/
 
 	@PostMapping("/editProduct")
-	public String editProduct(Model model, Product product) {
+	public String editProduct(Model model, Product product, Photos photos) throws IOException {
 		log.info("editProduct 실행");
-		log.info(product.toString());
-//		log.info(photos.toString());
+		
+		// 첨부 파일이 있는지 여부 조사
+		if(product.getPattach() != null && !product.getPattach().isEmpty()) {
+			// DTO 추가 설정
+			product.setPattachoname(product.getPattach().getOriginalFilename());
+			product.setPattachtype(product.getPattach().getContentType());
+			product.setPattachdata(product.getPattach().getBytes());
+		}
+		if(photos.getPtattach() != null && !photos.getPtattach().isEmpty()) {
+			List<MultipartFile> files = photos.getPtattach();
+			for (MultipartFile file : files) {
+				photos.setPtattachoname(file.getOriginalFilename());
+				photos.setPtattachtype(file.getContentType());
+				photos.setPtattachdata(file.getBytes());
+				productService.updateProductImg(photos);
+			}
+		}
+		
 		productService.updateProduct(product);
-//		productService.updateProductImg(photos);
+
 		return "redirect:/admin/products";
 	}
 

@@ -33,6 +33,12 @@
 	<update id="update" parameterType="Product">
 		update product set
 		pname=#{pname},pprice=#{pprice},pinfo=#{pinfo},pdetail=#{pdetail},pcatno=#{pcatno}
+		<if test="pattachoname != null">
+				,
+				pattachoname=#{pattachoname},
+				pattachtype=#{pattachtype},
+				pattachdata=#{pattachdata}
+		</if>		
 		where pid=#{pid}
 	</update>
 

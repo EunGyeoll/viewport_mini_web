@@ -117,47 +117,47 @@ const editProduct = document.querySelector('#productModal');
     	editProduct.innerHTML=`<div data-mdb-input-init class="form-outline mb-4">
 							<label class="form-label" for="pid">상품 번호</label> <input
 								type="text" id="pid" name="pid"
-								class="form-control form-control-lg" /> <small id="idError"></small>
+								class="form-control form-control-lg" value="${pid}" readonly /> <small id="idError"></small>
 						</div>					
     					<div data-mdb-input-init class="form-outline mb-4">
 							<label class="form-label" for="pname">상품 이름</label> <input
 								type="text" id="pname" name="pname"
-								class="form-control form-control-lg" /> <small id="nameError"></small>
+								class="form-control form-control-lg" value="${pname}" /> <small id="nameError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
 							<label class="form-label" for="pprice">가격</label> <input
 								type="text" id="pprice" name="pprice"
-								class="form-control form-control-lg" /> <small id="priceError"></small>
+								class="form-control form-control-lg" value="${pprice}" /> <small id="priceError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="pattach">썸네일 사진</label> <input
-								type="file" id="pattach" name="pattach"
-								class="form-control form-control-lg" /> <small id="imageError"></small>
-						</div>
+					    		<label class="form-label" for="pattach">썸네일 사진</label> 
+					    		<input type="file" id="pattach" name="pattach" class="form-control form-control-lg" /> <small id="imageError"></small>
+					    </div>
 						<div data-mdb-input-init class="form-outline mb-4">
 							<label class="form-label" for="ptattach">상품 사진</label> <input
 								type="file" id="ptattach" name="ptattach"
-								class="form-control form-control-lg" multiple="multiple" /> <small
+								class="form-control form-control-lg" multiple="multiple" value="${ptattach}" /> <small
 								id="imageError"><a href="#">file1</a></small>
-						</div>
+						</div>						    
+
 						<div data-mdb-input-init class="form-outline mb-4">
 							<label class="form-label" for="pinfo">상품 설명</label> <input
 								type="text" id="pinfo" name="pinfo"
-								class="form-control form-control-lg" /> <small id="infoError"></small>
+								class="form-control form-control-lg" value="${pinfo}" /> <small id="infoError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
 							<label class="form-label" for="pdetail">상품 상세 설명</label> <input
 								type="text" id="pdetail" name="pdetail"
-								class="form-control form-control-lg" /> <small id="detailError"></small>
+								class="form-control form-control-lg" value="${pdetail}" /> <small id="detailError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
 							<label class="form-label" for="pcatno">카테고리</label>
 							<div class="col">
-								<input type="radio" id="glasses" name="pcatno" value=1 checked />
+								<input type="radio" id="glasses" name="pcatno" value=1 ${pcatno==="1"? "checked" : ""}/>
 								<label for="glasses">안경</label>
 							</div>
 							<div class="col">
-								<input type="radio" id="sunglasses" name="pcatno" value=2 /> <label
+								<input type="radio" id="sunglasses" name="pcatno" value=2 ${pcatno==="2"? "checked" : ""} /> <label
 									for="sunglasses">선글라스</label>
 							</div>
 							<small id="categoryError"></small>
@@ -171,4 +171,14 @@ const editProduct = document.querySelector('#productModal');
 		<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>`
     }
 
- 
+//	<div data-mdb-input-init class="form-outline mb-4">
+//	<label class="form-label" for="pattach">썸네일 사진</label> <input
+//		type="file" id="pattach" name="pattach"
+//		class="form-control form-control-lg" /> <small id="imageError"></small>
+//</div>
+//<div data-mdb-input-init class="form-outline mb-4">
+//	<label class="form-label" for="ptattach">상품 사진</label> <input
+//		type="file" id="ptattach" name="ptattach"
+//		class="form-control form-control-lg" multiple="multiple" value="${ptattach}" /> <small
+//		id="imageError"><a href="#">file1</a></small>
+//</div>	

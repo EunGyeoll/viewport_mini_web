@@ -60,6 +60,11 @@ public class ProductService {
 
 	}
 
+	public void updateProductImg(Photos photos) {
+		// TODO Auto-generated method stub
+		
+	}
+
 //	public void updateProductImg(Photos photos) {
 //		int rowNum = photosDao.updateImg(photos);
 //

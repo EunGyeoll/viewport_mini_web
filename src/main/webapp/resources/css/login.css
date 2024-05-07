@@ -38,6 +38,7 @@ body {
 .logintitle{
     margin-bottom: 50px;
     MARGIN-TOP:70PX;
+    font-size:40px;
 }
 
 .login-rememberbox{
@@ -65,7 +66,7 @@ form {
   border: 0;
   outline: none;
   border-radius: 20px;
-  box-shadow: 8px 5px 10px #babebc, inset 8px -2px 18px #e4e3e3;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
         /* input {
@@ -83,8 +84,8 @@ form {
   
   input:focus {
     outline-color: rgb(34, 34, 34);
-    background: rgba(216, 216, 216, 0.521);
-    color: #000000;
+    background: #f3f3f3;
+    color: #000;
     border-color: #000;
   }
 

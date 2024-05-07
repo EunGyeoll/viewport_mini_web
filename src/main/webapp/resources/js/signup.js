@@ -16,8 +16,8 @@ const elRoadAddress = document.querySelector("#roadAddress");
 const elRoadAddressDetail = document.querySelector("#roadAddressDetail");
 const elResults = document.querySelectorAll(".el_result");
 
-const modal = document.querySelector("modal");
-
+/*const modal = document.querySelector("modal");
+*/
 $('#emailCheck').click(function(e){
 	e.preventDefault();
 	$('#modal').modal("show");
@@ -27,6 +27,7 @@ $('#emailCheck').click(function(e){
 //회원가입 버튼을 제출하면 유효성 검사가 실행되도록 addEventListner 사용
 form1.addEventListener('submit', function (e) {
     event.preventDefault(); //
+    console.log("회원가입실행")
 
     let resultCheck = true; // resultCheck가 true이면 이 유효성검사가 실행되게 한다는 일종의 flag표시
 
@@ -183,11 +184,19 @@ form1.addEventListener('submit', function (e) {
 
 email2.addEventListener("change", (event) => {
     console.log(event.target.value);
-    if (event.target.value == "type") {
-        // email3.className = "show"; 
-        email3.className = "show";
+    if (event.target.value === "type") {
+/*    	email2.disabled = true*/
+        email3.classList.remove("hide");
+        email3.classList.add("show", "form-control"); // form-control 클래스 추가
+        // 직접 입력하기가 선택되었을 때, email3을 email2 옆에 배치
+        email3.parentNode.parentNode.classList.remove("mb-4"); // email2가 감싸고 있는 div의 margin-bottom 제거
+        email3.parentNode.parentNode.classList.add("d-flex", "align-items-start"); // email2가 감싸고 있는 div를 flex로 설정하고, 아이템을 상단 정렬
     } else {
-        email3.className = "hide"
+        email3.classList.remove("show", "form-control"); // form-control 클래스도 제거
+        email3.classList.add("hide");
+        // 직접 입력하기가 선택되지 않았을 때, email3의 숨김 클래스 제거
+        email3.parentNode.parentNode.classList.add("mb-4"); // email2가 감싸고 있는 div의 margin-bottom 복원
+        email3.parentNode.parentNode.classList.remove("d-flex", "align-items-start"); // email2가 감싸고 있는 div의 flex 속성 제거
     }
 });
 

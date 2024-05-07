@@ -22,4 +22,6 @@ public interface UserDao {
 
   public int deleteByUsid(int usid);
 
+  public int updateByUemail(Users user);
+
 }

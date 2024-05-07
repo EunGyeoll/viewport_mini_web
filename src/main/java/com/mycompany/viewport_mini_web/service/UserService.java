@@ -33,7 +33,6 @@ public class UserService {
   public void signup(Users user) {
     PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
     user.setUpassword(passwordEncoder.encode(user.getUpassword()));
-    
     user.setUenabled(true);
     userDao.insert(user);
     
@@ -53,5 +52,9 @@ public class UserService {
   public Users getUser(String uemail) {
     Users user = userDao.selectByUemail(uemail);
     return user;
+  }
+  public void updateMyPageData(Users user) {
+   int rowNum = userDao.updateByUemail(user);
+    
   }
 }

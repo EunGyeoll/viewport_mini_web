@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,19 +43,30 @@
 								<h4 class="card-title">프로필 정보</h4>
 								<form id="myPageInfo" method="post" action="mypage/myPageInfo">
 									<div class="mb-3">
-										<label for="user-name" class="form-label">이름</label> <input type="text" class="form-control" id="user-name" value="${user.uname }">
+										<label for="user-name" class="form-label">이름</label> <input type="text" class="form-control" name="uname" id="uname" value="${user.uname}">
 									</div>
 									<div class="mb-3">
-										<label for="user-email" class="form-label">이메일</label> <input type="email" class="form-control" id="user-email" value="${user.uemail}">
+										<label for="user-email" class="form-label">이메일</label> <input type="email" class="form-control" name="uemail" id="user-email" value="${user.uemail}">
 									</div>
 									<div class="mb-3">
-										<label for="user-address" class="form-label">기본주소</label> <input type="text" class="form-control" id="user-address" value="${user.uaddress }">
+										<label for="user-address" class="form-label">기본주소</label> <input type="text" class="form-control" name="uaddress" id="user-address" value="${user.uaddress }">
 									</div>
 									<div class="mb-3">
-										<label for="user-addressdetail" class="form-label">상세주소</label> <input type="text" class="form-control" id="user-address-detail" value="${user.uaddressdetail }">
+										<label for="user-addressdetail" class="form-label">상세주소</label> <input type="text" class="form-control" name="uaddressdetail" id="user-address-detail" value="${user.uaddressdetail }">
 									</div>
 									<div class="mb-3">
-										<label for="user-phonenumber" class="form-label">전화번호</label> <input type="text" class="form-control" id="user-phone-number" value="${user.uphonenumber}">
+										<label for="user-phonenumber" class="form-label">전화번호</label> <input type="text" class="form-control" name="uphonenumber" id="user-phone-number" value="${user.uphonenumber}">
+									</div>
+										<div class="mb-3">
+										<label class="form-label" for="ugender">성별</label> 
+										<c:if test="${user.ugender== 'true'}">
+										<input type="radio" id="man" name="ugender" value="true" checked/>남자
+										<input type="radio" id="woman" name="ugender" value="false" />여자 <small id="birthError"></small>
+										</c:if>
+										<c:if test="${user.ugender== 'false'}">
+										<input type="radio" id="man" name="ugender" value="true" />남자
+										<input type="radio" id="woman" name="ugender" value="false" checked/>여자 <small id="birthError"></small>
+										</c:if>
 									</div>
 									<button type="submit" class="btn btn-dark">저장하기</button>
 								</form>

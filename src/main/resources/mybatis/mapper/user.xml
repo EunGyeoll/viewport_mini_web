@@ -56,5 +56,8 @@
 		where rnum >= #{startRowNo}
 		]]>
 	</select>
-
+<update id="updateByUemail">
+update users set uname=#{uname},uemail=#{uemail},ugender=#{ugender},uphonenumber=#{uphonenumber},uaddress=#{uaddress},uaddressdetail=#{uaddressdetail}
+	where uemail=#{uemail}
+</update>
 </mapper>

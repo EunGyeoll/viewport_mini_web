@@ -28,8 +28,10 @@ public class mypageController {
   }
   
   @PostMapping("/myPageInfo")
-  public String mypageInfo() {
+  public String mypageInfo(Users user) {
     log.info("실행");
+    log.info(user.toString());
+    userService.updateMyPageData(user);
     return "redirect:/mypage";
   }
 }

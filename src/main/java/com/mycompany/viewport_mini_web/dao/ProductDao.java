@@ -8,17 +8,17 @@ import com.mycompany.viewport_mini_web.dto.Product;
 import lombok.extern.slf4j.Slf4j;
 
 @Mapper
-public interface ProductDao {
+public interface ProductDao { // 이름 직관적으로 + 나중에 수정
 	public int insert(Product product);
 
 	public int selectCurrPid();
 
 	public List<Product> selectProductList();
 
-	public int deleteByPid(int pid);
-
-/*	public Product selectByPid(int pid);
-	public Product selectPattachData(int pid);*/
+	public Product selectByPid(int pid);
+	public Product selectPattachData(int pid);
 
 	public int update(Product product);
+	
+	public int deleteByPid(int pid);
 }

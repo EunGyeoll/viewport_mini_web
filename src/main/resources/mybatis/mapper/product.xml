@@ -29,6 +29,16 @@
 		from product p
 
 	</select>
+	
+	<select id="selectByPid" parameterType="int" resultType="Product">
+		pid,pname,pprice,pinfo,pdetail,pcatno,pattachoname,pattachtype
+		from product
+		where pid=#{pid}
+	</select>
+	
+	<select id="selectPattachData" parameterType="int" resultType="Product">
+		select pattachdata from product where pid=#{pid}
+	</select>	
 
 	<update id="update" parameterType="Product">
 		update product set

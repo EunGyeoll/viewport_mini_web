@@ -2,8 +2,10 @@ package com.mycompany.viewport_mini_web.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -171,9 +173,9 @@ public class AdminController {
 //    os.close();
 //  }
 
-/*	@GetMapping("/attachProduct")
+	@GetMapping("/attachProduct")
 	public void attachProduct(int pid, HttpServletResponse response) throws Exception {
-		// 다운로드할 데이터를 준비
+		// 데이터 준비
 		Product product = productService.getProduct(pid);
 		byte[] data = productService.getPattachData(pid);
 
@@ -187,7 +189,7 @@ public class AdminController {
 		os.write(data);
 		os.flush();
 		os.close();
-	}*/
+	}
 
 	@PostMapping("/editProduct")
 	public String editProduct(Product product, Photos photos) throws IOException {

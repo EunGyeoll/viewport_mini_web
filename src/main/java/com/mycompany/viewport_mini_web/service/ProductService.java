@@ -40,7 +40,7 @@ public class ProductService {
 	}
 
 
-/*	public Product getProduct(int pid) {
+	public Product getProduct(int pid) {
 		Product product = productDao.selectByPid(pid);
 		return product;
 	}
@@ -48,7 +48,7 @@ public class ProductService {
 	public byte[] getPattachData(int pid) {
 		Product product = productDao.selectPattachData(pid);
 		return product.getPattachdata();
-	}*/
+	}
 
 	public void updateProduct(Product product) {
 		int rowNum = productDao.update(product);

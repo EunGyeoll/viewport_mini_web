@@ -11,12 +11,20 @@ const email2 = document.querySelector("#signupEmail2");
 const emailSelect = document.querySelector("#emailSelect"); //select
 const email3 = document.querySelector("#signupEmail3"); //이메일 직접 입력받는칸
 const gender = document.querySelector("input[type=radio]");
-const uzonecode = document.querySelector("#zonecode");
-const uaddress = document.querySelector("#uaddress");
-const uaddressdetail = document.querySelector("#uaddressdetail");
+const elZonecode = document.querySelector("#zonecode");
+const elRoadAddress = document.querySelector("#roadAddress");
+const elRoadAddressDetail = document.querySelector("#roadAddressDetail");
 const elResults = document.querySelectorAll(".el_result");
-const formData = new FormData(document.getElementById('signupForm'));
-/*//회원가입 버튼을 제출하면 유효성 검사가 실행되도록 addEventListner 사용
+
+const modal = document.querySelector("modal");
+
+$('#emailCheck').click(function(e){
+	e.preventDefault();
+	$('#modal').modal("show");
+});
+
+	
+//회원가입 버튼을 제출하면 유효성 검사가 실행되도록 addEventListner 사용
 form1.addEventListener('submit', function (e) {
     event.preventDefault(); //
 
@@ -24,7 +32,7 @@ form1.addEventListener('submit', function (e) {
 
   
     //아이디
-    const idPattern = /^[a-z]+[a-z0-9]{4,10}$/g; //영어 대소문자 5~10자
+/*    const idPattern = /^[a-z]+[a-z0-9]{4,10}$/g; //영어 대소문자 5~10자
 
     const idError = document.querySelector("#idError");
     const idResult = idPattern.test(id.value);
@@ -36,23 +44,52 @@ form1.addEventListener('submit', function (e) {
         idError.classList.add("text-danger");
         
         resultCheck = false;
-    }
+    }*/
 
     
 
     //이메일
     const emailPattern = /^[a-zA-Z0-9]*$/; //영어 대소문자와 숫자만 허용
     const emailError = document.querySelector("#emailError");
-    console.log(email1.value+email2.value);
-    const emailResult = emailPattern.test(email1.value+email2.value);
+    const emailResult = emailPattern.test(email1.value);
 
     if(email1.value == "" || !emailResult) {
+       console.log("이메일");
         const emailError = document.querySelector("#emailError")
         emailError.innerHTML = "올바른 이메일을 입력해 주세요";
         emailError.classList.add("text-danger");
-    }
+    } else emailError.innerHTML = "";
 
+    
+//    if(email3.value == "" && emailSelect.value("type")) {
+//        const emailError = document.querySelector("#emailError")
+//        emailError.innerHTML = "올바른 이메일을 입력해 주세요";
+//        emailError.classList.add("text-danger");
+//    } else emailError.innerHTML = "";
 
+    
+ // 직접 입력한 도메인 유효성 검사
+//    $('#signupEmail2').change(function() {
+//        var selectedDomain = $(this).val();
+//        if (selectedDomain === 'type') {
+//            var customDomain = $('#signupEmail3').val();
+//            if (!isValidDomain(customDomain)) {
+//                alert('유효하지 않은 도메인입니다.');
+//                // 유효하지 않은 경우 도메인 입력 필드 초기화 또는 포커스
+//                $('#signupEmail3').val('').focus();
+//            }   
+//        }
+//    });
+//
+//          // 도메인 유효성 검사 함수
+//          function isValidDomain(domain) {
+//              // 여기서는 간단한 형식의 도메인 유효성을 검사합니다.
+//              // 실제로는 더 복잡한 정규 표현식을 사용해야 할 수 있습니다.
+//              // 예: /^[a-z0-9.-]+\.[a-z]{2,}$/i
+//              return /^[a-z0-9.-]+$/.test(domain);
+//          }
+//    
+    
     
     //패스워드
     const pwPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$/; //영어 대문자 소문자 숫자 필수 8~15자
@@ -82,12 +119,12 @@ form1.addEventListener('submit', function (e) {
     
     
     //이름
-    const namePattern = /^[a-z|A-Z|ㄱ-ㅎ|가-힣]*$/	; //영어 대소문자와 한글 허용
+    const namePattern = /^[a-z|A-Z|ㄱ-ㅎ|가-힣]*$/   ; //영어 대소문자와 한글 허용
     const nameError = document.querySelector("#nameError");
     const nameResult = namePattern.test(name.value);
     
     if (nameResult && email1.value != "") {
-    	nameError.innerHTML = "";
+       nameError.innerHTML = "";
     }
     else {
         nameError.innerHTML = "올바른 이름을 입력해 주세요";
@@ -105,7 +142,7 @@ form1.addEventListener('submit', function (e) {
     const birthResult = birthPattern.test(birth.value);
     console.log(birth.value);
     if (birthResult) {
-    	birthError.innerHTML = "";
+       birthError.innerHTML = "";
     }
     else {
         birthError.innerHTML = "올바른 생년월일을 입력해 주세요";
@@ -136,7 +173,7 @@ form1.addEventListener('submit', function (e) {
 
     //최종
     if (resultCheck) {
-        uemail: email
+        form1.submit();
     }
 
 });
@@ -216,7 +253,7 @@ birth.addEventListener("input", () => {
 
     birth.value = result;
 });
-*/
+
 
 // 주소검색창 열기 함수
 const onClickSearch = () => {
@@ -225,37 +262,9 @@ const onClickSearch = () => {
       // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
       // 예제를 참고하여 다양한 활용법을 확인해 보세요.
       console.log(data);
-      uzonecode.value = data.zonecode;
-      uaddress.value = data.address;
+      elZonecode.setAttribute("value", data.zonecode);
+      elRoadAddress.setAttribute("value", data.address);
     },
   }).open();
 };
-
-
-//회원가입 버튼을 클릭했을 때 호출되는 함수
-document.getElementById('signupButton').addEventListener('click', function(event) {
-    // 폼 전송을 중지하여 페이지가 새로고침되는 것을 방지
-    event.preventDefault();
-
-    // 회원가입 폼 데이터를 새로운 FormData 객체로 생성
-    const formData = new FormData(document.getElementById('signupForm'));
-
-    // 주소 데이터 업데이트
-    formData.set('uzonecode', uzonecode.value);
-    formData.set('uaddress', uaddress.value);
-
-    // 서버로 데이터 전송 로직
-    var xhr = new XMLHttpRequest();
-    var url = 'http://localhost:8080/viewport_mini_web/signup'; // 실제 컨트롤러의 URL을 입력하세요
-    xhr.open('POST', url, true);
-    xhr.onreadystatechange = function() {
-        if(xhr.readyState == 4 && xhr.status == 200) {
-            // 성공적으로 회원가입이 처리되었을 때의 처리
-            console.log('회원가입이 성공적으로 처리되었습니다.');
-            window.location.href = 'http://localhost:8080/viewport_mini_web/loginForm';
-        }
-    }
-    xhr.send(formData);
-});
-
 

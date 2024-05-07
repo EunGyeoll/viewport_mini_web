@@ -68,7 +68,7 @@ public class mypageController {
       userService.changePassword(uemail, newPw);
     }
 
-    return "redirect:/mypage";
+    return "redirect:/mypage?tab=password";
   }
 
 }

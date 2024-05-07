@@ -37,11 +37,12 @@
 			</div>
 			<div class="col-md-9 right-box">
 				<div class="tab-content">
-					<div class="tab-pane active" id="profile" role="tabpanel">
+					<div class="tab-pane" id="profile" role="tabpanel">
 						<div class="card">
 							<div class="card-body">
 								<h4 class="card-title">프로필 정보</h4>
-								<form id="myPageInfo" method="post" action="mypage/myPageInfo">
+								<form id="myPageInfo" method="post" action="mypage/myPageInfo?tab=profile">
+
 									<div class="mb-3">
 										<label for="user-name" class="form-label">이름</label> <input type="text" class="form-control" name="uname" id="uname" value="${user.uname}">
 									</div>
@@ -134,7 +135,7 @@
 						<div class="card">
 							<div class="card-body">
 								<h4 class="card-title">비밀번호 변경</h4>
-								<form method="post" action="mypage/passwordChange" data-bs-target="#password">
+								<form method="post" action="mypage/passwordChange?tab=password" data-bs-target="#password">
 								<h2>${pwError }</h2>
 									<div class="mb-3">
 										<label for="current-password" class="form-label">현재 비밀번호</label> <input type="password" name="currPw"class="form-control" id="current-password">
@@ -225,7 +226,7 @@
 						<div class="card">
 							<div class="card-body">
 								<h4 class="card-title">회원 탈퇴</h4>
-								<form method="post" action="mypage/deleteUserData">
+								<form method="post" action="mypage/deleteUserData?tab=deleteAccount">
 									<div class="mb-3">
 										<label for="current-password" class="form-label">비밀번호</label> <input type="password" name="currPw"class="form-control" id="current-password">
 									</div>
@@ -239,6 +240,7 @@
 		</div>
 	</div>
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
+	<script src = "/viewport_mini_web/resources/js/mypage.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

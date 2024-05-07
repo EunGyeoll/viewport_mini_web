@@ -63,7 +63,7 @@
 						<td>${product.pname}</td>
 						<td>${product.pprice}</td>
 						<td>
-							<img src="attachProduct?pid=${product.pid}" width="150" />
+							<img src="downloadFile?productImgName=${product.pattachsname}" width="150" />
 						</td>
 						<td>${product.pinfo}</td>
 						<td>${product.pdetail}</td>

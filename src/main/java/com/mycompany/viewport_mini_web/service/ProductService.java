@@ -40,15 +40,15 @@ public class ProductService {
 	}
 
 
-	public Product getProduct(int pid) {
-		Product product = productDao.selectByPid(pid);
-		return product;
-	}
-
-	public byte[] getPattachData(int pid) {
-		Product product = productDao.selectPattachData(pid);
-		return product.getPattachdata();
-	}
+//	public Product getProduct(int pid) {
+//		Product product = productDao.selectByPid(pid);
+//		return product;
+//	}
+//
+//	public byte[] getPattachData(int pid) {
+//		Product product = productDao.selectPattachData(pid);
+//		return product.getPattachdata();
+//	}
 
 	public void updateProduct(Product product) {
 		int rowNum = productDao.update(product);

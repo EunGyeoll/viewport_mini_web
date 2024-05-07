@@ -10,6 +10,7 @@ import lombok.Data;
 public class Photos {
   private int ptid;
   private String ptattachoname;
+  private String ptattachsname;
   private String ptattachtype;
   private byte[] ptattachdata;
   private int ptpid;

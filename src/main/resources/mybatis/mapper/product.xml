@@ -10,11 +10,11 @@
 		</selectKey>
 		insert into product(
 		pid, pname, pprice, pinfo, pdetail,
-		pcatno,pattachoname,pattachtype,pattachdata
+		pcatno,pattachoname,pattachsname,pattachtype,pattachdata
 		) values(
 		#{pid}, #{pname},
 		#{pprice}, #{pinfo}, #{pdetail},
-		#{pcatno},#{pattachoname},#{pattachtype},#{pattachdata}
+		#{pcatno},#{pattachoname},#{pattachsname},#{pattachtype},#{pattachdata}
 		)
 	</insert>
 
@@ -25,20 +25,10 @@
 
 	<select id="selectProductList" resultType="Product">
 		select
-		pid,pname,pprice,pinfo,pdetail,pcatno,pattachoname,pattachtype,p.pattachdata
+		pid,pname,pprice,pinfo,pdetail,pcatno,pattachsname,pattachtype,p.pattachdata
 		from product p
 
 	</select>
-	
-	<select id="selectByPid" parameterType="int" resultType="Product">
-		pid,pname,pprice,pinfo,pdetail,pcatno,pattachoname,pattachtype
-		from product
-		where pid=#{pid}
-	</select>
-	
-	<select id="selectPattachData" parameterType="int" resultType="Product">
-		select pattachdata from product where pid=#{pid}
-	</select>	
 
 	<update id="update" parameterType="Product">
 		update product set
@@ -46,6 +36,7 @@
 		<if test="pattachoname != null">
 				,
 				pattachoname=#{pattachoname},
+				pattachsname=#{pattachsname},
 				pattachtype=#{pattachtype},
 				pattachdata=#{pattachdata}
 		</if>		

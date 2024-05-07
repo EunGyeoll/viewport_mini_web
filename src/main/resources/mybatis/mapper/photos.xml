@@ -10,15 +10,16 @@
 		</selectKey>
 
 		insert into photos(
-		ptid,ptpid,ptattachoname,ptattachtype,ptattachdata
+		ptid,ptpid,ptattachoname,ptattachsname,ptattachtype,ptattachdata
 		) values(
-		#{ptid},#{ptpid},#{ptattachoname},#{ptattachtype},#{ptattachdata}
+		#{ptid},#{ptpid},#{ptattachoname},#{ptattachsname},#{ptattachtype},#{ptattachdata}
 		)
 	</insert>
 	
 	<update id="updateImg" parameterType="Photos">
 		update photos set
 				ptattachoname=#{ptattachoname},
+				ptattachsname=#{ptattachsname},
 				ptattachtype=#{ptattachtype},
 				ptattachdata=#{ptattachdata}		
 		where ptpid=#{ptpid}

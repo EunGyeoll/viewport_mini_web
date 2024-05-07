@@ -3,8 +3,13 @@ package com.mycompany.viewport_mini_web.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -62,7 +67,6 @@ public class AdminController {
 		Pager pager = new Pager(10, 10, rowsPagingTarget, intPageNo);
 
 		List<Users> users = usersService.getUserList(pager);
-		File destDir = new File("C:/Temp/uploadFiles");
 
 		model.addAttribute("pager", pager);
 		model.addAttribute("users", users);
@@ -74,6 +78,7 @@ public class AdminController {
 	public String adminProductsPage(Model model) {
 		List<Product> products = productService.getProductList();
 		File destDir = new File("C:/Temp/uploadFiles");
+		String[] productImgNames = destDir.list();
 		model.addAttribute("products", products);
 		return "admin/products";
 	}
@@ -124,25 +129,32 @@ public class AdminController {
 	public String createProduct(Product product, Photos photos) throws IOException {
 		// 요청 데이터의 유효성 검사
 		log.info("실행");
-		/*
-		 * log.info("original filename : " +
-		 * photos.getPattach()..getOriginalFilename()); log.info("filetype : " +
-		 * photos.getPattach().getContentType());
-		 */
+
 		product.setPattachoname(product.getPattach().getOriginalFilename());
 		product.setPattachtype(product.getPattach().getContentType());
 		product.setPattachdata(product.getPattach().getBytes());
 		log.info("" + product.getPattach().getContentType());
-		File destDir = new File("C:/Temp/uploadFiles");
-		if (!destDir.exists()) {
-			destDir.mkdirs();
+		File productDestDir = new File("D:/Temp/uploadProduct");
+		if (!productDestDir.exists()) {
+			productDestDir.mkdirs();
+		}
+		product.setPattachsname(new Date().getTime() + "-" + product.getPattach().getOriginalFilename());
+		
+		File photosDestDir = new File("D:/Temp/uploadPhotos");
+		if (!photosDestDir.exists()) {
+			photosDestDir.mkdirs();
 		}
 
-		File destFile = new File(destDir, product.getPattachoname());
+		File productDestFile = new File(productDestDir, product.getPattachsname());
+		product.getPattach().transferTo(productDestFile);
 		productService.createProduct(product);
 
 		List<MultipartFile> files = photos.getPtattach();
 		for (MultipartFile file : files) {
+			photos.setPtattachsname(new Date().getTime() + "-" + file.getOriginalFilename());
+			File photosDestFile = new File(photosDestDir, photos.getPtattachsname());
+			file.transferTo(photosDestFile);		
+			
 			photos.setPtattachoname(file.getOriginalFilename());
 			photos.setPtattachtype(file.getContentType());
 			photos.setPtattachdata(file.getBytes());
@@ -152,44 +164,27 @@ public class AdminController {
 
 		return "redirect:/admin/products";
 	}
-//  @GetMapping("/downloadFile")
-//  public void downloadFile(Product product, HttpServletRequest request,
-//      HttpServletResponse response) throws Exception {
-//    String filePath = "C:/Temp/uploadFiles/" + fileName;
-//    String fileType = request.getServletContext().getMimeType(fileName);
-//    // 한글로 되어 있는 파일 이름=> ISO-8859-1 문자셋으로 구성된 파일 이름
-//    fileName = new String(product.getPattachoname().getBytes("UTF-8"), "ISO-8859-1");
-//
-//    // 응답 헤더에 저장할 내용
-//    response.setContentType(fileType);
-//    response.setHeader("Content-Disposition",
-//        "attachment; filename=\"fileName\"" + fileName + "\" ");
-//    //응답 본문에 파일 데이터 출력
-//    OutputStream os = response.getOutputStream();
-//    Path path = Paths.get(filePath);
-//    Files.copy(path,os);
-//    
-//    os.flush();
-//    os.close();
-//  }
+	
+	@GetMapping("/downloadFile")
+	public void downloadFile(String productImgName, Product product, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		String filePath = "D:/Temp/uploadProduct/" + productImgName;
+		String fileType = request.getServletContext().getMimeType(productImgName);
+		// 한글로 되어 있는 파일 이름=> ISO-8859-1 문자셋으로 구성된 파일 이름
+		productImgName = new String(productImgName.getBytes("UTF-8"), "ISO-8859-1");
 
-	@GetMapping("/attachProduct")
-	public void attachProduct(int pid, HttpServletResponse response) throws Exception {
-		// 데이터 준비
-		Product product = productService.getProduct(pid);
-		byte[] data = productService.getPattachData(pid);
-
-		// 응답 헤더 구성
-		response.setContentType(product.getPattachtype());
-		String fileName = new String(product.getPattachoname().getBytes("UTF-8"), "ISO-8859-1");
-		response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
-
+		// 응답 헤더에 저장할 내용
+		response.setContentType(fileType);
+		response.setHeader("Content-Disposition", "attachment; filename=\"fileName\"" + productImgName + "\" ");
 		// 응답 본문에 파일 데이터 출력
 		OutputStream os = response.getOutputStream();
-		os.write(data);
+		Path path = Paths.get(filePath);
+		Files.copy(path, os);
+
 		os.flush();
 		os.close();
 	}
+
 
 	@PostMapping("/editProduct")
 	public String editProduct(Product product, Photos photos) throws IOException {
@@ -197,16 +192,32 @@ public class AdminController {
 		
 		// 첨부 파일이 있는지 여부 조사
 		if(product.getPattach() != null && !product.getPattach().isEmpty()) {
-			// DTO 추가 설정
+			File productDestDir = new File("D:/Temp/uploadProduct");
+			if (!productDestDir.exists()) {
+				productDestDir.mkdirs();
+			}
+			product.setPattachsname(new Date().getTime() + "-" + product.getPattach().getOriginalFilename());
+			File productDestFile = new File(productDestDir, product.getPattachsname());
+			product.getPattach().transferTo(productDestFile);
+			
 			product.setPattachoname(product.getPattach().getOriginalFilename());
 			product.setPattachtype(product.getPattach().getContentType());
 			product.setPattachdata(product.getPattach().getBytes());
+			
 		}
 		
 		if(photos.getPtattach() != null && !photos.getPtattach().isEmpty()) {
-
+			File photosDestDir = new File("D:/Temp/uploadPhotos");
+			if (!photosDestDir.exists()) {
+				photosDestDir.mkdirs();
+			}
+			
 			List<MultipartFile> files = photos.getPtattach();
 			for (MultipartFile file : files) {
+				photos.setPtattachsname(new Date().getTime() + "-" + file.getOriginalFilename());
+				File photosDestFile = new File(photosDestDir, photos.getPtattachsname());
+				file.transferTo(photosDestFile);					
+				
 				photos.setPtattachoname(file.getOriginalFilename());
 				photos.setPtattachtype(file.getContentType());
 				photos.setPtattachdata(file.getBytes());

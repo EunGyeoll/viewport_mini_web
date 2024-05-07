@@ -45,10 +45,10 @@ public class mypageController {
     log.info("실행");
     String uemail = principal.getName();
     Users user = userService.getUser(uemail);
-//    if(!userService.checkPassword(currPw, user.getUpassword())) {
-//      model.addAttribute("pwError", "기존 비밀번호가 일치하지 않음");
-//      return "redirect:/mypage";
-//    }
+    if(!userService.checkPassword(currPw, user.getUpassword())) {
+      model.addAttribute("pwError", "기존 비밀번호가 일치하지 않음");
+      return "redirect:/mypage";
+    }
     if (newPw.isEmpty() || !newPw.equals(newPwConfirm)) {
       model.addAttribute("pwError", "새로운 비밀번호가 일치하지 않음");
       return "redirect:/mypage";

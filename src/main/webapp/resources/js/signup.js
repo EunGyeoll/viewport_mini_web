@@ -11,29 +11,20 @@ const email2 = document.querySelector("#signupEmail2");
 const emailSelect = document.querySelector("#emailSelect"); //select
 const email3 = document.querySelector("#signupEmail3"); //이메일 직접 입력받는칸
 const gender = document.querySelector("input[type=radio]");
-const elZonecode = document.querySelector("#zonecode");
-const elRoadAddress = document.querySelector("#roadAddress");
-const elRoadAddressDetail = document.querySelector("#roadAddressDetail");
+const uzonecode = document.querySelector("#zonecode");
+const uaddress = document.querySelector("#uaddress");
+const uaddressdetail = document.querySelector("#uaddressdetail");
 const elResults = document.querySelectorAll(".el_result");
-
-/*const modal = document.querySelector("modal");
-*/
-$('#emailCheck').click(function(e){
-	e.preventDefault();
-	$('#modal').modal("show");
-});
-
-	
-//회원가입 버튼을 제출하면 유효성 검사가 실행되도록 addEventListner 사용
+const formData = new FormData(document.getElementById('signupForm'));
+/*//회원가입 버튼을 제출하면 유효성 검사가 실행되도록 addEventListner 사용
 form1.addEventListener('submit', function (e) {
     event.preventDefault(); //
-    console.log("회원가입실행")
 
     let resultCheck = true; // resultCheck가 true이면 이 유효성검사가 실행되게 한다는 일종의 flag표시
 
   
     //아이디
-/*    const idPattern = /^[a-z]+[a-z0-9]{4,10}$/g; //영어 대소문자 5~10자
+    const idPattern = /^[a-z]+[a-z0-9]{4,10}$/g; //영어 대소문자 5~10자
 
     const idError = document.querySelector("#idError");
     const idResult = idPattern.test(id.value);
@@ -45,52 +36,23 @@ form1.addEventListener('submit', function (e) {
         idError.classList.add("text-danger");
         
         resultCheck = false;
-    }*/
+    }
 
     
 
     //이메일
     const emailPattern = /^[a-zA-Z0-9]*$/; //영어 대소문자와 숫자만 허용
     const emailError = document.querySelector("#emailError");
-    const emailResult = emailPattern.test(email1.value);
+    console.log(email1.value+email2.value);
+    const emailResult = emailPattern.test(email1.value+email2.value);
 
     if(email1.value == "" || !emailResult) {
-       console.log("이메일");
         const emailError = document.querySelector("#emailError")
         emailError.innerHTML = "올바른 이메일을 입력해 주세요";
         emailError.classList.add("text-danger");
-    } else emailError.innerHTML = "";
+    }
 
-    
-//    if(email3.value == "" && emailSelect.value("type")) {
-//        const emailError = document.querySelector("#emailError")
-//        emailError.innerHTML = "올바른 이메일을 입력해 주세요";
-//        emailError.classList.add("text-danger");
-//    } else emailError.innerHTML = "";
 
-    
- // 직접 입력한 도메인 유효성 검사
-//    $('#signupEmail2').change(function() {
-//        var selectedDomain = $(this).val();
-//        if (selectedDomain === 'type') {
-//            var customDomain = $('#signupEmail3').val();
-//            if (!isValidDomain(customDomain)) {
-//                alert('유효하지 않은 도메인입니다.');
-//                // 유효하지 않은 경우 도메인 입력 필드 초기화 또는 포커스
-//                $('#signupEmail3').val('').focus();
-//            }   
-//        }
-//    });
-//
-//          // 도메인 유효성 검사 함수
-//          function isValidDomain(domain) {
-//              // 여기서는 간단한 형식의 도메인 유효성을 검사합니다.
-//              // 실제로는 더 복잡한 정규 표현식을 사용해야 할 수 있습니다.
-//              // 예: /^[a-z0-9.-]+\.[a-z]{2,}$/i
-//              return /^[a-z0-9.-]+$/.test(domain);
-//          }
-//    
-    
     
     //패스워드
     const pwPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$/; //영어 대문자 소문자 숫자 필수 8~15자
@@ -174,7 +136,7 @@ form1.addEventListener('submit', function (e) {
 
     //최종
     if (resultCheck) {
-        form1.submit();
+        uemail: email
     }
 
 });
@@ -184,19 +146,11 @@ form1.addEventListener('submit', function (e) {
 
 email2.addEventListener("change", (event) => {
     console.log(event.target.value);
-    if (event.target.value === "type") {
-/*    	email2.disabled = true*/
-        email3.classList.remove("hide");
-        email3.classList.add("show", "form-control"); // form-control 클래스 추가
-        // 직접 입력하기가 선택되었을 때, email3을 email2 옆에 배치
-        email3.parentNode.parentNode.classList.remove("mb-4"); // email2가 감싸고 있는 div의 margin-bottom 제거
-        email3.parentNode.parentNode.classList.add("d-flex", "align-items-start"); // email2가 감싸고 있는 div를 flex로 설정하고, 아이템을 상단 정렬
+    if (event.target.value == "type") {
+        // email3.className = "show"; 
+        email3.className = "show";
     } else {
-        email3.classList.remove("show", "form-control"); // form-control 클래스도 제거
-        email3.classList.add("hide");
-        // 직접 입력하기가 선택되지 않았을 때, email3의 숨김 클래스 제거
-        email3.parentNode.parentNode.classList.add("mb-4"); // email2가 감싸고 있는 div의 margin-bottom 복원
-        email3.parentNode.parentNode.classList.remove("d-flex", "align-items-start"); // email2가 감싸고 있는 div의 flex 속성 제거
+        email3.className = "hide"
     }
 });
 
@@ -262,7 +216,7 @@ birth.addEventListener("input", () => {
 
     birth.value = result;
 });
-
+*/
 
 // 주소검색창 열기 함수
 const onClickSearch = () => {
@@ -271,9 +225,36 @@ const onClickSearch = () => {
       // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
       // 예제를 참고하여 다양한 활용법을 확인해 보세요.
       console.log(data);
-      elZonecode.setAttribute("value", data.zonecode);
-      elRoadAddress.setAttribute("value", data.address);
+      uzonecode.value = data.zonecode;
+      uaddress.value = data.address;
     },
   }).open();
 };
+
+
+//회원가입 버튼을 클릭했을 때 호출되는 함수
+document.getElementById('signupButton').addEventListener('click', function(event) {
+    // 폼 전송을 중지하여 페이지가 새로고침되는 것을 방지
+    event.preventDefault();
+
+    // 회원가입 폼 데이터를 새로운 FormData 객체로 생성
+    const formData = new FormData(document.getElementById('signupForm'));
+
+    // 주소 데이터 업데이트
+    formData.set('uzonecode', uzonecode.value);
+    formData.set('uaddress', uaddress.value);
+
+    // 서버로 데이터 전송 로직
+    var xhr = new XMLHttpRequest();
+    var url = 'http://localhost:8080/viewport_mini_web/signup'; // 실제 컨트롤러의 URL을 입력하세요
+    xhr.open('POST', url, true);
+    xhr.onreadystatechange = function() {
+        if(xhr.readyState == 4 && xhr.status == 200) {
+            // 성공적으로 회원가입이 처리되었을 때의 처리
+            console.log('회원가입이 성공적으로 처리되었습니다.');
+            window.location.href = 'http://localhost:8080/viewport_mini_web/loginForm';
+        }
+    }
+    xhr.send(formData);
+});
 

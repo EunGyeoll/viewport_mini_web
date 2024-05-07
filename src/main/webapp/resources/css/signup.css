@@ -1,376 +1,29 @@
-
 @charset "UTF-8";
-*{  padding: 0;
+*{
+    padding: 0;
     margin: 0;
-    box-sizing: border-box;	
-    
+    box-sizing: border-box;
 }
-
-body {
-   font-family: "Roboto", sans-serif;
-  margin: 0;
-  padding: 0;
-  	min-height: 100vh;
-	vertical-align: middle;
-	 background:linear-gradient(to top, gray, white);
-}
-
-/* .wrapper {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #ffffff;
-  overflow: hidden;
-}	
- */
- 
-
-
-.card {
-	margin: auto;
-	max-width: 1000px;
-	width: 90%;
-	margin-top: 130px;
-	box-shadow: 0 5px 13px 0 rgba(0, 0, 0, 0.19);
-	border-radius: 20px;
-	border: transparent;
-	padding: 80px;
-}
-
-
 /* .card-registration .select-input.form-control[readonly]:not([disabled]) {
-    font-size: 70%;
+    font-size: 1rem;
     line-height: 2.15;
     padding-left: .75em;
     padding-right: .75em;
-    } 
+    } */
+    
     .card-registration .select-arrow {
     top: 13px;
-    } */
-    
-        .signup-card {
-      width:100%
-        padding:35px;	
     }
 
-/*     .form-outline{
-        max-height: 100px;
+    .form-outline{
+        height: 80px;
         
-    } */
-    
-    
+    }
    .hide{
     display: none;
     margin-top: 10px;
    }
 
-
-.container {    
-  border-radius: 10px;
-  box-shadow: 7px 8px 10px #dddddd, 5px 5px 30px #808080;
-  position: absolute;
-  width: 90%;
-  min-height: 800px;
-  overflow: hidden;
-  padding:30px;
-}	
-
-
-.signuptitle{
-	font-size: 70px;
-    margin-bottom: 27px;
- 	}
-
-.undersignuptitle{
-	font-size: 18px;
-    margin-bottom: 90px;
-   	color: #777777;
-     /*    font-weight: bold; */
- 	}
- 	
- 	
-.email-container {
-    position: relative;
-}
-
-.email-addon {
-    position: absolute;
-    left: 0;
-    top: 00%;
-    transform: translateY(100%);
-    transform: translateX(-90%);
-    padding: 0 5px;
-}
-
-/* .already{
-	text-align: right;
-}
- */
-
-/* .error-message {
-    color: red;
-    font-size: 12px;
-    margin-top: 2px;
-     margin-bottom: 20px;
-} */
-
-.emailCheck{
-margin:8px;
-height:45px;
-width:120px;
-border-radius:13px;
-background-color: #000;
- align-items: center;
-  justify-items: center;
-}
-
-		
-/*모달 팝업 영역 스타일링*/
-.modal {
-/*팝업 배경*/
-	display: none; /*평소에는 보이지 않도록*/
-    position: absolute;
-    top:0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    background: rgba(0,0,0,0.5);
-}
-.modal .modal_popup {
-/*팝업*/
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    background: #ffffff;
-    border-radius: 20px;
-}
-.modal .modal_popup .close_btn {
-    display: block;
-    padding: 10px 20px;
-    background-color: rgb(116, 0, 0);
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    transition: box-shadow 0.2s;
-}
-
-
-label{
-/* 	margin-bottom:10px; */
-	font-weight: bold;
-}  
-
-
-.form-control {
-  background: #ffffff;
-/*   margin: 8px 0; */
-  width: 100%;
-  height: 45px;
-	border: 1px solid #c0c0c0;
-  border-radius: 12px; 
-/*   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 부드러운 그림자 효과 */
-  padding: 0 15px; /* 내부 여백 */
-  font-size: 16px;
-  color: #606060; /* 글자 색상 */
-  transition: all 0.7s ease; /* 부드러운 전환 효과 */
-}
-
-	
-.form-control:hover {
-  background: #f0f8ff; 
-}	
-
-
-
-.form-control:focus {
-/*   border-color: rgb(173, 216, 230); 포커스 시 테두리 색상 변경
- */  box-shadow: 0 0 8px rgba(173, 216, 230, 0.5); /* 포커스 시 강조되는 그림자 효과 */
-   background: #f0f8ff; 
-}
-
-
-
-
-/* <!--안됨-->
-@media (min-width: 768px) {  .container {    width: 750px;  }}@media (min-width: 992px) {  .container {    width: 940px;  }}사실 이 
-/* 출처: https://dgkim5360.tistory.com/entry/bootstrap-adjust-container-width [개발새발로그:티스토리]
-
- */
-
-
-/* .signupbtn {
-  border-radius: 20px;
-  border: none;
-  outline: none;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 15px 45px;
-  margin: 14px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  cursor: pointer;
-     box-shadow: -5px -5px 10px #fff, 5px 5px 8px #babebc;
-    border-radius: 16	pX;
-    color: #ffffff;
-    background-color: #000000;
-    
-     }*/
-     
-    
-    
-			    /* 스위치 버튼 */
-			     
-			     .switchbtn {
-				  display: inline-flex;
-				  align-items: center;
-				  gap: 0.5rem;
-				  cursor: pointer;
-				}
-			     
-			 
-			 
-			     
-			 [type="checkbox"] {
-			  appearance: none;
-			  position: relative;
-			  border: max(2px, 0.1em) solid gray;
-			  border-radius: 1.25em;
-			  width: 2.25em;
-			  height: 1.25em;
-			}
-			
-			[type="checkbox"]::before {
-			  content: "";
-			  position: absolute;
-			  left: 0;
-			  width: 1em;
-			  height: 1em;
-			  border-radius: 50%;
-			  transform: scale(0.9);
-			  background-color: gray;
-			  transition: left 250ms linear;
-			}
-			
-			[type="checkbox"]:checked {
-			  background-color: #0080ff;
-			  border-color: #0080ff;
-			}
-			
-			[type="checkbox"]:checked::before {
-			  background-color: white;
-			  left: 1em;
-			}
-			
-			[type="checkbox"]:disabled {
-			  border-color: lightgray;
-			  opacity: 0.7;
-			  cursor: not-allowed;
-			}
-			
-			[type="checkbox"]:disabled:before {
-			  background-color: lightgray;
-			}
-			
-			[type="checkbox"]:disabled + span {
-			  opacity: 0.7;
-			  cursor: not-allowed;
-			}
-			
-			[type="checkbox"]:focus-visible {
-			  outline-offset: max(2px, 0.1em);
-			  outline: max(2px, 0.1em) solid tomato;
-			}
-			
-			[type="checkbox"]:enabled:hover {
-			  box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
-			}
-			
-			/* Global CSS */
-			
-			
-			fieldset {
-			  border: none;
-			  display: flex;
-			  flex-direction: column;
-			  gap: 0.5rem;
-			}
-			
-			*,
-			*::before,
-			*::after {
-			  box-sizing: border-box;
-			}    
-			     
-     
- .signupbtn {
-    border-radius: 40px;
-  border: none;
-  outline: none;
-  font-size: 20px;
-  font-weight: bold;
-  padding: 10px 30px; 
-  margin: 14px;
-  letter-spacing: 0.9px;	
-  cursor: pointer;
-  color: #ffffff;
-  background-color: #0080ff;
-    box-shadow: -2px -3px 5px #fff, 2px 2px 8px #babebc;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.signupbtn:before {
-  content: '';
-  position: absolute;
-  top: -50px;
-  left: -20px;
-  right: -20px;
-  bottom: -20px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 40px;
-  z-index: -1;
-  transition: all 0.3s ease;
-}
-
-.signupbtn:hover {
-  box-shadow: 0 0 50px rgba(255, 255, 255, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.5);
-
-}
-
-.signupbtn:hover::before {
-  top: -30px;
-  left: -30px;
-  right: -30px;
-  bottom: -30px;
-}
-
-.resetbtn {
-	
-	border-radius: 40px;
-	border: none;
-	outline: none;
-	font-size: 18px;
-	/*   font-weight: bold; */
-	  padding: 10px 30px; 
-	margin: 14px;
-	cursor: pointer;
-	box-shadow: -5px -5px 10px #fff, 5px 5px 8px #babebc;
-	color: #a8a8a8;
-	background-color: #f4f4f4;
-	transition: all 0.5s ease;
-	}
-
-
-.resetbtn:hover {
-  box-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
-
-}
       /* 주소 */
          .el_ttl {
         font-size: 18px;
@@ -388,11 +41,11 @@ label{
 
         padding: 10px;
         background: #333333;
-        border-radius: 	7px;
+        border-radius: 5px;
         color: #ffffff;
 
         font-family: Noto Sans KR;
-/*         letter-spacing: -0.04em; */
+        letter-spacing: -0.04em;
         text-align: left;
 
         width: fit-content;
@@ -456,5 +109,3 @@ label{
       .hp_shrink-0 {
         flex-shrink: 0;
       }
-
-

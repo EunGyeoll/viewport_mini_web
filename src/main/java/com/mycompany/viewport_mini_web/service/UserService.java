@@ -67,12 +67,12 @@ public class UserService {
 
   public void changePassword(String uemail, String upassword) {
     PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-    upassword = passwordEncoder.encode(upassword);
+   upassword = passwordEncoder.encode(upassword);
     int rowNum = userDao.updatePasswordByUemail(uemail,upassword);
   }
 
-//  public boolean checkPassword(String rawPassword, String encodedPassword) {
-//  
-//    return passwordEncoder.matches(rawPassword,encodedPassword);
-//  }
+  public boolean checkPassword(String rawPassword, String encodedPassword) {
+  PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    return passwordEncoder.matches(rawPassword,encodedPassword);
+  }
 }

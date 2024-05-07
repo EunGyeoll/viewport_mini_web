@@ -60,4 +60,7 @@
 update users set uname=#{uname},uemail=#{uemail},ugender=#{ugender},uphonenumber=#{uphonenumber},uaddress=#{uaddress},uaddressdetail=#{uaddressdetail}
 	where uemail=#{uemail}
 </update>
+<update id="updatePasswordByUemail" parameterType="hashMap">
+	update users set upassword=#{upassword} where uemail=#{uemail}
+</update>
 </mapper>

@@ -2,6 +2,7 @@ package com.mycompany.viewport_mini_web.dao;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import com.mycompany.viewport_mini_web.dto.Pager;
 import com.mycompany.viewport_mini_web.dto.Users;
 
@@ -23,5 +24,7 @@ public interface UserDao {
   public int deleteByUsid(int usid);
 
   public int updateByUemail(Users user);
+
+  public int updatePasswordByUemail(@Param("uemail") String uemail,@Param("upassword") String upassword);
 
 }

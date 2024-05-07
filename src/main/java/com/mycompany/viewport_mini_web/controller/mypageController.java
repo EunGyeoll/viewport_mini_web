@@ -1,5 +1,7 @@
 package com.mycompany.viewport_mini_web.controller;
 
+import java.security.Principal;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,27 +13,49 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.mycompany.viewport_mini_web.dto.Users;
 import com.mycompany.viewport_mini_web.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @Slf4j
 @RequestMapping("/mypage")
 public class mypageController {
   @Autowired
   private UserService userService;
-  
+
   @GetMapping("")
-  public String mypage(Model model) {
-    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    String uemail = authentication.getName();
+  public String mypage(Model model, Principal principal) {
+    String uemail = principal.getName();
+
     Users user = userService.getUser(uemail);
-    model.addAttribute("user",user);
+    model.addAttribute("user", user);
     return "mypage/mypage";
   }
-  
+
   @PostMapping("/myPageInfo")
   public String mypageInfo(Users user) {
     log.info("실행");
     log.info(user.toString());
     userService.updateMyPageData(user);
+    return "redirect:/mypage";
+  }
+
+  @Transactional
+  @PostMapping("/passwordChange")
+  public String passwordChange(String currPw, String newPw, String newPwConfirm, Model model,
+      Principal principal) {
+    log.info("실행");
+    String uemail = principal.getName();
+    Users user = userService.getUser(uemail);
+//    if(!userService.checkPassword(currPw, user.getUpassword())) {
+//      model.addAttribute("pwError", "기존 비밀번호가 일치하지 않음");
+//      return "redirect:/mypage";
+//    }
+    if (newPw.isEmpty() || !newPw.equals(newPwConfirm)) {
+      model.addAttribute("pwError", "새로운 비밀번호가 일치하지 않음");
+      return "redirect:/mypage";
+    } else {
+      userService.changePassword(uemail,newPw);
+    }
+
     return "redirect:/mypage";
   }
 }

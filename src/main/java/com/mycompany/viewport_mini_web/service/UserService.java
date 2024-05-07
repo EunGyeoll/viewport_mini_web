@@ -20,41 +20,59 @@ public class UserService {
     int rowNum = userDao.insert(user);
     log.info("rowNum: " + rowNum + ", bno: " + user.getUname());
   }
+
   public List<Users> getUserList(Pager pager) {
     List<Users> userList = userDao.selectByPage(pager);
     return userList;
   }
+
   public int getTotalRows() {
-      int totalRows = userDao.count();
-      return totalRows;
+    int totalRows = userDao.count();
+    return totalRows;
   }
 
-  
+
   public void signup(Users user) {
     PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
     user.setUpassword(passwordEncoder.encode(user.getUpassword()));
     user.setUenabled(true);
     userDao.insert(user);
-    
+
   }
+
   public List<Users> getUserList() {
     List<Users> users = userDao.selectuserAll();
     return users;
   }
+
   public void updateUserData(Users user) {
     int rowNum = userDao.update(user);
-    
+
   }
+
   public void removeUser(int usid) {
     int rowNum = userDao.deleteByUsid(usid);
-    
+
   }
+
   public Users getUser(String uemail) {
     Users user = userDao.selectByUemail(uemail);
     return user;
   }
+
   public void updateMyPageData(Users user) {
-   int rowNum = userDao.updateByUemail(user);
-    
+    int rowNum = userDao.updateByUemail(user);
+
   }
+
+  public void changePassword(String uemail, String upassword) {
+    PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    upassword = passwordEncoder.encode(upassword);
+    int rowNum = userDao.updatePasswordByUemail(uemail,upassword);
+  }
+
+//  public boolean checkPassword(String rawPassword, String encodedPassword) {
+//  
+//    return passwordEncoder.matches(rawPassword,encodedPassword);
+//  }
 }

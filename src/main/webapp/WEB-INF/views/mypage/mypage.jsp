@@ -57,15 +57,15 @@
 									<div class="mb-3">
 										<label for="user-phonenumber" class="form-label">전화번호</label> <input type="text" class="form-control" name="uphonenumber" id="user-phone-number" value="${user.uphonenumber}">
 									</div>
-										<div class="mb-3">
-										<label class="form-label" for="ugender">성별</label> 
+									<div class="mb-3">
+										<label class="form-label" for="ugender">성별</label>
 										<c:if test="${user.ugender== 'true'}">
-										<input type="radio" id="man" name="ugender" value="true" checked/>남자
+											<input type="radio" id="man" name="ugender" value="true" checked />남자
 										<input type="radio" id="woman" name="ugender" value="false" />여자 <small id="birthError"></small>
 										</c:if>
 										<c:if test="${user.ugender== 'false'}">
-										<input type="radio" id="man" name="ugender" value="true" />남자
-										<input type="radio" id="woman" name="ugender" value="false" checked/>여자 <small id="birthError"></small>
+											<input type="radio" id="man" name="ugender" value="true" />남자
+										<input type="radio" id="woman" name="ugender" value="false" checked />여자 <small id="birthError"></small>
 										</c:if>
 									</div>
 									<button type="submit" class="btn btn-dark">저장하기</button>
@@ -134,12 +134,16 @@
 						<div class="card">
 							<div class="card-body">
 								<h4 class="card-title">비밀번호 변경</h4>
-								<form>
+								<form method="post" action="mypage/passwordChange" data-bs-target="#password">
+								<h2>${pwError }</h2>
 									<div class="mb-3">
-										<label for="current-password" class="form-label">현재 비밀번호</label> <input type="password" class="form-control" id="current-password">
+										<label for="current-password" class="form-label">현재 비밀번호</label> <input type="password" name="currPw"class="form-control" id="current-password">
 									</div>
 									<div class="mb-3">
-										<label for="new-password" class="form-label">새 비밀번호</label> <input type="password" class="form-control" id="new-password">
+										<label for="new-password" class="form-label">새 비밀번호</label> <input type="password" name="newPw" class="form-control" id="new-password">
+									</div>
+									<div class="mb-3">
+										<label for="new-password-confirm" class="form-label">새 비밀번호 확인</label> <input type="password" name="newPwConfirm"class="form-control" id="new-password-confirm">
 									</div>
 									<button type="submit" class="btn btn-dark">변경하기</button>
 								</form>
@@ -223,10 +227,7 @@
 								<h4 class="card-title">회원 탈퇴</h4>
 								<form>
 									<div class="mb-3">
-										<label for="current-password" class="form-label">현재 비밀번호</label> <input type="password" class="form-control" id="current-password">
-									</div>
-									<div class="mb-3">
-										<label for="new-password" class="form-label">새 비밀번호</label> <input type="password" class="form-control" id="new-password">
+										<label for="current-password" class="form-label">비밀번호</label> <input type="password" class="form-control" id="current-password">
 									</div>
 									<button type="submit" class="btn btn-dark">탈퇴하기</button>
 								</form>

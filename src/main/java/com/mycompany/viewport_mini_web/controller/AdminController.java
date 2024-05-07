@@ -8,11 +8,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
 import java.util.List;
-
+import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.mycompany.viewport_mini_web.dto.Pager;
 import com.mycompany.viewport_mini_web.dto.Photos;
 import com.mycompany.viewport_mini_web.dto.Product;
@@ -28,7 +26,6 @@ import com.mycompany.viewport_mini_web.dto.Users;
 import com.mycompany.viewport_mini_web.service.CommonService;
 import com.mycompany.viewport_mini_web.service.ProductService;
 import com.mycompany.viewport_mini_web.service.UserService;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -77,7 +74,7 @@ public class AdminController {
 	@GetMapping("/products")
 	public String adminProductsPage(Model model) {
 		List<Product> products = productService.getProductList();
-		File destDir = new File("C:/Temp/uploadFiles");
+		File destDir = new File("C:/Temp/uploadProduct");
 		String[] productImgNames = destDir.list();
 		model.addAttribute("products", products);
 		return "admin/products";
@@ -127,48 +124,48 @@ public class AdminController {
 
 	@PostMapping("/createProduct")
 	public String createProduct(Product product, Photos photos) throws IOException {
-		// 요청 데이터의 유효성 검사
-		log.info("실행");
+	    log.info("실행");
 
-		product.setPattachoname(product.getPattach().getOriginalFilename());
-		product.setPattachtype(product.getPattach().getContentType());
-		product.setPattachdata(product.getPattach().getBytes());
-		log.info("" + product.getPattach().getContentType());
-		File productDestDir = new File("D:/Temp/uploadProduct");
-		if (!productDestDir.exists()) {
-			productDestDir.mkdirs();
-		}
-		product.setPattachsname(new Date().getTime() + "-" + product.getPattach().getOriginalFilename());
-		
-		File photosDestDir = new File("D:/Temp/uploadPhotos");
-		if (!photosDestDir.exists()) {
-			photosDestDir.mkdirs();
-		}
+	    product.setPattachoname(product.getPattach().getOriginalFilename());
+	    product.setPattachtype(product.getPattach().getContentType());
+	    byte[] productData = product.getPattach().getBytes();
+	    log.info("" + product.getPattach().getContentType());
+	    File productDestDir = new File("C:/Temp/uploadProduct");
+	    if (!productDestDir.exists()) {
+	        productDestDir.mkdirs();
+	    }
+	    product.setPattachsname(UUID.randomUUID().toString() + "-" + product.getPattach().getOriginalFilename());
+	    File productDestFile = new File(productDestDir, product.getPattachsname());
+	    product.getPattach().transferTo(productDestFile);
+	    product.setPattachdata(productData);
+	    productService.createProduct(product);
 
-		File productDestFile = new File(productDestDir, product.getPattachsname());
-		product.getPattach().transferTo(productDestFile);
-		productService.createProduct(product);
+	    File photosDestDir = new File("C:/Temp/uploadPhotos");
+	    if (!photosDestDir.exists()) {
+	        photosDestDir.mkdirs();
+	    }
+	    List<MultipartFile> files = photos.getPtattach();
+	    for (MultipartFile file : files) {
+	        byte[] photoData = file.getBytes();
+	        photos.setPtattachsname(UUID.randomUUID().toString() + "-" + file.getOriginalFilename());
+	        File photosDestFile = new File(photosDestDir, photos.getPtattachsname());
+	        file.transferTo(photosDestFile);
 
-		List<MultipartFile> files = photos.getPtattach();
-		for (MultipartFile file : files) {
-			photos.setPtattachsname(new Date().getTime() + "-" + file.getOriginalFilename());
-			File photosDestFile = new File(photosDestDir, photos.getPtattachsname());
-			file.transferTo(photosDestFile);		
-			
-			photos.setPtattachoname(file.getOriginalFilename());
-			photos.setPtattachtype(file.getContentType());
-			photos.setPtattachdata(file.getBytes());
-			productService.createProductImg(photos);
-		}
-		log.info("List<MultipartFile> files 실행 확인 : " + files);
+	        photos.setPtattachoname(file.getOriginalFilename());
+	        photos.setPtattachtype(file.getContentType());
+	        photos.setPtattachdata(photoData);
+	        productService.createProductImg(photos);
+	    }
+	    log.info("List<MultipartFile> files 실행 확인 : " + files);
 
-		return "redirect:/admin/products";
+	    return "redirect:/admin/products";
 	}
+
 	
 	@GetMapping("/downloadFile")
 	public void downloadFile(String productImgName, Product product, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		String filePath = "D:/Temp/uploadProduct/" + productImgName;
+		String filePath = "C:/Temp/uploadProduct/" + productImgName;
 		String fileType = request.getServletContext().getMimeType(productImgName);
 		// 한글로 되어 있는 파일 이름=> ISO-8859-1 문자셋으로 구성된 파일 이름
 		productImgName = new String(productImgName.getBytes("UTF-8"), "ISO-8859-1");

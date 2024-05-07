@@ -24,7 +24,6 @@ public class mypageController {
     String uemail = authentication.getName();
     Users user = userService.getUser(uemail);
     model.addAttribute("user",user);
-    log.info(user.toString());
     return "mypage/mypage";
   }
   

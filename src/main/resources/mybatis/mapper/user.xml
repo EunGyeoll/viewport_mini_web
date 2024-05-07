@@ -28,20 +28,22 @@
 		uemail,upassword,uname,ugender,uphonenumber,uaddress,uaddressdetail,urole,uenabled
 		from users
 	</select>
-	
+
 	<update id="update" parameterType="User">
-	update users set uname=#{uname},uemail=#{uemail},ugender=#{ugender},uphonenumber=#{uphonenumber},uaddress=#{uaddress},uaddressdetail=#{uaddressdetail},urole=#{urole}
-	where usid=#{usid}
+		update users set
+		uname=#{uname},uemail=#{uemail},ugender=#{ugender},uphonenumber=#{uphonenumber},uaddress=#{uaddress},uaddressdetail=#{uaddressdetail},urole=#{urole}
+		where usid=#{usid}
 	</update>
-	
+
 	<delete id="deleteByUsid" parameterType="int">
-	delete from users where usid=#{usid}
+		delete from users where usid=#{usid}
 	</delete>
 	<select id="count">
-	select count(*) from users
+		select count(*) from users
 	</select>
-	
-	<select id="selectByPage" parameterType="Pager" resultType="User">
+
+	<select id="selectByPage" parameterType="Pager"
+		resultType="User">
 		<![CDATA[
 		select usid,uname,uemail,upassword,uaddress,uaddressdetail,ugender,urole,uphonenumber 
 		from (
@@ -56,11 +58,16 @@
 		where rnum >= #{startRowNo}
 		]]>
 	</select>
-<update id="updateByUemail">
-update users set uname=#{uname},uemail=#{uemail},ugender=#{ugender},uphonenumber=#{uphonenumber},uaddress=#{uaddress},uaddressdetail=#{uaddressdetail}
-	where uemail=#{uemail}
-</update>
-<update id="updatePasswordByUemail" parameterType="hashMap">
-	update users set upassword=#{upassword} where uemail=#{uemail}
-</update>
+	<update id="updateByUemail">
+		update users set
+		uname=#{uname},uemail=#{uemail},ugender=#{ugender},uphonenumber=#{uphonenumber},uaddress=#{uaddress},uaddressdetail=#{uaddressdetail}
+		where uemail=#{uemail}
+	</update>
+	<update id="updatePasswordByUemail" parameterType="hashMap">
+		update users set upassword=#{upassword} where uemail=#{uemail}
+	</update>
+
+	<delete id="deleteByUemail" parameterType="String">
+	delete from users where uemail=#{uemail}
+	</delete>
 </mapper>

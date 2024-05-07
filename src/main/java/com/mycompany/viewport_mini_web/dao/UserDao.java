@@ -27,4 +27,6 @@ public interface UserDao {
 
   public int updatePasswordByUemail(@Param("uemail") String uemail,@Param("upassword") String upassword);
 
+  public int deleteByUemail(String uemail);
+
 }

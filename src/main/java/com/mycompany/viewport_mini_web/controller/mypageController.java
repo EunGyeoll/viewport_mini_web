@@ -38,6 +38,18 @@ public class mypageController {
     return "redirect:/mypage";
   }
 
+  @PostMapping("/deleteUserData")
+  public String deleteUserData(String currPw,Principal principal,Model model) {
+    String uemail = principal.getName();
+    Users user = userService.getUser(uemail);
+    if (!userService.checkPassword(currPw, user.getUpassword())) {
+      model.addAttribute("pwError", "기존 비밀번호가 일치하지 않음");
+      return "redirect:/mypage";
+    } else {
+      userService.removeUser(uemail);
+    }
+    return "redirect:/logout";
+  }
   @Transactional
   @PostMapping("/passwordChange")
   public String passwordChange(String currPw, String newPw, String newPwConfirm, Model model,
@@ -45,7 +57,7 @@ public class mypageController {
     log.info("실행");
     String uemail = principal.getName();
     Users user = userService.getUser(uemail);
-    if(!userService.checkPassword(currPw, user.getUpassword())) {
+    if (!userService.checkPassword(currPw, user.getUpassword())) {
       model.addAttribute("pwError", "기존 비밀번호가 일치하지 않음");
       return "redirect:/mypage";
     }
@@ -53,9 +65,10 @@ public class mypageController {
       model.addAttribute("pwError", "새로운 비밀번호가 일치하지 않음");
       return "redirect:/mypage";
     } else {
-      userService.changePassword(uemail,newPw);
+      userService.changePassword(uemail, newPw);
     }
 
     return "redirect:/mypage";
   }
+
 }

@@ -225,9 +225,9 @@
 						<div class="card">
 							<div class="card-body">
 								<h4 class="card-title">회원 탈퇴</h4>
-								<form>
+								<form method="post" action="mypage/deleteUserData">
 									<div class="mb-3">
-										<label for="current-password" class="form-label">비밀번호</label> <input type="password" class="form-control" id="current-password">
+										<label for="current-password" class="form-label">비밀번호</label> <input type="password" name="currPw"class="form-control" id="current-password">
 									</div>
 									<button type="submit" class="btn btn-dark">탈퇴하기</button>
 								</form>

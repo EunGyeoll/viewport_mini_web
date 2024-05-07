@@ -75,4 +75,9 @@ public class UserService {
   PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
     return passwordEncoder.matches(rawPassword,encodedPassword);
   }
+
+  public void removeUser(String uemail) {
+    int rowNum = userDao.deleteByUemail(uemail);
+    
+  }
 }

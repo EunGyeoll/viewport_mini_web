@@ -84,15 +84,15 @@
 						<th scope="row">${product.pid}</th>
 						<td>${product.pname}</td>
 						<td>${product.pprice}</td>
-						<td><img src="attachProduct?pid=${product.pid}" width="150" /></td>
+						<td><%-- <img src="attachProduct?pid=${product.pid}" width="150" /> --%></td>
 						<td>${product.pinfo}</td>
 						<td>${product.pdetail}</td>
 						<td>${product.pcatno}</td>
 						<td>
 							<button type="button"
 								class="btn btn-dark edit-btn btn-sm productDataEditBtn"
-								onclick="clickEventProduct('${product.pname}', ${product.pprice},'${product.pinfo}', ${product.pdetail}, '${product.pcatno}')"
-								data-bs-toggle="modal" data-bs-target="#editUserModal">상품 정보 수정
+								onclick="clickEventProduct('${product.pid}, ${product.pname}', ${product.pprice},'${product.pinfo}', ${product.pdetail}, '${product.pcatno}')"
+								data-bs-toggle="modal" data-bs-target="#editProductModal">상품 정보 수정
 							</button>
 							<button class="btn btn-danger edit-btn btn-sm"
 								data-bs-toggle="modal"
@@ -117,7 +117,7 @@
 
 	</section>
 	<!-- The Modal -->
-	<div class="modal" id="editUserModal">
+	<div class="modal" id="editProductModal">
 		<div class="modal-dialog">
 			<div class="modal-content">
 
@@ -128,11 +128,12 @@
 				</div>
 
 				<!-- Modal body -->
-				<form method="post" action="editProduct" class="model-body" id="productModal">
+				<form method="post" action="editProduct" class="modal-body" id="productModal">
 					<!-- js 출력 -->
 				</form>
 		</div>
 	</div>
+</div>
 	<div class="modal" id="createUserModal">
 		<div class="modal-dialog">
 			<div class="modal-content">

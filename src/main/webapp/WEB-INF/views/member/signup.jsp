@@ -23,13 +23,13 @@
                      <div class="col">
                         <div class="my-4">
                            <!-- Left Column - Image -->
-                           <div class="row g-0">
+                           <div class="row g-0 justify-content-center">
 
 
                               <!-- Right Column - Form -->
-                              <div class="col-xl-6">
+                              <div class="col-xl-6 card">
                                  <div class="card-body p-md-5 text-black">
-                                    <h1 class="mb-5 text-uppercase">
+                                    <h1 class="mb-2 text-uppercase">
                                        <b>Sign Up</b>
                                     </h1>
 
@@ -39,7 +39,7 @@
                                        <div class="row">
                                           <div class="col-md-8 mb-4">
                                              <div data-mdb-input-init class="form-outline">
-                                                <input type="text" id="uemail" name="uemail" class="form-control form-control-sm" /> <small id="emailError"></small>
+                                                <input type="text" id="uemail" name="uemail" class="form-control form-control-md" /> <small id="emailError"></small>
                                              </div>
                                           </div>
                                           <!--                <div class="col-md-4 mb-4">
@@ -67,7 +67,7 @@
                                     <!-- 패스워드 -->
                                     <div class="column d-flex">
                                        <div data-mdb-input-init class="column form-outline mb-4 me-3">
-                                          <label class="form-label" for="upassword">비밀번호</label> <input type="password" id="upassword" name="upassword" placeholder="영어 대,소문자 숫자 혼용하여 8~15자" class="form-control form-control-lg" /> <small id="pw1Error"></small>
+                                          <label class="form-label" for="upassword">비밀번호</label> <input type="password" id="upassword" name="upassword" placeholder="영어 대,소문자 숫자 혼용하여 8~15자" class="form-control form-control-md" /> <small id="pw1Error"></small>
                                        </div>
                                        <div data-mdb-input-init class="column form-outline mb-4">
                                           <label class="form-label" for="signupPwCheck">비밀번호 확인</label> <input type="password" id="signupPwCheck" placeholder="비밀번호 확인을 입력하세요" class="form-control form-control-md" /> <small id="pw2Error"></small>
@@ -76,7 +76,7 @@
 
                                     <!-- 이름 -->
                                     <div data-mdb-input-init class="form-outline mb-4">
-                                       <label class="form-label" for="uname">이름</label> <input type="text" id="uname" name="uname" class="form-control form-control-lg" maxlength="10" /> <small id="nameError"></small>
+                                       <label class="form-label" for="uname">이름</label> <input type="text" id="uname" name="uname" class="form-control form-control-md" maxlength="10" /> <small id="nameError"></small>
                                     </div>
 
                                     <!--    <div data-mdb-input-init class="form-outline mb-4">
@@ -86,8 +86,8 @@
                                           placeholder="YYYYMMDD" maxlength="10" /> <small
                                           id="birthError"></small>
                                     </div> -->
-                                    <div data-mdb-input-init class="form-outline mb-5">
-                                       <label class="form-label" for="signupPhoneNum">휴대폰 번호</label> <input type="text" id="uphonenumber" name="uphonenumber" class="form-control form-control-lg" placeholder="숫자를 입력하세요" maxlength="13" /> <small id="phoneNumError"></small>
+                                    <div data-mdb-input-init class="form-outline mb-3">
+                                       <label class="form-label" for="signupPhoneNum">휴대폰 번호</label> <input type="text" id="uphonenumber" name="uphonenumber" class="form-control form-control-md" placeholder="숫자를 입력하세요" maxlength="13" /> <small id="phoneNumError"></small>
                                     </div>
 
                                     <!-- 주소 -->
@@ -110,19 +110,19 @@
                                           <input class="form-check-input" type="radio" name="ugender" id="maleGender" value="0" /> <label class="form-check-label" for="ugender">남자</label>
                                        </div>
                                     </div>
-                                    <div class="d-flex justify-content-end pt-3">
-                                       <button type="reset" data-mdb-button-init data-mdb-ripple-init class="btn btn-light btn-lg border-">
-                                          <b>DELETE ALL</b>
+                                    <div class="d-flex justify-content-end">
+                                       <button type="reset" data-mdb-button-init data-mdb-ripple-init class="btn btn-light btn-md border-md">
+                                          <b>초기화</b>
                                        </button>
                                        <button type="submit" id="signupButton" data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-lg ms-2 border-radius: 50px">
-                                          <b>JOIN</b>
+                                          <b>회원가입</b>
                                        </button>
                                     </div>
                                  </div>
                               </div>
-                              <div class="col-xl-6 d-none d-xl-block">
-                                 <img src="/viewport_mini_web/resources/image/signup.jpg" alt="Sample photo" class="img-fluid" style="height: 100%; border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
-                              </div>
+                   <!--            <div class="col-xl-6 d-none d-xl-block">
+                                 <img src="/viewport_mini_web/resources/image/signup.jpg" alt="Sample photo" class="img-fluid" style="height: 80%; border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+                              </div> -->
                            </div>
 
 

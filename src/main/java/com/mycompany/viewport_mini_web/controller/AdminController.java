@@ -225,8 +225,6 @@ public class AdminController {
 		    }
 		    log.info("List<MultipartFile> files 실행 확인 : " + files);
 		}
-		
-		productService.updateProduct(product);
 
 		return "redirect:/admin/products";
 	}

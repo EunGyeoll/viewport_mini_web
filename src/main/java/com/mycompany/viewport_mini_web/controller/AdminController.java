@@ -189,42 +189,42 @@ public class AdminController {
 		
 		// 첨부 파일이 있는지 여부 조사
 		if(product.getPattach() != null && !product.getPattach().isEmpty()) {
-			File productDestDir = new File("C:/Temp/uploadProduct");
-			if (!productDestDir.exists()) {
-				productDestDir.mkdirs();
-			}
-			product.setPattachsname(new Date().getTime() + "-" + product.getPattach().getOriginalFilename());
-			File productDestFile = new File(productDestDir, product.getPattachsname());
-			product.getPattach().transferTo(productDestFile);
-			
-			product.setPattachoname(product.getPattach().getOriginalFilename());
-			product.setPattachtype(product.getPattach().getContentType());
-			product.setPattachdata(product.getPattach().getBytes());
+		    product.setPattachoname(product.getPattach().getOriginalFilename());
+		    product.setPattachtype(product.getPattach().getContentType());
+		    byte[] productData = product.getPattach().getBytes();
+		    log.info("" + product.getPattach().getContentType());
+		    File productDestDir = new File("C:/Temp/uploadProduct");
+		    if (!productDestDir.exists()) {
+		        productDestDir.mkdirs();
+		    }
+		    product.setPattachsname(UUID.randomUUID().toString() + "-" + product.getPattach().getOriginalFilename());
+		    File productDestFile = new File(productDestDir, product.getPattachsname());
+		    product.getPattach().transferTo(productDestFile);
+		    product.setPattachdata(productData);
+		    productService.updateProduct(product);
 			
 		}
 		
 		if(photos.getPtattach() != null && !photos.getPtattach().isEmpty()) {
-			File photosDestDir = new File("C:/Temp/uploadPhotos");
-			if (!photosDestDir.exists()) {
-				photosDestDir.mkdirs();
-			}
+		    File photosDestDir = new File("C:/Temp/uploadPhotos");
+		    if (!photosDestDir.exists()) {
+		        photosDestDir.mkdirs();
+		    }
 			
-			List<MultipartFile> files = photos.getPtattach();
-			for (MultipartFile file : files) {
-				photos.setPtattachsname(new Date().getTime() + "-" + file.getOriginalFilename());
-				File photosDestFile = new File(photosDestDir, photos.getPtattachsname());
-				file.transferTo(photosDestFile);					
-				
-				photos.setPtattachoname(file.getOriginalFilename());
-				photos.setPtattachtype(file.getContentType());
-				photos.setPtattachdata(file.getBytes());
-				photos.setPtpid(product.getPid());
-				log.info(file.getOriginalFilename());
-				
-				productService.updateProductImg(photos);
-			}
+		    List<MultipartFile> files = photos.getPtattach();
+		    for (MultipartFile file : files) {
+		        byte[] photoData = file.getBytes();
+		        photos.setPtattachsname(UUID.randomUUID().toString() + "-" + file.getOriginalFilename());
+		        File photosDestFile = new File(photosDestDir, photos.getPtattachsname());
+		        file.transferTo(photosDestFile);
+
+		        photos.setPtattachoname(file.getOriginalFilename());
+		        photos.setPtattachtype(file.getContentType());
+		        photos.setPtattachdata(photoData);
+		        productService.updateProductImg(photos);
+		    }
+		    log.info("List<MultipartFile> files 실행 확인 : " + files);
 		}
-		log.info("photos 실행");
 		
 		productService.updateProduct(product);
 

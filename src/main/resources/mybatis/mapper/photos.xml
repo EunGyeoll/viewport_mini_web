@@ -27,7 +27,7 @@
 				ptattachsname=#{ptattachsname},
 				ptattachtype=#{ptattachtype},
 				ptattachdata=#{ptattachdata}		
-		where ptpid=#{ptpid}
+		where ptid=#{ptid}
 	</update>	
 
 	<delete id="deleteByPtpid" parameterType="int">

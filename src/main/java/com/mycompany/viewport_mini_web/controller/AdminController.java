@@ -184,7 +184,7 @@ public class AdminController {
 
 
 	@PostMapping("/editProduct")
-	public String editProduct(Product product, Photos photos, int ptpid) throws IOException {
+	public String editProduct(Product product, Photos photos) throws IOException {
 		log.info("editProduct 실행");
 		
 		// 첨부 파일이 있는지 여부 조사
@@ -210,8 +210,7 @@ public class AdminController {
 		    if (!photosDestDir.exists()) {
 		        photosDestDir.mkdirs();
 		    }
-			List<Integer> ptids = productService.getPtids(ptpid);
-		    
+			List<Integer> ptids = productService.getPtids(product.getPid());
 		    List<MultipartFile> files = photos.getPtattach();
 		    int count = 0;
 		    

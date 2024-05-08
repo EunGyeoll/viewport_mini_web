@@ -73,17 +73,22 @@ textarea {
 		</div>
 
 		<div class="form-group">
-			<label for="quid">작성자</label> <input type="text" id="quid" name="quid" required>
+			<label for="qattach">첨부파일</label> <input type="file" id="qattach" name="qattach">
 		</div>
 		<div class="form-group">
-			<label for="qattach">첨부파일</label> <input type="file" id="qattach" name="qattach" >
+			<label for="qcategory">카테고리</label> <select id="qcategory" name="qcategory" class="form-control">
+				<option value="상품">상품</option>
+				<option value="주문">주문</option>
+				<option value="기타">기타</option>
+			</select>
 		</div>
 		<div class="form-group">
 			<label for="qcontent">내용</label>
 			<textarea id="qcontent" class="summernote" name="qcontent" required></textarea>
 		</div>
 		<div>
-			<button class="btn btn-dark mt-2" id="subBtn">글 작성</button> <input class="btn btn-dark mt-2" id="subBtn" type="button" value="취소">
+			<button class="btn btn-dark mt-2" id="subBtn">글 작성</button>
+			<input class="btn btn-dark mt-2" id="subBtn" type="button" value="취소">
 		</div>
 	</form>
 

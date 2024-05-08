@@ -31,9 +31,8 @@ $(document).ready(function() {
       processData: false, // Do not process data
       contentType: false, // Do not set content type
       cache: false,
-      success: function(data) {
-        console.log('Success:', data);
-        alert('제출 성공!');
+      success: function(response) {
+        window.location.href = response;
       },
       error: function(xhr, status, error) {
         console.error('Error:', error);

@@ -29,4 +29,6 @@ public interface UserDao {
 
   public int deleteByUemail(String uemail);
 
+  public String selectByUsid(int usid);
+
 }

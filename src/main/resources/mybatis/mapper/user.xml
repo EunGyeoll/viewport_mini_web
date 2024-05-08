@@ -70,4 +70,7 @@
 	<delete id="deleteByUemail" parameterType="String">
 	delete from users where uemail=#{uemail}
 	</delete>
+	<select id="selectByUsid" parameterType="int" resultType="String">
+	select uemail from users where usid =#{usid}
+	</select>
 </mapper>

@@ -1,7 +1,9 @@
 package com.mycompany.viewport_mini_web.controller;
 
+
 import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.mycompany.viewport_mini_web.dto.Qna;
 import com.mycompany.viewport_mini_web.service.BoardService;
+import com.mycompany.viewport_mini_web.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -21,6 +24,8 @@ import lombok.extern.slf4j.Slf4j;
 public class BoardController {
   @Autowired
   BoardService boardService;
+  @Autowired
+  UserService userService;
 
   @GetMapping("/writeQNA")
   public String CreateNewBoard() {
@@ -28,7 +33,12 @@ public class BoardController {
   }
 
   @GetMapping("/qnaList")
-  public String QnaList() {
+  public String QnaList(Model model) {
+    List<Qna> qnaList = boardService.getQnaList();
+    for(Qna qna : qnaList) {
+      qna.setQuemail(userService.getUserByUserId(qna.getQuserid()));
+    }
+    model.addAttribute("qnaList",qnaList);
     return "board/qnaList";
   }
 

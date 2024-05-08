@@ -1,5 +1,6 @@
 package com.mycompany.viewport_mini_web.service;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.mycompany.viewport_mini_web.dao.QnaDao;
@@ -14,11 +15,16 @@ public class BoardService {
   QnaDao boardDao;
   @Autowired
   UserDao userDao;
+  
   public void insertNewPost(Qna qna,String uemail) {
     int quserid = userDao.selectByUemail(uemail).getUsid();
     qna.setQuserid(quserid);
-    
     boardDao.insertNewPost(qna);
+  }
+
+  public List<Qna> getQnaList() {
+    List<Qna> qnaList =boardDao.selectQnaAll();
+    return qnaList;
   }
 
 }

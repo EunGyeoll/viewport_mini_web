@@ -18,6 +18,7 @@ public class Qna {
   private String qattachsname;
   private byte[] qattachdata;
   
+  private String quemail;
   private MultipartFile qattach;
   
 }

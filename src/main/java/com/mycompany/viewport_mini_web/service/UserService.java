@@ -80,4 +80,9 @@ public class UserService {
     int rowNum = userDao.deleteByUemail(uemail);
     
   }
+
+  public String getUserByUserId(int quserid) {
+    String uemail = userDao.selectByUsid(quserid);
+    return uemail;
+  }
 }

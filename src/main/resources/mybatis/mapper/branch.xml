@@ -3,13 +3,18 @@
 
 <mapper namespace="com.mycompany.viewport_mini_web.dao.BranchDao">
 
-<!-- 	<insert id="insert" parameterType="com.mycompany.view+">
-		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
-			select seq_bno.nextval from dual
+ 	<!-- 시퀀스 넣기 -->
+	<insert id="branch" parameterType="Branch">
+		<selectKey keyProperty="bnum" order="BEFORE" resultType="int">
+			select SEQ_BNUM.nextval from dual
 		</selectKey>
-		insert into board(bno, btitle, bcontent, bdate, mid, bhitcount) 	
-		values(#{bno}, #{btitle}, #{bcontent}, sysdate, #{mid}, 0)
-	</insert> -->
+		insert into branch(bnum, bname, baddress, binfo) 	
+		values(#{bnum}, #{bname}, #{baddress} #{binfo})
+	</insert>
 	
-
+	<select id="selectBranchAll" resultType="Branch"> <!-- board.xml에서 selectByBnum은 ..  -->
+		select bnum, bname, baddress, binfo
+		from branch <!-- sql 대소문자 구분 안해도됨 -->
+		
+	</select>
 </mapper>

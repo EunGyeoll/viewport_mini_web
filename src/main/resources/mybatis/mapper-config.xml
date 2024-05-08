@@ -19,5 +19,7 @@
 			alias="Pager" />
 		<typeAlias type="com.mycompany.viewport_mini_web.dto.Qna"
 			alias="Qna" />
+		<typeAlias type="com.mycompany.viewport_mini_web.dto.Branch"
+			alias="Branch" />
 	</typeAliases>
 </configuration>

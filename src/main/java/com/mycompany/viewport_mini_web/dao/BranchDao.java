@@ -1,8 +1,14 @@
 package com.mycompany.viewport_mini_web.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
+
+import com.mycompany.viewport_mini_web.dto.Branch;
 
 @Mapper
 public interface BranchDao {
 
+/*	public int count();*/
+	public List<Branch> selectBranchAll();
 }

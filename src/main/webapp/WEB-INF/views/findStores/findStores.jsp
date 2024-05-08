@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +25,9 @@
 		<div class="d-flex flex-row justify-content-center" style="margin-top: 90px;">
 			<div class="branch">
 				<img src="https://inhouse-resource.gentlemonster.com/store/166754976340490_hongdae_menu_2021-01-07_15_59_35.jpeg" class="rounded-circle" width="85" height="85" alt="..." />
-				<p>대한민국</p>
+			<c:forEach var="branch" items="${branches}">
+						<p scope="row">${branch.bname}</p>
+				</c:forEach>
 			</div>
 			<div class="branch">
 				<img src="https://inhouse-resource.gentlemonster.com/store/16675498239194_china_2021-01-07_15_59_45.jpeg" class="rounded-circle" width="85" height="85" alt="..." />

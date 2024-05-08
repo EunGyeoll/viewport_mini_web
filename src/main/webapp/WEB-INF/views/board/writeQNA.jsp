@@ -91,31 +91,6 @@ textarea {
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/summernote-ko-KR.js"></script>
-
-	<script>
-    $(document).ready(function() {
-      $('.summernote').summernote({
-      placeholder : '내용을 입력하세요...',
-      minHeight : 300,
-      maxHeight : 600,
-      focus : true,
-      lang : 'ko-KR',
-      toolbar : [
-      // 글꼴 설정
-      [ 'fontname', [ 'fontname' ] ],
-      // 글자 크기 설정
-      [ 'fontsize', [ 'fontsize' ] ],
-      // 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
-      [ 'style', [ 'bold', 'italic', 'underline', 'strikethrough', 'clear' ] ],
-      // 글자색
-      [ 'color', [ 'forecolor', 'color' ] ],
-      // 글머리 기호, 번호매기기, 문단정렬
-      [ 'para', [ 'ul', 'ol', 'paragraph' ] ],
-      // 코드보기, 확대해서보기, 도움말
-      [ 'view', [ 'codeview', 'fullscreen', 'help' ] ] ],
-      });
-    });
-  </script>
 	<script src="${pageContext.request.contextPath}/resources/js/writeQNA.js"></script>
 </body>
 </html>

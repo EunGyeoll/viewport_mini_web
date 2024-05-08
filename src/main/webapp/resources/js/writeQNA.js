@@ -1,44 +1,47 @@
-const qnaForm = document.querySelector('#subBtn');
+$(document).ready(function() {
+  // Initialize the Summernote editor
+  $('.summernote').summernote({
+    placeholder: '내용을 입력하세요...',
+    minHeight: 300,
+    maxHeight: 600,
+    focus: true,
+    lang: 'ko-KR',
+    toolbar: [
+      ['fontname', ['fontname']],
+      ['fontsize', ['fontsize']],
+      ['style', ['bold', 'italic', 'underline', 'strikethrough', 'clear']],
+      ['color', ['forecolor', 'color']],
+      ['para', ['ul', 'ol', 'paragraph']],
+      ['view', ['codeview', 'fullscreen', 'help']]
+    ]
+  });
 
-qnaForm.addEventListener('click',(event)=> {
+  // Form submission event handler
+  $('#qnaForm').submit(function(event) {
+    event.preventDefault(); // Prevent the default form submission
 
-  event.preventDefault();
-  let data ={
-      qtitle:$('#qtitle').val(),
-      qcontent:$('#qcontent').val(),
-  }
-  
-  $(document).ready(function() {
-    $('#qnaForm').submit(function(event) {
-        // 기본 이벤트 제거
-        //event.preventDefault();
+    var formData = new FormData(this); // Use 'this' to refer to the form
+    formData.append('qattach', $('#qattach')[0].files[0]); // Append the file
 
-        // FormData 생성
-        var formData = new FormData();
-        formData.append('qtitle', $('#qtitle').val());
-        formData.append('quid', $('#quid').val());
-        formData.append('qcontent', $('#qcontent').val());
-        formData.append('qattach', $('#qattach')[0].files[0]);
-
-        //formData.submit();
-        // AJAX 요청 생성
-        $.ajax({
-            type: 'POST',
-            enctype: 'multipart/form-data',
-            url: 'http://localhost:8080/viewport_mini_web/board/writeQNA',
-            data: formData,
-            processData: false, // 데이터를 query string으로 변환하지 않음
-            contentType: false, // Content-Type 헤더를 설정하지 않음
-            cache: false, // 캐시 사용하지 않음
-            success: function(data) {
-                console.log('Success:', data);
-            },
-            error: function(xhr, status, error) {
-                console.error('Error:', error);
-            }
-        });
+    $.ajax({
+      type: 'POST',
+      enctype: 'multipart/form-data',
+      url: 'http://localhost:8080/viewport_mini_web/board/writeQNA',
+      data: formData,
+      processData: false, // Do not process data
+      contentType: false, // Do not set content type
+      cache: false,
+      success: function(data) {
+        console.log('Success:', data);
+        alert('제출 성공!');
+      },
+      error: function(xhr, status, error) {
+        console.error('Error:', error);
+        alert('제출 실패: ' + error);
+      }
     });
-});
+  });
 
-  
-})
+
+
+});

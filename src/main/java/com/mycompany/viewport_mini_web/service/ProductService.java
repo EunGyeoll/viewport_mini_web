@@ -39,17 +39,6 @@ public class ProductService {
 		return products;
 	}
 
-
-//	public Product getProduct(int pid) {
-//		Product product = productDao.selectByPid(pid);
-//		return product;
-//	}
-//
-//	public byte[] getPattachData(int pid) {
-//		Product product = productDao.selectPattachData(pid);
-//		return product.getPattachdata();
-//	}
-
 	public void updateProduct(Product product) {
 		int rowNum = productDao.update(product);
 
@@ -69,6 +58,18 @@ public class ProductService {
 	public List<Integer> getPtids(int ptpid) {
 		List<Integer> ptids = photosDao.selectPtidsList(ptpid);
 		return ptids;
-	}	
+	}
+
+	public Product getProduct(int pid) {
+		Product product = productDao.selectByPid(pid);
+		return product;
+	}
+
+	public Product getProductImg(int pid) {
+		Product product = productDao.selectProductImg(pid);
+		return product;
+	}
+
+
 
 }

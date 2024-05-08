@@ -14,11 +14,14 @@ public interface ProductDao { // 이름 직관적으로 + 나중에 수정
 	public int selectCurrPid();
 
 	public List<Product> selectProductList();
-
+	
+	// 상품 리스트 출력
 	public Product selectByPid(int pid);
-	public Product selectPattachData(int pid);
-
+	public Product selectProductImg(int pid);
+	
 	public int update(Product product);
 	
 	public int deleteByPid(int pid);
+
+
 }

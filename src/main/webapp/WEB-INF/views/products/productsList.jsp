@@ -77,6 +77,19 @@
 		</div>
 		<div class="list-block">
 			<ul class="card-list">
+				<c:forEach var="product" items="${productsList}">
+					<li>
+						<a href="${pageContext.request.contextPath}/products/productDetail">
+							<div>
+								<img src="productsList?pid=${product.pid}" />
+							</div>
+							<div>
+								<p>${product.pname}</p>
+								<p>${product.pprice}</p>
+							</div>
+						</a>
+					</li>
+				</c:forEach>
 				<li><a
 					href="${pageContext.request.contextPath}/products/productDetail">
 						<div>

@@ -189,7 +189,7 @@ public class AdminController {
 		
 		// 첨부 파일이 있는지 여부 조사
 		if(product.getPattach() != null && !product.getPattach().isEmpty()) {
-			File productDestDir = new File("D:/Temp/uploadProduct");
+			File productDestDir = new File("C:/Temp/uploadProduct");
 			if (!productDestDir.exists()) {
 				productDestDir.mkdirs();
 			}
@@ -204,7 +204,7 @@ public class AdminController {
 		}
 		
 		if(photos.getPtattach() != null && !photos.getPtattach().isEmpty()) {
-			File photosDestDir = new File("D:/Temp/uploadPhotos");
+			File photosDestDir = new File("C:/Temp/uploadPhotos");
 			if (!photosDestDir.exists()) {
 				photosDestDir.mkdirs();
 			}

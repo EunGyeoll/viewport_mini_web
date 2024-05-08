@@ -46,11 +46,11 @@ public class BoardController {
   }
 
   @PostMapping("/writeQNA")
-  public String WriteQNA(@RequestBody Qna qna, Model model, Principal principal) {
+  public String WriteQNA(Qna qna, Model model, Principal principal) {
     log.info("실행");
-    String uemail = principal.getName();
-    boardService.insertNewPost(qna, uemail);
-    model.addAttribute("qna", qna);
+   // String uemail = principal.getName();
+    //boardService.insertNewPost(qna, uemail);
+    //model.addAttribute("qna", qna);
     return null;
   }
 

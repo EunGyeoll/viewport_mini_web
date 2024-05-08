@@ -75,13 +75,15 @@ textarea {
 		<div class="form-group">
 			<label for="quid">작성자</label> <input type="text" id="quid" name="quid" required>
 		</div>
-
+		<div class="form-group">
+			<label for="qattach">첨부파일</label> <input type="file" id="qattach" name="qattach" >
+		</div>
 		<div class="form-group">
 			<label for="qcontent">내용</label>
 			<textarea id="qcontent" class="summernote" name="qcontent" required></textarea>
 		</div>
 		<div>
-			<input class="btn btn-dark mt-2" id="subBtn" type="submit" value="글 작성"> <input class="btn btn-dark mt-2" id="subBtn" type="button" value="취소">
+			<button class="btn btn-dark mt-2" id="subBtn">글 작성</button> <input class="btn btn-dark mt-2" id="subBtn" type="button" value="취소">
 		</div>
 	</form>
 
@@ -89,7 +91,7 @@ textarea {
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/summernote-ko-KR.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/writeQNA.js"></script>
+
 	<script>
     $(document).ready(function() {
       $('.summernote').summernote({
@@ -107,45 +109,13 @@ textarea {
       [ 'style', [ 'bold', 'italic', 'underline', 'strikethrough', 'clear' ] ],
       // 글자색
       [ 'color', [ 'forecolor', 'color' ] ],
-      // 표만들기
-      [ 'table', [ 'table' ] ],
       // 글머리 기호, 번호매기기, 문단정렬
       [ 'para', [ 'ul', 'ol', 'paragraph' ] ],
-      // 줄간격
-      [ 'height', [ 'height' ] ],
-      // 그림첨부, 링크만들기, 동영상첨부
-      [ 'insert', [ 'picture', 'link', 'video' ] ],
       // 코드보기, 확대해서보기, 도움말
       [ 'view', [ 'codeview', 'fullscreen', 'help' ] ] ],
-    	callbacks : {
-    		onImageUpload : function(files, editor, welEditable) {     
-    			for (var i = 0; i < files.length; i++) {
-    				sendFile(files[i], this);
-    			}
-    		}
-    	}
-    });
-
-    function sendFile(file, editor) {
-    	var form_data = new FormData();
-    	form_data.append('file', file);
-    	$.ajax({
-    		data : form_data,
-    		type : "POST",
-    		url : 'boardImages',
-    		cache : false,
-    		contentType : false,
-    		enctype : 'multipart/form-data',
-    		processData : false,
-    		success : function(url) {
-    			$(editor).summernote('insertImage', url, function($image) {
-    				$image.css('width', "25%");
-    			});
-    		}
-    	});
-    }
+      });
     });
   </script>
-
+	<script src="${pageContext.request.contextPath}/resources/js/writeQNA.js"></script>
 </body>
 </html>

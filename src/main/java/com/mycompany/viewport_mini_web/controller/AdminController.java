@@ -182,53 +182,53 @@ public class AdminController {
 	}
 
 
-	@PostMapping("/editProduct")
-	public String editProduct(Product product, Photos photos) throws IOException {
-		log.info("editProduct 실행");
-		
-		// 첨부 파일이 있는지 여부 조사
-		if(product.getPattach() != null && !product.getPattach().isEmpty()) {
-		    product.setPattachoname(product.getPattach().getOriginalFilename());
-		    product.setPattachtype(product.getPattach().getContentType());
-		    byte[] productData = product.getPattach().getBytes();
-		    log.info("" + product.getPattach().getContentType());
-		    File productDestDir = new File("C:/Temp/uploadProduct");
-		    if (!productDestDir.exists()) {
-		        productDestDir.mkdirs();
-		    }
-		    product.setPattachsname(UUID.randomUUID().toString() + "-" + product.getPattach().getOriginalFilename());
-		    File productDestFile = new File(productDestDir, product.getPattachsname());
-		    product.getPattach().transferTo(productDestFile);
-		    product.setPattachdata(productData);
-		    productService.updateProduct(product);
-			
-		}
-		
-		if(photos.getPtattach() != null && !photos.getPtattach().isEmpty()) {
-		    File photosDestDir = new File("C:/Temp/uploadPhotos");
-		    if (!photosDestDir.exists()) {
-		        photosDestDir.mkdirs();
-		    }
-			List<Integer> ptids = productService.getPtids(product.getPid());
-		    List<MultipartFile> files = photos.getPtattach();
-		    int count = 0;
-		    
-		    for (MultipartFile file : files) {
-		    	photos.setPtid(ptids.get(count));
-		    	
-		        byte[] photoData = file.getBytes();
-		        photos.setPtattachsname(UUID.randomUUID().toString() + "-" + file.getOriginalFilename());
-		        File photosDestFile = new File(photosDestDir, photos.getPtattachsname());
-		        file.transferTo(photosDestFile);
-		        
-		        photos.setPtattachoname(file.getOriginalFilename());
-		        photos.setPtattachtype(file.getContentType());
-		        photos.setPtattachdata(photoData);
-		        productService.updateProductImg(photos);
-		        count++;
-		    }
-		    log.info("List<MultipartFile> files 실행 확인 : " + files);
-		}
+	   @PostMapping("/editProduct")
+	   public String editProduct(Product product, Photos photos) throws IOException {
+	      log.info("editProduct 실행");
+	      
+	      // 첨부 파일이 있는지 여부 조사
+	      if(product.getPattach() != null && !product.getPattach().isEmpty()) {
+	          product.setPattachoname(product.getPattach().getOriginalFilename());
+	          product.setPattachtype(product.getPattach().getContentType());
+	          byte[] productData = product.getPattach().getBytes();
+	          log.info("" + product.getPattach().getContentType());
+	          File productDestDir = new File("C:/Temp/uploadProduct");
+	          if (!productDestDir.exists()) {
+	              productDestDir.mkdirs();
+	          }
+	          product.setPattachsname(UUID.randomUUID().toString() + "-" + product.getPattach().getOriginalFilename());
+	          File productDestFile = new File(productDestDir, product.getPattachsname());
+	          product.getPattach().transferTo(productDestFile);
+	          product.setPattachdata(productData);
+	          productService.updateProduct(product);
+	         
+	      }
+	      
+	      if(photos.getPtattach() != null && !photos.getPtattach().isEmpty()) {
+	          File photosDestDir = new File("C:/Temp/uploadPhotos");
+	          if (!photosDestDir.exists()) {
+	              photosDestDir.mkdirs();
+	          }
+	         List<Integer> ptids = productService.getPtids(product.getPid());
+	          List<MultipartFile> files = photos.getPtattach();
+	          int count = 0;
+	          
+	          for (MultipartFile file : files) {
+	             photos.setPtid(ptids.get(count));
+	             
+	              byte[] photoData = file.getBytes();
+	              photos.setPtattachsname(UUID.randomUUID().toString() + "-" + file.getOriginalFilename());
+	              File photosDestFile = new File(photosDestDir, photos.getPtattachsname());
+	              file.transferTo(photosDestFile);
+	              
+	              photos.setPtattachoname(file.getOriginalFilename());
+	              photos.setPtattachtype(file.getContentType());
+	              photos.setPtattachdata(photoData);
+	              productService.updateProductImg(photos);
+	              count++;
+	          }
+	          log.info("List<MultipartFile> files 실행 확인 : " + files);
+	      }
 
 	      return "redirect:/admin/products";
 	   }

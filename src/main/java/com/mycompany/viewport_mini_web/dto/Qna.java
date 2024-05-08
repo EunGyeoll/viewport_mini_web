@@ -1,8 +1,8 @@
 package com.mycompany.viewport_mini_web.dto;
 
 import java.sql.Blob;
-import java.sql.Clob;
 import java.util.Date;
+import org.springframework.web.multipart.MultipartFile;
 import lombok.Data;
 
 @Data
@@ -17,5 +17,8 @@ public class Qna {
   private Blob qattachdata;
   private String qattachoname;
   private String qattachsname;
-  private String qattachtype;
+  private byte[] qattachtype;
+  
+  private MultipartFile qattach;
+  
 }

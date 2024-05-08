@@ -31,7 +31,7 @@
 	</select>
 	
 	<select id="selectByPid" parameterType="int" resultType="Product">
-		select	pid, pname, pprice, pinfo, pdetail, pcatno,pattachoname,pattachsname,pattachtype
+		select	pid, pname, pprice, pinfo, pdetail, pcatno,pattachoname,pattachsname,pattachtype,pattachdata
 		from product
 		where pid=#{pid}
 	</select>

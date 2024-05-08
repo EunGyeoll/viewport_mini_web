@@ -30,12 +30,10 @@ public class ProductsListController {
   @GetMapping("/attachDownload")
   public void productsList(HttpServletResponse response, int pid) throws IOException {
     // 상품 데이터 생성
-
     Product product = productService.getProduct(pid);
     byte[] data = product.getPattachdata();
-
     response.setContentType(product.getPattachtype());
-    String fileName = new String(product.getPattachoname());
+    String fileName = new String(product.getPattachsname());
     response.setHeader("content-Disposition", "attachment; filename=\"" + fileName + "\"");
     OutputStream os = response.getOutputStream();
     os.write(data);

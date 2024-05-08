@@ -16,6 +16,11 @@
 		)
 	</insert>
 	
+		<select id="selectPtidsList" resultType="int">
+		select ptid from photos where ptpid=#{ptpid}
+
+	</select>
+	
 	<update id="updateImg" parameterType="Photos">
 		update photos set
 				ptattachoname=#{ptattachoname},

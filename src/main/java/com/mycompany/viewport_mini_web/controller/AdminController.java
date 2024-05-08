@@ -184,7 +184,7 @@ public class AdminController {
 
 
 	@PostMapping("/editProduct")
-	public String editProduct(Product product, Photos photos) throws IOException {
+	public String editProduct(Product product, Photos photos, int ptpid) throws IOException {
 		log.info("editProduct 실행");
 		
 		// 첨부 파일이 있는지 여부 조사
@@ -210,18 +210,24 @@ public class AdminController {
 		    if (!photosDestDir.exists()) {
 		        photosDestDir.mkdirs();
 		    }
-			
+			List<Integer> ptids = productService.getPtids(ptpid);
+		    
 		    List<MultipartFile> files = photos.getPtattach();
+		    int count = 0;
+		    
 		    for (MultipartFile file : files) {
+		    	photos.setPtid(ptids.get(count));
+		    	
 		        byte[] photoData = file.getBytes();
 		        photos.setPtattachsname(UUID.randomUUID().toString() + "-" + file.getOriginalFilename());
 		        File photosDestFile = new File(photosDestDir, photos.getPtattachsname());
 		        file.transferTo(photosDestFile);
-
+		        
 		        photos.setPtattachoname(file.getOriginalFilename());
 		        photos.setPtattachtype(file.getContentType());
 		        photos.setPtattachdata(photoData);
 		        productService.updateProductImg(photos);
+		        count++;
 		    }
 		    log.info("List<MultipartFile> files 실행 확인 : " + files);
 		}

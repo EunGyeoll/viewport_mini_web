@@ -63,6 +63,12 @@ public class ProductService {
 		photosDao.deleteByPtpid(pid);
 		productDao.deleteByPid(pid);
 
+	}
+
+
+	public List<Integer> getPtids(int ptpid) {
+		List<Integer> ptids = photosDao.selectPtidsList(ptpid);
+		return ptids;
 	}	
 
 }

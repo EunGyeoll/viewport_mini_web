@@ -1,5 +1,7 @@
 package com.mycompany.viewport_mini_web.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.mycompany.viewport_mini_web.dto.Photos;
@@ -12,5 +14,7 @@ public interface PhotosDao {
 	public int deleteByPtpid(int ptpid);
 
 	public int updateImg(Photos photos);
+
+	public List<Integer> selectPtidsList(int ptpid);
 
 }

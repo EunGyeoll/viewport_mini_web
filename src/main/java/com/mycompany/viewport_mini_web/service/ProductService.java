@@ -61,10 +61,18 @@ public class ProductService {
 		Product product = productDao.selectByPid(pid);
 		return product;
 	}
+	
+	public Photos getPhotos(int pid) {
+		Photos photos = photosDao.selectByPtpid(pid);
+		return photos;
+	}
 
 	public Product getProductImg(int pid) {
 		Product product = productDao.selectProductImg(pid);
 		return product;
 	}
+
+
+
 
 }

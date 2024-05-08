@@ -57,14 +57,15 @@
 		<div class="list-block">
 			<ul class="card-list">
 				<c:forEach var="product" items="${products}">
-					<li><a href="#">
+					<li><a href="productDetail?pid=${product.pid}">
 						<div>
 							<img src="attachDownload?pid=${product.pid}" />
 						</div>
 						<div>
 							<p>${product.pname}</p>
 							<p>${product.pprice}</p>
-						</div></a> 
+						</div>
+						</a> 
 					</li>
 				</c:forEach>
 				<li><a href="${pageContext.request.contextPath}/products/productDetail">
@@ -74,78 +75,6 @@
 						<div>
 							<p>몬타 01</p>
 							<p>330,000</p>
-						</div>
-				</a></li>
-				<li><a href="#">
-						<div>
-							<img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_NUBO_01_2.jpg">
-						</div>
-						<div>
-							<p>누보 01</p>
-							<p>259,000</p>
-						</div>
-				</a></li>
-				<li><a href="#">
-						<div>
-							<img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_FEAR_X_GR9_2.jpg">
-						</div>
-						<div>
-							<p>피어 X 03</p>
-							<p>360,000</p>
-						</div>
-				</a></li>
-				<li><a href="#">
-						<div>
-							<img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_01_2.jpg">
-						</div>
-						<div>
-							<p>몬타 01</p>
-							<p>330,000</p>
-						</div>
-				</a></li>
-				<li><a href="#">
-						<div>
-							<img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_NUBO_01_2.jpg">
-						</div>
-						<div>
-							<p>누보 01</p>
-							<p>259,000</p>
-						</div>
-				</a></li>
-				<li><a href="#">
-						<div>
-							<img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_FEAR_X_GR9_2.jpg">
-						</div>
-						<div>
-							<p>피어 X 03</p>
-							<p>360,000</p>
-						</div>
-				</a></li>
-				<li><a href="#">
-						<div>
-							<img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_01_2.jpg">
-						</div>
-						<div>
-							<p>몬타 01</p>
-							<p>330,000</p>
-						</div>
-				</a></li>
-				<li><a href="#">
-						<div>
-							<img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_NUBO_01_2.jpg">
-						</div>
-						<div>
-							<p>누보 01</p>
-							<p>259,000</p>
-						</div>
-				</a></li>
-				<li><a href="#">
-						<div>
-							<img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_FEAR_X_GR9_2.jpg">
-						</div>
-						<div>
-							<p>피어 X 03</p>
-							<p>360,000</p>
 						</div>
 				</a></li>
 			</ul>

@@ -17,4 +17,6 @@ public interface PhotosDao {
 
 	public List<Integer> selectPtidsList(int ptpid);
 
+	public Photos selectByPtpid(int ptpid);
+
 }

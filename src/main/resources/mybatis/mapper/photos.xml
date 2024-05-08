@@ -21,6 +21,12 @@
 
 	</select>
 	
+		<select id="selectByPtpid" parameterType="int" resultType="Photos">
+		select	ptid,ptattachoname,ptattachsname,ptattachtype,ptattachdata, ptpid
+		from photos
+		where ptpid=#{ptpid}
+	</select>
+	
 	<update id="updateImg" parameterType="Photos">
 		update photos set
 				ptattachoname=#{ptattachoname},

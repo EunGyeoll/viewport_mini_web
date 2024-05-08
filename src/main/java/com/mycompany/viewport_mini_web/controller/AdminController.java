@@ -6,7 +6,6 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
@@ -231,8 +230,8 @@ public class AdminController {
 		    log.info("List<MultipartFile> files 실행 확인 : " + files);
 		}
 
-		return "redirect:/admin/products";
-	}
+	      return "redirect:/admin/products";
+	   }
 
 	@PostMapping("/deleteProduct")
 	public String deleteProduct(int pid) {

@@ -3,14 +3,19 @@ package com.mycompany.viewport_mini_web.controller;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.mycompany.viewport_mini_web.dto.Photos;
 import com.mycompany.viewport_mini_web.dto.Product;
 import com.mycompany.viewport_mini_web.service.ProductService;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -41,11 +46,14 @@ public class ProductsListController {
     os.close();
   }
 
-
-
   @GetMapping("/productDetail")
-  public String productDetail() {
+  public String productDetail(int pid, Model model) {
+	Product product = productService.getProduct(pid);
+	Photos photos = productService.getPhotos(pid);
     log.info("productDetail() 실행");
+    
+    model.addAttribute("product", product);
+    model.addAttribute("photos", photos);
     return "products/productDetail";
   }
 }

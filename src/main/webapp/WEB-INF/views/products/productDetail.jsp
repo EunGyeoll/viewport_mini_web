@@ -37,7 +37,12 @@
 
 	<div id="container">
 		<div id="images">
-			<!-- js에서 이미지 출력  -->
+			
+			<img src="attachDownload?pid=${product.pid}">
+			<c:forEach var="photos" items="${photos}">
+				<img src="attachDownload?pid=${photos.ptpid}">
+			</c:forEach>
+			
 		</div>
 
 		<!-- 사이드바 -->

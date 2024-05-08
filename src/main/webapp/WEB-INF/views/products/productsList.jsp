@@ -162,6 +162,6 @@
 
 
 	<!-- JS 설정 -->
-	<script src="/viewport_mini_web/resources/js//productsList.js"></script>
+	<script src="/viewport_mini_web/resources/js/productsList.js"></script>
 </body>
 </html>

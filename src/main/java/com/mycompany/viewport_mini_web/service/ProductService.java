@@ -1,16 +1,13 @@
 package com.mycompany.viewport_mini_web.service;
 
+import java.util.ArrayList;
 import java.util.List;
-
 import javax.annotation.Resource;
-
 import org.springframework.stereotype.Service;
-
 import com.mycompany.viewport_mini_web.dao.PhotosDao;
 import com.mycompany.viewport_mini_web.dao.ProductDao;
 import com.mycompany.viewport_mini_web.dto.Photos;
 import com.mycompany.viewport_mini_web.dto.Product;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -69,7 +66,5 @@ public class ProductService {
 		Product product = productDao.selectProductImg(pid);
 		return product;
 	}
-
-
 
 }

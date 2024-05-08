@@ -37,7 +37,7 @@
 			</div>
 			<div class="col-md-9 right-box">
 				<div class="tab-content">
-					<div class="tab-pane" id="profile" role="tabpanel">
+					<div class="tab-pane active" id="profile" role="tabpanel">
 						<div class="card">
 							<div class="card-body">
 								<h4 class="card-title">프로필 정보</h4>

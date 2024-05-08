@@ -67,7 +67,7 @@ textarea {
 		<b>Q&A</b>
 	</h2>
 
-	<form method="post" id="qnaForm" novalidate>
+	<form method="post" id="qnaForm" novalidate enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="qtitle">제목</label> <input type="text" id="qtitle" name="qtitle" required>
 		</div>
@@ -92,15 +92,58 @@ textarea {
 	<script src="${pageContext.request.contextPath}/resources/js/writeQNA.js"></script>
 	<script>
     $(document).ready(function() {
-      $('#summernote').summernote({
+      $('.summernote').summernote({
       placeholder : '내용을 입력하세요...',
       minHeight : 300,
       maxHeight : 600,
       focus : true,
       lang : 'ko-KR',
-      toolbar : [ [ 'style', [ 'bold', 'italic', 'underline', 'clear' ] ], [ 'font', [ 'strikethrough', 'superscript', 'subscript' ] ], [ 'para', [ 'ul', 'ol', 'paragraph' ] ] ]
+      toolbar : [
+      // 글꼴 설정
+      [ 'fontname', [ 'fontname' ] ],
+      // 글자 크기 설정
+      [ 'fontsize', [ 'fontsize' ] ],
+      // 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
+      [ 'style', [ 'bold', 'italic', 'underline', 'strikethrough', 'clear' ] ],
+      // 글자색
+      [ 'color', [ 'forecolor', 'color' ] ],
+      // 표만들기
+      [ 'table', [ 'table' ] ],
+      // 글머리 기호, 번호매기기, 문단정렬
+      [ 'para', [ 'ul', 'ol', 'paragraph' ] ],
+      // 줄간격
+      [ 'height', [ 'height' ] ],
+      // 그림첨부, 링크만들기, 동영상첨부
+      [ 'insert', [ 'picture', 'link', 'video' ] ],
+      // 코드보기, 확대해서보기, 도움말
+      [ 'view', [ 'codeview', 'fullscreen', 'help' ] ] ],
+    	callbacks : {
+    		onImageUpload : function(files, editor, welEditable) {     
+    			for (var i = 0; i < files.length; i++) {
+    				sendFile(files[i], this);
+    			}
+    		}
+    	}
+    });
 
-      });
+    function sendFile(file, editor) {
+    	var form_data = new FormData();
+    	form_data.append('file', file);
+    	$.ajax({
+    		data : form_data,
+    		type : "POST",
+    		url : 'boardImages',
+    		cache : false,
+    		contentType : false,
+    		enctype : 'multipart/form-data',
+    		processData : false,
+    		success : function(url) {
+    			$(editor).summernote('insertImage', url, function($image) {
+    				$image.css('width', "25%");
+    			});
+    		}
+    	});
+    }
     });
   </script>
 

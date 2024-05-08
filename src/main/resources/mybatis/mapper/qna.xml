@@ -2,5 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="com.mycompany.viewport_mini_web.dao.QnaDao">
+	<insert id="insertNewPost" parameterType="Qna">
+		<selectKey keyProperty="qid" order="BEFORE" resultType="int">
+			select seq_qid.nextval from dual
+		</selectKey>
+		insert into qna(qid,qtitle,qdate,qcontent,quserid)
+		values(#{qid},#{qtitle},sysdate,#{qcontent},#{quserid})
+	</insert>
 
 </mapper>

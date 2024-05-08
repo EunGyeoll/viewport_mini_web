@@ -1,12 +1,25 @@
-$(writeQNA).ready(function() {
-	//여기 아래 부분
-	$('#summernote').summernote({
-		  height: 300,                 // 에디터 높이
-		  minHeight: null,             // 최소 높이
-		  maxHeight: null,             // 최대 높이
-		  focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
-		  lang: "ko-KR",					// 한글 설정
-		  placeholder: '최대 2048자까지 쓸 수 있습니다'	//placeholder 설정
-          
-	});
-});
+const qnaForm = document.querySelector('#subBtn');
+
+qnaForm.addEventListener('click',(event)=> {
+
+  console.log("start")
+  event.preventDefault();
+  console.log($('#qtitle').val());
+  let data ={
+      qtitle:$('#qtitle').val(),
+      qcontent:$('#qcontent').val(),
+  }
+  console.log(data);
+  
+  $.ajax({
+    type:"post",
+    url:"http://localhost:8080/viewport_mini_web/board/writeQNA",
+    data:JSON.stringify(data),
+    contentType: "application/json; charset=UTF-8",
+    dataType:"json"
+  }).done(function(res){
+    console.log(res);
+  })
+  
+  
+})

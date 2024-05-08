@@ -11,7 +11,7 @@ public class Qna {
   private String qcategory;
   private String qtitle;
   private Date qdate;
-  private Clob qcontent;
+  private String qcontent;
   private int quserid;
   private String qstatus;
   private Blob qattachdata;

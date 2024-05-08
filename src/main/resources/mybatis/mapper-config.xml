@@ -13,9 +13,11 @@
 			alias="User" />
 		<typeAlias
 			type="com.mycompany.viewport_mini_web.dto.Product" alias="Product" />
-		<typeAlias
-			type="com.mycompany.viewport_mini_web.dto.Photos" alias="Photos" />
-			<typeAlias
-			type="com.mycompany.viewport_mini_web.dto.Pager" alias="Pager" />
+		<typeAlias type="com.mycompany.viewport_mini_web.dto.Photos"
+			alias="Photos" />
+		<typeAlias type="com.mycompany.viewport_mini_web.dto.Pager"
+			alias="Pager" />
+		<typeAlias type="com.mycompany.viewport_mini_web.dto.Qna"
+			alias="Qna" />
 	</typeAliases>
 </configuration>

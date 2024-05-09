@@ -22,6 +22,7 @@
 				<div class="card mt-5 h-100">
 					<div class="card-header">
 						<h5 class="card-title mb-3 mt-3">${qna.qtitle }</h5>
+						<p>${qna.qcategory} 관련 문의 사항</p>
 						<p class="card-subtitle text-muted">작성자: ${qna.quemail } | 작성일: <fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd" /></p>
 					</div>
 					<div class="card-body">

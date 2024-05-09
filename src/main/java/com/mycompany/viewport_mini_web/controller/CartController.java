@@ -35,7 +35,7 @@ public class CartController {
 
 	@PostMapping("")
 	public String cartForm(int pid,Principal principal,Model model) { 
-	  //로그인이 되어있지 않으면 nullpointer 에러 발생
+	  //로그인이 되어있지 않으면 null pointer 에러 발생
 	  String uemail = principal.getName();
 	 Product product= productService.getProduct(pid);
 	 Users user = userService.getUser(uemail);
@@ -48,6 +48,4 @@ public class CartController {
 	  log.info(product.getPname());
 	  return "cart/cart";
 	}
-	
-	
 }

@@ -71,7 +71,7 @@
 				</div>
 
 				<div id="productInfo">${product.pinfo}</div>
-
+				
 				<button type="button" class="btn btn1" data-bs-toggle="modal"
 					data-bs-target="#myModal1">장바구니에 추가</button>
 

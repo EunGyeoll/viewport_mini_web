@@ -7,6 +7,7 @@ public class Cart {
   private int cid;
   private String cshippingType;
   private int cqty;
-  private int cpno;
+  private int cpid;
   private int cuid;
+  
 }

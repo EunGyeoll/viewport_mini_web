@@ -36,17 +36,17 @@
 					</div>
 				</div>
 				<div class="row border-top border-bottom" id="cart-list-container">
-					<!-- <div class="row main align-items-center">
+					<div class="row main align-items-center">
                         <div class="col-2"><img class="img-fluid" src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_GC10_2.jpg"></div>
                         <div class="col">
-                            <div class="row text-muted">Sunglasses</div>
-                            <div class="row">몬타 GC10</div>
+                            <div class="row text-muted">${product.pcategory }</div>
+                            <div class="row">${product.pname}</div>
                         </div>
                         <div class="col">
                             <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a>
                         </div>
-                        <div class="col">₩ 44.00 <span class="close">&#10005;</span></div>
-                    </div> -->
+                        <div class="col">₩${product.pprice } <span class="close">&#10005;</span></div>
+                    </div>
 				</div>
 				<!-- <div class="row">
                     <div class="row main align-items-center">
@@ -111,7 +111,7 @@
 
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 	<!-- Footer -->
-	<script src="${pageContext.request.contextPath}/resources/js/cart.js"></script>
+	<%-- <script src="${pageContext.request.contextPath}/resources/js/cart.js"></script> --%>
 
 </body>
 </html>

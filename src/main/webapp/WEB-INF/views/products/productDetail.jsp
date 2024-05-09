@@ -118,6 +118,10 @@
 						선택하신 상품이 <br /> 장바구니에 추가되었습니다.
 					</p>
 				</div>
+				<form method='post' action="/viewport_mini_web/cart">
+				<input type="number" name=pid value=${product.pid}>
+				<button>제출입니다</button>
+				</form>
 				<div class="modalButtons">
 					<button type="button" class="continueBtn" data-bs-dismiss="modal">쇼핑
 						계속하기</button>

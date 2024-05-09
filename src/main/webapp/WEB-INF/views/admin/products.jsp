@@ -52,6 +52,7 @@
 					<th scope="col">설명</th>
 					<th scope="col">상세 설명</th>
 					<th scope="col">카테고리</th>
+					<th scope="col">날짜</th>
 					<th scope="col"><button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#createUserModal">상품 정보 생성</button></th>
 
 				</tr>
@@ -67,9 +68,10 @@
 						</td>
 						<td>${product.pinfo}</td>
 						<td>${product.pdetail}</td>
-						<td>${product.pcatno}</td>
+						<td>${product.pcategory}</td>
+						<td>${product.pdate}</td>
 						<td>
-							<button type="button" class="btn btn-dark edit-btn btn-sm productDataEditBtn" onclick="clickEventProduct('${product.pid}', '${product.pname}', ${product.pprice},'${product.pinfo}', '${product.pdetail}', '${product.pcatno}')" data-bs-toggle="modal" data-bs-target="#editProductModal">상품 정보 수정</button>
+							<button type="button" class="btn btn-dark edit-btn btn-sm productDataEditBtn" onclick="clickEventProduct('${product.pid}', '${product.pname}', ${product.pprice},'${product.pinfo}', '${product.pdetail}', '${product.pcategory}', '${product.pshape}')" data-bs-toggle="modal" data-bs-target="#editProductModal">상품 정보 수정</button>
 							<button class="btn btn-danger edit-btn btn-sm" data-bs-toggle="modal" onclick="deleteProduct(${product.pid})" data-bs-target="#deleteUserModal">삭제</button>
 						</td>
 					</tr>
@@ -138,15 +140,28 @@
 							<label class="form-label" for="pdetail">상품 상세 설명</label> <input type="text" id="pdetail" name="pdetail" class="form-control form-control-lg" /> <small id="detailError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="pcatno">카테고리</label>
+							<label class="form-label" for="pcategory">카테고리</label>
 							<div class="col">
-								<input type="radio" id="glasses" name="pcatno" value="1" checked /> <label for="glasses">안경</label>
+								<input type="radio" id="glasses" name="pcategory" value="안경" checked /> <label for="glasses">안경</label>
 							</div>
 							<div class="col">
-								<input type="radio" id="sunglasses" name="pcatno" value="2" /> <label for="sunglasses">선글라스</label>
+								<input type="radio" id="sunglasses" name="pcategory" value="선글라스" /> <label for="sunglasses">선글라스</label>
 							</div>
 							<small id="categoryError"></small>
 						</div>
+						<div data-mdb-input-init class="form-outline mb-4">
+							<label class="form-label" for="pshape">모양</label>
+							<div class="col">
+								<input type="radio" id="circle" name="pshape" value="원형" checked /> <label for="circle">원형</label>
+							</div>
+							<div class="col">
+								<input type="radio" id="oval" name="pshape" value="타원형" /> <label for="oval">타원형</label>
+							</div>
+							<div class="col">
+								<input type="radio" id="rectangle" name="pshape" value="사각형" /> <label for="rectangle">사각형</label>
+							</div>							
+							<small id="shapeError"></small>
+						</div>						
 						<button type="submit" class="btn btn-danger">생성</button>
 						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
 					</form>

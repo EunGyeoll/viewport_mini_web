@@ -21,7 +21,7 @@
 
 	</select>
 	
-		<select id="selectByPtpid" parameterType="int" resultType="Photos">
+		<select id="selectByPtpidsList" parameterType="int" resultType="Photos">
 		select	ptid,ptattachoname,ptattachsname,ptattachtype,ptattachdata, ptpid
 		from photos
 		where ptpid=#{ptpid}
@@ -40,5 +40,9 @@
 		delete from photos
 		where ptpid=#{ptpid}
 	</delete>
+	<select id="selectByPtid" parameterType="int" resultType="Photos">
+		select ptattachoname,ptattachsname,ptattachtype,ptattachdata
+		from photos where ptid=#{ptid}
+	</select>
 </mapper>
 

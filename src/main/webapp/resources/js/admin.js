@@ -113,7 +113,7 @@ const editProduct = document.querySelector('#productModal');
 //         
 // })
     
-    function clickEventProduct(pid, pname, pprice, pinfo, pdetail, pcatno){
+    function clickEventProduct(pid, pname, pprice, pinfo, pdetail, pcategory, pshape){
     	editProduct.innerHTML=`<div data-mdb-input-init class="form-outline mb-4">
 							<label class="form-label" for="pid">상품 번호</label> <input
 								type="text" id="pid" name="pid"
@@ -151,17 +151,30 @@ const editProduct = document.querySelector('#productModal');
 								class="form-control form-control-lg" value="${pdetail}" /> <small id="detailError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="pcatno">카테고리</label>
+							<label class="form-label" for="pcategory">카테고리</label>
 							<div class="col">
-								<input type="radio" id="glasses" name="pcatno" value=1 ${pcatno==="1"? "checked" : ""}/>
+								<input type="radio" id="glasses" name="pcategory" value="안경" ${pcategory==="안경"? "checked" : ""}/>
 								<label for="glasses">안경</label>
 							</div>
 							<div class="col">
-								<input type="radio" id="sunglasses" name="pcatno" value=2 ${pcatno==="2"? "checked" : ""} /> <label
+								<input type="radio" id="sunglasses" name="pcategory" value="선글라스" ${pcategory==="선글라스"? "checked" : ""} /> <label
 									for="sunglasses">선글라스</label>
 							</div>
 							<small id="categoryError"></small>
 						</div>
+						<div data-mdb-input-init class="form-outline mb-4">
+							<label class="form-label" for="pshape">모양</label>
+							<div class="col">
+								<input type="radio" id="circle" name="pshape" value="원형" ${pshape==="원형"? "checked" : ""} /> <label for="circle">원형</label>
+							</div>
+							<div class="col">
+								<input type="radio" id="oval" name="pshape" value="타원형" ${pshape==="타원형"? "checked" : ""} /> <label for="oval">타원형</label>
+							</div>
+							<div class="col">
+								<input type="radio" id="rectangle" name="pshape" value="사각형" ${pshape==="사각형"? "checked" : ""} /> <label for="rectangle">사각형</label>
+							</div>							
+							<small id="shapeError"></small>
+						</div>								
 					<button  type="submit" class="btn btn-dark" data-bs-dismiss="modal">수정</button>
       <button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>`
     }

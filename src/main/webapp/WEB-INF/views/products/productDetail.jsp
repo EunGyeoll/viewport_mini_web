@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,20 +40,21 @@
 
 	<div id="container">
 		<div id="images">
-			
-			<img src="attachDownload?pid=${product.pid}">
-			<c:forEach var="photos" items="${photos}">
-				<img src="attachDownload?pid=${photos.ptpid}">
+
+			<img src="attachProductDownload?pid=${product.pid}">
+			<c:forEach var="ptid" items="${ptids}">
+				<img src="attachPhotosDownload?ptid=${ptid}">
 			</c:forEach>
-			
+
 		</div>
 
 		<!-- 사이드바 -->
 		<aside class="sidebar">
 			<div class="sidebar-context">
 				<div class="namePrice">
-					<div id="productName">상품명</div>
-					<div id="productPrice">가격</div>
+					<div id="productName">${product.pname}</div>
+					<div id="productPrice"><fmt:formatNumber value="${product.pprice}" pattern="#,###" />원</div>
+					
 				</div>
 
 				<!-- 같은 제품 모음 -->
@@ -66,7 +70,7 @@
 					</a>
 				</div>
 
-				<div id="productInfo">상품 정보</div>
+				<div id="productInfo">${product.pinfo}</div>
 
 				<button type="button" class="btn btn1" data-bs-toggle="modal"
 					data-bs-target="#myModal1">장바구니에 추가</button>
@@ -82,7 +86,7 @@
 						</h2>
 						<div id="flush-collapseOne" class="accordion-collapse collapse"
 							data-bs-parent="#accordionFlushExample">
-							<div class="accordion-body">프레임 정면: 147.2mm, 템플 길이: 145.5mm</div>
+							<div class="accordion-body">${product.pdetail}</div>
 						</div>
 					</div>
 					<div class="accordion-item">
@@ -130,7 +134,7 @@
 
 
 	<!-- JS 설정 -->
-	<script src="/viewport_mini_web/resources/js/productDetail.js"></script>
+	<!-- <script src="/viewport_mini_web/resources/js/productDetail.js"></script> -->
 
 
 </body>

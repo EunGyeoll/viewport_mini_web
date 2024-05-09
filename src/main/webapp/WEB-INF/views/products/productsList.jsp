@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,11 +61,11 @@
 				<c:forEach var="product" items="${products}">
 					<li><a href="productDetail?pid=${product.pid}">
 						<div>
-							<img src="attachDownload?pid=${product.pid}" />
+							<img src="attachProductDownload?pid=${product.pid}" />
 						</div>
 						<div>
 							<p>${product.pname}</p>
-							<p>${product.pprice}</p>
+							<p><fmt:formatNumber value="${product.pprice}" pattern="#,###" /></p>
 						</div>
 						</a> 
 					</li>

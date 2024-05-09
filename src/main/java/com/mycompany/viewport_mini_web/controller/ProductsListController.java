@@ -5,6 +5,7 @@ import java.io.OutputStream;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,38 +23,59 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequestMapping("/products")
 public class ProductsListController {
-  @Autowired
-  private ProductService productService;
+	@Autowired
+	private ProductService productService;
 
-  @GetMapping("/productsList")
-  public String getProductsList(Model model) {
-    List<Product> products = productService.getProductList();
-    model.addAttribute("products",products);
-    return "products/productsList";
-  }
+	@GetMapping("/productsList")
+	public String getProductsList(Model model) {
+		List<Product> products = productService.getProductList();
+		model.addAttribute("products", products);
+		return "products/productsList";
+	}
 
-  @GetMapping("/attachDownload")
-  public void productsList(HttpServletResponse response, int pid) throws IOException {
-    // 상품 데이터 생성
-    Product product = productService.getProduct(pid);
-    byte[] data = product.getPattachdata();
-    response.setContentType(product.getPattachtype());
-    String fileName = new String(product.getPattachsname());
-    response.setHeader("content-Disposition", "attachment; filename=\"" + fileName + "\"");
-    OutputStream os = response.getOutputStream();
-    os.write(data);
-    os.flush();
-    os.close();
-  }
+	@GetMapping("/attachProductDownload")
+	public void productsList(HttpServletResponse response, int pid) throws IOException {
+		// 상품 데이터 생성
+		Product product = productService.getProduct(pid);
+		byte[] data = product.getPattachdata();
+		response.setContentType(product.getPattachtype());
+		String fileName = new String(product.getPattachsname());
+		fileName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
+		response.setHeader("content-Disposition", "attachment; filename=\"" + fileName + "\"");
+		OutputStream os = response.getOutputStream();
+		os.write(data);
+		os.flush();
+		os.close();
+		log.info(fileName + "썸네일 출력");
+	}
 
-  @GetMapping("/productDetail")
-  public String productDetail(int pid, Model model) {
-	Product product = productService.getProduct(pid);
-	Photos photos = productService.getPhotos(pid);
-    log.info("productDetail() 실행");
-    
-    model.addAttribute("product", product);
-    model.addAttribute("photos", photos);
-    return "products/productDetail";
-  }
+	@GetMapping("/attachPhotosDownload")
+	public void photosList(HttpServletResponse response, int ptid) throws IOException {
+		// 상품 데이터 생성
+		log.info(ptid + "");
+		Photos photos = productService.getPhotosByPtid(ptid);
+		log.info(photos.getPtattachoname());
+		byte[] data = photos.getPtattachdata();
+		response.setContentType(photos.getPtattachtype());
+		String fileName = new String(photos.getPtattachsname());
+		fileName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
+		response.setHeader("content-Disposition", "attachment; filename=\"" + fileName + "\"");
+		OutputStream os = response.getOutputStream();
+		os.write(data);
+		os.flush();
+		os.close();
+		log.info(fileName + "출력 완료");
+	}
+
+	@GetMapping("/productDetail")
+	public String productDetail(int pid, Model model) {
+		Product product = productService.getProduct(pid);
+		List<Photos> photos = productService.getPhotos(pid);
+		List<Integer> ptids = productService.getPtids(product.getPid());
+		log.info("productDetail() 실행");
+		model.addAttribute("product", product);
+		model.addAttribute("photos", photos);
+		model.addAttribute("ptids",ptids);
+		return "products/productDetail";
+	}
 }

@@ -36,7 +36,7 @@ public class HomeController {
   @PostMapping("/signup")
   public String signup(Users users) {
     users.setUrole("ROLE_USER");
-    userService.signup(users);
+   // userService.signup(users);
     log.info(users.toString());
     return "redirect:/loginForm";
   }

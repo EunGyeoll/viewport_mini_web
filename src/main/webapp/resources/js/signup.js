@@ -243,7 +243,6 @@ document.getElementById('signupButton').addEventListener('click', function(event
     // 주소 데이터 업데이트
     formData.set('uzonecode', uzonecode.value);
     formData.set('uaddress', uaddress.value);
-
     // 서버로 데이터 전송 로직
     var xhr = new XMLHttpRequest();
     var url = 'http://localhost:8080/viewport_mini_web/signup'; // 실제 컨트롤러의 URL을 입력하세요

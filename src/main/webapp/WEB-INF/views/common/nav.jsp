@@ -10,7 +10,7 @@
 		<li class="h-100"><a href="#"><span class="align-middle">안경</span></a></li>
 		<li class="h-100"><a href="#"><span class="align-middle">선글라스</span></a></li>
 		<li class="h-100"><a href="${pageContext.request.contextPath}/styles"><span class="align-middle">스타일</span></a></li>
-		<li class="h-100"><a href="${pageContext.request.contextPath}/findStores"><span class="align-middle">스토어</span></a></li>
+		<li class="h-100"><a href="${pageContext.request.contextPath}/findStores?blocation=대한민국"><span class="align-middle">스토어</span></a></li>
 		<%-- <sec:authorize access="hasRole('ROLE_ADMIN')"> --%>
 		<li class="h-100"><a href="${pageContext.request.contextPath}/admin"><span class="align-middle">어드민</span></a></li>
 		<%-- </sec:authorize> --%>

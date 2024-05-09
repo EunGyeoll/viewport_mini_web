@@ -221,10 +221,13 @@ public class AdminController {
 	              File photosDestFile = new File(photosDestDir, photos.getPtattachsname());
 	              file.transferTo(photosDestFile);
 	              
-	              photos.setPtattachoname(file.getOriginalFilename());
-	              photos.setPtattachtype(file.getContentType());
-	              photos.setPtattachdata(photoData);
-	              productService.updateProductImg(photos);
+	              if(file.getOriginalFilename()!=null || !file.getOriginalFilename().isEmpty()) {
+	            	  
+	            	  photos.setPtattachoname(file.getOriginalFilename());
+	            	  photos.setPtattachtype(file.getContentType());
+	            	  photos.setPtattachdata(photoData);
+	            	  productService.updateProductImg(photos);
+	              }
 	              count++;
 	          }
 	          log.info("List<MultipartFile> files 실행 확인 : " + files);

@@ -42,7 +42,9 @@ public class ProductService {
 	}
 
 	public void updateProductImg(Photos photos) {
-		int rowNum = photosDao.updateImg(photos);
+		if(photos.getPtattachdata() != null && photos.getPtattachdata().length > 0) {
+			int rowNum = photosDao.updateImg(photos);
+		}
 	}
 	
 	public void removeProduct(int pid) {

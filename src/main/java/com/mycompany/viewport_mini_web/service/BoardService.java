@@ -27,4 +27,9 @@ public class BoardService {
     return qnaList;
   }
 
+  public Qna getQna(int qid) {
+    Qna qna = boardDao.selectByQid(qid);
+    return qna;
+  }
+
 }

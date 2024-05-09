@@ -28,8 +28,8 @@ $(document).ready(function() {
       enctype: 'multipart/form-data',
       url: 'http://localhost:8080/viewport_mini_web/board/writeQNA',
       data: formData,
-      processData: false, // Do not process data
-      contentType: false, // Do not set content type
+      processData: false,
+      contentType: false,
       cache: false,
       success: function(response) {
         window.location.href = response;

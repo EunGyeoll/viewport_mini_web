@@ -11,4 +11,6 @@ public interface QnaDao {
 
   List<Qna> selectQnaAll();
 
+  Qna selectByQid(int qid);
+
 }

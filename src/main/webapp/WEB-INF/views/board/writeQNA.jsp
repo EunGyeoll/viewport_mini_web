@@ -60,14 +60,18 @@ textarea {
 	font-size: 16px;
 	float: right;
 }
+.faqbody{
+	height:900px;
+}
+
 </style>
-<body>
+<body class="faqbody">
 
 	<h2>
 		<b>Q&A</b>
 	</h2>
 
-	<form method="post" id="qnaForm" novalidate enctype="multipart/form-data">
+	<form method="post" id="qnaForm" class="h-75" novalidate enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="qtitle">제목</label> <input type="text" id="qtitle" name="qtitle" required>
 		</div>
@@ -87,8 +91,8 @@ textarea {
 			<textarea id="qcontent" class="summernote" name="qcontent" required></textarea>
 		</div>
 		<div>
-			<button class="btn btn-dark mt-2" id="subBtn">글 작성</button>
-			<input class="btn btn-dark mt-2" id="subBtn" type="button" value="취소">
+			<a href="qnaList" class="btn btn-dark mt-2 ms-3 p-2" id="subBtn">취소</a>
+			<button class="btn btn-dark mt-2 p-2" id="subBtn">글 작성</button>
 		</div>
 	</form>
 

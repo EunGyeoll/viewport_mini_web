@@ -6,7 +6,7 @@
 	<ul class="d-flex" id="nav-logo">
 		<li><a href="${pageContext.request.contextPath}/"><span id="nav-logo-text">VIEWPORT</span></a></li>
 	</ul>
-	<ul id="nav-menu" class="d-flex justify-content-center">
+	<ul id="nav-menu" class="d-flex justify-content-lg-center flex-grow-2">
 		<li class="h-100"><a href="#"><span class="align-middle">안경</span></a></li>
 		<li class="h-100"><a href="#"><span class="align-middle">선글라스</span></a></li>
 		<li class="h-100"><a href="${pageContext.request.contextPath}/styles"><span class="align-middle">스타일</span></a></li>

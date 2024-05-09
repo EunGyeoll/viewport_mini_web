@@ -20,9 +20,13 @@
 
 <!-- 아이콘 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+	<style type="text/css">
+	.table-row{
+		cursor:pointer;
+	}
+	</style>
 </head>
-
+	
 <body>
 
 	<%@ include file="/WEB-INF/views/common/nav.jsp"%>
@@ -62,7 +66,7 @@
 						</thead>
 						<tbody>
 							<c:forEach var="qna" items="${qnaList}">
-								<tr>
+								<tr class="table-row" onClick="location.href='qnaDetail?qid=${qna.qid}'">
 									<td>${qna.qid}</td>
 									<td>${qna.qcategory}</td>
 									<td><i class="fa-solid fa-lock"></i> ${qna.qtitle}</td>
@@ -74,7 +78,7 @@
 					</table>
 				</div>
 			</div>
-
+			<a href="writeQNA" class="btn btn-dark mt-0 text-white">글쓰기</a>
 			<!-- 페이지네이션 -->
 			<div class="pagination-center">
 				<div class="pagination">

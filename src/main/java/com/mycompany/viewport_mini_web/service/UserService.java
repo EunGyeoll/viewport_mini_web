@@ -33,6 +33,7 @@ public class UserService {
 
 
   public void signup(Users user) {
+    log.info("실행");
     PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
     user.setUpassword(passwordEncoder.encode(user.getUpassword()));
     user.setUenabled(true);

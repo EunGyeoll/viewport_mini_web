@@ -14,29 +14,31 @@ import lombok.extern.slf4j.Slf4j;
 public class HomeController {
   @Autowired
   private UserService userService;
-  
+
   @RequestMapping("/")
   public String index() {
     log.info("실행");
     return "home";
   }
-  //로그인
+
+  // 로그인
   @GetMapping("/loginForm")
   public String login() {
     log.info("실행");
     return "member/login";
   }
-  //회원가입
+
+  // 회원가입
   @GetMapping("/signup")
   public String signup() {
     log.info("실행");
     return "member/signup";
   }
-  
+
   @PostMapping("/signup")
   public String signup(Users users) {
     users.setUrole("ROLE_USER");
-   // userService.signup(users);
+    userService.signup(users);
     log.info(users.toString());
     return "redirect:/loginForm";
   }

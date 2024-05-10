@@ -21,31 +21,33 @@
 </head>
 <body class="">
 	<%@ include file="/WEB-INF/views/common/nav.jsp"%>
+	
+	
 	<section class="container text-center">
-		<div class="d-flex flex-row justify-content-center" style="margin-top: 90px;">
-			<div class="branch">
-				<img src="https://inhouse-resource.gentlemonster.com/store/166754976340490_hongdae_menu_2021-01-07_15_59_35.jpeg" class="rounded-circle" width="85" height="85" alt="..." />
-			<c:forEach var="branch" items="${branches}">
-						<p scope="row">${branch.bname}</p>
-				</c:forEach>
-			</div>
-			<div class="branch">
-				<img src="https://inhouse-resource.gentlemonster.com/store/16675498239194_china_2021-01-07_15_59_45.jpeg" class="rounded-circle" width="85" height="85" alt="..." />
-				<p>일본</p>
-			</div>
-			<div class="branch">
-				<img src="https://inhouse-resource.gentlemonster.com/store/168268661235505_osaka-thumbanil2.jpg" class="rounded-circle" alt="..." width="85" height="85" />
-				<p>중국</p>
-			</div>
-			<div class="branch">
-				<img src="https://inhouse-resource.gentlemonster.com/store/166754983387369_taiwan_2021-01-08_19_26_04.jpeg" class="rounded-circle" alt="..." width="85" height="85" />
-				<p>미국</p>
-			</div>
-			<div class="branch">
-				<img src="https://inhouse-resource.gentlemonster.com/store/168561545388235_gm_navigation_singapore.jpg" class="rounded-circle" width="85" height="85" alt="..." />
-				<p>영국</p>
-			</div>
+		<div class="d-flex flex-row justify-content-center">
+			<a href="${pageContext.request.contextPath}/findStores?blocation=대한민국" class="branch">
+				<img src="${pageContext.request.contextPath}/resources/image/bimage/bimage1" class="rounded-circle" width="85" height="85" alt="..." />
+			</a>
+				
+				
+			<a href="${pageContext.request.contextPath}/findStores?blocation=홍콩" class="branch">
+				<img src="${pageContext.request.contextPath}/resources/image/bimage/bimage2" class="rounded-circle" width="85" height="85" alt="..." />
+			</a>
+				
+				
+				<a href="${pageContext.request.contextPath}/findStores?blocation=미국" class="branch">
+				<img src="${pageContext.request.contextPath}/resources/image/bimage/bimage3" class="rounded-circle" width="85" height="85" alt="..." />
+			</a>
+				
+				
+				<a href="${pageContext.request.contextPath}/findStores?blocation=싱가포르" class="branch">
+				<img src="${pageContext.request.contextPath}/resources/image/bimage/bimage4" class="rounded-circle" width="85" height="85" alt="..." />
+			</a>
+				
 		</div>
+		
+		
+		
 	</section>
 	<section class="container text-center">
 		<div class="card mb-3  border-0 mb-5">

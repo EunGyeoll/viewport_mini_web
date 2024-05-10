@@ -8,5 +8,6 @@ public class Branch {
   private String bname;
   private String baddress;
   private String binfo;
+  private String blocation;
 
 }

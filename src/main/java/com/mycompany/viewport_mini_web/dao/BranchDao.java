@@ -9,6 +9,8 @@ import com.mycompany.viewport_mini_web.dto.Branch;
 @Mapper
 public interface BranchDao {
 
-/*	public int count();*/
-	public List<Branch> selectBranchAll();
+	public Branch selectByLocation(String blocation);
+
+/*	public List<Branch> selectBranchAll();*/
+
 }

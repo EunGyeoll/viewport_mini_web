@@ -16,11 +16,22 @@ public class FindStoresService {
   @Autowired
   private  BranchDao branchDao;
   
-  public List<Branch> getBranch() {
+/*  public List<Branch> getBranch() {
 	  log.info("실행");
 	  List<Branch> branches = branchDao.selectBranchAll();
 	return branches;
-  }
+  }*/
+
+public Branch selectByLocation(String blocation) {
+	Branch branches= branchDao.selectByLocation(blocation);
+	return branches;
+}
+
+
+/*public Branch getByLocation(int bnum) {
+	  Branch branches = branchDao.selectByLocation(bnum);
+	return branches;
+}*/
   
 /*  public int getBnum () {
     int bnum = branchDao.count();

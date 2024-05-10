@@ -8,13 +8,13 @@
 		<selectKey keyProperty="bnum" order="BEFORE" resultType="int">
 			select SEQ_BNUM.nextval from dual
 		</selectKey>
-		insert into branch(bnum, bname, baddress, binfo) 	
-		values(#{bnum}, #{bname}, #{baddress} #{binfo})
+		insert into branch(bnum, blocation, bname, baddress, binfo) 	
+		values(#{bnum}, #{blocation}, #{bname}, #{baddress}, #{binfo})
 	</insert>
 	
-	<select id="selectBranchAll" resultType="Branch"> <!-- board.xml에서 selectByBnum은 ..  -->
-		select bnum, bname, baddress, binfo
-		from branch <!-- sql 대소문자 구분 안해도됨 -->
-		
+	<select id="selectByLocation" resultType="Branch">
+		select bnum, blocation, bname, baddress, binfo
+		from branch 
+		where blocation=#{branch.blocation}
 	</select>
 </mapper>

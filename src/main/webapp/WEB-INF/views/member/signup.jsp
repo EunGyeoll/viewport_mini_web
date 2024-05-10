@@ -66,24 +66,33 @@
 												<!-- 패스워드 -->
 												<div class="column d-flex">
 													<div data-mdb-input-init class="column form-outline mb-4 me-3">
-														<label class="form-label" for="upassword">비밀번호</label> <input type="password" id="upassword" name="upassword" placeholder="영어 대,소문자 숫자 혼용하여 8~15자" class="form-control form-control-md" /> <small id="pw1Error"></small>
+														<label class="form-label" for="upassword">비밀번호</label> 
+														<input type="password" id="upassword" name="upassword" placeholder="영어 대,소문자 숫자 혼용하여 8~15자" class="form-control form-control-md" /> 
+														<small id="pw1Error"></small>
 													</div>
 													<div data-mdb-input-init class="column form-outline mb-4">
-														<label class="form-label" for="signupPwCheck">비밀번호 확인</label> <input type="password" id="signupPwCheck" placeholder="비밀번호 확인을 입력하세요" class="form-control form-control-md" /> <small id="pw2Error"></small>
+														<label class="form-label" for="signupPwCheck">비밀번호 확인</label> 
+														<input type="password" id="upasswordCheck" placeholder="비밀번호 확인을 입력하세요" class="form-control form-control-md" /> 
+														<small id="pw2Error"></small>
 													</div>
 												</div>
 												<!-- 주민번호 -->
 												<div class="column d-flex">
 													<div data-mdb-input-init class="column form-outline mb-4 me-3">
-														<label class="form-label" for="ussn">주민번호</label> <input type="text" id="ussn" name="ussn" placeholder="" class="form-control form-control-md" /> <small id="ussnError"></small>
+														<label class="form-label" for="ussn">주민번호</label>
+														<input type="text" id="ussn1" name="ussn" placeholder="YYMMDD" class="form-control form-control-md" /> 
+														<small id="ussnError"></small>
 													</div><span>-</span>
 													<div data-mdb-input-init class="column form-outline mb-4 mt-2">
-														<label class="form-label" for="signupPwCheck"></label> <input type="password" id="signupPwCheck" placeholder="" class="form-control form-control-md" /> <small id="pw2Error"></small>
+														<label class="form-label" for="signupPwCheck"></label> 
+														<input type="password" id="ussn2"  class="form-control form-control-md" /> 
+														<small id="ussnError"></small>
 													</div>
 												</div>
 												<!-- 이름 -->
 												<div data-mdb-input-init class="form-outline mb-4">
-													<label class="form-label" for="uname">이름</label> <input type="text" id="uname" name="uname" class="form-control form-control-md" maxlength="10" /> <small id="nameError"></small>
+													<label class="form-label" for="uname">이름</label> 
+													<input type="text" id="uname" name="uname" class="form-control form-control-md" maxlength="10" /> <small id="nameError"></small>
 												</div>
 
 												<!--    <div data-mdb-input-init class="form-outline mb-4">
@@ -94,7 +103,8 @@
                                           id="birthError"></small>
                                     </div> -->
 												<div data-mdb-input-init class="form-outline mb-3">
-													<label class="form-label" for="signupPhoneNum">휴대폰 번호</label> <input type="text" id="uphonenumber" name="uphonenumber" class="form-control form-control-md" placeholder="숫자를 입력하세요" maxlength="13" /> <small id="phoneNumError"></small>
+													<label class="form-label" for="signupPhoneNum">휴대폰 번호</label> 
+													<input type="text" id="uphonenumber" name="uphonenumber" class="form-control form-control-md" placeholder="숫자를 입력하세요" maxlength="13" /> <small id="phoneNumError"></small>
 												</div>
 
 												<!-- 주소 -->

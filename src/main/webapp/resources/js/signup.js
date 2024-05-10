@@ -232,6 +232,16 @@ const onClickSearch = () => {
 };
 
 
+const email = document.querySelector("#uemail");
+const upassword = document.querySelector("#upassword");
+const upasswordCheck = document.querySelector("#upasswordCheck");
+const ussn1 = document.querySelector("#ussn1");
+const ussn2 = document.querySelector("#ussn2");
+const uemail = document.querySelector("#uemail");
+const uname = document.querySelector("#uname");
+const uphonenumber = document.querySelector("#uphonenumber");
+
+
 //회원가입 버튼을 클릭했을 때 호출되는 함수
 document.getElementById('signupButton').addEventListener('click', function(event) {
     // 폼 전송을 중지하여 페이지가 새로고침되는 것을 방지
@@ -239,15 +249,59 @@ document.getElementById('signupButton').addEventListener('click', function(event
 
     // 회원가입 폼 데이터를 새로운 FormData 객체로 생성
     const formData = new FormData(document.getElementById('signupForm'));
+    
+    //이메일
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const emailError = document.querySelector("#emailError");
+    const emailResult = emailPattern.test("#{users.uemail}");
 
+    if(email.value == "" || !emailResult) {
+        const emailError = document.querySelector("#emailError")
+        emailError.innerHTML = "올바른 이메일을 입력해 주세요";
+        emailError.classList.add("text-danger");
+    }
+  
+    
+    //패스워드
+    const pwPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$/; //영어 대문자 소문자 숫자 필수 8~15자
+
+/*    const pw1Error = document.querySelector("#pw1Error");
+    const pw1Result = pwPattern.test(${users.upassword}.value);
+
+    const pw2Error = document.querySelector("#pw2Error");*/
+    const pw2Result = pwPattern.test(pw2.value);
+
+    if (pw1Result) {
+        pw1Error.innerHTML = "";
+    } else {
+        pw1Error.innerHTML = "비밀번호 형식에 맞게 설정해 주세요"
+        pw1Error.classList.add("text-danger");
+        resultCheck = false;
+    }
+
+
+    if (pw2Result && pw1.value == pw2.value) { //pw2가 정규식을 만족하고 pw1과 pw2가 동일하면
+        pw2Error.innerHTML = "";
+    } else {
+        pw2Error.innerHTML = "비밀번호 확인 틀림"
+        pw2Error.classList.add("text-danger");
+        resultCheck = false;
+    }
+    
+    
     // 주소 데이터 업데이트
     formData.set('uzonecode', uzonecode.value);
     formData.set('uaddress', uaddress.value);
     // 서버로 데이터 전송 로직
     var xhr = new XMLHttpRequest();
     var url = 'http://localhost:8080/viewport_mini_web/signup'; // 실제 컨트롤러의 URL을 입력하세요
-    xhr.open('POST', url, true);
+    xhr.open('POST', 'http://localhost:8080/viewport_mini_web/signup', true);
     xhr.onreadystatechange = function() {
+    	
+    	
+    	
+    	
+    	
         if(xhr.readyState == 4 && xhr.status == 200) {
             // 성공적으로 회원가입이 처리되었을 때의 처리
             console.log('회원가입이 성공적으로 처리되었습니다.');

@@ -192,6 +192,9 @@ public class AdminController {
 	          product.setPattachtype(product.getPattach().getContentType());
 	          byte[] productData = product.getPattach().getBytes();
 	          log.info("" + product.getPattach().getContentType());
+	          log.info("product: " +product.getPcategory());
+	          log.info("product: " +product.getPshape());
+	         
 	          File productDestDir = new File("C:/Temp/uploadProduct");
 	          if (!productDestDir.exists()) {
 	              productDestDir.mkdirs();
@@ -200,9 +203,8 @@ public class AdminController {
 	          File productDestFile = new File(productDestDir, product.getPattachsname());
 	          product.getPattach().transferTo(productDestFile);
 	          product.setPattachdata(productData);
-	          productService.updateProduct(product);
-	         
 	      }
+	      productService.updateProduct(product);	      
 	      
 	      if(photos.getPtattach() != null && !photos.getPtattach().isEmpty()) {
 	          File photosDestDir = new File("C:/Temp/uploadPhotos");

@@ -10,11 +10,13 @@
 		</selectKey>
 		insert into product(
 		pid, pname, pprice, pinfo, pdetail,
-		pcategory,pattachoname,pattachsname,pattachtype,pattachdata, pshape, pdate
+		pcategory,pattachoname,pattachsname,pattachtype,pattachdata, pshape,
+		pdate
 		) values(
 		#{pid}, #{pname},
 		#{pprice}, #{pinfo}, #{pdetail},
-		#{pcategory},#{pattachoname},#{pattachsname},#{pattachtype},#{pattachdata}, #{pshape}, sysdate
+		#{pcategory},#{pattachoname},#{pattachsname},#{pattachtype},#{pattachdata},
+		#{pshape}, sysdate
 		)
 	</insert>
 
@@ -23,34 +25,60 @@
 		select seq_pid.currval from dual
 	</select>
 
-	<select id="selectProductList" resultType="Product">
+	<select id="selectProductList" parameterType="Pager"
+		resultType="Product">
 		select
-		pid,pname,pprice,pinfo,pdetail,pcategory,pattachsname,pattachtype,pattachdata, pshape, pdate
-		from product p
+		pid,pname,pprice,pinfo,pdetail,pcategory,pattachsname,pattachtype,pattachdata,
+		pshape, pdate
+		from product
 
 	</select>
-	
-	<select id="selectByPid" parameterType="int" resultType="Product">
-		select	pid, pname, pprice, pinfo, pdetail, pcategory,pattachoname,pattachsname,pattachtype,pattachdata, pshape, pdate
+
+	<select id="selectProductListByPager" parameterType="Pager"
+		resultType="Product">
+	<![CDATA[
+		select rnum, pid,pname,pprice,pinfo,pdetail,pcategory,pattachsname,pattachtype,pattachdata, pshape, pdate
+		from (
+		    select rownum as rnum, pid,pname,pprice,pinfo,pdetail,pcategory,pattachsname,pattachtype,pattachdata, pshape, pdate
+		    from (
+		        select pid,pname,pprice,pinfo,pdetail,pcategory,pattachsname,pattachtype,pattachdata, pshape, pdate
+		        from product
+		        order by pid desc
+		    )
+		    where rownum <= #{endRowNo}
+		)
+		where rnum >= #{startRowNo}
+	]]>
+	</select>
+
+	<select id="selectByPid" parameterType="int"
+		resultType="Product">
+		select pid, pname, pprice, pinfo, pdetail,
+		pcategory,pattachoname,pattachsname,pattachtype,pattachdata, pshape,
+		pdate
 		from product
 		where pid=#{pid}
 	</select>
-	
-	<select id="selectProductImg" parameterType="int" resultType="Product">
+
+	<select id="selectProductImg" parameterType="int"
+		resultType="Product">
 		select pattachdata from product where pid=#{pid}
+	</select>
+
+	<select id="count">
+		select count(*) from product
 	</select>
 
 	<update id="update" parameterType="Product">
 		update product set
-		pname=#{pname},pprice=#{pprice},pinfo=#{pinfo},pdetail=#{pdetail},pcategory=#{pcategory}
+		pname=#{pname},pprice=#{pprice},pinfo=#{pinfo},pdetail=#{pdetail},pcategory=#{pcategory}, pshape=#{pshape}
 		<if test="pattachoname != null">
-				,
-				pattachoname=#{pattachoname},
-				pattachsname=#{pattachsname},
-				pattachtype=#{pattachtype},
-				pattachdata=#{pattachdata},
-				pshape=#{pshape}
-		</if>		
+			,
+			pattachoname=#{pattachoname},
+			pattachsname=#{pattachsname},
+			pattachtype=#{pattachtype},
+			pattachdata=#{pattachdata}
+		</if>
 		where pid=#{pid}
 	</update>
 

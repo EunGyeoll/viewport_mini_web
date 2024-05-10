@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.mycompany.viewport_mini_web.dao.PhotosDao;
 import com.mycompany.viewport_mini_web.dao.ProductDao;
+import com.mycompany.viewport_mini_web.dto.Pager;
 import com.mycompany.viewport_mini_web.dto.Photos;
 import com.mycompany.viewport_mini_web.dto.Product;
 import lombok.extern.slf4j.Slf4j;
@@ -31,10 +32,16 @@ public class ProductService {
 		photosDao.insert(photos);
 	}
 
+	
 	public List<Product> getProductList() {
 		List<Product> products = productDao.selectProductList();
 		return products;
-	}
+	}	
+	
+	public List<Product> getProductListByPager(Pager pager) {
+		List<Product> products = productDao.selectProductListByPager(pager);
+		return products;
+	}	
 
 	public void updateProduct(Product product) {
 		int rowNum = productDao.update(product);
@@ -78,6 +85,10 @@ public class ProductService {
 		Photos photos = photosDao.selectByPtid(ptid);
 		return photos;
 	}
+
+
+
+
 
 
 

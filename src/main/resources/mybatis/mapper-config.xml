@@ -23,5 +23,7 @@
 			alias="Branch" />
 		<typeAlias type="com.mycompany.viewport_mini_web.dto.Cart"
 			alias="Cart" />
+			<typeAlias type="com.mycompany.viewport_mini_web.dto.CartItem"
+			alias="CartItem" />
 	</typeAliases>
 </configuration>

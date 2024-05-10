@@ -8,5 +8,5 @@ public class CartItem {
   private int ciqty;
   private int cipid;
   private int cicid;
-  private int cicuid;
+
 }

@@ -118,7 +118,7 @@
 						선택하신 상품이 <br /> 장바구니에 추가되었습니다.
 					</p>
 				</div>
-				<form method='post' action="/viewport_mini_web/cart">
+				<form method='post' action="/viewport_mini_web/cart/add">
 				<input type="number" name=pid value=${product.pid}>
 				<button>제출입니다</button>
 				</form>

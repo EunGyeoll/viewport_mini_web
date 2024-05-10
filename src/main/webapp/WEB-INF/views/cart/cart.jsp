@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,17 +38,23 @@
 					</div>
 				</div>
 				<div class="row border-top border-bottom" id="cart-list-container">
-					<div class="row main align-items-center">
-                        <div class="col-2"><img class="img-fluid" src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_GC10_2.jpg"></div>
-                        <div class="col">
-                            <div class="row text-muted">${product.pcategory }</div>
-                            <div class="row">${product.pname}</div>
-                        </div>
-                        <div class="col">
-                            <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a>
-                        </div>
-                        <div class="col">₩${product.pprice } <span class="close">&#10005;</span></div>
-                    </div>
+					<c:forEach var="product" items="${productList}">
+						<div class="row main align-items-center">
+							<div class="col-2">
+								<img class="img-fluid" src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_GC10_2.jpg">
+							</div>
+							<div class="col">
+								<div class="row text-muted">${product.pcategory }</div>
+								<div class="row">${product.pname}</div>
+							</div>
+							<div class="col">
+								<a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a>
+							</div>
+							<div class="col">
+								₩${product.pprice} <span class="close">&#10005;</span>
+							</div>
+						</div>
+					</c:forEach>
 				</div>
 				<!-- <div class="row">
                     <div class="row main align-items-center">

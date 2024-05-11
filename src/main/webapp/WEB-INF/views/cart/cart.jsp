@@ -41,7 +41,7 @@
 					<c:forEach var="product" items="${productList}">
 						<div class="row main align-items-center">
 							<div class="col-2">
-								<img class="img-fluid" src="attachCartItemDownload?pid=${product.pid}">
+								<img class="img-fluid" src="cart/attachCartItemDownload?pid=${product.pid}">
 							</div>
 							<div class="col">
 								<div class="row text-muted">${product.pcategory}</div>

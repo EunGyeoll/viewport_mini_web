@@ -52,7 +52,7 @@ public class CartController {
   public String cartForm(int pid, Principal principal, Model model) {
     log.info("실행");
     // 로그인이 되어있지 않으면 null pointer 에러 발생
-    if(principal == null) {
+    if (principal == null) {
       return "redirect:/login";
     }
     String uemail = principal.getName();
@@ -64,19 +64,21 @@ public class CartController {
 
     return "redirect:/cart";
   }
-  
+
   @GetMapping("/attachCartItemDownload")
   public void cartProductsList(HttpServletResponse response, int pid) throws IOException {
-      // 상품 데이터 생성
-      Product product = productService.getProduct(pid);
-      byte[] data = product.getPattachdata();
-      response.setContentType(product.getPattachtype());
-      String fileName = new String(product.getPattachsname());
-      fileName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
-      response.setHeader("content-Disposition", "attachment; filename=\"" + fileName + "\"");
-      OutputStream os = response.getOutputStream();
-      os.write(data);
-      os.flush();
-      os.close();
+    // 상품 데이터 생성
+    log.info("실행");
+    Product product = productService.getProduct(pid);
+    byte[] data = product.getPattachdata();
+    log.info(product.getPattachsname());
+    response.setContentType(product.getPattachtype());
+    String fileName = new String(product.getPattachsname());
+    fileName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
+    response.setHeader("content-Disposition", "attachment; filename=\"" + fileName + "\"");
+    OutputStream os = response.getOutputStream();
+    os.write(data);
+    os.flush();
+    os.close();
   }
 }

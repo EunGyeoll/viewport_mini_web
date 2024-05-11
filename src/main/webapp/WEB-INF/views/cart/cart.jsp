@@ -41,7 +41,7 @@
 					<c:forEach var="product" items="${productList}">
 						<div class="row main align-items-center">
 							<div class="col-2">
-								<img class="img-fluid" src="cart/attachCartItemDownload?pid=${product.pid}">
+								<img class="img-fluid" src="products/attachProductDownload?pid=${product.pid}">
 							</div>
 							<div class="col">
 								<div class="row text-muted">${product.pcategory}</div>
@@ -106,7 +106,7 @@
 					<div class="col">TOTAL PRICE</div>
 					<div class="col text-right" id="total-price">0 원</div>
 				</div>
-				<button class="checkout-btn btn">CHECKOUT</button>
+				<button class="checkout-btn btn">결제하기</button>
 				<a href="/viewport_mini_web">
 					<div class="back-to-shop shopping-btn text-center">
 						<span class="text-muted">Back to shop</span>

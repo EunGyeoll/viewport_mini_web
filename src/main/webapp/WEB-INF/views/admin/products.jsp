@@ -65,7 +65,7 @@
 						<td>${product.pname}</td>
 						<td>${product.pprice}</td>
 						<td>
-							<img src="downloadFile?productImgName=${product.pattachsname}" width="100" height="100" />
+							<img src="/viewport_mini_web/products/attachProductDownload?pid=${product.pid}" width="100" height="100" />
 						</td>
 						<td>${product.pinfo}</td>
 						<td>${product.pdetail}</td>

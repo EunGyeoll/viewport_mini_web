@@ -15,7 +15,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/cart.css?ver=1">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/nav.css?ver=1">
-<!-- 아이콘 -->
+<%--아이콘 --%>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
@@ -33,56 +33,32 @@
 							</h4>
 						</div>
 						<div class="col align-self-center text-right text-muted num-of-items" id="num-of-items">
-							<!-- <span>3 items</span> -->
+							<span>${totalProductCount} items</span>
 						</div>
 					</div>
 				</div>
 				<div class="row border-top border-bottom" id="cart-list-container">
-					<c:forEach var="product" items="${productList}">
-						<div class="row main align-items-center">
+					<c:forEach var="productData" items="${productDataList}">
+						<div class="product-row row main align-items-center" data-pid="${productData.product.pid}">
 							<div class="col-2">
-								<img class="img-fluid" src="products/attachProductDownload?pid=${product.pid}">
+								<img class="img-fluid" src="products/attachProductDownload?pid=${productData.product.pid}">
 							</div>
 							<div class="col">
-								<div class="row text-muted">${product.pcategory}</div>
-								<div class="row">${product.pname}</div>
+								<div class="row text-muted">${productData.product.pcategory}</div>
+								<div class="row">${productData.product.pname}</div>
 							</div>
 							<div class="col">
-								<a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a>
+								<%--data-* 를 사용하면 해당되는 태그를 js에서 부르기 쉬움 --%>
+								<button class="btn btn-sm" onclick="editCount(${productData.product.pid}, 'minus')">-</button>
+								<span class="border-0 count-box" data-pid="${productData.product.pid}">${productData.quantity}</span>
+								<button class="btn btn-sm" onclick="editCount(${productData.product.pid}, 'plus')">+</button>
 							</div>
 							<div class="col">
-								₩${product.pprice} <span class="close">&#10005;</span>
+								₩${productData.product.pprice} <span class="close-btn btn btn-sm" onclick="removeItem(${productData.product.pid})" >&#10005;</span>
 							</div>
 						</div>
 					</c:forEach>
 				</div>
-				<!-- <div class="row">
-                    <div class="row main align-items-center">
-                        <div class="col-2"><img class="img-fluid" src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_GAUSS_NC3_2.jpg"></div>
-                        <div class="col">
-                            <div class="row text-muted">Sunglasses</div>
-                            <div class="row">가우스 NC3</div>
-                        </div>
-                        <div class="col">
-                            <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a>
-                        </div>
-                        <div class="col">₩ 44.00 <span class="close">&#10005;</span></div>
-                    </div>
-                </div>
-                <div class="row border-top border-bottom">
-                    <div class="row main align-items-center">
-                        <div class="col-2"><img class="img-fluid" src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_NONN_GR7_2.jpg"></div>
-                        <div class="col">
-                            <div class="row text-muted">Sunglasses</div>
-                            <div class="row">논엔 GR7</div>
-                        </div>
-                        <div class="col">
-                            <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a>
-                        </div>
-                        <div class="col">₩ 44.00 <span class="close">&#10005;</span></div>
-                    </div>
-                </div> -->
-
 			</div>
 			<div class="col-md-4 summary">
 				<div>
@@ -119,7 +95,7 @@
 
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
 	<!-- Footer -->
-	<%-- <script src="${pageContext.request.contextPath}/resources/js/cart.js"></script> --%>
+	<script src="${pageContext.request.contextPath}/resources/js/cart.js"></script>
 
 </body>
 </html>

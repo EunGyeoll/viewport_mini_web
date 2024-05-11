@@ -16,4 +16,7 @@ public interface CartItemDao {
 
   List<CartItem> selectAllCartItems(int cicid);
 
+  void removeCartItemByProductId(@Param("cipid") int cipid,@Param("cicid") int cicid);
+
+
 }

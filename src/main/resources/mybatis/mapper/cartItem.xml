@@ -33,4 +33,9 @@
 		where
 		cicid=#{cicid}
 	</select>
+	<delete id="removeCartItemByProductId" parameterType="int">
+		delete from cartitem
+		where
+		cipid=#{cipid} and cicid=#{cicid}
+	</delete>
 </mapper>

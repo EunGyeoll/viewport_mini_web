@@ -4,15 +4,18 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.mycompany.viewport_mini_web.dto.Cart;
 import com.mycompany.viewport_mini_web.dto.CartItem;
 import com.mycompany.viewport_mini_web.dto.Product;
+import com.mycompany.viewport_mini_web.dto.ProductCartData;
 import com.mycompany.viewport_mini_web.dto.Users;
 import com.mycompany.viewport_mini_web.service.CartService;
 import com.mycompany.viewport_mini_web.service.ProductService;
@@ -33,15 +36,18 @@ public class CartController {
 
   @GetMapping("")
   public String cart(Principal principal, Model model) {
-    log.info("cart() 실행");
     Users user = userService.getUser(principal.getName());
-    Cart cart = cartService.getCartByUemail(user.getUsid());
+    Cart cart = cartService.getCartByUserId(user.getUsid());
     List<CartItem> cartItemList = cartService.getAllCartItems(cart.getCid());
-    List<Product> productList = new ArrayList<>();
-    for (int i = 0; i < cartItemList.size(); i++) {
-      productList.add(productService.getProduct(cartItemList.get(i).getCipid()));
+
+    List<ProductCartData> productDataList = new ArrayList<>();
+    for (CartItem item : cartItemList) {
+      Product product = productService.getProduct(item.getCipid());
+      int quantity = item.getCiqty();
+      productDataList.add(new ProductCartData(product, quantity));
     }
-    model.addAttribute("productList", productList);
+    model.addAttribute("totalProductCount", productDataList.size());
+    model.addAttribute("productDataList", productDataList);
     return "cart/cart";
   }
 
@@ -60,6 +66,45 @@ public class CartController {
     cartService.addCartProduct(user, product);
 
     return "redirect:/cart";
+  }
+
+  @PostMapping("/updateQuantity")
+  public ResponseEntity<?> updateQuantity(@RequestBody CartItem cartItem, Principal principal) {
+    try {
+      String uemail = principal.getName();
+      Users user = userService.getUser(uemail);
+      Cart cart = cartService.getCartByUserId(user.getUsid());
+      // 카트에 담긴 상품중 수량을 업데이트하고 그 업데이트가 제대로 됐는지 업데이트 결과를 저장함
+      // 만약 업데이트가 실패 또는 성공 했다면 그 결과를 프론트로 전달
+      boolean updateResult =
+          cartService.updateCartItemQty(cartItem.getCipid(), cartItem.getCiqty(), cart.getCid());
+      if (updateResult) {
+        return ResponseEntity.ok().build();
+      } else {
+        return ResponseEntity.badRequest().body("업데이트가 불가능합니다.");
+      }
+    } catch (Exception e) {
+      return ResponseEntity.internalServerError().body("업데이트중 에러발생");
+    }
+  }
+  
+  @PostMapping("/removeProduct")
+  public ResponseEntity<?> removeProduct(@RequestBody CartItem cartItem, Principal principal) {
+    try {
+      String uemail = principal.getName();
+      Users user = userService.getUser(uemail);
+      Cart cart = cartService.getCartByUserId(user.getUsid());
+
+      boolean removeResult =
+          cartService.removeProduct(cartItem.getCipid(), cart.getCid());
+      if (removeResult) {
+        return ResponseEntity.ok().build();
+      } else {
+        return ResponseEntity.badRequest().body("삭제가 불가능합니다.");
+      }
+    } catch (Exception e) {
+      return ResponseEntity.internalServerError().body("삭제중 에러발생");
+    }
   }
 
 }

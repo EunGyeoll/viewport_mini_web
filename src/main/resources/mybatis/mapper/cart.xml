@@ -13,7 +13,7 @@
 		from cart
 		where cuid = #{cuid}
 	</select>
-	<select id="findCartByUemail" parameterType="int"
+	<select id="findCartByUserId" parameterType="int"
 		resultType="Cart">
 		select cid,cshippingtype,cuid
 		from cart

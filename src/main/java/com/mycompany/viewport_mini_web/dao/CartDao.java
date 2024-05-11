@@ -12,7 +12,7 @@ public interface CartDao {
 
   void createCart(Cart cart);
 
-  Cart findCartByUemail(int cuid);
+  Cart findCartByUserId(int cuid);
 
 
 }

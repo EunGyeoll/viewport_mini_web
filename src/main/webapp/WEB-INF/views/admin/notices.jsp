@@ -34,7 +34,7 @@
 
 	<section class="card">
 		<div class="d-flex justify-content-end me-5 mt-3 justify-content-sm-between">
-			<h2 class="ms-4">상품 관리</h2>
+			<h2 class="ms-4">공지사항 관리</h2>
 
 			<div>
 				<input type="text" />
@@ -46,15 +46,10 @@
 			<thead>
 				<tr>
 					<th scope="col">상품#</th>
-					<th scope="col">이름</th>
-					<th scope="col">가격</th>
-					<th scope="col">사진</th>
-					<th scope="col">설명</th>
-					<th scope="col">상세 설명</th>
 					<th scope="col">카테고리</th>
-					<th scope="col">모양</th>
+					<th scope="col">제목</th>
 					<th scope="col">날짜</th>
-					<th scope="col"><button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#createUserModal">상품 정보 생성</button></th>
+					<th scope="col"><button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#createUserModal">공지사항 추가</button></th>
 
 				</tr>
 			</thead>

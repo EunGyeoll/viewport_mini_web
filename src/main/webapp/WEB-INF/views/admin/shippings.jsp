@@ -20,11 +20,11 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNavDropdown">
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin">대시보드</a></li>
+						<li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/admin">대시보드</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/users">사용자 관리</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/products">상품 관리</a></li>
-						<li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/admin/shippings">배송 관리</a></li>
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/posts">게시글 관리</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/shippings">배송 관리</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/notices">공지사항 관리</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/">홈으로 돌아가기</a></li>
 					</ul>
 				</div>

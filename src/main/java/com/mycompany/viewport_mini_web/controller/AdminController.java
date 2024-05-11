@@ -84,9 +84,9 @@ public class AdminController {
 		return "admin/shippings";
 	}
 
-	@GetMapping("/posts")
-	public String adminPostPage(Model model) {
-		return "admin/posts";
+	@GetMapping("/notices")
+	public String adminNoticesPage(Model model) {
+		return "admin/notices";
 	}
 
 	@PostMapping(value = "/editUserData", produces = "application/json; charset=UTF-8")

@@ -22,17 +22,20 @@ public class CartService {
     log.info("실행");
     Cart cart = cartDao.findByUsid(user.getUsid());
     if(cart == null) {
+      cart = new Cart();
       //이부분에서 널포인터 access 발생
       cart.setCuid(user.getUsid());
-      cart = cartDao.createCart(cart);
+      cartDao.createCart(cart);
     }
     CartItem cartItem = cartItemDao.findByCartIdAndProductId(product.getPid(),cart.getCid());
     if(cartItem == null) {
-      cartItem = cartItemDao.createCartProduct(cart.getCid(),product.getPid());
+      cartItem = new CartItem();
+      cartItemDao.createCartProduct(cart.getCid(),product.getPid());
     } else {
-      cartItem = cartItemDao.updateCiqty(cartItem.getCiqty()+1,product.getPid(),cart.getCid());
+      cartItemDao.updateCiqty(cartItem.getCiqty()+1,product.getPid(),cart.getCid());
     }
   }
+  
   public Cart getCartByUemail(int usid) {
    Cart cart = cartDao.findCartByUemail(usid);
     return cart;

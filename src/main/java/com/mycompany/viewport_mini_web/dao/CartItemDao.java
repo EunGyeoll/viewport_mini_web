@@ -8,11 +8,11 @@ import com.mycompany.viewport_mini_web.dto.CartItem;
 @Mapper
 public interface CartItemDao {
 
-  CartItem findByCartIdAndProductId(@Param("cipid") int pid,@Param("cicid") int cid);
+  CartItem findByCartIdAndProductId(@Param("cipid") int cipid,@Param("cicid") int cicid);
 
-  CartItem createCartProduct(@Param("cicid") int cid,@Param("cipid") int pid);
+  void createCartProduct(@Param("cicid") int cicid,@Param("cipid") int cipid);
 
-  CartItem updateCiqty(@Param("ciqty") int ciqty,@Param("cipid") int pid,@Param("cicid") int cid);
+  void updateCiqty(@Param("ciqty") int ciqty,@Param("cipid") int cipid,@Param("cicid") int cicid);
 
   List<CartItem> selectAllCartItems(int cicid);
 

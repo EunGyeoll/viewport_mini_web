@@ -4,25 +4,27 @@
 <mapper
 	namespace="com.mycompany.viewport_mini_web.dao.CartItemDao">
 
-	<select id="findByCartIdAndProductId" resultType="CartItem">
-
+	<select id="findByCartIdAndProductId" parameterType="int"
+		resultType="CartItem">
 		select ciid,ciqty,cipid,cicid from cartitem
+		where
+		cipid=#{cipid} and cicid = #{cicid}
 	</select>
-
 	<insert id="createCartProduct" parameterType="int">
 		<selectKey keyProperty="ciid" order="BEFORE"
 			resultType="int">
 			select seq_ciid.nextval from dual
 		</selectKey>
-		insert into
-		cartitem (ciid,ciqty,cipid,cicid) values
-		(#{ciid},#{ciqty},#{cipid},#{cicid})
+		insert into cartitem (ciid, cipid, cicid) values (#{ciid}, #{cipid},
+		#{cicid})
 	</insert>
+
 
 	<update id="updateCiqty" parameterType="int">
 		update cartitem set
-		ciid=#{ciid},ciqty=#{ciqty}, cipid=#{cipid}, cicid = #{cicid}
-		where cipid=#{cipid} and cicid = #{cicid}
+		ciqty=#{ciqty}, cipid=#{cipid}, cicid = #{cicid}
+		where
+		cipid=#{cipid} and cicid = #{cicid}
 	</update>
 	<select id="selectAllCartItems" parameterType="int"
 		resultType="CartItem">

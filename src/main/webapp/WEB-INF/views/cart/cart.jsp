@@ -41,10 +41,10 @@
 					<c:forEach var="product" items="${productList}">
 						<div class="row main align-items-center">
 							<div class="col-2">
-								<img class="img-fluid" src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_GC10_2.jpg">
+								<img class="img-fluid" src="attachCartItemDownload?pid=${product.pid}">
 							</div>
 							<div class="col">
-								<div class="row text-muted">${product.pcategory }</div>
+								<div class="row text-muted">${product.pcategory}</div>
 								<div class="row">${product.pname}</div>
 							</div>
 							<div class="col">

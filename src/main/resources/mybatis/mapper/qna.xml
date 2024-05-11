@@ -6,8 +6,8 @@
 		<selectKey keyProperty="qid" order="BEFORE" resultType="int">
 			select seq_qid.nextval from dual
 		</selectKey>
-		insert into qna(qid,qtitle,qdate,qcontent,quserid,qattachdata,qattachoname,qattachsname,qattachtype,qcategory)
-		values(#{qid},#{qtitle},sysdate,#{qcontent},#{quserid},#{qattachdata},#{qattachoname},#{qattachsname},#{qattachtype},#{qcategory})
+		insert into qna(qid,qtitle,qdate,qcontent,quserid,qattachdata,qattachoname,qattachsname,qattachtype,qcategory,qstatus)
+		values(#{qid},#{qtitle},sysdate,#{qcontent},#{quserid},#{qattachdata},#{qattachoname},#{qattachsname},#{qattachtype},#{qcategory},#{qstatus})
 	</insert>
 <select id="selectQnaAll" resultType="Qna">
 	select qid,qtitle,qdate,qcategory,quserid from qna order by qid desc

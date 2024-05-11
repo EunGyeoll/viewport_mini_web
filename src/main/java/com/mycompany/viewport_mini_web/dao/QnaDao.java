@@ -13,4 +13,6 @@ public interface QnaDao {
 
   Qna selectByQid(int qid);
 
+  List<Qna> findPostsByUserId(int quserid);
+
 }

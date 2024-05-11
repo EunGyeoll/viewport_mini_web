@@ -136,15 +136,15 @@
 							<div class="card-body">
 								<h4 class="card-title">비밀번호 변경</h4>
 								<form method="post" action="mypage/passwordChange?tab=password" data-bs-target="#password">
-								<h2>${pwError }</h2>
+									<h2>${pwError }</h2>
 									<div class="mb-3">
-										<label for="current-password" class="form-label">현재 비밀번호</label> <input type="password" name="currPw"class="form-control" id="current-password">
+										<label for="current-password" class="form-label">현재 비밀번호</label> <input type="password" name="currPw" class="form-control" id="current-password">
 									</div>
 									<div class="mb-3">
 										<label for="new-password" class="form-label">새 비밀번호</label> <input type="password" name="newPw" class="form-control" id="new-password">
 									</div>
 									<div class="mb-3">
-										<label for="new-password-confirm" class="form-label">새 비밀번호 확인</label> <input type="password" name="newPwConfirm"class="form-control" id="new-password-confirm">
+										<label for="new-password-confirm" class="form-label">새 비밀번호 확인</label> <input type="password" name="newPwConfirm" class="form-control" id="new-password-confirm">
 									</div>
 									<button type="submit" class="btn btn-dark">변경하기</button>
 								</form>
@@ -186,32 +186,27 @@
 							<div class="card-body">
 								<h4 class="card-title">문의 내역</h4>
 								<ul class="list-group list-group-flush">
-									<li class="list-group-item">
-										<div class="d-flex justify-content-between align-items-center">
-											<div>
-												<h5>제품 관리에 대해 문의드립니다.</h5>
-												<p>제품을 처음 사용하는데,관리 방법을 자세히 알고 싶습니다.</p>
+									<c:forEach var="qna" items="${qnaList}">
+										<li class="list-group-item">
+											<div class="d-flex justify-content-between align-items-center">
+												<div>
+													<h5>${qna.qtitle}</h5>
+													<p>${qna.qcontent}</p>
+												</div>
+												<c:if test="${qna.qstatus eq '답변완료' }">
+													<span class="badge bg-success">${qna.qstatus}</span>
+												</c:if>
+												<c:if test="${ qna.qstatus eq '처리 중'}">
+													<span class="badge bg-warning">${qna.qstatus}</span>
+												</c:if>
 											</div>
-											<span class="badge bg-success">답변 완료</span>
-										</div>
-										<div class="mt-2">
-											<strong>답변:</strong>
-											<p>안녕하세요, 고객님. 제품 관리에 대한 자세한 안내를 메일로 보내드렸습니다. 확인 부탁드립니다.</p>
-										</div>
-									</li>
-									<li class="list-group-item">
-										<div class="d-flex justify-content-between align-items-center">
-											<div>
-												<h5>주문 취소 요청</h5>
-												<p>어제 주문한 상품을 취소하고 싶습니다. 처리 부탁드립니다.</p>
+											<div class="mt-2">
+												<strong>답변:</strong>
+												<p>안녕하세요, 고객님. 제품 관리에 대한 자세한 안내를 메일로 보내드렸습니다. 확인 부탁드립니다.</p>
 											</div>
-											<span class="badge bg-warning">처리 중</span>
-										</div>
-										<div class="mt-2">
-											<strong>답변:</strong>
-											<p>주문 취소 요청을 접수하였습니다. 곧 처리 완료될 예정입니다.</p>
-										</div>
-									</li>
+										</li>
+
+									</c:forEach>
 								</ul>
 								<div class="pagination-center">
 									<div class="pagination">
@@ -228,7 +223,7 @@
 								<h4 class="card-title">회원 탈퇴</h4>
 								<form method="post" action="mypage/deleteUserData?tab=deleteAccount">
 									<div class="mb-3">
-										<label for="current-password" class="form-label">비밀번호</label> <input type="password" name="currPw"class="form-control" id="current-password">
+										<label for="current-password" class="form-label">비밀번호</label> <input type="password" name="currPw" class="form-control" id="current-password">
 									</div>
 									<button type="submit" class="btn btn-dark">탈퇴하기</button>
 								</form>
@@ -240,7 +235,7 @@
 		</div>
 	</div>
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
-	<script src = "/viewport_mini_web/resources/js/mypage.js"></script>
+	<script src="/viewport_mini_web/resources/js/mypage.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

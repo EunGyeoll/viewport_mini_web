@@ -1,16 +1,17 @@
 package com.mycompany.viewport_mini_web.controller;
 
 import java.security.Principal;
+import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.mycompany.viewport_mini_web.dto.Qna;
 import com.mycompany.viewport_mini_web.dto.Users;
+import com.mycompany.viewport_mini_web.service.BoardService;
 import com.mycompany.viewport_mini_web.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,13 +21,17 @@ import lombok.extern.slf4j.Slf4j;
 public class mypageController {
   @Autowired
   private UserService userService;
-
+  @Autowired
+  private BoardService boardService;
+  
   @GetMapping("")
   public String mypage(Model model, Principal principal) {
     String uemail = principal.getName();
 
     Users user = userService.getUser(uemail);
+    List<Qna> qnaList = boardService.getQnaByUser(user.getUsid());
     model.addAttribute("user", user);
+    model.addAttribute("qnaList",qnaList);
     return "mypage/mypage";
   }
 

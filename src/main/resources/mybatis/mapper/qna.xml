@@ -13,6 +13,10 @@
 	select qid,qtitle,qdate,qcategory,quserid from qna order by qid desc
 </select>
 
+<select id="findPostsByUserId" parameterType="int" resultType="Qna">
+	select * from qna
+	where quserid=#{quserid}
+</select>
 <select id="selectByQid" parameterType="int" resultType="Qna">
 	select qid,qtitle,qdate,qcategory,quserid,qcontent,qattachdata,qattachsname,qattachoname,qattachtype,qattachdata from qna
 	where qid = #{qid}

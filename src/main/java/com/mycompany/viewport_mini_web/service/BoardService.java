@@ -32,4 +32,9 @@ public class BoardService {
     return qna;
   }
 
+  public List<Qna> getQnaByUser(int usid) {
+    List<Qna> qnaList = boardDao.findPostsByUserId(usid);
+    return qnaList;
+  }
+
 }

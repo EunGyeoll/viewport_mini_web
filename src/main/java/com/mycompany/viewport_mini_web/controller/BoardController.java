@@ -59,6 +59,7 @@ public class BoardController {
   public ResponseEntity<?> WriteQNA(Qna qna, Model model, Principal principal) {
     log.info("실행");
     String uemail = principal.getName();
+    qna.setQstatus("처리 중");
     qna.setQattachoname(qna.getQattach().getOriginalFilename());
     qna.setQattachtype(qna.getQattach().getContentType());
     try {

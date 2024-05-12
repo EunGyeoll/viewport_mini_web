@@ -17,12 +17,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import com.mycompany.viewport_mini_web.dto.Pager;
 import com.mycompany.viewport_mini_web.dto.Photos;
 import com.mycompany.viewport_mini_web.dto.Product;
 import com.mycompany.viewport_mini_web.dto.Users;
 import com.mycompany.viewport_mini_web.service.CommonService;
+import com.mycompany.viewport_mini_web.service.PagerService;
 import com.mycompany.viewport_mini_web.service.ProductService;
 import com.mycompany.viewport_mini_web.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -39,6 +41,9 @@ public class AdminController {
 
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private PagerService pagerService;
 
 	@GetMapping("")
 	public String adminMainPage(Model model) {
@@ -46,36 +51,25 @@ public class AdminController {
 	}
 
 	@GetMapping("/users")
-	public String adminUserPage(String pageNo, Model model, HttpSession session) {
+    public String adminUserPage(@RequestParam(required = false) String pageNo, Model model, HttpSession session) {
+      int totalRows = usersService.getTotalUserRows(); // 사용자의 전체 수를 가져옵니다.
+      Pager pager = pagerService.preparePager(session, pageNo, totalRows, 10, 5); // 페이지당 행 수 10, 그룹당 페이지 수 5
 
-		if (pageNo == null) {
-			pageNo = (String) session.getAttribute("pageNo");
-			if (pageNo == null) {
-				pageNo = "1";
-			}
-		}
-
-		session.setAttribute("pageNo", pageNo);
-
-		int intPageNo = Integer.parseInt(pageNo);
-
-		int rowsPagingTarget = service.getUserTotalRows();
-		Pager pager = new Pager(10, 10, rowsPagingTarget, intPageNo);
-
-		List<Users> users = usersService.getUserList(pager);
-
-		model.addAttribute("pager", pager);
-		model.addAttribute("users", users);
-		log.info(users.toString());
-		return "admin/users";
-	}
+      List<Users> users = usersService.getUserList(pager);
+      model.addAttribute("pager", pager);
+      model.addAttribute("users", users);
+      return "admin/users";
+  }
 
 	@GetMapping("/products")
-	public String adminProductsPage(Model model) {
-		List<Product> products = productService.getProductList();
+	public String adminProductsPage(@RequestParam(required = false) String pageNo, Model model, HttpSession session) {
+		int totalRows = productService.getTotalProductRows();
+		    Pager pager = pagerService.preparePager(session, pageNo, totalRows, 5, 5);
+		    List<Product> products = productService.getProductListByPager(pager);
 		File destDir = new File("C:/Temp/uploadProduct");
 		String[] productImgNames = destDir.list();
 		model.addAttribute("products", products);
+		model.addAttribute("pager",pager);
 		return "admin/products";
 	}
 

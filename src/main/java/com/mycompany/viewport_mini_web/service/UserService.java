@@ -26,7 +26,7 @@ public class UserService {
     return userList;
   }
 
-  public int getTotalRows() {
+  public int getTotalUserRows() {
     int totalRows = userDao.count();
     return totalRows;
   }

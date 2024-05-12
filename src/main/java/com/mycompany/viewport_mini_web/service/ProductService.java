@@ -86,6 +86,11 @@ public class ProductService {
 		return photos;
 	}
 
+  public int getTotalProductRows() {
+    int totalRows = productDao.count();
+    return totalRows;
+  }
+
 
 
 

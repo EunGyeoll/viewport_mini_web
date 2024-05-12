@@ -24,6 +24,7 @@ const updateTotalPrice = () => {
 // 수량 변경 처리
 const editCount = (pid, type) => {
   let countBox = document.querySelector(`.count-box[data-pid="${pid}"]`);
+  let hiddenInput = document.querySelector(`input.product-quantity[data-pid="${pid}"]`);
   let quantity = parseInt(countBox.textContent);
   const newQty = type === 'plus' ? quantity + 1 : quantity - 1;
 
@@ -34,8 +35,10 @@ const editCount = (pid, type) => {
           contentType: 'application/json',
           data: JSON.stringify({ cipid: pid, ciqty: newQty }),
           success: function(response) {
-            countBox.textContent = newQty;
-            updateTotalPrice();  
+              countBox.textContent = newQty;
+              hiddenInput.value = newQty; 
+              console.log(hiddenInput.value);
+              updateTotalPrice();  
           },
           error: function(error) {
               console.error('아이템 수량 업데이트 중 에러발생: ', error);
@@ -43,6 +46,7 @@ const editCount = (pid, type) => {
       });
   }
 };
+
 
 // 아이템 삭제 처리
 const removeItem = (productId) => {

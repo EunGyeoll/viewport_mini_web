@@ -51,9 +51,9 @@
 								</div>
 								<div class="col">
 									<%--data-* 를 사용하면 해당되는 태그를 js에서 부르기 쉬움 --%>
-									<button class="btn btn-sm" onclick="editCount(${productData.product.pid}, 'minus')">-</button>
+									<button type="button" class="btn btn-sm" onclick="editCount(${productData.product.pid}, 'minus')">-</button>
 									<span class="border-0 count-box" data-pid="${productData.product.pid}">${productData.quantity}</span>
-									<button class="btn btn-sm" onclick="editCount(${productData.product.pid}, 'plus')">+</button>
+									<button type="button" class="btn btn-sm" onclick="editCount(${productData.product.pid}, 'plus')">+</button>
 								</div>
 								<div class="col" data-price="${productData.product.pprice}">
 									<fmt:formatNumber value="${productData.product.pprice}" type="currency" currencySymbol="₩" groupingUsed="true" />

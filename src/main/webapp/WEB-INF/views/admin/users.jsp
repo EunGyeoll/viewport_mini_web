@@ -21,8 +21,8 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNavDropdown">
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/admin">대시보드</a></li>
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/users">사용자 관리</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin">대시보드</a></li>
+						<li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/admin/users">사용자 관리</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/products">상품 관리</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/shippings">배송 관리</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/notices">공지사항 관리</a></li>
@@ -62,7 +62,9 @@
 						<th scope="row">${user.usid}</th>
 						<td>${user.uname}</td>
 						<td>${user.uemail}</td>
-						<td>${user.urole}</td>
+						<c:if test="${user.urole eq 'ROLE_USER' }"><td>사용자</td></c:if>
+						<c:if test="${user.urole eq 'ROLE_ADMIN' }"><td>관리자</td></c:if>
+						<%-- <td>${user.urole}</td> --%>
 						<td>${user.uphonenumber}</td>
 						<td>${user.uaddress}</td>
 						<%-- 	<td><fmt:formatDate value="${user.uaddress}" pattern="yyyy-MM-dd" /></td> --%>
@@ -89,9 +91,9 @@
 					</c:if>
 				</c:forEach>
 				<c:if test="${pager.groupNo<pager.totalGroupNo}">
-				<li class="page-item"><a class="page-link" href="users?pageNo=${pager.endPageNo+1}">Next</a></li>
+					<li class="page-item"><a class="page-link" href="users?pageNo=${pager.endPageNo+1}">Next</a></li>
 				</c:if>
-				
+
 			</ul>
 		</nav>
 

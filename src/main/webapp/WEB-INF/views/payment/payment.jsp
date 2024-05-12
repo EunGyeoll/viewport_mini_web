@@ -1,46 +1,45 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="EUC-KR">
+		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
 		<title>Insert title here</title>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 		<!-- Latest compiled JavaScript -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-		<!-- JQuery ¿ÜºÎ ¶óÀÌºê·¯¸® -->
+		<!-- JQuery ì™¸ë¶€ ë¼ì´ë¸ŒëŸ¬ë¦¬ -->
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 		
-		<!-- css ¼³Á¤ -->
+		<!-- css ì„¤ì • -->
 		<link rel="stylesheet" href="/viewport_mini_web/resources/css/nav.css?ver=1">
 		<link rel="stylesheet" href="/viewport_mini_web/resources/css/payment.css?ver=1">	
 		
-		<!-- ¾ÆÀÌÄÜ -->
+		<!-- ì•„ì´ì½˜ -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	
 	</head>
 	<body>
-		<!-- ³×ºñ°ÔÀÌ¼Ç ¹Ù  -->
+		<!-- ë„¤ë¹„ê²Œì´ì…˜ ë°”  -->
 		<%@ include file="/WEB-INF/views/common/nav.jsp"%>
 
     <form action="" method="post" id="payment-form" name="payment-form">
         <div class="payment-wrap">
             <div class="payment-block">
-                <!-- °áÁ¦ Á¤º¸ ÀÔ·Â -->
+                <!-- ê²°ì œ ì •ë³´ ìž…ë ¥ -->
                 <section class="payment-block-order">
                     <div class="title">
-                        <h6>1. ÁÖ¹®ÀÚ Á¤º¸</h6>
+                        <h6>1. ì£¼ë¬¸ìž ì •ë³´</h6>
                     </div>
                     <div>
-                        <input type="text" placeholder="ÀÌ¸§*" class="orderName">
+                        <input type="text" placeholder="ì´ë¦„*" class="orderName">
                     </div>
                     <div class="order-phonenumber">
-                        <p>ÈÞ´ëÀüÈ­*</p>
+                        <p>íœ´ëŒ€ì „í™”*</p>
                         <input type="text">
                     </div>
                     <div class="order-email">
-                        <p>ÀÌ¸ÞÀÏ*</p>
+                        <p>ì´ë©”ì¼*</p>
                         <input type="text" id="emailId">
                         <span>@</span>
                         <input type="text" id="emailSelect-direct">  
@@ -48,89 +47,89 @@
                 </section>
                 <section class="payment-block-delivery">
                     <div class="title">
-                        <h6>2. ¹è¼ÛÁö Á¤º¸</h6>
+                        <h6>2. ë°°ì†¡ì§€ ì •ë³´</h6>
                     </div>
                     <div>
                         <label for="delivery-radio1">
-                            <input type="radio" name="delivery-radio" id="delivery-radio1"/>Á÷Á¢ ÀÔ·Â
+                            <input type="radio" name="delivery-radio" id="delivery-radio1"/>ì§ì ‘ ìž…ë ¥
                         </label>
                         <label for="delivery-radio2">
-                            <input type="radio" name="delivery-radio" id="delivery-radio2" checked/>È¸¿ø Á¤º¸¿Í µ¿ÀÏ
+                            <input type="radio" name="delivery-radio" id="delivery-radio2" checked/>íšŒì› ì •ë³´ì™€ ë™ì¼
                         </label>  
                         
                     </div>
                     <div>
-                        <input type="text" placeholder="¹Þ´Â »ç¶÷*">
+                        <input type="text" placeholder="ë°›ëŠ” ì‚¬ëžŒ*">
                     </div>
                     <div>
-                        <!-- ¿ìÆí¹øÈ£ Ã£±â -->
+                        <!-- ìš°íŽ¸ë²ˆí˜¸ ì°¾ê¸° -->
                     </div>
                     <div>
-                        <input type="text" placeholder="±âº» ÁÖ¼Ò*">
-                        <input type="text" placeholder="»ó¼¼ ÁÖ¼Ò*">
+                        <input type="text" placeholder="ê¸°ë³¸ ì£¼ì†Œ*">
+                        <input type="text" placeholder="ìƒì„¸ ì£¼ì†Œ*">
                     </div>
                     <div class="delivery-phonenumber">
-                        <p>ÈÞ´ëÀüÈ­*</p>
+                        <p>íœ´ëŒ€ì „í™”*</p>
                         <input type="text" id="payment-phonenumber">
                         <small id="payment-phonenumber-error"></small>
                     </div>
                     <div class="delivery-message">
-                        <p>¹è¼Û ¸Þ½ÃÁö</p>
+                        <p>ë°°ì†¡ ë©”ì‹œì§€</p>
                         <select name="deliverySelect" id="deliverySelect">
-                            <option value="" selected>¹è¼Û ½Ã ¿äÃ»»çÇ×À» ¼±ÅÃÇØ ÁÖ¼¼¿ä.</option>
-                            <option value="">¹è¼Û Àü¿¡ ¹Ì¸® ¿¬¶ô¹Ù¶ø´Ï´Ù.</option>
-                            <option value="">ºÎÀç ½Ã °æºñ½Ç¿¡ ¸Ã°ÜÁÖ¼¼¿ä</option>
-                            <option value="">ºÎÀç ½Ã ¹® ¾Õ¿¡ ³õ¾ÆÁÖ¼¼¿ä.</option>
-                            <option value="deliveryDirect">Á÷Á¢ ÀÔ·Â</option>
+                            <option value="" selected>ë°°ì†¡ ì‹œ ìš”ì²­ì‚¬í•­ì„ ì„ íƒí•´ ì£¼ì„¸ìš”.</option>
+                            <option value="">ë°°ì†¡ ì „ì— ë¯¸ë¦¬ ì—°ë½ë°”ëžë‹ˆë‹¤.</option>
+                            <option value="">ë¶€ìž¬ ì‹œ ê²½ë¹„ì‹¤ì— ë§¡ê²¨ì£¼ì„¸ìš”</option>
+                            <option value="">ë¶€ìž¬ ì‹œ ë¬¸ ì•žì— ë†“ì•„ì£¼ì„¸ìš”.</option>
+                            <option value="deliveryDirect">ì§ì ‘ ìž…ë ¥</option>
                         </select>
                         <input type="text" id="deliverySelect-direct">
                     </div>
                 </section>
                 <section class="payment-block-payment">
                     <div class="title">
-                        <h6>3. °áÁ¦ ¼ö´Ü</h6>
+                        <h6>3. ê²°ì œ ìˆ˜ë‹¨</h6>
                     </div>
                 </section>
             </div>
             <div class="product-block">
                 <div class="product-block-product">
                     <div>
-                        <p>ÁÖ¹® »óÇ°</p>
+                        <p>ì£¼ë¬¸ ìƒí’ˆ</p>
                     </div>
                     <div>
                         <ul>
                             <li><a href="#"><img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_RC6_2.jpg"></a></li>
-                            <li>¸óÅ¸ 04</li>
-                            <li>¼ö·® : 1</li>
+                            <li>ëª¬íƒ€ 04</li>
+                            <li>ìˆ˜ëŸ‰ : 1</li>
                         </ul>
                         <ul>
                             <li><a href="#"><img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_01_2.jpg"></a></li>
-                            <li>¸óÅ¸ 01</li>
-                            <li>¼ö·® : 1</li>
+                            <li>ëª¬íƒ€ 01</li>
+                            <li>ìˆ˜ëŸ‰ : 1</li>
                         </ul>
                     </div>
                 </div>
                 <div class="product-block-order">
                     <div class="price-delivery">
                         <ul>
-                            <li>»óÇ° ±Ý¾×</li>
+                            <li>ìƒí’ˆ ê¸ˆì•¡</li>
                             <li>660,000</li>
                         </ul>
                         <ul>
-                            <li>¹è¼Ûºñ</li>
+                            <li>ë°°ì†¡ë¹„</li>
                             <li>5,000</li>
                         </ul>
                     </div>
                     <div>
                         <ul>
-                            <li>ÀüÃ¼ ÇÕ°è</li>
+                            <li>ì „ì²´ í•©ê³„</li>
                             <li>665,000</li>
                         </ul>
                     </div>
                     <div>
                         <button type="submit" id="payment-button">
                             <span>665,000</span>
-                            <span>°áÁ¦ÇÏ±â</span>
+                            <span>ê²°ì œí•˜ê¸°</span>
                         </button>
                     </div>
                 </div>
@@ -139,7 +138,7 @@
     
     </form>
 	
-		<!-- JS ¼³Á¤ -->
-		<script src="/viewport_mini_web/resources/js//payment.js"></script>
+		<!-- JS ì„¤ì • -->
+		<!-- //<script src="/viewport_mini_web/resources/js//payment.js"></script> -->
 	</body>
 </html>

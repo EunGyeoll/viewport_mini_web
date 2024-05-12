@@ -13,6 +13,10 @@ const updateTotalPrice = () => {
     }, 0);
 
     let totalPrice = itemsTotalPrice + deliveryPrice;
+    document.getElementById('totalPriceWithoutDelivery').value = itemsTotalPrice;
+    document.getElementById('totalPriceWithDelivery').value = totalPrice;
+    document.getElementById('deliveryType').value = deliveryPrice;
+
     document.querySelector('.total-price').textContent = `${itemsTotalPrice.toLocaleString('kr-KR')} 원`;
     document.getElementById('total-price').textContent = `${totalPrice.toLocaleString('kr-KR')} 원`;
 };

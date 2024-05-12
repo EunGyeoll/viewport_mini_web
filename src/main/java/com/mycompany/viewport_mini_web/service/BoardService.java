@@ -70,8 +70,13 @@ public void updateNoticeData(Notice notice) {
 }
 
 public List<Notice> getNoticeList() {
-	// TODO Auto-generated method stub
-	return null;
+    List<Notice> noticeList = noticeDao.selectNoticeAll();
+    return noticeList;
+}
+
+public Notice getNotice(int nid) {
+    Notice notice = noticeDao.selectByNid(nid);
+    return notice;
 }
 
 

@@ -32,6 +32,18 @@
 		]]>
 	</select>
 	
+	<select id="selectNoticeAll" resultType="Notice">
+		select
+		nid, ncategory, nname, ninfo, ndate from notice order by nid desc
+	</select>
+	
+	<select id="selectByNid" parameterType="int" resultType="Notice">
+		select
+		nid, ncategory, nname, ninfo, ndate from notice
+		where nid = #{nid}
+	</select>		
+	
+	
 	<update id="update" parameterType="Notice">
 		update notice set
 		nname=#{nname}, ninfo=#{ninfo}, ncategory=#{ncategory}

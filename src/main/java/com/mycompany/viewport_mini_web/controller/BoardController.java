@@ -108,7 +108,17 @@ public class BoardController {
   public String NoticeList(Model model) {
     List<Notice> noticeList = boardService.getNoticeList();
     model.addAttribute("noticeList", noticeList);
-    return "board/qnaList";
+    return "board/noticeList";
   }
+  
+  @GetMapping("noticeDetail")
+  public String NoticeDetail(int nid, Model model) {
+    log.info("noticeDetail 실행");
+    Notice notice = boardService.getNotice(nid);
+    model.addAttribute("notice", notice);
+
+    return "board/noticeDetail";
+  }  
+  
 
 }

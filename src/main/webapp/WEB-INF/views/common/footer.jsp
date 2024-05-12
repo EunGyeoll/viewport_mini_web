@@ -38,7 +38,9 @@
                             <h6 class="text-body text-center text-uppercase fw-bold mb-4">
                               Help
                             </h6>
-                    
+                            <p class="text-center">
+                              <a href="${pageContext.request.contextPath}/board/noticeList" style="text-decoration: none;" class="text-reset">공지사항</a>
+                            </p>                    
                             <p class="text-center">
                               <a href="${pageContext.request.contextPath}/board/FAQ" style="text-decoration: none;" class="text-reset">FAQ</a>
                             </p>

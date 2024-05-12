@@ -15,4 +15,8 @@ public interface NoticeDao {
 
 	public int update(Notice notice);
 
+	public List<Notice> selectNoticeAll();
+
+	public Notice selectByNid(int nid);
+
 }

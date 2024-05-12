@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -186,7 +187,7 @@
 							<div class="card-body">
 								<h4 class="card-title">문의 내역</h4>
 								<ul class="list-group list-group-flush">
-									<c:forEach var="qna" items="${qnaList}">
+									<c:forEach var="qna" items="${qnaList}" varStatus="status">
 										<li class="list-group-item">
 											<div class="d-flex justify-content-between align-items-center">
 												<div>
@@ -207,6 +208,9 @@
 										</li>
 
 									</c:forEach>
+									<c:if test="${fn:length(qnaList)==0 }">
+										<li class="list-group-item">작성하신 문의사항이 없습니다.</li>
+									</c:if>
 								</ul>
 								<div class="pagination-center">
 									<div class="pagination">

@@ -69,5 +69,10 @@ public void updateNoticeData(Notice notice) {
 	int rowNum = noticeDao.update(notice);
 }
 
+public List<Notice> getNoticeList() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
 
 }

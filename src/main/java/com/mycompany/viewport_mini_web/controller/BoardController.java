@@ -6,7 +6,9 @@ import java.io.OutputStream;
 import java.security.Principal;
 import java.util.List;
 import java.util.UUID;
+
 import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -15,9 +17,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.mycompany.viewport_mini_web.dto.Notice;
 import com.mycompany.viewport_mini_web.dto.Qna;
 import com.mycompany.viewport_mini_web.service.BoardService;
 import com.mycompany.viewport_mini_web.service.UserService;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -53,6 +58,7 @@ public class BoardController {
   public String Qna() {
     return "board/qna";
   }
+   
 
   @PostMapping("/writeQNA")
   @ResponseBody
@@ -96,6 +102,13 @@ public class BoardController {
     os.write(data);
     os.flush();
     os.close();
+  }
+  
+  @GetMapping("/noticeList")
+  public String NoticeList(Model model) {
+    List<Notice> noticeList = boardService.getNoticeList();
+    model.addAttribute("noticeList", noticeList);
+    return "board/qnaList";
   }
 
 }

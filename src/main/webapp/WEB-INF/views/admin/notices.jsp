@@ -102,7 +102,7 @@
 				</div>
 
 				<!-- Modal body -->
-				<form method="post" action="editNotice" class="modal-body" id="noticeModal">
+				<form method="post" action="editNoticeData" class="modal-body" id="noticeModal">
 					<!-- js 출력 -->
 				</form>
 			</div>

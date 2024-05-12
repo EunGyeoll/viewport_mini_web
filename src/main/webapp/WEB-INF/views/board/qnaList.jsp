@@ -42,7 +42,7 @@
 				</div>
 				<div>
 					<div class="d-flex justify-content-center">
-						<a href="${pageContext.request.contextPath}/board/notice" class="mx-3">공지사항</a> <a href="${pageContext.request.contextPath}/board/FAQ" class="mx-3">FAQ</a> <a href="${pageContext.request.contextPath}/board/qnaList" class="mx-3" id="qna-button">Q&A</a> <a href="${pageContext.request.contextPath}/board/qna" class="mx-3">1:1 문의</a>
+						<a href="${pageContext.request.contextPath}/board/noticeList" class="mx-3">공지사항</a> <a href="${pageContext.request.contextPath}/board/FAQ" class="mx-3">FAQ</a> <a href="${pageContext.request.contextPath}/board/qnaList" class="mx-3" id="qna-button">Q&A</a> <a href="${pageContext.request.contextPath}/board/qna" class="mx-3">1:1 문의</a>
 					</div>
 				</div>
 			</div>

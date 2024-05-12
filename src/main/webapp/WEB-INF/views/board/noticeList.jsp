@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,7 +53,7 @@
 					<table class="table table-hover text-center" style="table-layout: fixed;">
 						<thead>
 							<tr>
-								<th scope="col">No <i class="fa-solid fa-sort" style="color: #fff;"></i></th>
+<!-- 								<th scope="col">No <i class="fa-solid fa-sort" style="color: #fff;"></i></th> -->
 								<th scope="col">카테고리</th>
 								<!--상품 / 주문 / 기타-->
 								<th scope="col">제목</th>
@@ -59,12 +61,13 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="table-row">
-								<td>5</td>
-								<td>상품</td>
-								<td>선글라스 피팅 문의</td>
-								<td>선글라스 피팅 문의</td>
-							</tr>
+							<c:forEach var="notice" items="${noticeList}">
+								<tr class="table-row">
+									<td>${notice.ncategory}</td>
+									<td>${notice.nname}</td>
+									<td>${notice.ndate}</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 					</table>

@@ -2,17 +2,23 @@ package com.mycompany.viewport_mini_web.dao;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
+import com.mycompany.viewport_mini_web.dto.Pager;
 import com.mycompany.viewport_mini_web.dto.Qna;
+import com.mycompany.viewport_mini_web.dto.Users;
 
 @Mapper
 public interface QnaDao {
 
-  void insertNewPost(Qna qna);
+  public void insertNewPost(Qna qna);
 
-  List<Qna> selectQnaAll();
+  public List<Qna> selectQnaAll();
 
-  Qna selectByQid(int qid);
+  public Qna selectByQid(int qid);
 
-  List<Qna> findPostsByUserId(int quserid);
+  public List<Qna> findPostsByUserId(int quserid);
+
+  public int count();
+
+  public List<Qna> selectByPage(Pager pager);
 
 }

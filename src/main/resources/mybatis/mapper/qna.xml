@@ -6,19 +6,43 @@
 		<selectKey keyProperty="qid" order="BEFORE" resultType="int">
 			select seq_qid.nextval from dual
 		</selectKey>
-		insert into qna(qid,qtitle,qdate,qcontent,quserid,qattachdata,qattachoname,qattachsname,qattachtype,qcategory,qstatus)
+		insert into
+		qna(qid,qtitle,qdate,qcontent,quserid,qattachdata,qattachoname,qattachsname,qattachtype,qcategory,qstatus)
 		values(#{qid},#{qtitle},sysdate,#{qcontent},#{quserid},#{qattachdata},#{qattachoname},#{qattachsname},#{qattachtype},#{qcategory},#{qstatus})
 	</insert>
-<select id="selectQnaAll" resultType="Qna">
-	select qid,qtitle,qdate,qcategory,quserid from qna order by qid desc
-</select>
+	<select id="selectQnaAll" resultType="Qna">
+		select
+		qid,qtitle,qdate,qcategory,quserid from qna order by qid desc
+	</select>
 
-<select id="findPostsByUserId" parameterType="int" resultType="Qna">
-	select * from qna
-	where quserid=#{quserid}
-</select>
-<select id="selectByQid" parameterType="int" resultType="Qna">
-	select qid,qtitle,qdate,qcategory,quserid,qcontent,qattachdata,qattachsname,qattachoname,qattachtype,qattachdata from qna
-	where qid = #{qid}
-</select>
+	<select id="findPostsByUserId" parameterType="int"
+		resultType="Qna">
+		select * from qna
+		where quserid=#{quserid}
+	</select>
+	<select id="selectByQid" parameterType="int" resultType="Qna">
+		select
+		qid,qtitle,qdate,qcategory,quserid,qcontent,qattachdata,qattachsname,qattachoname,qattachtype,qattachdata
+		from qna
+		where qid = #{qid}
+	</select>
+	<select id="count">
+		select count(*) from qna
+	</select>
+
+	<select id="selectByPage" parameterType="Pager" resultType="Qna">
+		<![CDATA[
+		select qid,qtitle,qdate,qcategory,quserid,qcontent,qattachdata,qattachsname,qattachoname,qattachtype,qattachdata 
+		from (
+			select rownum as rnum, qid,qtitle,qdate,qcategory,quserid,qcontent,qattachdata,qattachsname,qattachoname,qattachtype,qattachdata
+			from (
+				select  qid,qtitle,qdate,qcategory,quserid,qcontent,qattachdata,qattachsname,qattachoname,qattachtype,qattachdata
+				from qna
+				order by qid desc
+				)
+			where rownum <= #{endRowNo}
+			)
+		where rnum >= #{startRowNo}
+		]]>
+	</select>
 </mapper>

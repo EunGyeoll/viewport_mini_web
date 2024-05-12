@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.mycompany.viewport_mini_web.dao.QnaDao;
 import com.mycompany.viewport_mini_web.dao.UserDao;
+import com.mycompany.viewport_mini_web.dto.Pager;
 import com.mycompany.viewport_mini_web.dto.Qna;
+import com.mycompany.viewport_mini_web.dto.Users;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -36,5 +38,16 @@ public class BoardService {
     List<Qna> qnaList = boardDao.findPostsByUserId(usid);
     return qnaList;
   }
+
+  public int getTotalBoardRows() {
+    int totalRow = boardDao.count();
+    return totalRow;
+  }
+  
+  public List<Qna> getUserList(Pager pager) {
+    List<Qna> qnaList = boardDao.selectByPage(pager);
+    return qnaList;
+  }
+
 
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.mycompany.viewport_mini_web.dao.NoticeDao">
+
+	<insert id="insert" parameterType="Notice">
+		<selectKey keyProperty="nid" order="BEFORE"
+			resultType="int">
+			select seq_nid.nextval from dual
+		</selectKey>
+		insert into
+		notice(nid,nname,ninfo, ncategory, ndate)
+		values(#{nid},#{nname},#{ninfo}, #{ncategory},sysdate
+		)
+	</insert>
+
+
+	<select id="selectByPage" parameterType="Pager"
+		resultType="Notice">
+		<![CDATA[
+		select rnum, nid,nname,ninfo, ncategory, ndate
+		from (
+			select rownum as rnum, nid,nname,ninfo, ncategory, ndate
+			from (
+				select  nid,nname,ninfo, ncategory, ndate
+				from notice
+				order by nid desc
+				)
+			where rownum <= #{endRowNo}
+			)
+		where rnum >= #{startRowNo}
+		]]>
+	</select>
+
+</mapper>

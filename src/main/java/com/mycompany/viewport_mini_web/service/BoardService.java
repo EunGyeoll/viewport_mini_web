@@ -1,13 +1,17 @@
 package com.mycompany.viewport_mini_web.service;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.mycompany.viewport_mini_web.dao.NoticeDao;
 import com.mycompany.viewport_mini_web.dao.QnaDao;
 import com.mycompany.viewport_mini_web.dao.UserDao;
+import com.mycompany.viewport_mini_web.dto.Notice;
 import com.mycompany.viewport_mini_web.dto.Pager;
 import com.mycompany.viewport_mini_web.dto.Qna;
-import com.mycompany.viewport_mini_web.dto.Users;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -17,6 +21,8 @@ public class BoardService {
   QnaDao boardDao;
   @Autowired
   UserDao userDao;
+  @Autowired
+  NoticeDao noticeDao;  
   
   public void insertNewPost(Qna qna,String uemail) {
     int quserid = userDao.selectByUemail(uemail).getUsid();
@@ -48,6 +54,16 @@ public class BoardService {
     List<Qna> qnaList = boardDao.selectByPage(pager);
     return qnaList;
   }
+
+public void createNotice(Notice notice) {
+	int rowNum = noticeDao.insert(notice);
+	log.info("rowNum: " + rowNum + ", nid: " + notice.getNname());
+}
+
+public List<Notice> getNoticeList(Pager pager) {
+    List<Notice> noticeList = noticeDao.selectByPage(pager);
+    return noticeList;
+}
 
 
 }

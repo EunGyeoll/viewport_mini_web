@@ -45,7 +45,7 @@
 		<table class="table table-hover text-center align-middle" id="user-table">
 			<thead>
 				<tr>
-					<th scope="col">상품#</th>
+					<th scope="col">번호#</th>
 					<th scope="col">카테고리</th>
 					<th scope="col">제목</th>
 					<th scope="col">날짜</th>
@@ -69,7 +69,7 @@
 						<td>${product.pdate}</td>
 						<td>
 							<button type="button" class="btn btn-dark edit-btn btn-sm productDataEditBtn" onclick="clickEventProduct('${product.pid}', '${product.pname}', ${product.pprice},'${product.pinfo}', '${product.pdetail}', '${product.pcategory}', '${product.pshape}')" data-bs-toggle="modal" data-bs-target="#editProductModal">상품 정보 수정</button>
-							<button class="btn btn-danger edit-btn btn-sm" data-bs-toggle="modal" onclick="deleteProduct(${product.pid})" data-bs-target="#deleteUserModal">삭제</button>
+							<button class="btn btn-danger edit-btn btn-sm" data-bs-toggle="modal" onclick="deleteNotice(${notice.nid})" data-bs-target="#deleteUserModal">삭제</button>
 						</td>
 					</tr>
 				</c:forEach>
@@ -88,7 +88,7 @@
 
 	</section>
 	<!-- The Modal -->
-	<div class="modal" id="editProductModal">
+	<div class="modal" id="editNoticeModal">
 		<div class="modal-dialog">
 			<div class="modal-content">
 
@@ -99,7 +99,7 @@
 				</div>
 
 				<!-- Modal body -->
-				<form method="post" action="editProduct" class="modal-body" id="productModal"  enctype="multipart/form-data">
+				<form method="post" action="editProduct" class="modal-body" id="noticeModal">
 					<!-- js 출력 -->
 				</form>
 			</div>
@@ -111,53 +111,31 @@
 
 				<!-- Modal Header -->
 				<div class="modal-header">
-					<h4 class="modal-title">상품 생성</h4>
+					<h4 class="modal-title">공지사항 추가</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 				</div>
 
 				<!-- Modal body -->
 				<div class="modal-body">
-					<form id="createProductForm" method="post" action="createProduct" enctype="multipart/form-data">
+					<form id="createNoticeForm" method="post" action="createNotice">
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="pname">상품 이름</label> <input type="text" id="pname" name="pname" class="form-control form-control-lg" /> <small id="nameError"></small>
+							<label class="form-label" for="nname">제목</label> <input type="text" id="nname" name="nname" class="form-control form-control-lg" /> <small id="nameError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="pprice">가격</label> <input type="text" id="pprice" name="pprice" class="form-control form-control-lg" /> <small id="priceError"></small>
+							<label class="form-label" for="ninfo">내용</label> <input type="text" id="ninfo" name="ninfo" class="form-control form-control-lg" /> <small id="infoError"></small>
 						</div>
 						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="pattach">썸네일 사진</label> <input type="file" id="pattach" name="pattach" class="form-control form-control-lg" /> <small id="imageError"></small>
-						</div>
-						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="ptattach">상품 사진</label> <input type="file" id="ptattach" name="ptattach" class="form-control form-control-lg" multiple="multiple" /> <small id="imageError"><a href="#">file1</a></small>
-						</div>
-						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="pinfo">상품 설명</label> <input type="text" id="pinfo" name="pinfo" class="form-control form-control-lg" /> <small id="infoError"></small>
-						</div>
-						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="pdetail">상품 상세 설명</label> <input type="text" id="pdetail" name="pdetail" class="form-control form-control-lg" /> <small id="detailError"></small>
-						</div>
-						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="pcategory">카테고리</label>
+							<label class="form-label" for="ncategory">카테고리</label>
 							<div class="col">
-								<label><input type="radio" id="glasses" name="pcategory" value="안경" checked />안경</label>
+								<label><input type="radio" id="product" name="ncategory" value="상품" checked />상품</label>
 							</div>
 							<div class="col">
-								<label><input type="radio" id="sunglasses" name="pcategory" value="선글라스" />선글라스</label>
-							</div>
-							<small id="categoryError"></small>
-						</div>
-						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="pshape">모양</label>
-							<div class="col">
-								<label><input type="radio" id="circle" name="pshape" value="원형" checked />원형</label>
+								<label><input type="radio" id="order" name="ncategory" value="주문" />주문</label>
 							</div>
 							<div class="col">
-								<label><input type="radio" id="oval" name="pshape" value="타원형" /> 타원형</label>
-							</div>
-							<div class="col">
-								<label><input type="radio" id="rectangle" name="pshape" value="사각형" />사각형</label>
+								<label><input type="radio" id="etc" name="ncategory" value="기타" />기타</label>
 							</div>							
-							<small id="shapeError"></small>
+							<small id="categoryError"></small>
 						</div>						
 						<button type="submit" class="btn btn-danger">생성</button>
 						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
@@ -180,7 +158,7 @@
 				<div class="modal-body">
 					<p>삭제하시겠습니까?</p>
 				</div>
-				<form method="post" action="deleteProduct" class="modal-footer" id="deleteProduct-modal-footer">
+				<form method="post" action="deleteNotice" class="modal-footer" id="deleteNotice-modal-footer">
 					<!-- js -->
 				</form>
 

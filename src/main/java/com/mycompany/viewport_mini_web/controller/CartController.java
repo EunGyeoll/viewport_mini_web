@@ -54,10 +54,7 @@ public class CartController {
   @PostMapping("/add")
   public String cartForm(int pid, Principal principal, Model model) {
     log.info("실행");
-    // 로그인이 되어있지 않으면 null pointer 에러 발생
-    if (principal == null) {
-      return "redirect:/login";
-    }
+
     String uemail = principal.getName();
     Product product = productService.getProduct(pid);
 

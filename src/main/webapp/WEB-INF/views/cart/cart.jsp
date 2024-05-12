@@ -53,8 +53,8 @@
 								<span class="border-0 count-box" data-pid="${productData.product.pid}">${productData.quantity}</span>
 								<button class="btn btn-sm" onclick="editCount(${productData.product.pid}, 'plus')">+</button>
 							</div>
-							<div class="col">
-								₩${productData.product.pprice} <span class="close-btn btn btn-sm" onclick="removeItem(${productData.product.pid})" >&#10005;</span>
+							<div class="col" data-price="${productData.product.pprice}">
+								<fmt:formatNumber value="${productData.product.pprice}" type="currency" currencySymbol="₩" groupingUsed="true" /><span class="close-btn btn btn-sm" onclick="removeItem(${productData.product.pid})">&#10005;</span>
 							</div>
 						</div>
 					</c:forEach>
@@ -72,14 +72,14 @@
 					<div class="col text-right total-price">0 원</div>
 				</div>
 				<form>
-					<p>SHIPPING</p>
-					<select onchange="optionSelect()" id="delivery-option">
-						<option class="text-muted" value="5000">Standard-Delivery- ₩ 5000</option>
-						<option class="text-muted" value="12000">Express-Delivery- ₩ 12000</option>
+					<p>배송비</p>
+					<select id="delivery-option">
+						<option class="text-muted" value="5000">일반 배송- ₩ 5,000</option>
+						<option class="text-muted" value="12000">익스프레스- ₩ 12,000</option>
 					</select>
 				</form>
 				<div class="row" style="border-top: 1px solid rgba(0, 0, 0, .1); padding: 2vh 0;">
-					<div class="col">TOTAL PRICE</div>
+					<div class="col">전체 가격 <br/>(배송비 포함)</div>
 					<div class="col text-right" id="total-price">0 원</div>
 				</div>
 				<button class="checkout-btn btn">결제하기</button>

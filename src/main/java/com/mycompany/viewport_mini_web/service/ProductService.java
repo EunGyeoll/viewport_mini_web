@@ -91,6 +91,16 @@ public class ProductService {
     return totalRows;
   }
 
+public int getTotalUserRows() {
+	// TODO Auto-generated method stub
+	return 0;
+}
+
+public int getProductTotalRows() {
+	int totalProductRows = productDao.count();
+	return totalProductRows;
+}
+
 
 
 

@@ -12,11 +12,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.viewport_mini_web.dto.Pager;
 import com.mycompany.viewport_mini_web.dto.Photos;
 import com.mycompany.viewport_mini_web.dto.Product;
 import com.mycompany.viewport_mini_web.service.CommonService;
+import com.mycompany.viewport_mini_web.service.PagerService;
 import com.mycompany.viewport_mini_web.service.ProductService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -28,23 +30,14 @@ public class ProductsListController {
 	@Autowired
 	private ProductService productService;
 	@Autowired
-	private CommonService service;	
+	private CommonService service;
+	@Autowired
+	private PagerService pagerService;	
 
 	@GetMapping("/productsList")
-	public String getProductsList(Model model, String pageNo, HttpSession session) {
-		if(pageNo == null) {
-			pageNo = (String) session.getAttribute("pageNo");
-			if(pageNo == null) {
-				pageNo = "1";
-			}
-		}
-		
-		session.setAttribute("pageNo", pageNo);
-		
-		int intPageNo = Integer.parseInt(pageNo);
-		
-		int rowsPagingTarget = service.getProductTotalRows();
-		Pager pager = new Pager(9, 5, rowsPagingTarget, intPageNo);
+	public String getProductsList(@RequestParam(required = false) String pageNo, Model model, HttpSession session) {
+		int totalRows = productService.getProductTotalRows(); // 사용자의 전체 수를 가져옵니다.
+		Pager pager = pagerService.preparePager(session, pageNo, totalRows, 9, 5); // 페이지당 행 수 9, 그룹당 페이지 수 5				
 		
 		List<Product> products = productService.getProductListByPager(pager);
 		

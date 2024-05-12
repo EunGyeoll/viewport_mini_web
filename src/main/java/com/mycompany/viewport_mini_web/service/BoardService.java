@@ -79,5 +79,9 @@ public Notice getNotice(int nid) {
     return notice;
 }
 
+public void removeNotice(int nid) {
+    int rowNum = noticeDao.deleteByNid(nid);
+}
+
 
 }

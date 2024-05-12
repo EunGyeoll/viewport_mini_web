@@ -43,11 +43,14 @@
 		where nid = #{nid}
 	</select>		
 	
-	
 	<update id="update" parameterType="Notice">
 		update notice set
 		nname=#{nname}, ninfo=#{ninfo}, ncategory=#{ncategory}
 		where nid=#{nid}
-	</update>	
+	</update>
+	
+	<delete id="deleteByNid" parameterType="int">
+		delete from notice where nid=#{nid}
+	</delete>		
 
 </mapper>

@@ -9,17 +9,10 @@ import com.mycompany.viewport_mini_web.dao.UserDao;
 public class CommonService {
 	@Autowired
 	private UserDao userDao;
-	@Autowired
-	private ProductDao productDao;
 
 	public int getUserTotalRows() {
 		int totalRows = userDao.count();
 		return totalRows;
-	}
-
-	public int getProductTotalRows() {
-		int totalProductRows = productDao.count();
-		return totalProductRows;
 	}
 
 }

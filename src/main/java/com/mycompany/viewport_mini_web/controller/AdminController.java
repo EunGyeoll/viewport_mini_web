@@ -261,5 +261,12 @@ public class AdminController {
 		boardService.updateNoticeData(notice);
 		return "redirect:/admin/notices";
 	}	
+	
+	@PostMapping("/deleteNoticeData")
+	public String adminDeleteNotice(int nid) {
+		log.info(nid + "삭제");
+		boardService.removeNotice(nid);
+		return "redirect:/admin/notices";
+	}	
 
 }

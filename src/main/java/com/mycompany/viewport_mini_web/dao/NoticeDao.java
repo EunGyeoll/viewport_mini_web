@@ -19,4 +19,6 @@ public interface NoticeDao {
 
 	public Notice selectByNid(int nid);
 
+	public int deleteByNid(int nid);
+
 }

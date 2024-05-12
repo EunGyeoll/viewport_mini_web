@@ -161,7 +161,7 @@
 				<div class="modal-body">
 					<p>삭제하시겠습니까?</p>
 				</div>
-				<form method="post" action="deleteNotice" class="modal-footer" id="deleteNotice-modal-footer">
+				<form method="post" action="deleteNoticeData" class="modal-footer" id="deleteNotice-modal-footer">
 					<!-- js -->
 				</form>
 

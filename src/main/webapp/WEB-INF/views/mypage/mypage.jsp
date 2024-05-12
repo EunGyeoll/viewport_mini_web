@@ -37,7 +37,7 @@
 						<div class="card">
 							<div class="card-body">
 								<h4 class="card-title">프로필 정보</h4>
-								<form id="myPageInfo" method="post" action="mypage/myPageInfo?tab=profile">
+								<form id="myPageInfo" method="post" action="mypage/myPageInfo">
 
 									<div class="mb-3">
 										<label for="user-name" class="form-label">이름</label> <input type="text" class="form-control" name="uname" id="uname" value="${user.uname}">

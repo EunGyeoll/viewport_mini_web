@@ -40,6 +40,9 @@
 												<div>
 													<h5>${qna.qtitle}</h5>
 													<p>${qna.qcontent}</p>
+													<c:if test="${qna.qattachoname != null }">
+													<img src="../board/attachQnaDownload?qid=${qna.qid}" width="150">
+													</c:if>
 												</div>
 												<c:if test="${qna.qstatus eq '답변완료' }">
 													<span class="badge bg-success">${qna.qstatus}</span>

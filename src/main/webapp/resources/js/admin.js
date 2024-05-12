@@ -188,6 +188,32 @@ const editNotice = document.querySelector('#noticeModal');
 		<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>`
     }
     
+    
+    function clickEventNotice(nid,nname,ninfo,ncategory){
+    	editNotice.innerHTML=`						<div data-mdb-input-init class="form-outline mb-4">
+							<label class="form-label" for="nname">제목</label> <input type="text" id="nname" name="nname" class="form-control form-control-lg" /> <small id="nameError"></small>
+						</div>
+						<div data-mdb-input-init class="form-outline mb-4">
+							<label class="form-label" for="ninfo">내용</label> <input type="text" id="ninfo" name="ninfo" class="form-control form-control-lg" /> <small id="infoError"></small>
+						</div>
+						<div data-mdb-input-init class="form-outline mb-4">
+							<label class="form-label" for="ncategory">카테고리</label>
+							<div class="col">
+								<label><input type="radio" id="product" name="ncategory" value="상품"  ${ncategory==="상품"? "checked" : ""} />상품</label>
+							</div>
+							<div class="col">
+								<label><input type="radio" id="order" name="ncategory" value="주문"  ${ncategory==="주문"? "checked" : ""}/>주문</label>
+							</div>
+							<div class="col">
+								<label><input type="radio" id="etc" name="ncategory" value="기타"  ${ncategory==="기타"? "checked" : ""}/>기타</label>
+							</div>							
+							<small id="categoryError"></small>
+						</div>												
+					<button  type="submit" class="btn btn-dark" data-bs-dismiss="modal">수정</button>
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>`
+    }
+        
+    
     function deleteNotice(nid) {
     	deleteNoticeModalFooter.innerHTML=`<button type="submit" name="nid" value="${nid}" class="btn btn-dark">삭제</button>
 		<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>`

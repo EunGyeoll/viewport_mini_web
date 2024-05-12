@@ -65,5 +65,9 @@ public List<Notice> getNoticeList(Pager pager) {
     return noticeList;
 }
 
+public void updateNoticeData(Notice notice) {
+	int rowNum = noticeDao.update(notice);
+}
+
 
 }

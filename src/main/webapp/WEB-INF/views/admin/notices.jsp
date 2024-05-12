@@ -54,21 +54,14 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="product" items="${products}">
+				<c:forEach var="notice" items="${notices}">
 					<tr>
-						<th scope="row">${product.pid}</th>
-						<td>${product.pname}</td>
-						<td>${product.pprice}</td>
+						<th scope="row">${notice.nid}</th>
+						<td>${notice.ncategory}</td>
+						<td>${notice.nname}</td>
+						<td>${notice.ndate}</td>
 						<td>
-							<img src="/viewport_mini_web/products/attachProductDownload?pid=${product.pid}" width="100" height="100" />
-						</td>
-						<td>${product.pinfo}</td>
-						<td>${product.pdetail}</td>
-						<td>${product.pcategory}</td>
-						<td>${product.pshape}</td>
-						<td>${product.pdate}</td>
-						<td>
-							<button type="button" class="btn btn-dark edit-btn btn-sm productDataEditBtn" onclick="clickEventProduct('${product.pid}', '${product.pname}', ${product.pprice},'${product.pinfo}', '${product.pdetail}', '${product.pcategory}', '${product.pshape}')" data-bs-toggle="modal" data-bs-target="#editProductModal">상품 정보 수정</button>
+							<button type="button" class="btn btn-dark edit-btn btn-sm NoticeDataEditBtn" onclick="clickEventNotice('${notice.nid}', '${notice.nname}', '${notice.ninfo}', '${notice.ncategory}')" data-bs-toggle="modal" data-bs-target="#editNoticetModal">수정</button>
 							<button class="btn btn-danger edit-btn btn-sm" data-bs-toggle="modal" onclick="deleteNotice(${notice.nid})" data-bs-target="#deleteUserModal">삭제</button>
 						</td>
 					</tr>
@@ -78,11 +71,21 @@
 		</table>
 		<nav aria-label="..." class="d-flex justify-content-center me-5">
 			<ul class="pagination">
-				<li class="page-item"><a class="page-link">Previous</a></li>
-				<li class="page-item active"><a class="page-link" href="#">1</a></li>
-				<li class="page-item" aria-current="page"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#">Next</a></li>
+				<c:if test="${pager.groupNo>1 }">
+					<li class="page-item"><a class="page-link" href="notices?pageNo=${pager.startPageNo-1 }">Previous</a></li>
+				</c:if>
+				<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo }">
+					<c:if test="${pager.pageNo!=i }">
+						<li class="page-item"><a class="page-link" href="notices?pageNo=${i}">${i}</a></li>
+					</c:if>
+					<c:if test="${pager.pageNo ==i }">
+						<li class="page-item ative"><a class="page-link" href="notices?pageNo=${i}">${i}</a></li>
+					</c:if>
+				</c:forEach>
+				<c:if test="${pager.groupNo<pager.totalGroupNo}">
+				<li class="page-item"><a class="page-link" href="notices?pageNo=${pager.endPageNo+1}">Next</a></li>
+				</c:if>
+				
 			</ul>
 		</nav>
 
@@ -94,12 +97,12 @@
 
 				<!-- Modal Header -->
 				<div class="modal-header">
-					<h4 class="modal-title">상품 정보 수정</h4>
+					<h4 class="modal-title">공지사항 수정</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 				</div>
 
 				<!-- Modal body -->
-				<form method="post" action="editProduct" class="modal-body" id="noticeModal">
+				<form method="post" action="editNotice" class="modal-body" id="noticeModal">
 					<!-- js 출력 -->
 				</form>
 			</div>
@@ -150,7 +153,7 @@
 
 				<!-- Modal Header -->
 				<div class="modal-header">
-					<h4 class="modal-title">유저 삭제</h4>
+					<h4 class="modal-title">공지사항 삭제</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 				</div>
 

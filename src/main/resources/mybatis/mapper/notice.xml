@@ -31,5 +31,11 @@
 		where rnum >= #{startRowNo}
 		]]>
 	</select>
+	
+	<update id="update" parameterType="Notice">
+		update notice set
+		nname=#{nname}, ninfo=#{ninfo}, ncategory=#{ncategory}
+		where nid=#{nid}
+	</update>	
 
 </mapper>

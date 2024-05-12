@@ -254,5 +254,12 @@ public class AdminController {
 		boardService.createNotice(notice);
 		return "redirect:/admin/notices";
 	}
+	
+	@PostMapping("/editNoticeData")
+	public String editNoticeData(Model model, Notice notice) {
+		log.info("edit notice 실행");
+		boardService.updateNoticeData(notice);
+		return "redirect:/admin/notices";
+	}	
 
 }

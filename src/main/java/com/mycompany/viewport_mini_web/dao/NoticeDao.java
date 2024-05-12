@@ -13,4 +13,6 @@ public interface NoticeDao {
 	
 	public List<Notice> selectByPage(Pager pager);
 
+	public int update(Notice notice);
+
 }

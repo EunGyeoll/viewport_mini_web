@@ -81,13 +81,23 @@
 
 			</tbody>
 		</table>
-		<nav aria-label="..." class="d-flex justify-content-center me-5">
+			<nav aria-label="..." class="d-flex justify-content-center me-5">
 			<ul class="pagination">
-				<li class="page-item"><a class="page-link">Previous</a></li>
-				<li class="page-item active"><a class="page-link" href="#">1</a></li>
-				<li class="page-item" aria-current="page"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#">Next</a></li>
+				<c:if test="${pager.groupNo>1 }">
+					<li class="page-item"><a class="page-link" href="products?pageNo=${pager.startPageNo-1 }">Previous</a></li>
+				</c:if>
+				<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo }">
+					<c:if test="${pager.pageNo!=i }">
+						<li class="page-item"><a class="page-link" href="products?pageNo=${i}">${i}</a></li>
+					</c:if>
+					<c:if test="${pager.pageNo ==i }">
+						<li class="page-item ative"><a class="page-link" href="products?pageNo=${i}">${i}</a></li>
+					</c:if>
+				</c:forEach>
+				<c:if test="${pager.groupNo<pager.totalGroupNo}">
+				<li class="page-item"><a class="page-link" href="products?pageNo=${pager.endPageNo+1}">Next</a></li>
+				</c:if>
+				
 			</ul>
 		</nav>
 

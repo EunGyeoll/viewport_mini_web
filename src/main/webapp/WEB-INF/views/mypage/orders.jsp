@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,14 +22,9 @@
 	<div class="container-fluid g-0">
 		<div class="row">
 			<div class="col-md-3 sidebar">
-			<div class="list-group rounded-0">
-				    <a href="${pageContext.request.contextPath}/mypage" class="list-group-item list-group-item-action">프로필</a>
-				    <a href="${pageContext.request.contextPath}/mypage/password" class="list-group-item list-group-item-action">비밀번호 변경</a>
-				    <a href="${pageContext.request.contextPath}/mypage/orders" class="list-group-item list-group-item-action">주문 내역</a>
-				    <a href="${pageContext.request.contextPath}/mypage/shipment" class="list-group-item list-group-item-action">배송 내역</a>
-				    <a href="${pageContext.request.contextPath}/mypage/myqna" class="list-group-item list-group-item-action">문의 내역</a>
-				    <a href="${pageContext.request.contextPath}/mypage/deleteAccount" class="list-group-item list-group-item-action">회원 탈퇴</a>
-			</div>
+				<div class="list-group rounded-0">
+					<a href="${pageContext.request.contextPath}/mypage" class="list-group-item list-group-item-action">프로필</a> <a href="${pageContext.request.contextPath}/mypage/password" class="list-group-item list-group-item-action">비밀번호 변경</a> <a href="${pageContext.request.contextPath}/mypage/orders" class="list-group-item list-group-item-action">주문 내역</a> <a href="${pageContext.request.contextPath}/mypage/shipment" class="list-group-item list-group-item-action">배송 내역</a> <a href="${pageContext.request.contextPath}/mypage/myqna" class="list-group-item list-group-item-action">문의 내역</a> <a href="${pageContext.request.contextPath}/mypage/deleteAccount" class="list-group-item list-group-item-action">회원 탈퇴</a>
+				</div>
 			</div>
 			<div class="col-md-9 right-box">
 				<div class="tab-content">
@@ -47,38 +42,29 @@
 									</select>
 								</div>
 								<ul class="list-group list-group-flush">
-									<li class="list-group-item">
-										<div class="row">
-											<div class="col-md-3">
-												<img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_TOKKI_WM_2.jpg" class="img-fluid" alt="오버워치 2 - 토끼 WM">
+									<c:forEach var="order" items="${ordersList}">
+										<li class="list-group-item">
+											<div class="row">
+												<!-- 주문당 하나의 이미지를 보여줍니다. 첫 번째 주문 아이템의 이미지를 사용합니다. -->
+												<div class="col-md-3">
+													<img src="/viewport_mini_web/products/attachProductDownload?pid=${order.orderItems[0].oipid}" class="img-fluid" alt="${order.orderItems[0].oipname}">
+												</div>
+												<div class="col-md-9">
+													<ul class="list-group">
+														<!-- 주문에 포함된 각 아이템 정보 -->
+													
+															<li class="list-group-item">상품명: ${order.orderItems[0].oipname}</li>
+															<li class="list-group-item">가격: ${order.orderItems[0].oiprice}원</li>
+															<li class="list-group-item">수량: ${order.orderItems[0].oiqty}</li>
+													
+														<li class="list-group-item">주문 날짜: ${order.odate}</li>
+														<li class="list-group-item">결제 방식: ${order.opaymethod}</li>
+													</ul>
+													<a href="#" class="btn btn-link">주문 상세보기</a>
+												</div>
 											</div>
-											<div class="col-md-9">
-												<ul class="list-group">
-													<li class="list-group-item">상품명: 오버워치 2 - 토끼 WM</li>
-													<li class="list-group-item">가격: 300,000원</li>
-													<li class="list-group-item">주문 날짜: 2024-04-20</li>
-													<li class="list-group-item">결제 방식: 신용카드</li>
-												</ul>
-												<a href="#" class="btn btn-link">주문 상세보기</a>
-											</div>
-										</div>
-									</li>
-									<li class="list-group-item">
-										<div class="row">
-											<div class="col-md-3">
-												<img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_EGO_01_2.jpg" class="img-fluid" alt="EGO 01">
-											</div>
-											<div class="col-md-9">
-												<ul class="list-group">
-													<li class="list-group-item">상품명: 에고 01</li>
-													<li class="list-group-item">가격: 330,000원</li>
-													<li class="list-group-item">주문 날짜: 2024-04-15</li>
-													<li class="list-group-item">결제 방식: 페이팔</li>
-												</ul>
-												<a href="#" class="btn btn-link">주문 상세보기</a>
-											</div>
-										</div>
-									</li>
+										</li>
+									</c:forEach>
 								</ul>
 								<div class="pagination-center">
 									<div class="pagination">

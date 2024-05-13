@@ -3,7 +3,6 @@ package com.mycompany.viewport_mini_web.controller;
 import java.security.Principal;
 import java.util.List;
 import javax.servlet.http.HttpSession;
-import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.mycompany.viewport_mini_web.dto.Orders;
 import com.mycompany.viewport_mini_web.dto.Pager;
 import com.mycompany.viewport_mini_web.dto.Qna;
 import com.mycompany.viewport_mini_web.dto.Users;
 import com.mycompany.viewport_mini_web.service.BoardService;
+import com.mycompany.viewport_mini_web.service.OrderService;
 import com.mycompany.viewport_mini_web.service.PagerService;
 import com.mycompany.viewport_mini_web.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +31,9 @@ public class mypageController {
 
   @Autowired
   private PagerService pagerService;
+  
+  @Autowired
+  private OrderService orderService;
   
   @GetMapping("")
   public String mypage(Model model, Principal principal) {
@@ -48,7 +52,12 @@ public class mypageController {
 
   // 주문내역 페이지
   @GetMapping("/orders")
-  public String showOrderPage(Model model) {
+  public String showOrderPage(Model model,Principal principal) {
+    String uemail = principal.getName();
+
+    Users user = userService.getUser(uemail);
+    List<Orders> ordersList = orderService.getOrderListByUserId(user.getUsid());
+    model.addAttribute("ordersList",ordersList);
     return "mypage/orders";
   }
 

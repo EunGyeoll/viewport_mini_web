@@ -52,4 +52,9 @@ public class OrderService {
 
     shipmentDao.insertShipmentData(orders.getShipment());
   }
+
+  public List<Orders> getOrderListByUserId(int usid) {
+    List<Orders> ordersList = orderDao.selectAllOrdersByUserId(usid);
+    return ordersList;
+  }
 }

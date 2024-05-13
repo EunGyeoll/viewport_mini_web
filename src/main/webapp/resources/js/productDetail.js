@@ -38,23 +38,7 @@
 //
 //displaySidebar();
 
-$(document).ready(function() {
-  $('.btn.btn1').click(function() {
-      const productId = ${product.pid}; // 현재 페이지의 상품 ID를 가져옵니다.
-      $.ajax({
-          url: '/viewport_mini_web/cart/add',
-          type: 'POST',
-          data: { pid: productId },
-          success: function(response) {
-              // 성공적으로 장바구니에 추가되었을 때 모달 표시
-              $('#myModal1').modal('show');
-          },
-          error: function() {
-              alert('장바구니에 추가하는데 실패했습니다.');
-          }
-      });
-  });
-});
+
 
 // 모달 출력 함수 
 // const displaymodal = () => {

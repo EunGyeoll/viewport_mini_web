@@ -9,8 +9,7 @@ public class Shipment {
   private int sid;
   private String sshipmentnum;
   private Date sdate;
-  private String sstatus;
-  private String saddress;
-  private String spostcode;
+  private String srequest;
   private int suserid;
+  private int soid;
 }

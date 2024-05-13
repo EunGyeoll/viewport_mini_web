@@ -4,21 +4,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 아이템의 총 가격과 배송비를 계산하여 업데이트
 const updateTotalPrice = () => {
-    const deliveryOption = document.getElementById('delivery-option');
-    let deliveryPrice = parseFloat(deliveryOption.value);
-    let itemsTotalPrice = Array.from(document.querySelectorAll('.product-row')).reduce((total, item) => {
-        const price = parseFloat(item.querySelector('.col[data-price]').getAttribute('data-price'));
-        const quantity = parseInt(item.querySelector('.count-box').textContent);
-        return total + (price * quantity);
-    }, 0);
+  const deliveryOption = document.getElementById('delivery-option');
+  let deliveryPrice = parseFloat(deliveryOption.value);
+  let itemsTotalPrice = Array.from(document.querySelectorAll('.product-row')).reduce((total, item) => {
+      const price = parseFloat(item.querySelector('.col[data-price]').getAttribute('data-price'));
+      const quantity = parseInt(item.querySelector('.count-box').textContent);
+      return total + (price * quantity);
+  }, 0);
 
-    let totalPrice = itemsTotalPrice + deliveryPrice;
-    document.getElementById('totalPriceWithoutDelivery').value = itemsTotalPrice;
-    document.getElementById('totalPriceWithDelivery').value = totalPrice;
-    document.getElementById('deliveryType').value = deliveryPrice;
+  let totalPrice = itemsTotalPrice + deliveryPrice;
+  document.getElementById('totalPriceWithoutDelivery').value = itemsTotalPrice;
+  document.getElementById('totalPriceWithDelivery').value = totalPrice;
+  document.getElementById('deliveryType').value = deliveryPrice;
 
-    document.querySelector('.total-price').textContent = `${itemsTotalPrice.toLocaleString('kr-KR')} 원`;
-    document.getElementById('total-price').textContent = `${totalPrice.toLocaleString('kr-KR')} 원`;
+  document.querySelector('.total-price').textContent = `${itemsTotalPrice.toLocaleString('kr-KR')} 원`;
+  document.getElementById('total-price').textContent = `${totalPrice.toLocaleString('kr-KR')} 원`;
+
+  // 결제 버튼 참조
+  const checkoutButton = document.querySelector('.checkout-btn');
+  
+  // 아이템 총 수량을 확인하고 버튼 활성화 또는 비활성화
+  const totalQuantity = Array.from(document.querySelectorAll('.count-box')).reduce((sum, countBox) => sum + parseInt(countBox.textContent), 0);
+  if (totalQuantity > 0) {
+      checkoutButton.disabled = false; // 아이템이 있으면 버튼 활성화
+  } else {
+      checkoutButton.disabled = true;  // 아이템이 없으면 버튼 비활성화
+  }
 };
 
 // 수량 변경 처리
@@ -37,7 +48,6 @@ const editCount = (pid, type) => {
           success: function(response) {
               countBox.textContent = newQty;
               hiddenInput.value = newQty; 
-              console.log(hiddenInput.value);
               updateTotalPrice();  
           },
           error: function(error) {
@@ -56,8 +66,10 @@ const removeItem = (productId) => {
     contentType: 'application/json',
     data: JSON.stringify({ cipid: productId }), 
     success: function(response) {
+      $(`input[name='productIds'][value='${productId}']`).remove();
+      $(`input.product-quantity[data-pid='${productId}']`).remove();
       $(`.product-row[data-pid="${productId}"]`).remove();
-      updateTotalPrice();  
+      updateTotalPrice();
     },
     error: function(error) {
       console.error('카트 제품 삭제중 에러 발생:', error);

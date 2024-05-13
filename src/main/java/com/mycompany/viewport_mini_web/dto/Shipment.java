@@ -12,4 +12,5 @@ public class Shipment {
   private String srequest;
   private int suserid;
   private int soid;
+  private String stype;
 }

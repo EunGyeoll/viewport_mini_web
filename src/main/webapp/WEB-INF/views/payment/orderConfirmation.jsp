@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="ymd" value="<%=new java.util.Date()%>" />
 
 <!DOCTYPE html>
 <html>
@@ -33,14 +34,14 @@
 				<div class="row" id="cart-list-container">
 					<div>
 						<h2>주문 확인</h2>
-						<strong>Hello, ${user.uname }</strong>
-						<p>Your order has been confirmed and will be shipped within the next two days</p>
+						<strong>감사합니다, ${user.uname}</strong>
+						<p>주문은 바로 확인이 되었으며, 배송은 2~3일 정도 소요가 될 것입니다.</p>
 					</div>
 					<div class="row border-top p-4 text-center">
 						<div class="col">
 							<div>주문 일자</div>
 							<div>
-								<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" />
+								<fmt:formatDate value="${ymd}" pattern="yyyy-MM-dd" />
 							</div>
 						</div>
 						<div class="col">
@@ -52,33 +53,24 @@
 							<div>${orderData.oaddress }</div>
 						</div>
 					</div>
-					<c:forEach var="orderItem" items="${orderData.orderItems}">
+					<c:forEach var="productCartData" items="${productCartDataList}">
 						<div class="row main align-items-center border-top">
 							<div class="col-2">
-								<img class="img-fluid p-2" src="/viewport_mini_web/products/attachProductDownload?pid=${orderItem.oipid}">
+								<img class="img-fluid p-2" src="/viewport_mini_web/products/attachProductDownload?pid=${productCartData.product.pid}">
 							</div>
 							<div class="col">
-								<div class="row text-muted">Sunglasses</div>
-								<div class="row text-muted">몬타 GC10</div>
-								<div class="row text-muted">수량: ${orderItem.oiqty}</div>
+								<div class="row text-muted">${productCartData.product.pcategory }</div>
+								<div class="row text-muted">${productCartData.product.pname }</div>
+								<div class="row text-muted">수량: ${productCartData.quantity}</div>
 							</div>
 
-							<div class="col text-end">₩${orderItem.oiprice }</div>
+							<div class="col text-end">
+								₩
+								<fmt:formatNumber value="${productCartData.product.pprice }" type="currency" currencySymbol="" groupingUsed="true" />
+							</div>
+
 						</div>
 					</c:forEach>
-
-					<!-- 		<div class="row main align-items-center border-top">
-						<div class="col-2">
-							<img class="img-fluid p-2" src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_GC10_2.jpg" />
-						</div>
-						<div class="col">
-							<div class="row text-muted">Sunglasses</div>
-							<div class="row">몬타 GC10</div>
-							<div class="row text-muted">수량: 1</div>
-						</div>
-
-						<div class="col text-end">₩40,000</div>
-					</div> -->
 				</div>
 				<div class="result-box row border-top p-3">
 					<div class="left-result-box col">
@@ -88,25 +80,29 @@
 					<div class="right-result-box col-4">
 						<div class="row mb-2 d-flex">
 							<div class="col">배송</div>
-							<div class="col text-end">200,000 원</div>
+							<div class="col text-end">0 원</div>
 						</div>
 						<div class="row mb-2 d-flex">
 							<div class="col">배송비</div>
-							<div class="col text-end">200,000 원</div>
+							<div class="col text-end">
+								<fmt:formatNumber value="${orderData.shipment.stype}" type="currency" currencySymbol="" groupingUsed="true" />
+								원
+							</div>
+
 						</div>
-						<div class="row mb-2 d-flex">
+						<!-- 		<div class="row mb-2 d-flex">
 							<div class="col">세금</div>
 							<div class="col text-end">200,000 원</div>
-						</div>
+						</div> -->
 						<div class="row mb-2 d-flex ">
 							<div class="col">할인</div>
-							<div class="col text-end ">200,000 원</div>
+							<div class="col text-end ">0 원</div>
 						</div>
 						<hr />
 						<div class="row mb-2 d-flex">
 							<div class="col">총 금액</div>
 							<div class="col text-end">
-								<fmt:formatNumber value="${orderData.ototalprice }" type="currency" currencySymbol="₩" groupingUsed="true" />
+								<fmt:formatNumber value="${orderData.ototalprice }" type="currency" currencySymbol="" groupingUsed="true" />
 							</div>
 
 						</div>

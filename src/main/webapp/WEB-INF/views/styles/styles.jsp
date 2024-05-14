@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,40 +32,41 @@
 					<option value="newest">최신순</option>
 					<option value="oldest">오래된순</option>
 				</select>
-				<button type="button" class="btn btn-dark me-4">글쓰기</button>
+				<button type="button" class="btn btn-dark me-4" data-bs-toggle="modal" data-bs-target="#createStylesModal">글쓰기</button>
 			</div>
 		</div>
 		<div class="row no-gutters row-cols-4 gx-0 justify-content-center">
-			<div class="col m-1 image-box" style="width: 310px; height: auto;" data-bs-toggle="modal" data-bs-target="#myModal">
-				<img src="https://web-resource.gentlemonster.com/event/1712297920.jpg" class="card-img" height="100%" width="100%" />
-			</div>
+			<c:forEach var="style" items="${styles}">
+				<div class="col m-1 image-box" style="width: 310px; height: auto;" data-bs-toggle="modal" data-bs-target="#myModal">
+					<img src="attachStylesDownload?stid=${style.stid}" class="card-img" height="100%" width="100%" />
+				</div>			
+			</c:forEach>
+
 			<div class="col m-1 image-box" style="width: 310px; height: auto;" data-bs-toggle="modal" data-bs-target="#myModal">
 				<img src="https://web-resource.gentlemonster.com/event/1712299527.jpg" class="card-img" height="100%" width="100%" />
-			</div>
-			<div class="col m-1 image-box" style="width: 310px; height: auto;" data-bs-toggle="modal" data-bs-target="#myModal">
-				<img src="https://web-resource.gentlemonster.com/event/1712299602.jpg" class="card-img" height="100%" width="100%" />
-			</div>
-			<div class="col m-1 image-box" style="width: 310px; height: auto;" data-bs-toggle="modal" data-bs-target="#myModal">
-				<img src="https://web-resource.gentlemonster.com/event/1702951231.jpg" class="card-img" height="100%" width="100%" />
-			</div>
-			<div class="col m-1 image-box" style="width: 310px; height: auto;" data-bs-toggle="modal" data-bs-target="#myModal">
-				<img src="https://web-resource.gentlemonster.com/event/1695705698.jpg" class="card-img" height="100%" width="100%" />
-			</div>
-			<div class="col m-1 image-box" style="width: 310px; height: auto;" data-bs-toggle="modal" data-bs-target="#myModal">
-				<img src="https://web-resource.gentlemonster.com/event/1700704228.jpg" class="card-img" height="100%" width="100%" />
-			</div>
-			<div class="col m-1 image-box" style="width: 310px; height: auto;" data-bs-toggle="modal" data-bs-target="#myModal">
-				<img src="https://web-resource.gentlemonster.com/event/1695705760.jpg" class="card-img" height="100%" width="100%" />
-			</div>
-			<div class="col m-1 image-box" style="width: 310px; height: auto;" data-bs-toggle="modal" data-bs-target="#myModal">
-				<img src="https://web-resource.gentlemonster.com/event/1695706203.jpg" class="card-img" height="100%" width="100%" />
-			</div>
+			</div>			
 		</div>
-		<div class="pagination-center">
-			<div class="pagination">
-				<a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a> <a href="#">&raquo;</a>
+		
+		<!-- pagination -->
+			<div class="pagination-center">
+				<div class="pagination">
+					<c:if test="${pager.groupNo>1}">
+						<a href="/styles?pageNo=${pager.startPageNo-1}">&laquo;</a>
+					</c:if>
+					<c:forEach var="i" begin="${pager.startPageNo}"
+						end="${pager.endPageNo}">
+						<c:if test="${pager.pageNo != i}">
+							<a href="/styles?pageNo=${i}">${i}</a>
+						</c:if>
+						<c:if test="${pager.pageNo == i}">
+							<a href="/styles?pageNo=${i}">${i}</a>
+						</c:if>
+					</c:forEach>
+					<c:if test="${pager.groupNo<pager.totalGroupNo}">
+						<a href="/styles?pageNo=${pager.endPageNo+1}">&raquo;</a>
+					</c:if>
+				</div>
 			</div>
-		</div>
 	</section>
 	<!-- The Modal -->
 	<div class="modal fade " id="myModal">
@@ -96,6 +98,38 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="modal" id="createStylesModal">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">스타일즈 추가</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<form id="createStylesForm" method="post" action="createStyles" enctype="multipart/form-data">
+						<div data-mdb-input-init class="form-outline mb-4">
+							<select id="sortOptions" name="stylesPnum" class="form-select form-select-sm"  aria-label="Sort by">
+								<option selected>상품 이름</option>
+								<c:forEach var="product" items="${products}">
+									<option value="${product.pnum}">${product.pname}</option>						
+								</c:forEach>
+							</select>
+						</div>
+						<div data-mdb-input-init class="form-outline mb-4">
+							<label class="form-label" for="stattach">사진</label> <input type="file" id="stattach" name="stattach" class="form-control"  multiple="multiple" /> <small id="imageError"></small>
+						</div>
+						<button type="submit" class="btn btn-danger">생성</button>
+						<button type="button" class="btn btn-dark" data-bs-dismiss="modal">취소</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>	
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%> 
 </body>
 </html>

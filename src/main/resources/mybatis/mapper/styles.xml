@@ -3,4 +3,48 @@
 
 <mapper namespace="com.mycompany.viewport_mini_web.dao.StylesDao">
 
+		<insert id="insert" parameterType="Styles">
+		<selectKey keyProperty="stid" order="BEFORE" resultType="int">
+			select seq_stid.nextval from dual
+		</selectKey>
+		insert into styles(
+		stid, stpnum, stuserid,
+		stattachoname,stattachsname,stattachtype,stattachdata
+		) values(
+		#{stid}, #{stpnum},
+		#{stuserid}, #{stattachoname}, #{stattachsname},
+		#{stattachtype},#{stattachdata}
+		)
+	</insert>
+	
+	<select id="selectStylesListByPager" parameterType="Pager"
+		resultType="Styles">
+	<![CDATA[
+		select rnum, stid, stpnum, stuserid,
+		stattachoname,stattachsname,stattachtype,stattachdata
+		from (
+		    select rownum as rnum, stid, stpnum, stuserid, stattachoname,stattachsname,stattachtype,stattachdata
+		    from (
+		        select stid, stpnum, stuserid, stattachoname,stattachsname,stattachtype,stattachdata
+		        from styles
+		        order by stid desc
+		    )
+		    where rownum <= #{endRowNo}
+		)
+		where rnum >= #{startRowNo}
+	]]>
+	</select>	
+	
+	<select id="count">
+		select count(*) from styles
+	</select>	
+	
+	<select id="selectByStid" parameterType="int"
+		resultType="Styles">
+		select stid, stpnum, stuserid,
+		stattachoname,stattachsname,stattachtype,stattachdata
+		from styles
+		where stid=#{stid}
+	</select>	
+
 </mapper>

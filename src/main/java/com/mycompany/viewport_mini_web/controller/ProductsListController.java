@@ -30,13 +30,11 @@ public class ProductsListController {
 	@Autowired
 	private ProductService productService;
 	@Autowired
-	private CommonService service;
-	@Autowired
 	private PagerService pagerService;	
 
 	@GetMapping("/productsList")
 	public String getProductsList(@RequestParam(required = false) String pageNo, Model model, HttpSession session) {
-		int totalRows = productService.getProductTotalRows(); // 사용자의 전체 수를 가져옵니다.
+		int totalRows = productService.getProductTotalRows(); // (전체 수를 가져옵니다.
 		Pager pager = pagerService.preparePager(session, pageNo, totalRows, 9, 5); // 페이지당 행 수 9, 그룹당 페이지 수 5				
 		
 		List<Product> products = productService.getProductListByPager(pager);

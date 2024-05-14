@@ -12,7 +12,7 @@ public class Styles {
 	private Blob stimage;
 	private byte[] stattachdata;
 	private String stattachoname;
-	private String stattchsname;
+	private String stattachsname;
 	private String stattachtype;
 	private int stpnum;
 	private int stuserid;

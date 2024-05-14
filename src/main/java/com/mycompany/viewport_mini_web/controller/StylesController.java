@@ -37,36 +37,42 @@ public class StylesController {
 	@Autowired
 	private StylesService stylesService;
 	@Autowired
-	private PagerService pagerService;		
+	private PagerService pagerService;
 	@Autowired
-	private ProductService productService;	
+	private ProductService productService;
 	@Autowired
-	private UserService userService;	
-	
-  @GetMapping("")
-  public String stylesPage(@RequestParam(required = false) String pageNo, Model model, HttpSession session) {
+	private UserService userService;
+
+	@GetMapping("")
+	public String stylesPage(@RequestParam(required = false) String pageNo, Model model, HttpSession session) {
 		int totalRows = stylesService.getStylesTotalRows(); // 전체 수를 가져옵니다.
-		Pager pager = pagerService.preparePager(session, pageNo, totalRows, 12, 5); // 페이지당 행 수 12, 그룹당 페이지 수 5				
-		
+		Pager pager = pagerService.preparePager(session, pageNo, totalRows, 12, 5); // 페이지당 행 수 12, 그룹당 페이지 수 5
+
 		List<Styles> styles = stylesService.getStylesListByPager(pager);
 		List<Product> products = productService.getProductList();
-		
+
 		model.addAttribute("pager", pager);
-		model.addAttribute("styles", styles);  
+		model.addAttribute("styles", styles);
 		model.addAttribute("products", products);
-	  
-	  return "styles/styles";
-  }
-  
+
+		return "styles/styles";
+	}
+
 	@PostMapping("/createStyles")
-	public String createStyles(Styles styles, int stylesPnum, Authentication authentication,  RedirectAttributes redirectAttributes) throws IOException {
+	public String createStyles(Styles styles, int stylesPnum, Authentication authentication,
+			RedirectAttributes redirectAttributes) throws IOException {
 		log.info("styles 실행");
 		
-		String uemail = authentication.getName();
-		Users user  = userService.getUser(uemail);
-		
-		styles.setStpnum(stylesPnum);
+	    if (authentication == null) {
+	        redirectAttributes.addFlashAttribute("errorMessage", "로그인을 필요합니다.");
+	        return "redirect:/loginForm";
+	      }
 
+		String uemail = authentication.getName();
+		Users user = userService.getUser(uemail);
+		log.info(stylesPnum +"");
+		styles.setStpnum(stylesPnum);
+		log.info(styles.getStpnum() + "pnum 값");
 		styles.setStattachoname(styles.getStattach().getOriginalFilename());
 		styles.setStattachtype(styles.getStattach().getContentType());
 		byte[] stylesData = styles.getStattach().getBytes();
@@ -75,22 +81,23 @@ public class StylesController {
 		if (!stylesDestDir.exists()) {
 			stylesDestDir.mkdirs();
 		}
-		styles.setStattchsname(UUID.randomUUID().toString() + "-" + styles.getStattach().getOriginalFilename());;
-		File stylesDestFile = new File(stylesDestDir, styles.getStattchsname());
+		styles.setStattachsname(UUID.randomUUID().toString() + "-" + styles.getStattach().getOriginalFilename());
+		;
+		File stylesDestFile = new File(stylesDestDir, styles.getStattachsname());
 		styles.getStattach().transferTo(stylesDestFile);
 		styles.setStattachdata(stylesData);
-		
+
 		stylesService.createStyles(styles, uemail);
 		return "redirect:/styles";
-	}  
-	
+	}
+
 	@GetMapping("/attachStylesDownload")
 	public void stylesList(HttpServletResponse response, int stid) throws IOException {
 		// 스타일즈 데이터 생성
 		Styles styles = stylesService.getStyles(stid);
 		byte[] data = styles.getStattachdata();
 		response.setContentType(styles.getStattachtype());
-		String fileName = new String(styles.getStattchsname());
+		String fileName = new String(styles.getStattachsname());
 		fileName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
 		response.setHeader("content-Disposition", "attachment; filename=\"" + fileName + "\"");
 		OutputStream os = response.getOutputStream();
@@ -98,6 +105,6 @@ public class StylesController {
 		os.flush();
 		os.close();
 		log.info(fileName + "스타일 출력");
-	}	
-	
+	}
+
 }

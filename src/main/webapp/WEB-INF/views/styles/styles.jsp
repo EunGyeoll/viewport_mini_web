@@ -38,32 +38,28 @@
 		<div class="row no-gutters row-cols-4 gx-0 justify-content-center">
 			<c:forEach var="style" items="${styles}">
 				<div class="col m-1 image-box" style="width: 310px; height: auto;" data-bs-toggle="modal" data-bs-target="#myModal">
-					<img src="attachStylesDownload?stid=${style.stid}" class="card-img" height="100%" width="100%" />
+					<img src="${pageContext.request.contextPath}/styles/attachStylesDownload?stid=${style.stid}" class="card-img" height="100%" width="100%" />
 				</div>			
-			</c:forEach>
-
-			<div class="col m-1 image-box" style="width: 310px; height: auto;" data-bs-toggle="modal" data-bs-target="#myModal">
-				<img src="https://web-resource.gentlemonster.com/event/1712299527.jpg" class="card-img" height="100%" width="100%" />
-			</div>			
+			</c:forEach>		
 		</div>
 		
 		<!-- pagination -->
 			<div class="pagination-center">
 				<div class="pagination">
 					<c:if test="${pager.groupNo>1}">
-						<a href="/styles?pageNo=${pager.startPageNo-1}">&laquo;</a>
+						<a href="${pageContext.request.contextPath}/styles?pageNo=${pager.startPageNo-1}">&laquo;</a>
 					</c:if>
 					<c:forEach var="i" begin="${pager.startPageNo}"
 						end="${pager.endPageNo}">
 						<c:if test="${pager.pageNo != i}">
-							<a href="/styles?pageNo=${i}">${i}</a>
+							<a href="${pageContext.request.contextPath}/styles?pageNo=${i}">${i}</a>
 						</c:if>
 						<c:if test="${pager.pageNo == i}">
-							<a href="/styles?pageNo=${i}">${i}</a>
+							<a href="${pageContext.request.contextPath}/styles?pageNo=${i}">${i}</a>
 						</c:if>
 					</c:forEach>
 					<c:if test="${pager.groupNo<pager.totalGroupNo}">
-						<a href="/styles?pageNo=${pager.endPageNo+1}">&raquo;</a>
+						<a href="${pageContext.request.contextPath}/styles?pageNo=${pager.endPageNo+1}">&raquo;</a>
 					</c:if>
 				</div>
 			</div>
@@ -83,7 +79,7 @@
 				
 					<div class="d-flex flex-row justify-content-center">
 					
-						<img src="https://web-resource.gentlemonster.com/event/1700704228.jpg" class="card-img row-2" style="width: 50%" />
+						<img src="${pageContext.request.contextPath}/styles/attachStylesDownload?stid=${style.stid}" class="card-img row-2" style="width: 50%" />
 						<div class="row-2 item-info-box text-center ">
 							<img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/h/u/hush-01_2_1.jpg" class="card-img row-2" style="width: 50%" />
 							<div class="text-center">Eq02</div>
@@ -111,7 +107,7 @@
 
 				<!-- Modal body -->
 				<div class="modal-body">
-					<form id="createStylesForm" method="post" action="createStyles" enctype="multipart/form-data">
+					<form id="createStylesForm" method="post" action="styles/createStyles" enctype="multipart/form-data">
 						<div data-mdb-input-init class="form-outline mb-4">
 							<select id="sortOptions" name="stylesPnum" class="form-select form-select-sm"  aria-label="Sort by">
 								<option selected>상품 이름</option>

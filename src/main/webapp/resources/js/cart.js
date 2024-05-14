@@ -44,7 +44,7 @@ const editCount = (pid, type) => {
           url: 'cart/updateQuantity',
           type: 'POST',
           contentType: 'application/json',
-          data: JSON.stringify({ cipid: pid, ciqty: newQty }),
+          data: JSON.stringify({ cpid: pid, cqty: newQty }),
           success: function(response) {
               countBox.textContent = newQty;
               hiddenInput.value = newQty; 
@@ -64,7 +64,7 @@ const removeItem = (productId) => {
     url: 'cart/removeProduct',
     type: 'POST',
     contentType: 'application/json',
-    data: JSON.stringify({ cipid: productId }), 
+    data: JSON.stringify({ cpid: productId }), 
     success: function(response) {
       $(`input[name='productIds'][value='${productId}']`).remove();
       $(`input.product-quantity[data-pid='${productId}']`).remove();

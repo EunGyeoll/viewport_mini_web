@@ -38,29 +38,32 @@
 						</div>
 					</div>
 					<div class="row border-top border-bottom" id="cart-list-container">
-						<c:forEach var="productData" items="${productDataList}">
-							<input type="hidden" name="productIds" value="${productData.product.pid}">
-							<input type="hidden" class="product-quantity" name="quantities" data-pid="${productData.product.pid}" value="${productData.quantity}">
-							<div class="product-row row main align-items-center" data-pid="${productData.product.pid}">
-								<div class="col-2">
-									<img class="img-fluid" src="products/attachProductDownload?pid=${productData.product.pid}">
+						<c:if test="${productDataList !=null }">
+							<c:forEach var="productData" items="${productDataList}">
+								<input type="hidden" name="productIds" value="${productData.product.pid}">
+								<input type="hidden" class="product-quantity" name="quantities" data-pid="${productData.product.pid}" value="${productData.quantity}">
+								<div class="product-row row main align-items-center" data-pid="${productData.product.pid}">
+									<div class="col-2">
+										<img class="img-fluid" src="products/attachProductDownload?pid=${productData.product.pid}">
+									</div>
+									<div class="col">
+										<div class="row text-muted">${productData.product.pcategory}</div>
+										<div class="row">${productData.product.pname}</div>
+									</div>
+									<div class="col">
+										<%--data-* 를 사용하면 해당되는 태그를 js에서 부르기 쉬움 --%>
+										<button type="button" class="btn btn-sm" onclick="editCount(${productData.product.pid}, 'minus')">-</button>
+										<span class="border-0 count-box" data-pid="${productData.product.pid}">${productData.quantity}</span>
+										<button type="button" class="btn btn-sm" onclick="editCount(${productData.product.pid}, 'plus')">+</button>
+									</div>
+									<div class="col" data-price="${productData.product.pprice}">
+										<fmt:formatNumber value="${productData.product.pprice}" type="currency" currencySymbol="₩" groupingUsed="true" />
+										<span class="close-btn btn btn-sm" onclick="removeItem(${productData.product.pid})">&#10005;</span>
+									</div>
 								</div>
-								<div class="col">
-									<div class="row text-muted">${productData.product.pcategory}</div>
-									<div class="row">${productData.product.pname}</div>
-								</div>
-								<div class="col">
-									<%--data-* 를 사용하면 해당되는 태그를 js에서 부르기 쉬움 --%>
-									<button type="button" class="btn btn-sm" onclick="editCount(${productData.product.pid}, 'minus')">-</button>
-									<span class="border-0 count-box" data-pid="${productData.product.pid}">${productData.quantity}</span>
-									<button type="button" class="btn btn-sm" onclick="editCount(${productData.product.pid}, 'plus')">+</button>
-								</div>
-								<div class="col" data-price="${productData.product.pprice}">
-									<fmt:formatNumber value="${productData.product.pprice}" type="currency" currencySymbol="₩" groupingUsed="true" />
-									<span class="close-btn btn btn-sm" onclick="removeItem(${productData.product.pid})">&#10005;</span>
-								</div>
-							</div>
-						</c:forEach>
+							</c:forEach>
+						</c:if>
+
 					</div>
 				</div>
 				<div class="col-md-4 summary">
@@ -87,9 +90,7 @@
 						</div>
 						<div class="col text-right" id="total-price">0 원</div>
 					</div>
-					    <input type="hidden" name="totalPriceWithoutDelivery" id="totalPriceWithoutDelivery" value="">
-					    <input type="hidden" name="totalPriceWithDelivery" id="totalPriceWithDelivery" value="">
-					    <input type="hidden" name="deliveryType" id="deliveryType" value="">
+					<input type="hidden" name="totalPriceWithoutDelivery" id="totalPriceWithoutDelivery" value=""> <input type="hidden" name="totalPriceWithDelivery" id="totalPriceWithDelivery" value=""> <input type="hidden" name="deliveryType" id="deliveryType" value="">
 					<button type="submit" class="checkout-btn btn">결제페이지로 이동</button>
 					<a href="/viewport_mini_web">
 						<div class="back-to-shop shopping-btn text-center">

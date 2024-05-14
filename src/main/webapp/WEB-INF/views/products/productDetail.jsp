@@ -111,7 +111,7 @@
 	<!-- JS 설정 -->
 	<script>$(document).ready(function() {
   $('.btn.btn1').click(function() {
-      const productId = ${product.pid}; // JSP에서 JavaScript로 변수 전달
+      const productId = ${product.pid}; 
       $.ajax({
           url: '/viewport_mini_web/cart/add',
           type: 'POST',

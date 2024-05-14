@@ -1,22 +1,23 @@
-package com.mycompany.viewport_mini_web.dao;
+/*package com.mycompany.viewport_mini_web.dao;
 
 import org.apache.ibatis.annotations.Mapper;
-import com.mycompany.viewport_mini_web.dto.Cart;
+import com.mycompany.viewport_mini_web.dto.CartItem;
 
 @Mapper
 public interface CartDao {
 
-  void insertUserWithProduct(Cart cart);
+  void insertUserWithProduct(CartItem cart);
 
-  Cart findByUsid(int usid);
+  CartItem findByUsid(int cuid);
 
-  void createCart(Cart cart);
+  void createCart(CartItem cart);
 
-  Cart findCartByUserId(int cuid);
+  CartItem findCartByUserId(int cuid);
 
   void removeCart(int cuid);
 
-  void removeProductAll(int cicid);
+  void removeProductAll(int cuid);
 
 
 }
+*/

@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class CartItem {
-  private int ciid;
-  private int ciqty;
-  private int cipid;
-  private int cicid;
+  private int cid;
+  private int cqty;
+  private int cpid;
+  private int cuid;
 
 }

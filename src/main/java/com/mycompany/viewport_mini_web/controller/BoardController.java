@@ -9,6 +9,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,9 +60,9 @@ public class BoardController {
 
   @PostMapping("/writeQNA")
   @ResponseBody
-  public ResponseEntity<?> WriteQNA(Qna qna, Model model, Principal principal) {
+  public ResponseEntity<?> WriteQNA(Qna qna, Model model, Authentication authentication) {
     log.info("실행");
-    String uemail = principal.getName();
+    String uemail = authentication.getName();
     qna.setQstatus("처리 중");
     qna.setQattachoname(qna.getQattach().getOriginalFilename());
     qna.setQattachtype(qna.getQattach().getContentType());
@@ -76,10 +77,10 @@ public class BoardController {
   }
 
   @GetMapping("/qnaDetail")
-  public String qnaDetail(int qid, Principal principal, Model model, HttpServletResponse response, RedirectAttributes redirectAttributes)
-      throws IOException {
-    if (principal == null) {
-      redirectAttributes.addFlashAttribute("errorMessage","로그인을 필요합니다.");
+  public String qnaDetail(int qid, Authentication authentication, Model model, HttpServletResponse response,
+      RedirectAttributes redirectAttributes) throws IOException {
+    if (authentication == null) {
+      redirectAttributes.addFlashAttribute("errorMessage", "로그인을 필요합니다.");
       return "redirect:/loginForm";
     }
 
@@ -90,7 +91,7 @@ public class BoardController {
     }
 
     String quemail = userService.getUserByUserId(qna.getQuserid());
-    if (quemail == null || !quemail.equals(principal.getName())) {
+    if (quemail == null || !quemail.equals(authentication.getName())) {
       redirectAttributes.addFlashAttribute("errorMessage", "권한이 없습니다.");
       return "redirect:/board/qnaList";
     }

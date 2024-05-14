@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,8 +36,8 @@ public class CartController {
   private ProductService productService;
 
   @GetMapping("")
-  public String cart(Principal principal, Model model) {
-    Users user = userService.getUser(principal.getName());
+  public String cart(Authentication authentication, Model model) {
+    Users user = userService.getUser(authentication.getName());
     
     Cart cart = cartService.getCartByUserId(user.getUsid());
     if(cart == null ) {
@@ -58,10 +59,10 @@ public class CartController {
   }
 
   @PostMapping("/add")
-  public String cartForm(int pid, Principal principal, Model model) {
+  public String cartForm(int pid, Authentication authentication, Model model) {
     log.info("실행");
 
-    String uemail = principal.getName();
+    String uemail = authentication.getName();
     Product product = productService.getProduct(pid);
 
     Users user = userService.getUser(uemail);
@@ -72,9 +73,9 @@ public class CartController {
   }
 
   @PostMapping("/updateQuantity")
-  public ResponseEntity<?> updateQuantity(@RequestBody CartItem cartItem, Principal principal) {
+  public ResponseEntity<?> updateQuantity(@RequestBody CartItem cartItem, Authentication authentication) {
     try {
-      String uemail = principal.getName();
+      String uemail = authentication.getName();
       Users user = userService.getUser(uemail);
       Cart cart = cartService.getCartByUserId(user.getUsid());
       // 카트에 담긴 상품중 수량을 업데이트하고 그 업데이트가 제대로 됐는지 업데이트 결과를 저장함
@@ -92,9 +93,9 @@ public class CartController {
   }
   
   @PostMapping("/removeProduct")
-  public ResponseEntity<?> removeProduct(@RequestBody CartItem cartItem, Principal principal) {
+  public ResponseEntity<?> removeProduct(@RequestBody CartItem cartItem, Authentication authentication) {
     try {
-      String uemail = principal.getName();
+      String uemail = authentication.getName();
       Users user = userService.getUser(uemail);
       Cart cart = cartService.getCartByUserId(user.getUsid());
 

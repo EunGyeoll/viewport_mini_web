@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,8 +53,8 @@ public class PaymentController {
 
   @PostMapping("")
   protected String getOrderDataFromView(HttpServletRequest request, HttpServletResponse response,
-      Principal principal, Model model) throws ServletException, IOException {
-    Users user = userService.getUser(principal.getName());
+      Authentication authentication, Model model) throws ServletException, IOException {
+    Users user = userService.getUser(authentication.getName());
     String[] productIds = request.getParameterValues("productIds");
     String[] quantities = request.getParameterValues("quantities");
     String totalPriceWithoutDelivery = request.getParameter("totalPriceWithoutDelivery");
@@ -69,9 +70,9 @@ public class PaymentController {
   }
 
   @GetMapping("/orderConfirmation")
-  public String orderConfirmation(HttpSession session, Model model, Principal principal) {
+  public String orderConfirmation(HttpSession session, Model model, Authentication authentication) {
     log.info("OrderConfirmation() 실행");
-    Users user = userService.getUser(principal.getName());
+    Users user = userService.getUser(authentication.getName());
     Orders order = (Orders) session.getAttribute("orderData");
     Boolean isOrderProcessed = (Boolean) session.getAttribute("isOrderProcessed");
     List<ProductCartData> productCartDataList = new ArrayList<>();
@@ -97,9 +98,9 @@ public class PaymentController {
 
   @Transactional
   @PostMapping("/orderConfirmation")
-  protected String processOrderData(@ModelAttribute("orders") Orders orders, Principal principal,
+  protected String processOrderData(@ModelAttribute("orders") Orders orders, Authentication authentication,
       Model model, HttpSession session) {
-    Users user = userService.getUser(principal.getName());
+    Users user = userService.getUser(authentication.getName());
 
     Boolean isOrderProcessed = (Boolean) session.getAttribute("isOrderProcessed");
     if (Boolean.TRUE.equals(isOrderProcessed)) {

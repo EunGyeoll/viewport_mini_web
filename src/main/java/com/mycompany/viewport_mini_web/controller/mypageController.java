@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,8 +37,8 @@ public class mypageController {
   private OrderService orderService;
   
   @GetMapping("")
-  public String mypage(Model model, Principal principal) {
-    String uemail = principal.getName();
+  public String mypage(Model model,Authentication authentication) {
+    String uemail = authentication.getName();
 
     Users user = userService.getUser(uemail);
     model.addAttribute("user", user);
@@ -52,8 +53,8 @@ public class mypageController {
 
   // 주문내역 페이지
   @GetMapping("/orders")
-  public String showOrderPage(Model model,Principal principal) {
-    String uemail = principal.getName();
+  public String showOrderPage(Model model,Authentication authentication) {
+    String uemail = authentication.getName();
 
     Users user = userService.getUser(uemail);
     List<Orders> ordersList = orderService.getOrderListByUserId(user.getUsid());
@@ -79,8 +80,8 @@ public class mypageController {
 
   // 문의 내역 페이지
   @GetMapping("/myqna")
-  public String showMyQnA(@RequestParam(required = false) String pageNo, Model model, HttpSession session,Principal principal) {
-    String uemail = principal.getName();
+  public String showMyQnA(@RequestParam(required = false) String pageNo, Model model, HttpSession session,Authentication authentication) {
+    String uemail = authentication.getName();
     int totalRows = boardService.getTotalBoardRows();
     Pager pager = pagerService.preparePager(session, pageNo, totalRows, 5, 5);
     Users user = userService.getUser(uemail);
@@ -98,8 +99,8 @@ public class mypageController {
   }
 
   @PostMapping("/deleteUserData")
-  public String deleteUserData(String currPw, Principal principal, Model model) {
-    String uemail = principal.getName();
+  public String deleteUserData(String currPw,Authentication authentication, Model model) {
+    String uemail = authentication.getName();
     Users user = userService.getUser(uemail);
     if (!userService.checkPassword(currPw, user.getUpassword())) {
       model.addAttribute("pwError", "기존 비밀번호가 일치하지 않음");
@@ -112,9 +113,9 @@ public class mypageController {
 
   @PostMapping("/passwordChange")
   public String passwordChange(String currPw, String newPw, String newPwConfirm, Model model,
-      Principal principal) {
+      Authentication authentication) {
     log.info("실행");
-    String uemail = principal.getName();
+    String uemail = authentication.getName();
     Users user = userService.getUser(uemail);
     if (!userService.checkPassword(currPw, user.getUpassword())) {
       model.addAttribute("pwError", "기존 비밀번호가 일치하지 않음");

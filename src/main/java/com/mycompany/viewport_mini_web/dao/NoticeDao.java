@@ -21,4 +21,6 @@ public interface NoticeDao {
 
 	public int deleteByNid(int nid);
 
+	public int count();
+
 }

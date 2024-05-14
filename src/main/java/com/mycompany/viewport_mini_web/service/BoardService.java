@@ -11,6 +11,7 @@ import com.mycompany.viewport_mini_web.dao.UserDao;
 import com.mycompany.viewport_mini_web.dto.Notice;
 import com.mycompany.viewport_mini_web.dto.Pager;
 import com.mycompany.viewport_mini_web.dto.Qna;
+import com.mycompany.viewport_mini_web.dto.Styles;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -83,5 +84,9 @@ public void removeNotice(int nid) {
     int rowNum = noticeDao.deleteByNid(nid);
 }
 
+public int getTotalNoticeRows() {
+    int totalRows = noticeDao.count();
+    return totalRows;
+}
 
 }

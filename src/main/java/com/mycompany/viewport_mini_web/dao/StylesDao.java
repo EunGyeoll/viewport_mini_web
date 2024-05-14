@@ -18,4 +18,6 @@ public interface StylesDao {
 
 	public Styles selectByStid(int stid);
 
+	public void deleteByStid(int stid);
+
 }

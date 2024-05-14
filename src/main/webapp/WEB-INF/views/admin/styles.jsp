@@ -25,6 +25,7 @@
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/products">상품 관리</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/shippings">배송 관리</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/notices">공지사항 관리</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/styles">스타일 관리</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/">홈으로 돌아가기</a></li>
 					</ul>
 				</div>
@@ -34,7 +35,7 @@
 
 	<section class="card">
 		<div class="d-flex justify-content-end me-5 mt-3 justify-content-sm-between">
-			<h2 class="ms-4">공지사항 관리</h2>
+			<h2 class="ms-4">스타일 관리</h2>
 
 			<div>
 				<input type="text" />
@@ -46,23 +47,22 @@
 			<thead>
 				<tr>
 					<th scope="col">번호#</th>
-					<th scope="col">카테고리</th>
-					<th scope="col">제목</th>
-					<th scope="col">날짜</th>
-					<th scope="col"><button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#createUserModal">공지사항 추가</button></th>
+					<th scope="col">사진</th>
+					<th scope="col">제품 이름</th>
 
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="notice" items="${notices}">
+				<c:forEach var="style" items="${styles}">
 					<tr>
-						<th scope="row">${notice.nid}</th>
-						<td>${notice.ncategory}</td>
-						<td>${notice.nname}</td>
-						<td>${notice.ndate}</td>
+						<th scope="row">${style.stid}</th>
 						<td>
-							<button type="button" class="btn btn-dark edit-btn btn-sm NoticeDataEditBtn" onclick="clickEventNotice('${notice.nid}', '${notice.nname}', '${notice.ninfo}', '${notice.ncategory}')" data-bs-toggle="modal" data-bs-target="#editNoticeModal">수정</button>
-							<button class="btn btn-danger edit-btn btn-sm" data-bs-toggle="modal" onclick="deleteNotice(${notice.nid})" data-bs-target="#deleteUserModal">삭제</button>
+							<img src="${pageContext.request.contextPath}/styles/attachStylesDownload?stid=${style.stid}" width="100" height="100" />
+						</td>
+<%-- 						<td>${product.pname}</td> --%>
+						<td>
+							<button type="button" class="btn btn-dark edit-btn btn-sm productDataEditBtn" onclick="clickEventProduct('${product.pid}', '${product.pname}', ${product.pprice},'${product.pinfo}', '${product.pdetail}', '${product.pcategory}', '${product.pshape}')" data-bs-toggle="modal" data-bs-target="#editProductModal">수정</button>
+							<button class="btn btn-danger edit-btn btn-sm" data-bs-toggle="modal" onclick="deleteStyles(${style.stid})" data-bs-target="#deleteUserModal">삭제</button>
 						</td>
 					</tr>
 				</c:forEach>
@@ -72,18 +72,18 @@
 		<nav aria-label="..." class="d-flex justify-content-center me-5">
 			<ul class="pagination">
 				<c:if test="${pager.groupNo>1 }">
-					<li class="page-item"><a class="page-link" href="notices?pageNo=${pager.startPageNo-1 }">Previous</a></li>
+					<li class="page-item"><a class="page-link" href="styles?pageNo=${pager.startPageNo-1 }">Previous</a></li>
 				</c:if>
-				<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo }">
+				<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
 					<c:if test="${pager.pageNo!=i }">
-						<li class="page-item"><a class="page-link" href="notices?pageNo=${i}">${i}</a></li>
+						<li class="page-item"><a class="page-link" href="styles?pageNo=${i}">${i}</a></li>
 					</c:if>
 					<c:if test="${pager.pageNo ==i }">
-						<li class="page-item ative"><a class="page-link" href="notices?pageNo=${i}">${i}</a></li>
+						<li class="page-item ative"><a class="page-link" href="styles?pageNo=${i}">${i}</a></li>
 					</c:if>
 				</c:forEach>
 				<c:if test="${pager.groupNo<pager.totalGroupNo}">
-				<li class="page-item"><a class="page-link" href="notices?pageNo=${pager.endPageNo+1}">Next</a></li>
+				<li class="page-item"><a class="page-link" href="styles?pageNo=${pager.endPageNo+1}">Next</a></li>
 				</c:if>
 				
 			</ul>
@@ -97,7 +97,7 @@
 
 				<!-- Modal Header -->
 				<div class="modal-header">
-					<h4 class="modal-title">공지사항 수정</h4>
+					<h4 class="modal-title">스타일 수정</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 				</div>
 
@@ -108,52 +108,14 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal" id="createUserModal">
-		<div class="modal-dialog">
-			<div class="modal-content">
 
-				<!-- Modal Header -->
-				<div class="modal-header">
-					<h4 class="modal-title">공지사항 추가</h4>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-				</div>
-
-				<!-- Modal body -->
-				<div class="modal-body">
-					<form id="createNoticeForm" method="post" action="createNotice">
-						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="nname">제목</label> <input type="text" id="nname" name="nname" class="form-control form-control-lg" /> <small id="nameError"></small>
-						</div>
-						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="ninfo">내용</label> <input type="text" id="ninfo" name="ninfo" class="form-control form-control-lg" /> <small id="infoError"></small>
-						</div>
-						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="ncategory">카테고리</label>
-							<div class="col">
-								<label><input type="radio" id="product" name="ncategory" value="상품" checked />상품</label>
-							</div>
-							<div class="col">
-								<label><input type="radio" id="order" name="ncategory" value="주문" />주문</label>
-							</div>
-							<div class="col">
-								<label><input type="radio" id="etc" name="ncategory" value="기타" />기타</label>
-							</div>							
-							<small id="categoryError"></small>
-						</div>						
-						<button type="submit" class="btn btn-danger">생성</button>
-						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
 	<div class="modal" id="deleteUserModal">
 		<div class="modal-dialog">
 			<div class="modal-content">
 
 				<!-- Modal Header -->
 				<div class="modal-header">
-					<h4 class="modal-title">공지사항 삭제</h4>
+					<h4 class="modal-title">스타일 삭제</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 				</div>
 
@@ -161,7 +123,7 @@
 				<div class="modal-body">
 					<p>삭제하시겠습니까?</p>
 				</div>
-				<form method="post" action="deleteNoticeData" class="modal-footer" id="deleteNotice-modal-footer">
+				<form method="post" action="deleteStylesData" class="modal-footer" id="deleteStyles-modal-footer">
 					<!-- js -->
 				</form>
 

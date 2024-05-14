@@ -32,6 +32,10 @@
 		]]>
 	</select>
 	
+	<select id="count">
+		select count(*) from notice
+	</select>	
+	
 	<select id="selectNoticeAll" resultType="Notice">
 		select
 		nid, ncategory, nname, ninfo, ndate from notice order by nid desc

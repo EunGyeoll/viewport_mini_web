@@ -119,8 +119,8 @@
 						<div data-mdb-input-init class="form-outline mb-4">
 							<label class="form-label" for="stattach">사진</label> <input type="file" id="stattach" name="stattach" class="form-control"  multiple="multiple" /> <small id="imageError"></small>
 						</div>
-						<button type="submit" class="btn btn-danger">생성</button>
-						<button type="button" class="btn btn-dark" data-bs-dismiss="modal">취소</button>
+						<button type="submit" class="btn btn-dark">생성</button>
+						<button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">취소</button>
 					</form>
 				</div>
 			</div>

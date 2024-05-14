@@ -9,6 +9,8 @@ const editProduct = document.querySelector('#productModal');
 const deleteNoticeModalFooter = document.getElementById('deleteNotice-modal-footer');
 const editNotice = document.querySelector('#noticeModal'); 
 
+const deleteStylesModalFooter = document.getElementById('deleteStyles-modal-footer');
+
 
     function clickEvent(usid,uemail,uname,uphonenumber,uaddress,uaddressdetail,ugender,urole) {
       modal.innerHTML=`<div data-mdb-input-init class="form-outline mb-4">
@@ -217,4 +219,9 @@ const editNotice = document.querySelector('#noticeModal');
     function deleteNotice(nid) {
     	deleteNoticeModalFooter.innerHTML=`<button type="submit" name="nid" value="${nid}" class="btn btn-dark">삭제</button>
 		<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>`
-    }    
+    }  
+    
+    function deleteStylesData(stid) {
+    	deleteStylesModalFooter.innerHTML =`<button type="submit"  name="stid" value="${stid}" class="btn btn-dark">삭제</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>`
+      }    

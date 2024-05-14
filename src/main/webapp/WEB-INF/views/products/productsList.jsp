@@ -72,6 +72,20 @@
 							class="form-check-label" for="highPrice">판매순</label></li>
 					</ul>
 				</div>
+				<div class="filter-shape">
+					<h5>모양</h5>
+					<ul>
+						<li><input type="checkbox" class="form-check-input"
+							id="lowPrice" name="shape-option" value="lowPrice"> <label
+							class="form-check-label" for="lowPrice">원형</label></li>
+						<li><input type="checkbox" class="form-check-input"
+							id="highPrice" name="shape-option" value="highPrice"> <label
+							class="form-check-label" for="highPrice">사각형</label></li>
+						<li><input type="checkbox" class="form-check-input"
+							id="highPrice" name="shape-option" value="highPrice"> <label
+							class="form-check-label" for="highPrice">타원형</label></li>							
+					</ul>
+				</div>				
 				<div class="filter-button">
 					<button type="reset">초기화</button>
 					<button type="submit">검색</button>

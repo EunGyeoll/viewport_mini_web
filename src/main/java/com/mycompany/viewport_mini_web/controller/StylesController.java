@@ -49,11 +49,9 @@ public class StylesController {
 		Pager pager = pagerService.preparePager(session, pageNo, totalRows, 12, 5); // 페이지당 행 수 12, 그룹당 페이지 수 5
 
 		List<Styles> styles = stylesService.getStylesListByPager(pager);
-		List<Product> products = productService.getProductList();
 
 		model.addAttribute("pager", pager);
 		model.addAttribute("styles", styles);
-		model.addAttribute("products", products);
 
 		return "styles/styles";
 	}
@@ -104,7 +102,7 @@ public class StylesController {
 		os.write(data);
 		os.flush();
 		os.close();
-		log.info(fileName + "스타일 출력");
 	}
-
+	
+	
 }

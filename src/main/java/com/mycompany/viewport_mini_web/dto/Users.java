@@ -16,5 +16,7 @@ public class Users {
   private String urole;
   private Date udate;
   private int ussn;
+  private String upostcode;
   private boolean uenabled;
+  
 }

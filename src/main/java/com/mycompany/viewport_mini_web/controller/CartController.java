@@ -37,7 +37,12 @@ public class CartController {
   @GetMapping("")
   public String cart(Principal principal, Model model) {
     Users user = userService.getUser(principal.getName());
+    
     Cart cart = cartService.getCartByUserId(user.getUsid());
+    if(cart == null ) {
+      cartService.createCart(user);
+    } else {
+  
     List<CartItem> cartItemList = cartService.getAllCartItems(cart.getCid());
 
     List<ProductCartData> productDataList = new ArrayList<>();
@@ -48,6 +53,7 @@ public class CartController {
     }
     model.addAttribute("totalProductCount", productDataList.size());
     model.addAttribute("productDataList", productDataList);
+    }
     return "cart/cart";
   }
 

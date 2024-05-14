@@ -14,5 +14,9 @@ public interface CartDao {
 
   Cart findCartByUserId(int cuid);
 
+  void removeCart(int cuid);
+
+  void removeProductAll(int cicid);
+
 
 }

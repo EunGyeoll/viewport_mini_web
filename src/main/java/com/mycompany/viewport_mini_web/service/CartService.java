@@ -66,4 +66,21 @@ public class CartService {
     }
     return false;
   }
+
+  public void removeCart(int usid) {
+    int cartId = cartDao.findByUsid(usid).getCid();
+    cartDao.removeProductAll(cartId);
+    cartDao.removeCart(usid);
+    
+  }
+
+  public void createCart(Users user) {
+    log.info("실행");
+    Cart cart = cartDao.findByUsid(user.getUsid());
+    if (cart == null) {
+      cart = new Cart();
+      cart.setCuid(user.getUsid());
+      cartDao.createCart(cart);
+    }
+  }
 }

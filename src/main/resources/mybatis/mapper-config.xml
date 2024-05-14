@@ -25,7 +25,13 @@
 			alias="Cart" />
 		<typeAlias
 			type="com.mycompany.viewport_mini_web.dto.CartItem" alias="CartItem" />
+		<typeAlias type="com.mycompany.viewport_mini_web.dto.Notice"
+			alias="Notice" />
+		<typeAlias type="com.mycompany.viewport_mini_web.dto.Orders"
+			alias="Orders" />
 		<typeAlias
-			type="com.mycompany.viewport_mini_web.dto.Notice" alias="Notice" />			
+			type="com.mycompany.viewport_mini_web.dto.Shipment" alias="Shipment" />
+		<typeAlias type="com.mycompany.viewport_mini_web.dto.OrderItem"
+			alias="OrderItem" />
 	</typeAliases>
 </configuration>

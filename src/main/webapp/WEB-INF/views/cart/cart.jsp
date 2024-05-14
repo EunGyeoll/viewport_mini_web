@@ -90,10 +90,10 @@
 					    <input type="hidden" name="totalPriceWithoutDelivery" id="totalPriceWithoutDelivery" value="">
 					    <input type="hidden" name="totalPriceWithDelivery" id="totalPriceWithDelivery" value="">
 					    <input type="hidden" name="deliveryType" id="deliveryType" value="">
-					<button type="submit" class="checkout-btn btn">결제하기</button>
+					<button type="submit" class="checkout-btn btn">결제페이지로 이동</button>
 					<a href="/viewport_mini_web">
 						<div class="back-to-shop shopping-btn text-center">
-							<span class="text-muted">Back to shop</span>
+							<span class="text-muted">돌아가기</span>
 						</div>
 					</a>
 				</div>

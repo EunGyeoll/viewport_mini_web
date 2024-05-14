@@ -11,4 +11,6 @@ public class OrderItem {
   private Date oidate;
   private int oipid;
   private int oioid;
+  
+  private String oipname;
 }

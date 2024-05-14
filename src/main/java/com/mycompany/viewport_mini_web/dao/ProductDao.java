@@ -28,6 +28,8 @@ public interface ProductDao { // 이름 직관적으로 + 나중에 수정
 
 	public int count();
 
+	public List<Product> selectProductListRandomly();
+
 
 
 

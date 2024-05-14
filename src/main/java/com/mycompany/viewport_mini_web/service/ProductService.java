@@ -101,6 +101,11 @@ public int getProductTotalRows() {
 	return totalProductRows;
 }
 
+public List<Product> getProductListRandomly() {
+	List<Product> products = productDao.selectProductListRandomly();
+	return products;
+}
+
 
 
 

@@ -71,7 +71,8 @@
 
 	<update id="update" parameterType="Product">
 		update product set
-		pname=#{pname},pprice=#{pprice},pinfo=#{pinfo},pdetail=#{pdetail},pcategory=#{pcategory}, pshape=#{pshape}
+		pname=#{pname},pprice=#{pprice},pinfo=#{pinfo},pdetail=#{pdetail},pcategory=#{pcategory},
+		pshape=#{pshape}
 		<if test="pattachoname != null">
 			,
 			pattachoname=#{pattachoname},
@@ -87,6 +88,16 @@
 		where
 		pid=#{pid}
 	</delete>
+
+	<select id="selectProductListRandomly" resultType="Product">
+	<![CDATA[
+		select * from (
+		select * from product order by dbms_random.random
+		)
+		where rownum <= 6
+	]]>
+	</select>
+
 </mapper>
 
 

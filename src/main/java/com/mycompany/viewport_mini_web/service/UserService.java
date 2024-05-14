@@ -86,4 +86,9 @@ public class UserService {
     String uemail = userDao.selectByUsid(quserid);
     return uemail;
   }
+
+  public int getUserCount() {
+    int userCount = userDao.getUserCount();
+    return userCount;
+  }
 }

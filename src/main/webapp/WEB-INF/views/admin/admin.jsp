@@ -48,7 +48,7 @@
 				<div class="card text-white bg-primary mb-3">
 					<div class="card-header">유저</div>
 					<div class="card-body">
-						<h5 class="card-title">150명</h5>
+						<h5 class="card-title">${userCount}명</h5>
 						<p class="card-text">전체 등록된 유저수</p>
 					</div>
 				</div>
@@ -57,14 +57,17 @@
 				<div class="card text-white bg-success mb-3">
 					<div class="card-header">판매</div>
 					<div class="card-body">
-						<h5 class="card-title">5,000,000원</h5>
+						<h5 class="card-title">
+							<fmt:formatNumber value="${totalSalesAmount }" maxFractionDigits="0" type="currency" currencySymbol="" groupingUsed="true" />
+							원
+						</h5>
 						<p class="card-text">이번달 판매 총 금액</p>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-3">
 				<div class="card text-white bg-danger mb-3">
-					<div class="card-header">이슈</div>
+					<div class="card-header">답변 해야하는 문의</div>
 					<div class="card-body">
 						<h5 class="card-title">5개</h5>
 						<p class="card-text">해결해야 하는 문제</p>

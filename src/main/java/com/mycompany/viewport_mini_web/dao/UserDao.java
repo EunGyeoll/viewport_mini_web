@@ -31,4 +31,6 @@ public interface UserDao {
 
   public String selectByUsid(int usid);
 
+  public int getUserCount();
+
 }

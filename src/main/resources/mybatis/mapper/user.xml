@@ -22,7 +22,9 @@
 		from users
 		where uemail = #{uemail}
 	</select>
-
+	<select id="getUserCount" resultType="int">
+	select count(*) from users
+	</select>
 	<select id="selectuserAll">
 		select usid,
 		uemail,upassword,uname,ugender,uphonenumber,uaddress,uaddressdetail,urole,uenabled

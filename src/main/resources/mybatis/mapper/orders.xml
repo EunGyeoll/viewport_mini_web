@@ -16,6 +16,10 @@
 		#{ostatus}
 		)
 	</insert>
+	
+	<select id="getTotalSalesAmount" resultType="int">
+		select sum(ototalprice) from orders
+	</select>
 	<resultMap id="OrderResultMap"
 		type="com.mycompany.viewport_mini_web.dto.Orders">
 		<id property="oid" column="oid" />

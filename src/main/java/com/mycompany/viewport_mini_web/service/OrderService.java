@@ -57,4 +57,9 @@ public class OrderService {
     List<Orders> ordersList = orderDao.selectAllOrdersByUserId(usid);
     return ordersList;
   }
+
+  public int getTotalSalesAmount() {
+    int totalSalesAmount = orderDao.getTotalSalesAmount();
+    return totalSalesAmount;
+  }
 }

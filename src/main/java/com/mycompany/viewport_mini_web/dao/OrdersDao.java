@@ -13,5 +13,7 @@ public interface OrdersDao {
 
   public List<Orders> selectAllOrdersByUserId(int ouserid);
 
+  public int getTotalSalesAmount();
+
 
 }

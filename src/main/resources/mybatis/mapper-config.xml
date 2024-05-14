@@ -33,5 +33,7 @@
 			type="com.mycompany.viewport_mini_web.dto.Shipment" alias="Shipment" />
 		<typeAlias type="com.mycompany.viewport_mini_web.dto.OrderItem"
 			alias="OrderItem" />
+		<typeAlias type="com.mycompany.viewport_mini_web.dto.Styles"
+			alias="Styles" />			
 	</typeAliases>
 </configuration>

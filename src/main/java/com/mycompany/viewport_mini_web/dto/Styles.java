@@ -15,7 +15,7 @@ public class Styles {
 	private String stattchsname;
 	private String stattachtype;
 	private int stpnum;
-	private int suserid;
+	private int stuserid;
 	
 	private MultipartFile stattach;	
 	}

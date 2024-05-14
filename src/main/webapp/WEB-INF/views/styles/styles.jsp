@@ -32,7 +32,7 @@
 					<option value="newest">최신순</option>
 					<option value="oldest">오래된순</option>
 				</select>
-				<button type="button" class="btn btn-dark me-4" data-bs-toggle="modal" data-bs-target="#createStylesModal">글쓰기</button>
+				<button type="button" class="btn btn-dark me-4" data-bs-toggle="modal" data-bs-target="#createStylesModal" id="createStylesButton">글쓰기</button>
 			</div>
 		</div>
 		<div class="row no-gutters row-cols-4 gx-0 justify-content-center">
@@ -116,7 +116,7 @@
 							<select id="sortOptions" name="stylesPnum" class="form-select form-select-sm"  aria-label="Sort by">
 								<option selected>상품 이름</option>
 								<c:forEach var="product" items="${products}">
-									<option value="${product.pnum}">${product.pname}</option>						
+									<option value="${product.pid}">${product.pname}</option>						
 								</c:forEach>
 							</select>
 						</div>
@@ -131,5 +131,6 @@
 		</div>
 	</div>	
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%> 
+	<script src="/viewport_mini_web/resources/js/styles.js"></script>
 </body>
 </html>

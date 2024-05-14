@@ -3,7 +3,6 @@ package com.mycompany.viewport_mini_web.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.security.Principal;
 import java.util.List;
 import java.util.UUID;
 
@@ -11,19 +10,23 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mycompany.viewport_mini_web.dto.Pager;
 import com.mycompany.viewport_mini_web.dto.Product;
 import com.mycompany.viewport_mini_web.dto.Styles;
+import com.mycompany.viewport_mini_web.dto.Users;
 import com.mycompany.viewport_mini_web.service.PagerService;
 import com.mycompany.viewport_mini_web.service.ProductService;
 import com.mycompany.viewport_mini_web.service.StylesService;
+import com.mycompany.viewport_mini_web.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -36,7 +39,9 @@ public class StylesController {
 	@Autowired
 	private PagerService pagerService;		
 	@Autowired
-	private ProductService productService;		
+	private ProductService productService;	
+	@Autowired
+	private UserService userService;	
 	
   @GetMapping("")
   public String stylesPage(@RequestParam(required = false) String pageNo, Model model, HttpSession session) {
@@ -54,10 +59,11 @@ public class StylesController {
   }
   
 	@PostMapping("/createStyles")
-	public String createStyles(Styles styles, int stylesPnum, Principal principal) throws IOException {
+	public String createStyles(Styles styles, int stylesPnum, Authentication authentication,  RedirectAttributes redirectAttributes) throws IOException {
 		log.info("styles 실행");
 		
-		String uemail = principal.getName();
+		String uemail = authentication.getName();
+		Users user  = userService.getUser(uemail);
 		
 		styles.setStpnum(stylesPnum);
 
@@ -72,9 +78,9 @@ public class StylesController {
 		styles.setStattchsname(UUID.randomUUID().toString() + "-" + styles.getStattach().getOriginalFilename());;
 		File stylesDestFile = new File(stylesDestDir, styles.getStattchsname());
 		styles.getStattach().transferTo(stylesDestFile);
-		styles.setStattachdata(stylesData);;
+		styles.setStattachdata(stylesData);
 		
-		stylesService.createStyles(styles);
+		stylesService.createStyles(styles, uemail);
 		return "redirect:/styles";
 	}  
 	

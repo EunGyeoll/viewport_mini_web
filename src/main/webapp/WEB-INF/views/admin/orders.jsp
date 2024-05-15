@@ -22,10 +22,10 @@
 				<div class="collapse navbar-collapse" id="navbarNavDropdown">
 					<ul class="navbar-nav">
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin">대시보드</a></li>
-						<li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/admin/users">사용자 관리</a></li>
+						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/users">사용자 관리</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/products">상품 관리</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/shippings">배송 관리</a></li>
-						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/orders">주문 관리</a></li>
+						<li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/admin/orders">주문 관리</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/notices">공지사항 관리</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/styles">스타일 관리</a></li>
 						<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/">홈으로 돌아가기</a></li>
@@ -48,31 +48,26 @@
 		<table class="table table-hover text-center align-middle" id="user-table">
 			<thead>
 				<tr>
-					<th scope="col">번호#</th>
-					<th scope="col">이름</th>
-					<th scope="col">이메일</th>
-					<th scope="col">역할</th>
+					<th scope="col">주문번호#</th>
+					<th scope="col">주문자</th>
+					<th scope="col">주문 주소</th>
+					<th scope="col">주문 상태</th>
+					<th scope="col">주문 날짜</th>
 					<th scope="col"><button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#createUserModal">유저 생성</button></th>
 
 				</tr>
 			</thead>
 			<tbody id="user-table-body">
-				<c:forEach var="user" items="${users}">
+				<c:forEach var="order" items="${orderList}">
 					<tr>
-						<th scope="row">${user.usid}</th>
-						<td>${user.uname}</td>
-						<td>${user.uemail}</td>
-						<c:if test="${user.urole eq 'ROLE_USER' }">
-							<td>사용자</td>
-						</c:if>
-						<c:if test="${user.urole eq 'ROLE_ADMIN' }">
-							<td>관리자</td>
-						</c:if>
-						<%-- <td>${user.urole}</td> --%>
-						<%-- 	<td><fmt:formatDate value="${user.uaddress}" pattern="yyyy-MM-dd" /></td> --%>
+						<th scope="row">${order.oid}</th>
+						<td>${order.oname}</td>
+						<td>${order.oaddress}</td>
+						<td>${order.ostatus}</td>
+						<td><fmt:formatDate value="${order.odate}" pattern="yyyy-MM-dd" /></td>
 						<td>
-							<button type="button" class="btn btn-dark edit-btn btn-sm userDataEditBtn" onclick="clickEvent('${user.usid}','${user.uemail}','${user.uname}','${user.uphonenumber}','${user.uaddress}','${user.uaddressdetail}','${user.ugender}','${user.urole}')" data-bs-toggle="modal" data-bs-target="#editUserModal">상세 회원 정보</button>
-							<button class="btn btn-danger edit-btn btn-sm" data-bs-toggle="modal" onclick="deleteUserData(${user.usid})" data-bs-target="#deleteUserModal">삭제</button>
+							<button type="button" class="btn btn-dark edit-btn btn-sm orderStatusEditBtn" onclick="clickEvent('${user.usid}','${user.uemail}','${user.uname}','${user.uphonenumber}','${user.uaddress}','${user.uaddressdetail}','${user.ugender}','${user.urole}')" data-bs-toggle="modal" data-bs-target="#editUserModal">주문 상태 변경</button>
+							<button class="btn btn-danger edit-btn btn-sm" data-bs-toggle="modal" onclick="deleteUserData(${order.oid})" data-bs-target="#deleteUserModal">주문 준비 완료</button>
 						</td>
 					</tr>
 				</c:forEach>
@@ -82,18 +77,18 @@
 		<nav aria-label="..." class="d-flex justify-content-center me-5">
 			<ul class="pagination">
 				<c:if test="${pager.groupNo>1 }">
-					<li class="page-item"><a class="page-link" href="users?pageNo=${pager.startPageNo-1 }">Previous</a></li>
+					<li class="page-item"><a class="page-link" href="orders?pageNo=${pager.startPageNo-1 }">Previous</a></li>
 				</c:if>
 				<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo }">
 					<c:if test="${pager.pageNo!=i }">
-						<li class="page-item"><a class="page-link" href="users?pageNo=${i}">${i}</a></li>
+						<li class="page-item"><a class="page-link" href="orders?pageNo=${i}">${i}</a></li>
 					</c:if>
 					<c:if test="${pager.pageNo ==i }">
-						<li class="page-item ative"><a class="page-link" href="users?pageNo=${i}">${i}</a></li>
+						<li class="page-item ative"><a class="page-link" href="orders?pageNo=${i}">${i}</a></li>
 					</c:if>
 				</c:forEach>
 				<c:if test="${pager.groupNo<pager.totalGroupNo}">
-					<li class="page-item"><a class="page-link" href="users?pageNo=${pager.endPageNo+1}">Next</a></li>
+					<li class="page-item"><a class="page-link" href="orders?pageNo=${pager.endPageNo+1}">Next</a></li>
 				</c:if>
 
 			</ul>

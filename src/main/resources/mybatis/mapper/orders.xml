@@ -16,7 +16,26 @@
 		#{ostatus}
 		)
 	</insert>
+	<select id="selectByPage" parameterType="Pager"
+		resultType="Orders">
+		<![CDATA[
+		select oid,odate,oaddress,ophone,oname,ouserid,oaddressdetail,ostatus,opostcode,ototalprice,opaymethod 
+		from (
+			select rownum as rnum, oid,odate,oaddress,ophone,oname,ouserid,oaddressdetail,ostatus,opostcode,ototalprice,opaymethod 
+			from (
+				select  oid,odate,oaddress,ophone,oname,ouserid,oaddressdetail,ostatus,opostcode,ototalprice,opaymethod 
+				from orders
+				order by oid desc
+				)
+			where rownum <= #{endRowNo}
+			)
+		where rnum >= #{startRowNo}
+		]]>
+	</select>
 	
+	<select id="getTotalRows" resultType="int">
+		select count(*) from orders
+	</select>
 	<select id="getTotalSalesAmount" resultType="int">
 		select sum(ototalprice) from orders
 	</select>

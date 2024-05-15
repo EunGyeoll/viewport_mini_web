@@ -10,6 +10,7 @@ import com.mycompany.viewport_mini_web.dao.ProductDao;
 import com.mycompany.viewport_mini_web.dao.ShipmentDao;
 import com.mycompany.viewport_mini_web.dto.OrderItem;
 import com.mycompany.viewport_mini_web.dto.Orders;
+import com.mycompany.viewport_mini_web.dto.Pager;
 import com.mycompany.viewport_mini_web.dto.ProductCartData;
 import com.mycompany.viewport_mini_web.dto.TempPaymentData;
 import lombok.extern.slf4j.Slf4j;
@@ -61,5 +62,15 @@ public class OrderService {
   public int getTotalSalesAmount() {
     int totalSalesAmount = orderDao.getTotalSalesAmount();
     return totalSalesAmount;
+  }
+
+  public int getTotalOrderRows() {
+    int totalRows = orderDao.getTotalRows();
+        return totalRows;
+  }
+
+  public List<Orders> getAllOrderList(Pager pager) {
+    List<Orders> orderList = orderDao.selectByPage(pager);
+    return orderList;
   }
 }

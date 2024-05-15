@@ -3,12 +3,10 @@ package com.mycompany.viewport_mini_web.controller;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.security.Principal;
 import java.util.List;
 import java.util.UUID;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.mycompany.viewport_mini_web.dto.Notice;
 import com.mycompany.viewport_mini_web.dto.Qna;
+import com.mycompany.viewport_mini_web.dto.Users;
 import com.mycompany.viewport_mini_web.service.BoardService;
 import com.mycompany.viewport_mini_web.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -61,20 +60,21 @@ public class BoardController {
   @PostMapping("/writeQNA")
   @ResponseBody
   public String writeQNA(Qna qna, Authentication authentication) throws IOException {
-      log.info("실행");
-      String uemail = authentication.getName();
-      qna.setQstatus("처리 중");
-      qna.setQattachoname(qna.getQattach().getOriginalFilename());
-      qna.setQattachtype(qna.getQattach().getContentType());
-      qna.setQattachdata(qna.getQattach().getBytes());
-      qna.setQattachsname(UUID.randomUUID().toString() + "-" + qna.getQattach().getOriginalFilename());
-      boardService.insertNewPost(qna, uemail);
-      return "/viewport_mini_web/board/qnaList";
+    log.info("실행");
+    String uemail = authentication.getName();
+    qna.setQstatus("처리 중");
+    qna.setQattachoname(qna.getQattach().getOriginalFilename());
+    qna.setQattachtype(qna.getQattach().getContentType());
+    qna.setQattachdata(qna.getQattach().getBytes());
+    qna.setQattachsname(
+        UUID.randomUUID().toString() + "-" + qna.getQattach().getOriginalFilename());
+    boardService.insertNewPost(qna, uemail);
+    return "/viewport_mini_web/board/qnaList";
   }
 
   @GetMapping("/qnaDetail")
-  public String qnaDetail(int qid, Authentication authentication, Model model, HttpServletResponse response,
-      RedirectAttributes redirectAttributes) throws IOException {
+  public String qnaDetail(int qid, Authentication authentication, Model model,
+      HttpServletResponse response, RedirectAttributes redirectAttributes) throws IOException {
     if (authentication == null) {
       redirectAttributes.addFlashAttribute("errorMessage", "로그인을 필요합니다.");
       return "redirect:/loginForm";
@@ -87,6 +87,12 @@ public class BoardController {
     }
 
     String quemail = userService.getUserByUserId(qna.getQuserid());
+    Users user = userService.getUser(quemail);
+    if (user.getUrole().equals("ROLE_ADMIN")) {
+      qna.setQuemail(quemail);
+      model.addAttribute("qna", qna);
+      return "board/qnaDetail";
+    }
     if (quemail == null || !quemail.equals(authentication.getName())) {
       redirectAttributes.addFlashAttribute("errorMessage", "권한이 없습니다.");
       return "redirect:/board/qnaList";

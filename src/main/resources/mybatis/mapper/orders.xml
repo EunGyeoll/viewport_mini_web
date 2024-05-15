@@ -16,6 +16,12 @@
 		#{ostatus}
 		)
 	</insert>
+	<update id="updateStatusByOrderId" parameterType="Orders">
+		UPDATE orders
+		SET ostatus =
+		#{ostatus}
+		WHERE oid = #{oid}
+	</update>
 	<select id="selectByPage" parameterType="Pager"
 		resultType="Orders">
 		<![CDATA[

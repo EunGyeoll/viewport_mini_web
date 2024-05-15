@@ -20,5 +20,7 @@ public interface OrdersDao {
 
   public List<Orders> selectByPage(Pager pager);
 
+  public void updateStatusByOrderId(Orders order);
+
 
 }

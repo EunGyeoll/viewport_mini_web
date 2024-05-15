@@ -16,8 +16,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import com.mycompany.viewport_mini_web.dto.Notice;
 import com.mycompany.viewport_mini_web.dto.Orders;
@@ -31,6 +33,7 @@ import com.mycompany.viewport_mini_web.service.CommonService;
 import com.mycompany.viewport_mini_web.service.OrderService;
 import com.mycompany.viewport_mini_web.service.PagerService;
 import com.mycompany.viewport_mini_web.service.ProductService;
+import com.mycompany.viewport_mini_web.service.ShipmentService;
 import com.mycompany.viewport_mini_web.service.StylesService;
 import com.mycompany.viewport_mini_web.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -43,8 +46,6 @@ public class AdminController {
   @Autowired
   private UserService usersService;
   @Autowired
-  private CommonService service;
-  @Autowired
   private ProductService productService;
   @Autowired
   private PagerService pagerService;
@@ -54,13 +55,22 @@ public class AdminController {
   private OrderService orderService;
   @Autowired
   private StylesService stylesService;
-
+  @Autowired
+  private ShipmentService shipmentService;
+  
   @GetMapping("")
-  public String adminMainPage(Model model) {
+  public String adminMainPage(@RequestParam(required = false) String pageNo, Model model,
+      HttpSession session) {
+    int totalRows = orderService.getTotalOrderRows(); // 사용자의 전체 수를 가져옵니다.
+    Pager pager = pagerService.preparePager(session, pageNo, totalRows, 10, 5);
     int userCount = usersService.getUserCount();
     int totalSalesAmount = orderService.getTotalSalesAmount();
+    List<Orders> orderList = orderService.getAllOrderList(pager);
+
     model.addAttribute("userCount", userCount);
     model.addAttribute("totalSalesAmount", totalSalesAmount);
+    model.addAttribute("pager", pager);
+    model.addAttribute("orderList", orderList);
     return "admin/admin";
   }
 
@@ -312,6 +322,18 @@ public class AdminController {
     log.info("deleteStyles 실행");
     stylesService.removeStyles(stid);
     return "redirect:/admin/styles";
+  }
+
+  // 주문 상태 업데이트
+  @PostMapping("/updateStatus")
+  @ResponseBody
+  public String updateOrderStatus(@RequestBody Orders order) {
+    log.info(order.toString());
+    if(order.getOstatus().equals("상품출고완료")) {
+      //shipmentService.createShipment(order);
+    }
+    //orderService.updateStatusByOrderId(order);
+    return "return success!";
   }
 
 }

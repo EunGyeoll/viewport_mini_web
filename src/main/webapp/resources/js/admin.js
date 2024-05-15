@@ -12,6 +12,7 @@ const editNotice = document.querySelector('#noticeModal');
 const deleteStylesModalFooter = document.getElementById('deleteStyles-modal-footer');
 
 
+
     function clickEvent(usid,uemail,uname,uphonenumber,uaddress,uaddressdetail,ugender,urole) {
       modal.innerHTML=`<div data-mdb-input-init class="form-outline mb-4">
         <label class="form-label" for="userNum">유저 번호</label> 
@@ -48,6 +49,8 @@ const deleteStylesModalFooter = document.getElementById('deleteStyles-modal-foot
       <button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
       `
     }
+
+    
     function deleteBtn(index) {
       
     }
@@ -163,3 +166,26 @@ const deleteStylesModalFooter = document.getElementById('deleteStyles-modal-foot
     	deleteStylesModalFooter.innerHTML =`<button type="submit"  name="stid" value="${stid}" class="btn btn-dark">삭제</button>
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>`
       }    
+    
+    // 주문 상태 업데이트 ajax
+    function clickStatusEvent(oid,ostatus) {
+      console.log("클릭이벤트 실행");
+      $.ajax({
+        url: 'admin/updateStatus',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ oid: oid, ostatus: ostatus }),
+        success: function(response) {
+          console.log(response);
+          $('#orderStatus'+oid).text(ostatus);
+          if (ostatus === '주문접수') {
+            $('#orderStatus' + oid).closest('tr').find('.orderStatusEditBtn').text('상품준비중');
+        } else if (ostatus === '상품준비중') {
+            $('#orderStatus' + oid).closest('tr').find('.orderStatusEditBtn').text('상품출고완료');
+        }
+        },
+        error: function(error) {
+            console.error('아이템 수량 업데이트 중 에러발생: ', error);
+        }
+    });
+    }

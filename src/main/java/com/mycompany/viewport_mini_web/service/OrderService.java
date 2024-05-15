@@ -73,4 +73,9 @@ public class OrderService {
     List<Orders> orderList = orderDao.selectByPage(pager);
     return orderList;
   }
+
+  public void updateStatusByOrderId(Orders order) {
+    orderDao.updateStatusByOrderId(order);
+    
+  }
 }

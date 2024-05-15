@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <title>Admin</title>
@@ -91,27 +90,54 @@
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th>주문 번호</th>
-					<th>날짜</th>
-					<th>상태</th>
-					<th>금액</th>
-					<th>상세내용</th>
+					<th scope="col">주문번호#</th>
+					<th scope="col">주문자</th>
+					<th scope="col">배송지</th>
+					<th scope="col">주문 상태</th>
+					<th scope="col">주문 날짜</th>
+					<th scope="col">주문 상태 변경</th>
 				</tr>
 			</thead>
-			<tbody>
-				<tr>
-					<td class="align-middle">1234</td>
-					<td class="align-middle">2022-04-01</td>
-					<td class="align-middle">Shipped</td>
-					<td class="align-middle">$150</td>
-					<td><button class="btn btn-info">View</button></td>
-				</tr>
-				<!-- More rows -->
+			<tbody id="user-table-body">
+				<c:forEach var="order" items="${orderList}">
+					<tr>
+						<th scope="row">${order.oid}</th>
+						<td>${order.oname}</td>
+						<td>${order.oaddress}</td>
+						<td id="orderStatus${order.oid}">${order.ostatus}</td>
+						<td><fmt:formatDate value="${order.odate}" pattern="yyyy-MM-dd" /></td>
+						<td><c:if test="${order.ostatus eq '주문접수'}">
+								<button type="button" class="btn btn-dark edit-btn btn-sm orderStatusEditBtn" onclick="clickStatusEvent('${order.oid }','상품준비중')">상품준비중</button>
+							</c:if> <c:if test="${order.ostatus eq '상품준비중'}">
+								<button type="button" class="btn btn-dark edit-btn btn-sm" onclick="deleteUserData('${order.oid}',${order.ostatus })">상품출고완료</button>
+							</c:if></td>
+					</tr>
+				</c:forEach>
+
 			</tbody>
 		</table>
+		<nav aria-label="..." class="d-flex justify-content-center me-5">
+			<ul class="pagination">
+				<c:if test="${pager.groupNo>1 }">
+					<li class="page-item"><a class="page-link" href="admin?pageNo=${pager.startPageNo-1 }">Previous</a></li>
+				</c:if>
+				<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo }">
+					<c:if test="${pager.pageNo!=i }">
+						<li class="page-item"><a class="page-link" href="admin?pageNo=${i}">${i}</a></li>
+					</c:if>
+					<c:if test="${pager.pageNo ==i }">
+						<li class="page-item ative"><a class="page-link" href="admin?pageNo=${i}">${i}</a></li>
+					</c:if>
+				</c:forEach>
+				<c:if test="${pager.groupNo<pager.totalGroupNo}">
+					<li class="page-item"><a class="page-link" href="admin?pageNo=${pager.endPageNo+1}">Next</a></li>
+				</c:if>
+
+			</ul>
+		</nav>
 	</section>
 
 	<script src="/viewport_mini_web/resources/js/admin.js"></script>
-
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </body>
 </html>

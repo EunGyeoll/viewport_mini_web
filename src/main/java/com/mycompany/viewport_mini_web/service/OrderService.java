@@ -32,8 +32,8 @@ public class OrderService {
     TempPaymentData tempPaymentData = new TempPaymentData();
     tempPaymentData.setTotalPrice(Integer.parseInt(totalPriceWithoutDelivery));
     tempPaymentData.setTotalPriceWithDelivery(Integer.parseInt(totalPriceWithDelivery));
-    tempPaymentData.setDeliveryType(Integer.parseInt(deliveryType)); // Assuming deliveryType is a
-                                                                     // string
+    tempPaymentData.setDeliveryType(Integer.parseInt(deliveryType));
+                                                                    
     List<ProductCartData> ItemList = new ArrayList<>();
 
     for (int i = 0; i < productIds.length; i++) {

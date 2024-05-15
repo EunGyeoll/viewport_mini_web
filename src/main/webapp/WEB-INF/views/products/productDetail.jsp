@@ -66,7 +66,7 @@
 
 				<div id="productInfo">${product.pinfo}</div>
 
-				<button type="button" class="btn btn1" data-bs-toggle="modal" data-bs-target="#myModal1">장바구니에 추가</button>
+				<button type="button" class="btn btn1" data-bs-toggle="modal">장바구니에 추가</button>
 
 				<!-- 부트스트랩 accordion 사용 -->
 				<div class="accordion accordion-flush" id="accordionFlushExample">
@@ -127,7 +127,8 @@
               $('#myModal1').modal('show');
           },
           error: function() {
-              alert('장바구니에 추가하는데 실패했습니다.');
+              //alert('장바구니에 추가하는데 실패했습니다.');
+            window.location.href = 'http://localhost:8080/viewport_mini_web/loginForm';
           }
       });
   });

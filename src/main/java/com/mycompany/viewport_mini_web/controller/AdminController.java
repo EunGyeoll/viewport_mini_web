@@ -330,7 +330,7 @@ public class AdminController {
   public String updateOrderStatus(@RequestBody Orders order) {
     log.info(order.toString());
     if(order.getOstatus().equals("상품출고완료")) {
-      //shipmentService.createShipment(order);
+      shipmentService.createShipment(order);
     }
     //orderService.updateStatusByOrderId(order);
     return "return success!";

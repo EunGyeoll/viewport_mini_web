@@ -57,6 +57,9 @@ public class CartController {
   @ResponseBody
   public String addProductToCart(@RequestParam("pid") int pid, Authentication authentication) throws Exception {
       String uemail = authentication.getName();
+      if(uemail == null) {
+        return null;
+      }
       Product product = productService.getProduct(pid);
       Users user = userService.getUser(uemail);
       cartService.addCartProduct(user, product);

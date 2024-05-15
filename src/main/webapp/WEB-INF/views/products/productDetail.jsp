@@ -52,11 +52,11 @@
 
 				<!-- 같은 제품 모음 -->
 				<div class="sidebarImgs">
-					<a href="#"> <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_01_2.jpg">
-					</a> <a href="#"> <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_W2_2.jpg">
-					</a> <a href="#"> <img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_GC10_2.jpg">
-					</a> <a href="#"> <img id="nowImg" src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_RC6_2.jpg">
-					</a>
+					<c:forEach var="sameModel" items="${sameModels}">
+						<a href="productDetail?pid=${sameModel.pid}">
+							<img src="attachProductDownload?pid=${sameModel.pid}">
+						</a>
+					</c:forEach>
 				</div>
 
 				<div id="productInfo">${product.pinfo}</div>

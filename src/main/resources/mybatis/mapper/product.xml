@@ -97,6 +97,14 @@
 		where rownum <= 6
 	]]>
 	</select>
+	
+	<select id="selectSameModelByPname" parameterType="String"
+		resultType="Product">
+		select *
+		from product
+		where pname like '%'||substr(#{pname}, 1, 2)||'%'
+
+	</select>	
 
 </mapper>
 

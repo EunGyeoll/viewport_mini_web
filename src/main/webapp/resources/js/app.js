@@ -1,4 +1,4 @@
-// 상품 데이터 
+/*// 상품 데이터 
 // 후에 랜덤을 4개를 가져오는 방법으로 추천상품 4개를 메인 출력
 // 서버에서 바로 이런식으로 데이터 가공해서 가져올 것 같음
 const products = [
@@ -78,5 +78,5 @@ const displayFeaturedItems = () => {
 };
 
 // 문서가 로드되면 실행
-displayFeaturedItems();
+displayFeaturedItems();*/
 AOS.init(); 

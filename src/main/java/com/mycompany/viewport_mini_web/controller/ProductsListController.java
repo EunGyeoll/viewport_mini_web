@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mycompany.viewport_mini_web.dto.Pager;
 import com.mycompany.viewport_mini_web.dto.Photos;
 import com.mycompany.viewport_mini_web.dto.Product;
-import com.mycompany.viewport_mini_web.service.CommonService;
 import com.mycompany.viewport_mini_web.service.PagerService;
 import com.mycompany.viewport_mini_web.service.ProductService;
 
@@ -80,13 +79,17 @@ public class ProductsListController {
 
 	@GetMapping("/productDetail")
 	public String productDetail(int pid, Model model) {
+		log.info("productDetail() 실행");
+		
 		Product product = productService.getProduct(pid);
 		List<Photos> photos = productService.getPhotos(pid);
 		List<Integer> ptids = productService.getPtids(product.getPid());
-		log.info("productDetail() 실행");
+		List<Product> sameModels = productService.getSameModels(product.getPname());
+		
 		model.addAttribute("product", product);
 		model.addAttribute("photos", photos);
 		model.addAttribute("ptids",ptids);
+		model.addAttribute("sameModels",sameModels);
 		return "products/productDetail";
 	}
 }

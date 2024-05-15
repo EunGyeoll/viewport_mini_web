@@ -32,9 +32,6 @@
 									<b>Shopping Cart</b>
 								</h4>
 							</div>
-							<div class="col align-self-center text-right text-muted num-of-items" id="num-of-items">
-								<span>${totalProductCount} items</span>
-							</div>
 						</div>
 					</div>
 					<div class="row border-top border-bottom" id="cart-list-container">

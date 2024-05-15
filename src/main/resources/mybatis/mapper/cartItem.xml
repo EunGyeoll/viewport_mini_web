@@ -3,16 +3,18 @@
 
 <mapper
 	namespace="com.mycompany.viewport_mini_web.dao.CartItemDao">
-	<select id="findCartByUserIdAndProductId" parameterType="int" resultType="CartItem">
+	<select id="findCartByUserIdAndProductId" parameterType="int"
+		resultType="CartItem">
 		select * from cart
 		where cuid=#{cuid} and cpid=#{cpid}
 	</select>
 
-	<select id="findByCartIdAndProductId" parameterType="int"
-		resultType="CartItem">
-		select cid,cqty,cpid,cuid from cart
-		where cpid=#{cpid} and cuid = #{cuid}
+	<select id="findByCartIdAndProductId" resultType="CartItem">
+		SELECT * FROM
+		cart
+		WHERE cid = #{cid} AND cpid = #{cpid} AND cuid = #{cuid}
 	</select>
+
 	<insert id="createCartWithProduct" parameterType="int">
 		<selectKey keyProperty="cid" order="BEFORE" resultType="int">
 			select seq_cid.nextval from dual
@@ -23,20 +25,21 @@
 	<select id="findCartIdWithUserIdAndProductId"
 		parameterType="int" resultType="int">
 		select cid from cart
-		where cpid=#{cpid} and cuid=#{cuid}
+		where cpid=#{cpid}
+		and cuid=#{cuid}
 	</select>
 	<select id="findCartByUserId" parameterType="int">
 		select * from cart
 		where cuid = #{cuid}
 	</select>
 
-	<update id="updateCqty" parameterType="int">
-		update cart set
-		cqty=#{cqty}, cpid=#{cpid}, cuid = #{cuid}
-		where
-		cpid=#{cpid} and cuid =
-		#{cuid} and cid=#{cid}
+	<update id="updateCqty" parameterType="CartItem">
+		UPDATE cart
+		SET cqty =
+		#{cqty}
+		WHERE cpid = #{cpid} AND cuid = #{cuid} AND cid = #{cid}
 	</update>
+
 	<select id="selectAllCartItems" parameterType="int"
 		resultType="CartItem">
 		select cid,cqty,cpid,cuid
@@ -44,15 +47,20 @@
 		where
 		cuid=#{cuid}
 	</select>
-	<delete id="removeCartItemByProductId" parameterType="int">
-		delete from
-		cart
-		where
-		cpid=#{cpid} and cuid=#{cuid}
-	</delete>
 
+	<select id="findRemoveProduct" resultType="CartItem">
+		SELECT * FROM cart
+		WHERE cpid = #{cpid} AND cuid = #{cuid}
+	</select>
+
+	<delete id="removeCartItemByProductId" parameterType="CartItem">
+		DELETE FROM cart
+		WHERE cpid = #{cpid} AND cuid = #{cuid}
+	</delete>
+	
 	<delete id="removeCart" parameterType="int">
 		delete from cart
-		where cuid=#{cuid}
+		where
+		cuid=#{cuid}
 	</delete>
 </mapper>

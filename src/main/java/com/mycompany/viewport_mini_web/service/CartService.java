@@ -17,20 +17,22 @@ public class CartService {
 
   public void addCartProduct(Users user, Product product) {
     log.info("실행");
-    CartItem cart = cartItemDao.findCartByUserIdAndProductId(user.getUsid(),product.getPid());
+    CartItem cart = cartItemDao.findCartByUserIdAndProductId(user.getUsid(), product.getPid());
     if (cart == null) {
       cart = new CartItem();
       // 이부분에서 널포인터 access 발생
       cart.setCuid(user.getUsid());
-      cartItemDao.createCartWithProduct(cart.getCid(), product.getPid(),user.getUsid());
+      cartItemDao.createCartWithProduct(cart.getCid(), product.getPid(), user.getUsid());
     } else {
-      cartItemDao.updateCqty(cart.getCqty() + 1, product.getPid(), user.getUsid(),cart.getCid());
-    }    
+      // 기존 카트 아이템의 수량을 증가
+      cart.setCqty(cart.getCqty() + 1);
+      cartItemDao.updateCqty(cart);
+    }
   }
 
-  public CartItem getCartByUserId(int usid) {
-    CartItem cart = cartItemDao.findCartByUserId(usid);
-    return cart;
+  public List<CartItem> getCartByUserId(int usid) {
+    List<CartItem> cartItemList = cartItemDao.findCartByUserId(usid);
+    return cartItemList;
   }
 
   public List<CartItem> getAllCartItems(int cuid) {
@@ -38,41 +40,53 @@ public class CartService {
     return cartItemList;
   }
 
-  public boolean updateCartItemQty(int cpid, int cqty,int cid,int cuid) {
-    CartItem cartItem = cartItemDao.findByCartIdAndProductId(cid);
-    if (cartItem != null && cqty > 0) {
-      cartItem.setCqty(cqty);
-      cartItemDao.updateCqty(cqty, cpid, cid,cuid);
+  // Service
+  public boolean updateCartItemQty(CartItem cartItem) {
+    CartItem existingCartItem = cartItemDao.findByCartIdAndProductId(cartItem);
+    if (existingCartItem != null && cartItem.getCqty() > 0) {
+      existingCartItem.setCqty(cartItem.getCqty());
+      cartItemDao.updateCqty(existingCartItem);
+      log.info("Quantity updated successfully for product ID {} in cart ID {}", cartItem.getCpid(),
+          cartItem.getCid());
       return true;
+    } else {
+      log.warn("Product not found in cart or invalid quantity");
+      return false;
     }
-    return false;
   }
 
-  public boolean removeProduct(int cpid, int cid,int cuid) {
-    CartItem cartItem = cartItemDao.findByCartIdAndProductId(cid);
-    log.info("실행");
-    if(cartItem != null) {
-      cartItemDao.removeCartItemByProductId(cpid,cid,cuid);
+  public boolean removeProduct(CartItem cartItem) {
+    CartItem existingCartItem = cartItemDao.findRemoveProduct(cartItem);
+    if (existingCartItem != null) {
+      cartItemDao.removeCartItemByProductId(cartItem);
+      log.info("Product removed successfully from cart ID {}", cartItem.getCid());
       return true;
+    } else {
+      log.warn("Product not found in cart");
+      return false;
     }
-    return false;
   }
-/*  public boolean removeCart(int cuid) {
-    CartItem cartItem = cartItemDao.findByCartIdAndProductId(cuid);
+
+
+  /*
+   * public boolean removeCart(int cuid) { CartItem cartItem =
+   * cartItemDao.findByCartIdAndProductId(cuid); log.info("실행"); if(cartItem != null) {
+   * cartItemDao.removeCartByUserId(cuid); return true; } return false; }
+   */
+  public boolean removeCart(int usid) {
+    List<CartItem> cartItem = cartItemDao.selectAllCartItems(usid);
+
     log.info("실행");
-    if(cartItem != null) {
-      cartItemDao.removeCartByUserId(cuid);
+    if (cartItem != null) {
+      cartItemDao.removeCart(usid);
       return true;
     }
     return false;
-  }*/
-  public void removeCart(int usid) {
-    cartItemDao.removeCart(usid);
   }
 
   public int getCartIdByUserIdAndProductId(int cuid, int cpid) {
-    int cartId = cartItemDao.findCartIdWithUserIdAndProductId(cuid,cpid);
-    log.info(cartId+"");
+    int cartId = cartItemDao.findCartIdWithUserIdAndProductId(cuid, cpid);
+    log.info(cartId + "");
     return cartId;
   }
 }

@@ -60,20 +60,16 @@ public class BoardController {
 
   @PostMapping("/writeQNA")
   @ResponseBody
-  public ResponseEntity<?> WriteQNA(Qna qna, Model model, Authentication authentication) {
-    log.info("실행");
-    String uemail = authentication.getName();
-    qna.setQstatus("처리 중");
-    qna.setQattachoname(qna.getQattach().getOriginalFilename());
-    qna.setQattachtype(qna.getQattach().getContentType());
-    try {
+  public String writeQNA(Qna qna, Authentication authentication) throws IOException {
+      log.info("실행");
+      String uemail = authentication.getName();
+      qna.setQstatus("처리 중");
+      qna.setQattachoname(qna.getQattach().getOriginalFilename());
+      qna.setQattachtype(qna.getQattach().getContentType());
       qna.setQattachdata(qna.getQattach().getBytes());
-    } catch (IOException e) {
-    }
-    qna.setQattachsname(
-        UUID.randomUUID().toString() + "-" + qna.getQattach().getOriginalFilename());
-    boardService.insertNewPost(qna, uemail);
-    return ResponseEntity.ok("/viewport_mini_web/board/qnaList");
+      qna.setQattachsname(UUID.randomUUID().toString() + "-" + qna.getQattach().getOriginalFilename());
+      boardService.insertNewPost(qna, uemail);
+      return "/viewport_mini_web/board/qnaList";
   }
 
   @GetMapping("/qnaDetail")

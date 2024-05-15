@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mycompany.viewport_mini_web.dto.Pager;
@@ -50,8 +49,10 @@ public class StylesController {
 		Pager pager = pagerService.preparePager(session, pageNo, totalRows, 12, 5); // 페이지당 행 수 12, 그룹당 페이지 수 5
 
 		List<Styles> styles = stylesService.getStylesListByPager(pager);
-
+		List<Product> products = productService.getProductList();
+		
 		model.addAttribute("pager", pager);
+		model.addAttribute("products", products);
 		model.addAttribute("styles", styles);
 
 		return "styles/styles";

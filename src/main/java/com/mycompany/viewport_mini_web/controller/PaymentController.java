@@ -110,6 +110,7 @@ public class PaymentController {
     orders.setOuserid(user.getUsid());
     orders.getShipment().setSuserid(user.getUsid());
     orders.setOstatus("주문접수");
+    log.info(orders.getShipment().getStype());
     orderService.addOrderData(orders);
 
     session.setAttribute("isOrderProcessed", true);

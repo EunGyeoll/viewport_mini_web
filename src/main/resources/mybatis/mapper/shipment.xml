@@ -9,10 +9,10 @@
 			select seq_sid.nextval from dual
 		</selectKey>
 		insert into shipment(
-		sid,srequest,suserid,soid
+		sid,srequest,suserid,stype,soid
 		)
 		values(
-		#{sid},#{srequest},#{suserid},seq_oid.currval
+		#{sid},#{srequest},#{suserid},#{stype},seq_oid.currval
 		)
 	</insert>
 </mapper>

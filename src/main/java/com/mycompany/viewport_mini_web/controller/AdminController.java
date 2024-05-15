@@ -87,19 +87,6 @@ public class AdminController {
     return "admin/users";
   }
 
-  @GetMapping("/orders")
-  public String adminOrderPage(@RequestParam(required = false) String pageNo, Model model,
-      HttpSession session) {
-    int totalRows = orderService.getTotalOrderRows(); // 사용자의 전체 수를 가져옵니다.
-    Pager pager = pagerService.preparePager(session, pageNo, totalRows, 10, 5); // 페이지당 행 수 10, 그룹당
-                                                                                // 페이지 수 5
-
-    List<Orders> orderList = orderService.getAllOrderList(pager);
-    model.addAttribute("pager", pager);
-    model.addAttribute("orderList", orderList);
-    return "admin/orders";
-  }
-
   @GetMapping("/products")
   public String adminProductsPage(@RequestParam(required = false) String pageNo, Model model,
       HttpSession session) {

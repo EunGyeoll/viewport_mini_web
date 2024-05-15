@@ -23,8 +23,6 @@
 								<div class="my-4">
 									<!-- Left Column - Image -->
 									<div class="row g-0 justify-content-center">
-
-
 										<!-- Right Column - Form -->
 										<div class="col-xl-6 card">
 											<div class="card-body p-md-5 text-black">
@@ -39,26 +37,13 @@
 														<div class="col-md-8 mb-4">
 															<div data-mdb-input-init class="form-outline">
 																<input type="text" id="uemail" name="uemail" class="form-control form-control-md" /> <small id="emailError"></small>
+																<div class="uemail_ok" style="display: none">사용 가능한 이메일입니다.</div>
+																<div class="uemail_already" style="display: none">사용 중인 이메일입니다.</div>
+																<div class="uemail_null" style="display: none">이메일을 입력해 주세요.</div>
 															</div>
 														</div>
-														<!--                <div class="col-md-4 mb-4">
-                                             <div data-mdb-input-init class="form-outline">
-                                                <select class="form-control input-sm"
-                                                   name="signupEmail2" id="signupEmail2" class="show">
-                                                   <option value="@gmail.com">@gmail.com</option>
-                                                   <option value="@naver.com">@naver.com</option>
-                                                   <option value="@daum.net">@daum.net</option>
-                                                   <option value="@outlook.com">@outlook.com</option>
-                                                   <option value="type">직접 입력하기</option>
-                                                </select> 
-                                                
-                                                <input type="text" name="signupEmail3"
-                                                   id="signupEmail3" class="hide" />
-                                                css에서 hide를 설정함
-                                             </div>
-                                          </div> -->
 														<div class="col-md-4 mb-4">
-															<button type="button" id="checkDuplicateEmail" onclick="emailCheck();" class="emailCheck btn btn-primary">중복 확인</button>
+															<button type="button" id="checkDuplicateEmail" onclick="checkEmail();" class="emailCheck btn btn-primary">중복 확인</button>
 														</div>
 													</div>
 												</div>
@@ -66,45 +51,29 @@
 												<!-- 패스워드 -->
 												<div class="column d-flex">
 													<div data-mdb-input-init class="column form-outline mb-4 me-3">
-														<label class="form-label" for="upassword">비밀번호</label> 
-														<input type="password" id="upassword" name="upassword" placeholder="영어 대,소문자 숫자 혼용하여 8~15자" class="form-control form-control-md" /> 
-														<small id="pw1Error"></small>
+														<label class="form-label" for="upassword">비밀번호</label> <input type="password" id="upassword" name="upassword" placeholder="영어 대,소문자 숫자 혼용하여 8~15자" class="form-control form-control-md" /> <small id="pw1Error"></small>
 													</div>
 													<div data-mdb-input-init class="column form-outline mb-4">
-														<label class="form-label" for="signupPwCheck">비밀번호 확인</label> 
-														<input type="password" id="upasswordCheck" placeholder="비밀번호 확인을 입력하세요" class="form-control form-control-md" /> 
-														<small id="pw2Error"></small>
+														<label class="form-label" for="upasswordCheck">비밀번호 확인</label> <input type="password" id="upasswordCheck" placeholder="비밀번호 확인을 입력하세요" class="form-control form-control-md" /> <small id="pw2Error"></small>
 													</div>
 												</div>
 												<!-- 주민번호 -->
 												<div class="column d-flex">
 													<div data-mdb-input-init class="column form-outline mb-4 me-3">
-														<label class="form-label" for="ussn">주민번호</label>
-														<input type="text" id="ussn1" name="ussn" placeholder="YYMMDD" class="form-control form-control-md" /> 
-														<small id="ussnError"></small>
-													</div><span>-</span>
+														<label class="form-label" for="ussn1">주민번호</label> <input type="text" id="ussn1" name="ussn1" placeholder="YYMMDD" class="form-control form-control-md" /> <small id="ussnError"></small>
+													</div>
+													<span>-</span>
 													<div data-mdb-input-init class="column form-outline mb-4 mt-2">
-														<label class="form-label" for="signupPwCheck"></label> 
-														<input type="password" id="ussn2"  class="form-control form-control-md" /> 
-														<small id="ussnError"></small>
+														<label class="form-label" for="ussn2"></label> <input type="password" id="ussn2" name="ussn2" class="form-control form-control-md" /> <small id="ussnError"></small>
 													</div>
 												</div>
 												<!-- 이름 -->
 												<div data-mdb-input-init class="form-outline mb-4">
-													<label class="form-label" for="uname">이름</label> 
-													<input type="text" id="uname" name="uname" class="form-control form-control-md" maxlength="10" /> <small id="nameError"></small>
+													<label class="form-label" for="uname">이름</label> <input type="text" id="uname" name="uname" class="form-control form-control-md" maxlength="10" /> <small id="nameError"></small>
 												</div>
 
-												<!--    <div data-mdb-input-init class="form-outline mb-4">
-                                       <label class="form-label" for="signupBirth">생일</label> <input
-                                          type="text" id="signupBirth"
-                                          class="form-control form-control-lg"
-                                          placeholder="YYYYMMDD" maxlength="10" /> <small
-                                          id="birthError"></small>
-                                    </div> -->
 												<div data-mdb-input-init class="form-outline mb-3">
-													<label class="form-label" for="signupPhoneNum">휴대폰 번호</label> 
-													<input type="text" id="uphonenumber" name="uphonenumber" class="form-control form-control-md" placeholder="숫자를 입력하세요" maxlength="13" /> <small id="phoneNumError"></small>
+													<label class="form-label" for="uphonenumber">휴대폰 번호</label> <input type="text" id="uphonenumber" name="uphonenumber" class="form-control form-control-md" placeholder="숫자를 입력하세요" maxlength="13" /> <small id="phoneNumError"></small>
 												</div>
 
 												<!-- 주소 -->
@@ -116,7 +85,6 @@
 													</div>
 													<input type="text" class="el_input" placeholder="" disabled id="uaddress" name="uaddress" /> <input type="text" class="el_input" placeholder="상세주소를 입력해주세요." id="uaddressdetail" name="uaddressdetail" />
 												</div>
-
 
 												<div class="d-md-flex justify-content-start align-items-center mb-2 py-2">
 													<h6 class="mb-0 me-4">성별:</h6>
@@ -137,9 +105,6 @@
 												</div>
 											</div>
 										</div>
-										<!--            <div class="col-xl-6 d-none d-xl-block">
-                                 <img src="/viewport_mini_web/resources/image/signup.jpg" alt="Sample photo" class="img-fluid" style="height: 80%; border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
-                              </div> -->
 									</div>
 
 
@@ -149,30 +114,14 @@
 					</div>
 				</form>
 			</div>
-
-
-
-			<!-- 옆으로 -->
-			<!--         
-           <div class="overlay-container">
-               <div class="overlay-left">
-                   <h2>V I E W P O R T</h2>
-                   <p>To keep connected with us, please login with your personal info</p>
-                   <button id="signIn" class="overlay_btn">Sign In</button>
-               </div>
-                <div class="overlay-right">
-                      <h2>V I E W P O R T</h2>
-                      <button id="seeMore" class="overlay_btn">SEE MORE?</button> 원래 id signup이엇음
-              </div>
-           </div>
-     -->
-
 		</div>
 	</div>
 
 	<!-- Include your JavaScript files -->
 	<script src="/viewport_mini_web/resources/js/login.js"></script>
-	<script src="/viewport_mini_web/resources/js/signup.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="/viewport_mini_web/resources/js/signup.js"></script>
+
 </body>
 </html>

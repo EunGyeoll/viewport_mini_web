@@ -8,10 +8,10 @@
 			select seq_usid.nextval from dual
 		</selectKey>
 		insert into
-		users(usid,upassword,uname,uemail,ugender,uphonenumber,uaddress,uaddressdetail,urole,uenabled,ussn,udate)
+		users(usid,upassword,uname,uemail,uphonenumber,uaddress,uaddressdetail,urole,uenabled,ussn,udate,upostcode)
 		values(#{usid},
-		#{upassword},#{uname},#{uemail},#{ugender},#{uphonenumber},#{uaddress},
-		#{uaddressdetail},#{urole},#{uenabled},#{ussn},sysdate
+		#{upassword},#{uname},#{uemail},#{uphonenumber},#{uaddress},
+		#{uaddressdetail},#{urole},#{uenabled},#{ussn},sysdate,#{upostcode}
 		)
 	</insert>
 
@@ -74,5 +74,10 @@
 	</delete>
 	<select id="selectByUsid" parameterType="int" resultType="String">
 	select uemail from users where usid =#{usid}
+	</select>
+	
+	<select id="checkDuplicateEmail" parameterType="String">
+		select count(*) from users
+		where uemail = #{uemail}
 	</select>
 </mapper>

@@ -33,4 +33,6 @@ public interface UserDao {
 
   public int getUserCount();
 
+  public int checkDuplicateEmail(String uemail);
+
 }

@@ -96,4 +96,9 @@ public class UserService {
 		return uemail;
 	}
 
+  public int checkDuplicateEmail(String uemail) {
+    int result = userDao.checkDuplicateEmail(uemail);
+    return result;
+  }
+
 }

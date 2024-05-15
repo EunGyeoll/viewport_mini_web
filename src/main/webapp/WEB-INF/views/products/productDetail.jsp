@@ -54,7 +54,12 @@
 				<div class="sidebarImgs">
 					<c:forEach var="sameModel" items="${sameModels}">
 						<a href="productDetail?pid=${sameModel.pid}">
-							<img src="attachProductDownload?pid=${sameModel.pid}">
+							<c:if test="${sameModel.pid eq product.pid}">
+								<img src="attachProductDownload?pid=${sameModel.pid}" id="sidebarImage" style="border: 1px solid #000;">
+							</c:if>
+							<c:if test="${sameModel.pid ne product.pid}">
+								<img src="attachProductDownload?pid=${sameModel.pid}" id="sidebarImage">
+							</c:if>
 						</a>
 					</c:forEach>
 				</div>
@@ -106,7 +111,9 @@
 
 	<!-- Footer -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
-
+	
+	<!-- JS 설정 -->
+	<script src="/viewport_mini_web/resources/js/productDetail.js"></script>	
 
 	<!-- JS 설정 -->
 	<script>$(document).ready(function() {

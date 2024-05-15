@@ -79,9 +79,9 @@ a {
     border-radius: 10px;
 }
 
-.sidebarImgs #nowImg {
-	border: 1px solid #000;
-}
+.sidebarImgs img:hover {
+  border: 1px solid #000;
+} 
 
 .sidebar .btn1 {
     background-color: #000;

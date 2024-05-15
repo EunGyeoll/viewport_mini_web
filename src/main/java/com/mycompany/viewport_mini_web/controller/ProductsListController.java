@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.viewport_mini_web.dto.Pager;
 import com.mycompany.viewport_mini_web.dto.Photos;
@@ -56,7 +57,6 @@ public class ProductsListController {
 		os.write(data);
 		os.flush();
 		os.close();
-		log.info(fileName + "썸네일 출력");
 	}
 
 	@GetMapping("/attachPhotosDownload")
@@ -74,7 +74,6 @@ public class ProductsListController {
 		os.write(data);
 		os.flush();
 		os.close();
-		log.info(fileName + "출력 완료");
 	}
 
 	@GetMapping("/productDetail")
@@ -92,4 +91,6 @@ public class ProductsListController {
 		model.addAttribute("sameModels",sameModels);
 		return "products/productDetail";
 	}
+	
+	
 }

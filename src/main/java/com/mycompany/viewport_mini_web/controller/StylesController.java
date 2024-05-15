@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mycompany.viewport_mini_web.dto.Pager;
@@ -50,7 +51,7 @@ public class StylesController {
 
 		List<Styles> styles = stylesService.getStylesListByPager(pager);
 		List<Product> products = productService.getProductList();
-		
+
 		model.addAttribute("pager", pager);
 		model.addAttribute("products", products);
 		model.addAttribute("styles", styles);
@@ -62,15 +63,15 @@ public class StylesController {
 	public String createStyles(Styles styles, int stylesPnum, Authentication authentication,
 			RedirectAttributes redirectAttributes) throws IOException {
 		log.info("styles 실행");
-		
-	    if (authentication == null) {
-	        redirectAttributes.addFlashAttribute("errorMessage", "로그인을 필요합니다.");
-	        return "redirect:/loginForm";
-	      }
+
+		if (authentication == null) {
+			redirectAttributes.addFlashAttribute("errorMessage", "로그인을 필요합니다.");
+			return "redirect:/loginForm";
+		}
 
 		String uemail = authentication.getName();
 		Users user = userService.getUser(uemail);
-		log.info(stylesPnum +"");
+		log.info(stylesPnum + "");
 		styles.setStpnum(stylesPnum);
 		log.info(styles.getStpnum() + "pnum 값");
 		styles.setStattachoname(styles.getStattach().getOriginalFilename());
@@ -105,12 +106,11 @@ public class StylesController {
 		os.flush();
 		os.close();
 	}
-	
-/*	@GetMapping("/getStyleDetails")
+
+	@GetMapping("/getStyleDetails")
 	@ResponseBody
-	public Styles getStyleDetails(@RequestParam int stid) {
-	    return stylesService.getStyles(stid);
-	} */
-	
-	
+	public Styles getStyleDetails(@RequestParam("stid") int stid) {
+		return stylesService.getStyles(stid);
+	}
+
 }

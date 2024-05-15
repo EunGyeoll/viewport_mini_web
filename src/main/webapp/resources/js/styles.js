@@ -1,20 +1,35 @@
+/*$(document).ready(function() {
+  $('#createStylesButton').click(function() {
+      const productId = ${product.pid}; 
+      $.ajax({
+          url: '/viewport_mini_web/styles/getStyleDetails',
+          type: 'GET',
+          data: { pid: productId },
+          success: function(response) {
+              $('#myModal').modal('show');
+          },
+          error: function() {
+            window.location.href = 'http://localhost:8080/viewport_mini_web/loginForm';
+          }
+      });
+  });
+});*/
+
+
 $(document).ready(function() {
-	$("#style-img").click(function() {
-		const stid = $(this).data("stid"); 
-		$.ajax({
-			url: "/styles/getStyleDetails",
-			type: "GET",
-			data: {stid: stid},
-			success: function(response) {
-				const data = JSON.parse(response);
-				
-				$("#styleModalImg").attr("src", data.imageUrl);
-				$("#myModal").modal("show");
-			},
-			error: function(xhr, status, error) {
-                // 에러 발생 시 처리할 내용
-                console.error("Error:", error);
-			}
-		})
-	})
-})
+    $("#style-img").click(function() {
+
+        $.ajax({
+            url: "/styles/getStyleDetails", 
+            type: "GET",
+            data: { stid: stid }, 
+            success: function(response) {
+
+                $("#myModal").modal("show");
+            },
+            error: function(error) {
+            	console.error('스타일 모달 에러발생: ', error);
+            }
+        });
+    });
+});

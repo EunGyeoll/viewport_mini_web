@@ -97,6 +97,16 @@
 		where rownum <= 6
 	]]>
 	</select>
+	
+	<select id="selectProductList" parameterType="String"
+		resultType="Product">
+		select
+		pid,pname,pprice,pinfo,pdetail,pcategory,pattachsname,pattachtype,pattachdata,
+		pshape, pdate
+		from product
+		where pname like '#{pname}%'
+
+	</select>	
 
 </mapper>
 

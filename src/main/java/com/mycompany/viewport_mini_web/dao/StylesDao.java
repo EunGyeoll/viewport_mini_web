@@ -20,4 +20,6 @@ public interface StylesDao {
 
 	public void deleteByStid(int stid);
 
+	public List<Styles> selectStylesListRandomly();
+
 }

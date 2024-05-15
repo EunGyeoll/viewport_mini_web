@@ -64,4 +64,10 @@ public void removeStyles(int stid) {
 }
 
 
+public List<Styles> getStylesListRandomly() {
+	List<Styles> styles = stylesDao.selectStylesListRandomly();
+	return styles;
+}
+
+
 }

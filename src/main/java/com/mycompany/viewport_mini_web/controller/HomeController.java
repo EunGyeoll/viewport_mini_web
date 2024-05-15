@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.viewport_mini_web.dto.Product;
+import com.mycompany.viewport_mini_web.dto.Styles;
 import com.mycompany.viewport_mini_web.dto.Users;
 import com.mycompany.viewport_mini_web.service.ProductService;
+import com.mycompany.viewport_mini_web.service.StylesService;
 import com.mycompany.viewport_mini_web.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +25,8 @@ public class HomeController {
 	private UserService userService;
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private StylesService stylesService;	
 
 	@RequestMapping("/")
 	public String index(Model model) {
@@ -31,8 +35,12 @@ public class HomeController {
 		for(Product product : products) {
 			log.info(product.getPid() + "");
 		}
+		
+		List<Styles> styles = stylesService.getStylesListRandomly();
 
 		model.addAttribute("products", products);
+		model.addAttribute("styles", styles);
+
 		return "home";
 	}
 

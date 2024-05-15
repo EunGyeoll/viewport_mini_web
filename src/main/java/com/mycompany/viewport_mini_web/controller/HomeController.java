@@ -27,14 +27,12 @@ public class HomeController {
 	@RequestMapping("/")
 	public String index(Model model) {
 		log.info("main 실행");
-
 		List<Product> products = productService.getProductListRandomly();
 		for(Product product : products) {
 			log.info(product.getPid() + "");
 		}
 
 		model.addAttribute("products", products);
-
 		return "home";
 	}
 

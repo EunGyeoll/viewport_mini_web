@@ -38,7 +38,7 @@
 		<div class="row no-gutters row-cols-4 gx-0 justify-content-center">
 			<c:forEach var="style" items="${styles}">
 				<div class="col m-1 image-box" style="width: 310px; height: auto;" data-bs-toggle="modal" data-bs-target="#myModal">
-					<img src="${pageContext.request.contextPath}/styles/attachStylesDownload?stid=${style.stid}" class="card-img" height="100%" width="100%" />
+					<img src="${pageContext.request.contextPath}/styles/attachStylesDownload?stid=${style.stid}" class="card-img" height="100%" width="100%" id="style-img" />
 				</div>			
 			</c:forEach>		
 		</div>
@@ -79,7 +79,7 @@
 				
 					<div class="d-flex flex-row justify-content-center">
 					
-						<img src="${pageContext.request.contextPath}/styles/attachStylesDownload?stid=${style.stid}" class="card-img row-2" style="width: 50%" />
+						<img src="${pageContext.request.contextPath}/styles/attachStylesDownload?stid=${style.stid}" class="card-img row-2" style="width: 50%" id="styleModalImg"/>
 						<div class="row-2 item-info-box text-center ">
 							<img src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/h/u/hush-01_2_1.jpg" class="card-img row-2" style="width: 50%" />
 							<div class="text-center">Eq02</div>
@@ -127,6 +127,6 @@
 		</div>
 	</div>	
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%> 
-	<script src="/viewport_mini_web/resources/js/styles.js"></script>
+<!-- 	<script src="/viewport_mini_web/resources/js/styles.js"></script> -->
 </body>
 </html>

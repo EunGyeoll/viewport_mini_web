@@ -1,7 +1,20 @@
-//document.getElementById("createStylesButton").addEventListener("click", function() {
-//   // 사용자가 로그인되어 있는지 여부를 확인
-//	if () {
-//        // 로그인되어 있지 않은 경우 로그인 페이지로 이동
-//		window.location.href = "/loginForm";
-//    }
-//});
+$(document).ready(function() {
+	$("#style-img").click(function() {
+		const stid = $(this).data("stid"); 
+		$.ajax({
+			url: "/styles/getStyleDetails",
+			type: "GET",
+			data: {stid: stid},
+			success: function(response) {
+				const data = JSON.parse(response);
+				
+				$("#styleModalImg").attr("src", data.imageUrl);
+				$("#myModal").modal("show");
+			},
+			error: function(xhr, status, error) {
+                // 에러 발생 시 처리할 내용
+                console.error("Error:", error);
+			}
+		})
+	})
+})

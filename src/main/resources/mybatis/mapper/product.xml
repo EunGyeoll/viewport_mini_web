@@ -98,13 +98,11 @@
 	]]>
 	</select>
 	
-	<select id="selectProductList" parameterType="String"
+	<select id="selectSameModelByPname" parameterType="String"
 		resultType="Product">
-		select
-		pid,pname,pprice,pinfo,pdetail,pcategory,pattachsname,pattachtype,pattachdata,
-		pshape, pdate
+		select *
 		from product
-		where pname like '#{pname}%'
+		where pname like '%'||substr(#{pname}, 1, 2)||'%'
 
 	</select>	
 

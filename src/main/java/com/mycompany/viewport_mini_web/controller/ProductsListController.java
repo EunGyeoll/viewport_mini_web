@@ -86,10 +86,10 @@ public class ProductsListController {
 		List<Integer> ptids = productService.getPtids(product.getPid());
 		List<Product> sameModels = productService.getSameModels(product.getPname());
 		
-		
 		model.addAttribute("product", product);
 		model.addAttribute("photos", photos);
 		model.addAttribute("ptids",ptids);
+		model.addAttribute("sameModels",sameModels);
 		return "products/productDetail";
 	}
 }

@@ -52,7 +52,7 @@
 
 				<!-- 같은 제품 모음 -->
 				<div class="sidebarImgs">
-					<c:forEach var="sameModel" items="sameModels">
+					<c:forEach var="sameModel" items="${sameModels}">
 						<a href="productDetail?pid=${sameModel.pid}">
 							<img src="attachProductDownload?pid=${sameModel.pid}">
 						</a>

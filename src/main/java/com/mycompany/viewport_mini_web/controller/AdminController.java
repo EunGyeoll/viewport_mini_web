@@ -26,6 +26,7 @@ import com.mycompany.viewport_mini_web.dto.Orders;
 import com.mycompany.viewport_mini_web.dto.Pager;
 import com.mycompany.viewport_mini_web.dto.Photos;
 import com.mycompany.viewport_mini_web.dto.Product;
+import com.mycompany.viewport_mini_web.dto.Shipment;
 import com.mycompany.viewport_mini_web.dto.Styles;
 import com.mycompany.viewport_mini_web.dto.Users;
 import com.mycompany.viewport_mini_web.service.BoardService;
@@ -317,9 +318,11 @@ public class AdminController {
   public String updateOrderStatus(@RequestBody Orders order) {
     log.info(order.toString());
     if(order.getOstatus().equals("상품출고완료")) {
-      shipmentService.createShipment(order);
+      log.info("상품출고 실행됨");
+      Shipment shipment=shipmentService.getShipmentDataByOrderId(order.getOid());
+      //shipmentService.createShipment(shipment);
     }
-    //orderService.updateStatusByOrderId(order);
+   // orderService.updateStatusByOrderId(order);
     return "return success!";
   }
 

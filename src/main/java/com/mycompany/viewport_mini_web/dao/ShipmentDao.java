@@ -9,6 +9,8 @@ public interface ShipmentDao {
 
   void insertShipmentData(Shipment shipment);
 
-  void updateShipmentByOrderId(Orders order);
+  void updateShipmentByOrderId(Shipment shipment);
+
+  Shipment getShipmentDataByOrderId(int soid);
 
 }

@@ -177,11 +177,17 @@ const deleteStylesModalFooter = document.getElementById('deleteStyles-modal-foot
         data: JSON.stringify({ oid: oid, ostatus: ostatus }),
         success: function(response) {
           console.log(response);
+          
           $('#orderStatus'+oid).text(ostatus);
-          if (ostatus === '주문접수') {
-            $('#orderStatus' + oid).closest('tr').find('.orderStatusEditBtn').text('상품준비중');
-        } else if (ostatus === '상품준비중') {
+          console.log(ostatus);
+          if (ostatus === '상품준비중') {
+            console.log("이거 실행됨1");
             $('#orderStatus' + oid).closest('tr').find('.orderStatusEditBtn').text('상품출고완료');
+            $('#orderStatus' + oid).closest('tr').find('.orderStatusEditBtn').attr('onclick', function() {
+                return "clickStatusEvent('" + oid + "', '상품출고완료')";
+            }); } else if (ostatus === '상품출고완료') {
+          console.log("이거 실행됨123");
+          $('#orderStatus' + oid).closest('tr').find('.orderStatusEditBtn').remove();
         }
         },
         error: function(error) {

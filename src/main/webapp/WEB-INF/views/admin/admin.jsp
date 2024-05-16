@@ -109,7 +109,7 @@
 						<td><c:if test="${order.ostatus eq '주문접수'}">
 								<button type="button" class="btn btn-dark edit-btn btn-sm orderStatusEditBtn" onclick="clickStatusEvent('${order.oid }','상품준비중')">상품준비중</button>
 							</c:if> <c:if test="${order.ostatus eq '상품준비중'}">
-								<button type="button" class="btn btn-dark edit-btn btn-sm" onclick="deleteUserData('${order.oid}',${order.ostatus })">상품출고완료</button>
+								<button type="button" class="btn btn-dark edit-btn btn-sm" onclick="clickStatusEvent('${order.oid}','상품출고완료')">상품출고완료</button>
 							</c:if></td>
 					</tr>
 				</c:forEach>

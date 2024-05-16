@@ -15,4 +15,13 @@
 		#{sid},#{srequest},#{suserid},#{stype},seq_oid.currval
 		)
 	</insert>
+	<select id="getShipmentDataByOrderId" parameterType="int" resultType="Shipment">
+		select * from shipment
+		where soid = #{soid}
+	</select>
+	<update id="updateShipmentByOrderId">
+	UPDATE shipment
+		SET sshipmentnum =#{sshipmentnum},sdate=sysdate
+		WHERE soid = #{soid}
+	</update>
 </mapper>

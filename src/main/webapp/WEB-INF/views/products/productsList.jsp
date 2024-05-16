@@ -38,15 +38,15 @@
 
 	<div class="wrap">
 		<div class="filter-block">
-			<form action="" method="post">
+			<form action="productsList" method="get">
 				<div class="filter-category">
 					<h5>카테고리</h5>
 					<ul>
 						<li><input type="checkbox" class="form-check-input"
-							id="glasses" name="glasses-option" value="glasses"> <label
+							id="glasses" name="category" value="안경"> <label
 							class="form-check-label" for="glasses">안경</label></li>
 						<li><input type="checkbox" class="form-check-input"
-							id="sunglasses" name="glasses-option" value="sunglasses">
+							id="sunglasses" name="category" value="선글라스">
 							<label class="form-check-label" for="sunglasses">선글라스</label></li>
 					</ul>
 				</div>

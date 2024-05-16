@@ -42,11 +42,9 @@ public class ProductsListController {
 
 		List<Product> products;
 		if (category != null) {
-			// 선택된 카테고리 값에 따라 다르게 처리
 			products = productService.getProductsByCategoryAndPager(category, pager);
 
 		} else {
-			// 카테고리를 선택하지 않은 경우 모든 제품을 가져옴
 			products = productService.getProductListByPager(pager);
 		}
 

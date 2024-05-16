@@ -103,6 +103,7 @@
 		select *
 		from product
 		where pname like '%'||substr(#{pname}, 1, 2)||'%'
+		order by pname
 
 	</select>	
 

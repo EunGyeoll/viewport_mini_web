@@ -37,10 +37,13 @@
 		</div>
 		<div class="row no-gutters row-cols-4 gx-0 justify-content-center">
 			<c:forEach var="style" items="${styles}">
-				<div class="col m-1 image-box" style="width: 310px; height: auto;" data-bs-toggle="modal" data-bs-target="#myModal">
-					<img src="${pageContext.request.contextPath}/styles/attachStylesDownload?stid=${style.stid}" class="card-img" height="100%" width="100%" id="style-img" />
+				<div class="col m-1 image-box" style="width: 310px; height: auto;">
+					<a href="javascript:openModal(${style.stid}, ${style.stpnum}, ${style.stuserid})">
+					 <img src="${pageContext.request.contextPath}/styles/attachStylesDownload?stid=${style.stid}" class="card-img" height="100%" width="100%" id="style-img" />
+					</a>
 				</div>			
-			</c:forEach>		
+			</c:forEach>	
+				
 		</div>
 		
 		<!-- pagination -->
@@ -67,10 +70,12 @@
 	<!-- The Modal -->
 	<div class="modal fade " id="myModal">
 		<div class="modal-dialog modal-lg modal-dialog-centered">
-			<div class="modal-content rounded-0">
+			<div id="modalContent" class="modal-content rounded-0">
+				<!-- ################################################### -->
+				<!-- stylesModal.jsp -->
 				<!-- Modal Header -->
-				<div class="modal-header border-0">
-<div class="">as***@****.com</div>
+<%-- 				<div class="modal-header border-0">
+					<div class="">as***@****.com</div>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 				</div>
 
@@ -90,7 +95,8 @@
 
 						</div>
 					</div>
-				</div>
+				</div> --%>
+				<!-- ################################################### -->
 			</div>
 		</div>
 	</div>
@@ -127,6 +133,6 @@
 		</div>
 	</div>	
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%> 
-<!-- 	<script src="/viewport_mini_web/resources/js/styles.js"></script> -->
+	<script src="/viewport_mini_web/resources/js/styles.js"></script>
 </body>
 </html>

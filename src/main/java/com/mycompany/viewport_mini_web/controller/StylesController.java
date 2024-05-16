@@ -108,9 +108,15 @@ public class StylesController {
 	}
 
 	@GetMapping("/getStyleDetails")
-	@ResponseBody
-	public Styles getStyleDetails(@RequestParam("stid") int stid) {
-		return stylesService.getStyles(stid);
+	public String getStyleDetails(@RequestParam("stid") int stid, @RequestParam("stpnum") int stpnum, @RequestParam("stuserid") int stuserid, Model model) {
+		Product product = productService.getProduct(stpnum);
+		Styles style = stylesService.getStyles(stid);
+		String uemail = userService.getUserByStuserId(stuserid);
+		
+		model.addAttribute("product", product);
+		model.addAttribute("style", style);
+		model.addAttribute("uemail", uemail);
+		return "styles/stylesModal";
 	}
 
 }

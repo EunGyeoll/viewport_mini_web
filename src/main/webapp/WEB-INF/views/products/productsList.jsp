@@ -8,7 +8,7 @@
 <head>
 <meta charset="EUC-KR">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Insert title here</title>
+<title>Products List</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -76,18 +76,18 @@
 					<h5>모양</h5>
 					<ul>
 						<li><input type="checkbox" class="form-check-input"
-							id="lowPrice" name="shape-option" value="lowPrice"> <label
-							class="form-check-label" for="lowPrice">원형</label></li>
+							id="circle" name="shape-option" value="circle"> <label
+							class="form-check-label" for="circle">원형</label></li>
 						<li><input type="checkbox" class="form-check-input"
-							id="highPrice" name="shape-option" value="highPrice"> <label
-							class="form-check-label" for="highPrice">사각형</label></li>
+							id="rectangle" name="shape-option" value="rectangle"> <label
+							class="form-check-label" for="rectangle">사각형</label></li>
 						<li><input type="checkbox" class="form-check-input"
-							id="highPrice" name="shape-option" value="highPrice"> <label
-							class="form-check-label" for="highPrice">타원형</label></li>							
+							id="oval" name="shape-option" value="oval"> <label
+							class="form-check-label" for="oval">타원형</label></li>							
 					</ul>
 				</div>				
 				<div class="filter-button">
-					<button type="reset">초기화</button>
+					<button type="reset" id="resetButton">초기화</button>
 					<button type="submit">검색</button>
 				</div>
 			</form>
@@ -143,7 +143,6 @@
 
 	<!-- Footer -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
-
 
 	<!-- JS 설정 -->
 	<script src="/viewport_mini_web/resources/js/productsList.js"></script>

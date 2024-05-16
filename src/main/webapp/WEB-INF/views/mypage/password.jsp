@@ -37,7 +37,7 @@
 						<div class="card">
 							<div class="card-body">
 								<h4 class="card-title">비밀번호 변경</h4>
-								<form method="post" action="mypage/passwordChange?tab=password" data-bs-target="#password">
+								<form method="post" action="passwordChange" data-bs-target="#password">
 									<h2>${pwError }</h2>
 									<div class="mb-3">
 										<label for="current-password" class="form-label">현재 비밀번호</label> <input type="password" name="currPw" class="form-control" id="current-password">

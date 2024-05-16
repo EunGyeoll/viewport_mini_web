@@ -119,7 +119,7 @@
 							<a href="productsList?pageNo=${i}">${i}</a>
 						</c:if>
 						<c:if test="${pager.pageNo == i}">
-							<a href="productsList?pageNo=${i}">${i}</a>
+							<a href="productsList?pageNo=${i}" class="text-warning">${i}</a>
 						</c:if>
 					</c:forEach>
 					<c:if test="${pager.groupNo<pager.totalGroupNo}">

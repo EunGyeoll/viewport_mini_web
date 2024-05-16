@@ -107,17 +107,6 @@
 							</div>
 					</a></li>
 				</c:forEach>
-<%-- 				<li><a
-					href="${pageContext.request.contextPath}/products/productDetail">
-						<div>
-							<img
-								src="https://www-prd-kr.gentlemonster.com/media/catalog/product/cache/6c6f229b8a7ab97f51028776641e27d1/1/1/11001_MONTA_01_2.jpg">
-						</div>
-						<div>
-							<p>몬타 01</p>
-							<p>330,000</p>
-						</div>
-				</a></li> --%>
 			</ul>
 			<div class="pagination-center">
 				<div class="pagination">

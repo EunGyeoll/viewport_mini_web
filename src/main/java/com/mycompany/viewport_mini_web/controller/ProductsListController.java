@@ -39,6 +39,7 @@ public class ProductsListController {
 		
 		List<Product> products = productService.getProductListByPager(pager);
 		
+		
 		model.addAttribute("pager", pager);
 		model.addAttribute("products", products);
 		return "products/productsList";
@@ -91,6 +92,5 @@ public class ProductsListController {
 		model.addAttribute("sameModels",sameModels);
 		return "products/productDetail";
 	}
-	
 	
 }

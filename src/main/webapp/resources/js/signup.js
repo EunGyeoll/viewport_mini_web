@@ -65,6 +65,7 @@
                 } else {
                     $(".uemail_ok").hide();
                     $(".uemail_already").show();
+                    resultCheck = false;
                 }
             },
             error: function () {
@@ -136,9 +137,7 @@
         const phoneNumError = document.querySelector("#phoneNumError");
 
         const phonePattern = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
-                                                                                      // 휴대폰
-                                                                                      // 번호
-                                                                                      // 형식
+                                                                                     
         if (!validatePattern(phonePattern, uphonenumber, phoneNumError, "올바른 휴대폰 번호를 입력해 주세요")) {
             resultCheck = false;
         }
@@ -147,13 +146,14 @@
         var users = {
             uemail: document.getElementById('uemail').value,
             upassword: document.getElementById('upassword').value,
-            uname: document.getElementById('uname').value,
-            uphonenumber: document.getElementById('uphonenumber').value.replace(/-/g, ''),
+            passwordConfirm: document.getElementById('upasswordCheck').value,
+            uname: document.getElementById('uname').value.trim(),
+            uphonenumber: document.getElementById('uphonenumber').value.replace(reg, ''),
             uaddress: document.getElementById('uaddress').value,
             uaddressdetail: document.getElementById('uaddressdetail').value,
-            //ugender:document.querySelector('input[name="ugender"]:checked').value,
-            upostcode: uzonecode.value,
-            ussn: ussn
+            upostcode: document.getElementById('zonecode').value,
+            ussn: document.getElementById('ussn1').value + document.getElementById('ussn2').value,
+            ugender: document.querySelector('input[name="ugender"]:checked').value
         };
         console.log()
         if (resultCheck) {

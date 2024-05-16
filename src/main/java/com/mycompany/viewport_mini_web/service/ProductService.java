@@ -107,4 +107,9 @@ public class ProductService {
 		return sameModels;
 	}
 
+	public List<Product> getProductsByCategoryAndPager(String category, Pager pager) {
+		List<Product> products = productDao.selectProductListByCategoryAndPager(category, pager);
+		return products;
+	}
+
 }

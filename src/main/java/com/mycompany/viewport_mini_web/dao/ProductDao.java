@@ -32,6 +32,8 @@ public interface ProductDao { // 이름 직관적으로 + 나중에 수정
 
 	public List<Product> selectSameModelByPname(String pname);
 
+	public List<Product> selectProductListByCategoryAndPager(String category, Pager pager);
+
 
 
 

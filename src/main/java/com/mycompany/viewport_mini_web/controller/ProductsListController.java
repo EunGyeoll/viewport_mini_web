@@ -30,16 +30,26 @@ public class ProductsListController {
 	@Autowired
 	private ProductService productService;
 	@Autowired
-	private PagerService pagerService;	
+	private PagerService pagerService;
 
 	@GetMapping("/productsList")
-	public String getProductsList(@RequestParam(required = false) String pageNo, Model model, HttpSession session) {
+	public String getProductsList(@RequestParam(required = false) String pageNo,
+			@RequestParam(required = false) String category, Model model, HttpSession session) {
 		int totalRows = productService.getProductTotalRows(); // (전체 수를 가져옵니다.
-		Pager pager = pagerService.preparePager(session, pageNo, totalRows, 9, 5); // 페이지당 행 수 9, 그룹당 페이지 수 5				
-		
-		List<Product> products = productService.getProductListByPager(pager);
-		
-		
+		Pager pager = pagerService.preparePager(session, pageNo, totalRows, 9, 5); // 페이지당 행 수 9, 그룹당 페이지 수 5
+
+		/* List<Product> products = productService.getProductListByPager(pager); */
+
+		List<Product> products;
+		if (category != null) {
+			// 선택된 카테고리 값에 따라 다르게 처리
+			products = productService.getProductsByCategoryAndPager(category, pager);
+
+		} else {
+			// 카테고리를 선택하지 않은 경우 모든 제품을 가져옴
+			products = productService.getProductListByPager(pager);
+		}
+
 		model.addAttribute("pager", pager);
 		model.addAttribute("products", products);
 		return "products/productsList";
@@ -80,17 +90,17 @@ public class ProductsListController {
 	@GetMapping("/productDetail")
 	public String productDetail(int pid, Model model) {
 		log.info("productDetail() 실행");
-		
+
 		Product product = productService.getProduct(pid);
 		List<Photos> photos = productService.getPhotos(pid);
 		List<Integer> ptids = productService.getPtids(product.getPid());
 		List<Product> sameModels = productService.getSameModels(product.getPname());
-		
+
 		model.addAttribute("product", product);
 		model.addAttribute("photos", photos);
-		model.addAttribute("ptids",ptids);
-		model.addAttribute("sameModels",sameModels);
+		model.addAttribute("ptids", ptids);
+		model.addAttribute("sameModels", sameModels);
 		return "products/productDetail";
 	}
-	
+
 }

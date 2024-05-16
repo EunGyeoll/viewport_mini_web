@@ -26,6 +26,11 @@
     // 유효성 검사 함수
     function validatePattern(pattern, value, errorElement, errorMessage) {
         const isValid = pattern.test(value);
+        if (value.trim() === "") {
+          errorElement.innerHTML = "값을 입력해주세요.";
+          errorElement.classList.add("text-danger");
+          return false;
+      }
         if (!isValid) {
             errorElement.innerHTML = errorMessage;
             errorElement.classList.add("text-danger");
@@ -86,7 +91,7 @@
         const upassword = document.querySelector("#upassword").value;
         const pw1Error = document.querySelector("#pw1Error");
 
-        resultCheck &= validatePattern(pwPattern, upassword, pw1Error, "영어 대,소문자 숫자 혼용하여 8~15자를 입력해 주세요!");
+        resultCheck = validatePattern(pwPattern, upassword, pw1Error, "영어 대,소문자 숫자 혼용하여 8~15자를 입력해 주세요!");
 
         const upasswordCheck = document.querySelector("#upasswordCheck").value;
         const pw2Error = document.querySelector("#pw2Error");
@@ -106,7 +111,7 @@
         const residentNumberPattern = /^[0-9]+$/;
         const ussnError = document.querySelector("#ussnError");
 
-        resultCheck &= validatePattern(residentNumberPattern, ussn, ussnError, "올바른 주민등록번호 형식이 아닙니다.");
+        resultCheck = validatePattern(residentNumberPattern, ussn, ussnError, "올바른 주민등록번호 형식이 아닙니다.");
 
         const birthYear = parseInt(ussn1.substring(0, 2));
         const birthMonth = parseInt(ussn1.substring(2, 4));
@@ -124,7 +129,7 @@
         const namePattern = /^[a-zA-Zㄱ-ㅎ가-힣]*$/;
         const nameError = document.querySelector("#nameError");
 
-        resultCheck &= validatePattern(namePattern, uname, nameError, "올바른 이름을 입력해 주세요!");
+        resultCheck = validatePattern(namePattern, uname, nameError, "올바른 이름을 입력해 주세요!");
 
         // 휴대폰 번호 유효성 검사
         const uphonenumber = document.querySelector("#uphonenumber").value.trim();

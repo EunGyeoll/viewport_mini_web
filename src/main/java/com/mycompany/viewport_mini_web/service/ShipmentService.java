@@ -1,5 +1,6 @@
 package com.mycompany.viewport_mini_web.service;
 
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.mycompany.viewport_mini_web.dao.ShipmentDao;
@@ -12,6 +13,8 @@ public class ShipmentService {
   @Autowired
   ShipmentDao shipmentDao;
   public void createShipment(Orders order) {
+    //String sshipmentnum = new Date().getTime().
+    //order.getShipment().setSshipmentnum(sshipmentnum);
     shipmentDao.updateShipmentByOrderId(order);
   }
   

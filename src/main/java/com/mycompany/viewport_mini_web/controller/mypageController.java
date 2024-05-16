@@ -119,11 +119,11 @@ public class mypageController {
     Users user = userService.getUser(uemail);
     if (!userService.checkPassword(currPw, user.getUpassword())) {
       model.addAttribute("pwError", "기존 비밀번호가 일치하지 않음");
-      return "redirect:/mypage";
+      return "redirect:/mypage/password";
     }
     if (newPw.isEmpty() || !newPw.equals(newPwConfirm)) {
       model.addAttribute("pwError", "새로운 비밀번호가 일치하지 않음");
-      return "redirect:/mypage";
+      return "redirect:/mypage/password";
     } else {
       userService.changePassword(uemail, newPw);
     }

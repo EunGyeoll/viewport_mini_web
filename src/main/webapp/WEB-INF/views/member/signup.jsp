@@ -54,7 +54,7 @@
 														<label class="form-label" for="upassword">비밀번호</label> <input type="password" id="upassword" name="upassword" placeholder="영어 대,소문자 숫자 혼용하여 8~15자" class="form-control form-control-md" /> <small id="pw1Error"></small>
 													</div>
 													<div data-mdb-input-init class="column form-outline mb-4">
-														<label class="form-label" for="upasswordCheck">비밀번호 확인</label> <input type="password" id="upasswordCheck" placeholder="비밀번호 확인을 입력하세요" class="form-control form-control-md" /> <small id="pw2Error"></small>
+														<label class="form-label" for="upasswordCheck">비밀번호 확인</label> <input type="password" id="upasswordCheck" name="upasswordConfirm" placeholder="비밀번호 확인을 입력하세요" class="form-control form-control-md" /> <small id="pw2Error"></small>
 													</div>
 												</div>
 												<!-- 주민번호 -->

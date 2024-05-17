@@ -50,24 +50,51 @@
 		where rnum >= #{startRowNo}
 	]]>
 	</select>
-	
-	<select id="selectProductListByFilterAndPager" parameterType="Map"
-		resultType="Product">
-	<![CDATA[
-		select rnum, pid,pname,pprice,pinfo,pdetail,pcategory,pattachsname,pattachtype,pattachdata, pshape, pdate
-		from (
-		    select rownum as rnum, pid,pname,pprice,pinfo,pdetail,pcategory,pattachsname,pattachtype,pattachdata, pshape, pdate
-		    from (
-		        select pid,pname,pprice,pinfo,pdetail,pcategory,pattachsname,pattachtype,pattachdata, pshape, pdate
-		        from product
-		        where pcategory=#{category}
-		        order by pid desc
-		    )
-		    where rownum <= #{pager.endRowNo}
-		)
-		where rnum >= #{pager.startRowNo}
-	]]>
-	</select>	
+
+	<select id="selectProductListByFilterAndPager"
+		parameterType="Map" resultType="Product">
+   <![CDATA[
+      select rnum, pid,pname,pprice,pinfo,pdetail,pcategory,pattachsname,pattachtype,pattachdata, pshape, pdate
+      from (
+          select rownum as rnum, pid,pname,pprice,pinfo,pdetail,pcategory,pattachsname,pattachtype,pattachdata, pshape, pdate
+          from (
+              select pid,pname,pprice,pinfo,pdetail,pcategory,pattachsname,pattachtype,pattachdata, pshape, pdate
+              from product ]]>
+        <where>
+        	<if test="category != null">
+				pcategory=#{category}
+			</if>
+			<if test="shape != null">
+				pshape=#{shape}
+			</if> 			
+        </where>
+		order by
+			<if test="price=='lowPrice'">
+				pprice asc
+			</if>
+			<if test="price=='highPrice'">
+				pprice desc
+			</if>	
+			<if test="price != null and date != null">
+			,
+			</if>
+			<if test="date=='older'">
+				pdate asc
+			</if>
+			<if test="date=='newer'">
+				pdate desc
+			</if>	
+			<if test="price==null and date==null">
+				pid desc
+			</if>			
+			
+	             <![CDATA[
+          ) 
+          where rownum <= #{pager.endRowNo}
+      )
+      where rnum >= #{pager.startRowNo}
+   ]]>
+	</select>
 
 	<select id="selectByPid" parameterType="int"
 		resultType="Product">
@@ -86,12 +113,20 @@
 	<select id="count">
 		select count(*) from product
 	</select>
-	
-	<select id="countByCategory" parameterType="String">
-		select count(*) 
+
+	<select id="countByFilter" parameterType="String">
+		select count(*)
 		from product
-		where pcategory=#{category}
-	</select>	
+		<where>
+			<if test="category != null">
+				pcategory=#{category}
+			</if>
+			<if test="shape != null">
+				pshape=#{shape}
+			</if>
+		</where>
+
+	</select>
 
 	<update id="update" parameterType="Product">
 		update product set
@@ -121,15 +156,16 @@
 		where rownum <= 6
 	]]>
 	</select>
-	
+
 	<select id="selectSameModelByPname" parameterType="String"
 		resultType="Product">
 		select *
 		from product
-		where pname like '%'||substr(#{pname}, 1, 2)||'%'
+		where pname like '%'||substr(#{pname},
+		1, 2)||'%'
 		order by pname
 
-	</select>	
+	</select>
 
 </mapper>
 

@@ -97,8 +97,8 @@ public class ProductService {
 		return totalProductRows;
 	}
 	
-	public int getProductTotalRowsByFilter(String[] filter) {
-		int totalProductRows = productDao.countByFilter(filter);
+	public int getProductTotalRowsByFilter(String category, String price, String date, String shape) {
+		int totalProductRows = productDao.countByFilter(category, price, date, shape);
 		return totalProductRows;
 	}	
 
@@ -112,8 +112,8 @@ public class ProductService {
 		return sameModels;
 	}
 
-	public List<Product> getProductsByFilterAndPager(String[] filter, Pager pager) {
-		List<Product> products = productDao.selectProductListByFilterAndPager(filter, pager);
+	public List<Product> getProductsByFilterAndPager(String category, String price, String date, String shape, Pager pager) {
+		List<Product> products = productDao.selectProductListByFilterAndPager(category, price, date, shape, pager);
 		return products;
 	}
 

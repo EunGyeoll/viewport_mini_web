@@ -28,13 +28,12 @@ public interface ProductDao { // 이름 직관적으로 + 나중에 수정
 
 	public int count();
 	
-	public int countByFilter(String[] filter);	
+	public int countByFilter(@Param("category") String category, @Param("price") String price, @Param("date") String date, @Param("shape") String shape);	
 
 	public List<Product> selectProductListRandomly();
 
 	public List<Product> selectSameModelByPname(String pname);
 
-	public List<Product> selectProductListByFilterAndPager(@Param("filter") String[] filter, @Param("pager") Pager pager);
-
+	public List<Product> selectProductListByFilterAndPager(@Param("category") String category, @Param("price") String price, @Param("date") String date, @Param("shape") String shape, @Param("pager") Pager pager);
 
 }

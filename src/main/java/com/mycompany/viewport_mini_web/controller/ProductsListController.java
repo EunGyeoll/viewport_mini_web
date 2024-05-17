@@ -34,23 +34,24 @@ public class ProductsListController {
 
 	@GetMapping("/productsList")
 	public String getProductsList(@RequestParam(required = false) String pageNo,
-			@RequestParam(required = false) String[] filter, Model model, HttpSession session) {
+			@RequestParam(required = false) String category, @RequestParam(required = false) String price,
+			@RequestParam(required = false) String date, @RequestParam(required = false) String shape, Model model,
+			HttpSession session) {
 
 		List<Product> products;
 		Pager pager;
 		int totalRows;
-		
-		if (filter.length != 0) {
-			totalRows = productService.getProductTotalRowsByFilter(filter); // (전체 수
+
+		if (category != null || price != null || date != null || shape != null) {
+			totalRows = productService.getProductTotalRowsByFilter(category, price, date, shape); // 전체 수
 			pager = pagerService.preparePager(session, pageNo, totalRows, 9, 5); // 페이지당 행 수 9, 그룹당 페이지 수 5
-			products = productService.getProductsByFilterAndPager(filter, pager);
+			products = productService.getProductsByFilterAndPager(category, price, date, shape, pager);
 		} else {
-			totalRows = productService.getProductTotalRows(); // (전체 수
+			totalRows = productService.getProductTotalRows(); // 전체 수
 			pager = pagerService.preparePager(session, pageNo, totalRows, 9, 5); // 페이지당 행 수 9, 그룹당 페이지 수 5
 			products = productService.getProductListByPager(pager);
 		}
-		
-		
+
 		model.addAttribute("pager", pager);
 		model.addAttribute("products", products);
 		return "products/productsList";

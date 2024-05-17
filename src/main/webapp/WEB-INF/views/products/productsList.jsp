@@ -43,10 +43,10 @@
 					<h5>카테고리</h5>
 					<ul>
 						<li><input type="checkbox" class="form-check-input"
-							id="glasses" name="filter" value="안경"> <label
+							id="glasses" name="category" value="안경"> <label
 							class="form-check-label" for="glasses">안경</label></li>
 						<li><input type="checkbox" class="form-check-input"
-							id="sunglasses" name="filter" value="선글라스">
+							id="sunglasses" name="category" value="선글라스">
 							<label class="form-check-label" for="sunglasses">선글라스</label></li>
 					</ul>
 				</div>
@@ -54,35 +54,35 @@
 					<h5>가격</h5>
 					<ul>
 						<li><input type="checkbox" class="form-check-input"
-							id="lowPrice" name="filter" value="lowPrice"> <label
-							class="form-check-label" for="price-option">낮은 가격순</label></li>
+							id="lowPrice" name="price" value="lowPrice"> <label
+							class="form-check-label" for="lowPrice">낮은 가격순</label></li>
 						<li><input type="checkbox" class="form-check-input"
-							id="highPrice" name="filter" value="highPrice"> <label
-							class="form-check-label" for="price-option">높은 가격순</label></li>
+							id="highPrice" name="price" value="highPrice"> <label
+							class="form-check-label" for="highPrice">높은 가격순</label></li>
 					</ul>
 				</div>
 				<div class="filter-sort">
 					<h5>정렬</h5>
 					<ul>
 						<li><input type="checkbox" class="form-check-input"
-							id="lowPrice" name="filter" value="lowPrice"> <label
-							class="form-check-label" for="lowPrice">최신순</label></li>
+							id="older" name="date" value="older"> <label
+							class="form-check-label" for="older">오래된순</label></li>					
 						<li><input type="checkbox" class="form-check-input"
-							id="highPrice" name="filter" value="highPrice"> <label
-							class="form-check-label" for="highPrice">판매순</label></li>
+							id="newer" name="date" value="newer"> <label
+							class="form-check-label" for="newer">최신순</label></li>
 					</ul>
 				</div>
 				<div class="filter-shape">
 					<h5>모양</h5>
 					<ul>
 						<li><input type="checkbox" class="form-check-input"
-							id="circle" name="filter" value="원형"> <label
+							id="circle" name="shape" value="원형"> <label
 							class="form-check-label" for="circle">원형</label></li>
 						<li><input type="checkbox" class="form-check-input"
-							id="rectangle" name="filter" value="사각형"> <label
+							id="rectangle" name="shape" value="사각형"> <label
 							class="form-check-label" for="rectangle">사각형</label></li>
 						<li><input type="checkbox" class="form-check-input"
-							id="oval" name="filter" value="타원형"> <label
+							id="oval" name="shape" value="타원형"> <label
 							class="form-check-label" for="oval">타원형</label></li>							
 					</ul>
 				</div>				
@@ -108,25 +108,27 @@
 					</a></li>
 				</c:forEach>
 			</ul>
-			<div class="pagination-center">
-				<div class="pagination">
-					<c:if test="${pager.groupNo>1}">
-						<a href="productsList?pageNo=${pager.startPageNo-1}">&laquo;</a>
-					</c:if>
-					<c:forEach var="i" begin="${pager.startPageNo}"
-						end="${pager.endPageNo}">
-						<c:if test="${pager.pageNo != i}">
-							<a href="productsList?pageNo=${i}">${i}</a>
+			<c:if test="${pager.totalRows != 0}">
+				<div class="pagination-center">
+					<div class="pagination">
+						<c:if test="${pager.groupNo>1}">
+							<a href="productsList?pageNo=${pager.startPageNo-1}">&laquo;</a>
 						</c:if>
-						<c:if test="${pager.pageNo == i}">
-							<a href="productsList?pageNo=${i}" class="text-warning">${i}</a>
+						<c:forEach var="i" begin="${pager.startPageNo}"
+							end="${pager.endPageNo}">
+							<c:if test="${pager.pageNo != i}">
+								<a href="productsList?pageNo=${i}">${i}</a>
+							</c:if>
+							<c:if test="${pager.pageNo == i}">
+								<a href="productsList?pageNo=${i}" class="text-warning">${i}</a>
+							</c:if>
+						</c:forEach>
+						<c:if test="${pager.groupNo<pager.totalGroupNo}">
+							<a href="productsList?pageNo=${pager.endPageNo+1}">&raquo;</a>
 						</c:if>
-					</c:forEach>
-					<c:if test="${pager.groupNo<pager.totalGroupNo}">
-						<a href="productsList?pageNo=${pager.endPageNo+1}">&raquo;</a>
-					</c:if>
+					</div>
 				</div>
-			</div>
+			</c:if>
 		</div>
 	</div>
 

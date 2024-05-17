@@ -96,6 +96,11 @@ public class ProductService {
 		int totalProductRows = productDao.count();
 		return totalProductRows;
 	}
+	
+	public int getProductTotalRowsByFilter(String[] filter) {
+		int totalProductRows = productDao.countByFilter(filter);
+		return totalProductRows;
+	}	
 
 	public List<Product> getProductListRandomly() {
 		List<Product> products = productDao.selectProductListRandomly();
@@ -107,9 +112,11 @@ public class ProductService {
 		return sameModels;
 	}
 
-	public List<Product> getProductsByCategoryAndPager(String category, Pager pager) {
-		List<Product> products = productDao.selectProductListByCategoryAndPager(category, pager);
+	public List<Product> getProductsByFilterAndPager(String[] filter, Pager pager) {
+		List<Product> products = productDao.selectProductListByFilterAndPager(filter, pager);
 		return products;
 	}
+
+
 
 }

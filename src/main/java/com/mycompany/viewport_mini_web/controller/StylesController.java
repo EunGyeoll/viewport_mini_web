@@ -78,14 +78,9 @@ public class StylesController {
 		styles.setStattachtype(styles.getStattach().getContentType());
 		byte[] stylesData = styles.getStattach().getBytes();
 		log.info("" + styles.getStattach().getContentType());
-		File stylesDestDir = new File("C:/Temp/uploadStyles");
-		if (!stylesDestDir.exists()) {
-			stylesDestDir.mkdirs();
-		}
+
 		styles.setStattachsname(UUID.randomUUID().toString() + "-" + styles.getStattach().getOriginalFilename());
 		;
-		File stylesDestFile = new File(stylesDestDir, styles.getStattachsname());
-		styles.getStattach().transferTo(stylesDestFile);
 		styles.setStattachdata(stylesData);
 
 		stylesService.createStyles(styles, uemail);

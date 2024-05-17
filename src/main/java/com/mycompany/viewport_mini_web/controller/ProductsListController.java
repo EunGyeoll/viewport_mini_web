@@ -34,17 +34,19 @@ public class ProductsListController {
 
 	@GetMapping("/productsList")
 	public String getProductsList(@RequestParam(required = false) String pageNo,
-			@RequestParam(required = false) String category, Model model, HttpSession session) {
-		int totalRows = productService.getProductTotalRows(); // (전체 수를 가져옵니다.
-		Pager pager = pagerService.preparePager(session, pageNo, totalRows, 9, 5); // 페이지당 행 수 9, 그룹당 페이지 수 5
-
-		/* List<Product> products = productService.getProductListByPager(pager); */
+			@RequestParam(required = false) String[] filter, Model model, HttpSession session) {
 
 		List<Product> products;
-		if (category != null) {
-			products = productService.getProductsByCategoryAndPager(category, pager);
-
+		Pager pager;
+		int totalRows;
+		
+		if (filter.length != 0) {
+			totalRows = productService.getProductTotalRowsByFilter(filter); // (전체 수
+			pager = pagerService.preparePager(session, pageNo, totalRows, 9, 5); // 페이지당 행 수 9, 그룹당 페이지 수 5
+			products = productService.getProductsByFilterAndPager(filter, pager);
 		} else {
+			totalRows = productService.getProductTotalRows(); // (전체 수
+			pager = pagerService.preparePager(session, pageNo, totalRows, 9, 5); // 페이지당 행 수 9, 그룹당 페이지 수 5
 			products = productService.getProductListByPager(pager);
 		}
 		

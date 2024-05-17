@@ -43,10 +43,10 @@
 					<h5>카테고리</h5>
 					<ul>
 						<li><input type="checkbox" class="form-check-input"
-							id="glasses" name="category" value="안경"> <label
+							id="glasses" name="filter" value="안경"> <label
 							class="form-check-label" for="glasses">안경</label></li>
 						<li><input type="checkbox" class="form-check-input"
-							id="sunglasses" name="category" value="선글라스">
+							id="sunglasses" name="filter" value="선글라스">
 							<label class="form-check-label" for="sunglasses">선글라스</label></li>
 					</ul>
 				</div>
@@ -54,10 +54,10 @@
 					<h5>가격</h5>
 					<ul>
 						<li><input type="checkbox" class="form-check-input"
-							id="lowPrice" name="price-option" value="lowPrice"> <label
+							id="lowPrice" name="filter" value="lowPrice"> <label
 							class="form-check-label" for="price-option">낮은 가격순</label></li>
 						<li><input type="checkbox" class="form-check-input"
-							id="highPrice" name="price-option" value="highPrice"> <label
+							id="highPrice" name="filter" value="highPrice"> <label
 							class="form-check-label" for="price-option">높은 가격순</label></li>
 					</ul>
 				</div>
@@ -65,10 +65,10 @@
 					<h5>정렬</h5>
 					<ul>
 						<li><input type="checkbox" class="form-check-input"
-							id="lowPrice" name="sort-option" value="lowPrice"> <label
+							id="lowPrice" name="filter" value="lowPrice"> <label
 							class="form-check-label" for="lowPrice">최신순</label></li>
 						<li><input type="checkbox" class="form-check-input"
-							id="highPrice" name="sort-option" value="highPrice"> <label
+							id="highPrice" name="filter" value="highPrice"> <label
 							class="form-check-label" for="highPrice">판매순</label></li>
 					</ul>
 				</div>
@@ -76,13 +76,13 @@
 					<h5>모양</h5>
 					<ul>
 						<li><input type="checkbox" class="form-check-input"
-							id="circle" name="shape-option" value="circle"> <label
+							id="circle" name="filter" value="원형"> <label
 							class="form-check-label" for="circle">원형</label></li>
 						<li><input type="checkbox" class="form-check-input"
-							id="rectangle" name="shape-option" value="rectangle"> <label
+							id="rectangle" name="filter" value="사각형"> <label
 							class="form-check-label" for="rectangle">사각형</label></li>
 						<li><input type="checkbox" class="form-check-input"
-							id="oval" name="shape-option" value="oval"> <label
+							id="oval" name="filter" value="타원형"> <label
 							class="form-check-label" for="oval">타원형</label></li>							
 					</ul>
 				</div>				

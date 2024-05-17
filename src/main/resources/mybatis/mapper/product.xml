@@ -51,7 +51,7 @@
 	]]>
 	</select>
 	
-	<select id="selectProductListByCategoryAndPager" parameterType="Map"
+	<select id="selectProductListByFilterAndPager" parameterType="Map"
 		resultType="Product">
 	<![CDATA[
 		select rnum, pid,pname,pprice,pinfo,pdetail,pcategory,pattachsname,pattachtype,pattachdata, pshape, pdate
@@ -86,6 +86,12 @@
 	<select id="count">
 		select count(*) from product
 	</select>
+	
+	<select id="countByCategory" parameterType="String">
+		select count(*) 
+		from product
+		where pcategory=#{category}
+	</select>	
 
 	<update id="update" parameterType="Product">
 		update product set

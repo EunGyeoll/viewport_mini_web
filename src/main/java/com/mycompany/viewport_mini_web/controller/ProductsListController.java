@@ -47,7 +47,8 @@ public class ProductsListController {
 		} else {
 			products = productService.getProductListByPager(pager);
 		}
-
+		
+		
 		model.addAttribute("pager", pager);
 		model.addAttribute("products", products);
 		return "products/productsList";

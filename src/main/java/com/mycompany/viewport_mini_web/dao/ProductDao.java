@@ -1,12 +1,12 @@
 package com.mycompany.viewport_mini_web.dao;
 
 import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.mycompany.viewport_mini_web.dto.Pager;
 import com.mycompany.viewport_mini_web.dto.Product;
-
-import lombok.extern.slf4j.Slf4j;
 
 @Mapper
 public interface ProductDao { // 이름 직관적으로 + 나중에 수정
@@ -32,7 +32,7 @@ public interface ProductDao { // 이름 직관적으로 + 나중에 수정
 
 	public List<Product> selectSameModelByPname(String pname);
 
-	public List<Product> selectProductListByCategoryAndPager(String category, Pager pager);
+	public List<Product> selectProductListByCategoryAndPager(@Param("category") String category, @Param("pager") Pager pager);
 
 
 

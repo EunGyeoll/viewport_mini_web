@@ -50,6 +50,24 @@
 		where rnum >= #{startRowNo}
 	]]>
 	</select>
+	
+	<select id="selectProductListByCategoryAndPager" parameterType="Map"
+		resultType="Product">
+	<![CDATA[
+		select rnum, pid,pname,pprice,pinfo,pdetail,pcategory,pattachsname,pattachtype,pattachdata, pshape, pdate
+		from (
+		    select rownum as rnum, pid,pname,pprice,pinfo,pdetail,pcategory,pattachsname,pattachtype,pattachdata, pshape, pdate
+		    from (
+		        select pid,pname,pprice,pinfo,pdetail,pcategory,pattachsname,pattachtype,pattachdata, pshape, pdate
+		        from product
+		        where pcategory=#{category}
+		        order by pid desc
+		    )
+		    where rownum <= #{pager.endRowNo}
+		)
+		where rnum >= #{pager.startRowNo}
+	]]>
+	</select>	
 
 	<select id="selectByPid" parameterType="int"
 		resultType="Product">

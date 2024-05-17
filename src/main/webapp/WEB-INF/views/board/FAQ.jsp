@@ -40,7 +40,9 @@ transition: 0.9s ease;
 				</div>
 				<div>
 					<div class="d-flex justify-content-center">
-						<a href="${pageContext.request.contextPath}/board/noticeList" class="mx-3">공지사항</a> <a href="#" class="mx-3" id="qna-button">FAQ</a> <a href="${pageContext.request.contextPath}/board/qnaList" class="mx-3">Q&A</a> <a href="${pageContext.request.contextPath}/board/qna" class="mx-3">1:1 문의</a>
+						<a href="${pageContext.request.contextPath}/board/noticeList" class="mx-3">공지사항</a>
+						 <a href="#" class="mx-3" id="qna-button">FAQ</a> 
+						 <a href="${pageContext.request.contextPath}/board/qnaList" class="mx-3">Q&A</a> 
 					</div>
 				</div>
 			</div>

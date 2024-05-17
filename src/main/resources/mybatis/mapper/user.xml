@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="com.mycompany.viewport_mini_web.dao.UserDao">
+
 	<insert id="insert" parameterType="User">
 		<selectKey keyProperty="usid" order="BEFORE"
 			resultType="int">
@@ -15,6 +16,20 @@
 		)
 	</insert>
 
+
+	<select id="checkDuplicateEmail" parameterType="String">
+		select count(*) from users
+		where uemail = #{uemail}
+	</select>
+	
+	
+	<update id="updatePw">
+	    UPDATE users
+	    SET upassword=#{upassword}
+	    WHERE uemail=#{uemail}
+		
+	</update>
+	
 	<select id="selectByUemail" parameterType="String"
 		resultType="User">
 		select usid,
@@ -76,8 +91,5 @@
 	select uemail from users where usid =#{usid}
 	</select>
 	
-	<select id="checkDuplicateEmail" parameterType="String">
-		select count(*) from users
-		where uemail = #{uemail}
-	</select>
+
 </mapper>

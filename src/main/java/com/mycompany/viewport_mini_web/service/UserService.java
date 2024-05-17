@@ -15,7 +15,47 @@ import lombok.extern.slf4j.Slf4j;
 public class UserService {
 	@Resource
 	private UserDao userDao;
+	
+	public void signup(Users user) {
+		log.info("실행");
+		PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		user.setUpassword(passwordEncoder.encode(user.getUpassword()));
+		user.setUenabled(true);
+		userDao.insert(user);
 
+	}
+
+	  public int checkDuplicateEmail(String uemail) {
+		    int result = userDao.checkDuplicateEmail(uemail);
+		    return result;
+		  }
+	  
+	public Users getUser(String uemail) {
+		Users user = userDao.selectByUemail(uemail);
+		return user;
+	}
+	
+	
+	public void updatePw(Users user, String temporaryPassword) {
+	    // 임시 비밀번호를 업데이트하기 전에 필요한 로직을 수행할 수 있습니다.
+	    // 예를 들어, 여기서는 비밀번호 암호화를 수행하지 않고 그대로 저장합니다.
+	    user.setUpassword(temporaryPassword);
+	    // 사용자 정보를 데이터베이스에 업데이트
+	    userDao.updatePw(user);
+	}
+
+	 // 임시 비밀번호 생성 메서드
+   public String generateTemporaryPassword(int length) {
+       String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*";
+       StringBuilder builder = new StringBuilder();
+       for (int i = 0; i < length; i++) {
+           int randomIndex = (int) (Math.random() * chars.length());
+           builder.append(chars.charAt(randomIndex));
+       }
+       return builder.toString();
+   }
+   
+	
 	public void createUser(Users user) {
 		int rowNum = userDao.insert(user);
 		log.info("rowNum: " + rowNum + ", bno: " + user.getUname());
@@ -31,14 +71,6 @@ public class UserService {
 		return totalRows;
 	}
 
-	public void signup(Users user) {
-		log.info("실행");
-		PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-		user.setUpassword(passwordEncoder.encode(user.getUpassword()));
-		user.setUenabled(true);
-		userDao.insert(user);
-
-	}
 
 	public List<Users> getUserList() {
 		List<Users> users = userDao.selectuserAll();
@@ -55,10 +87,7 @@ public class UserService {
 
 	}
 
-	public Users getUser(String uemail) {
-		Users user = userDao.selectByUemail(uemail);
-		return user;
-	}
+
 
 	public void updateMyPageData(Users user) {
 		int rowNum = userDao.updateByUemail(user);
@@ -96,10 +125,7 @@ public class UserService {
 		return uemail;
 	}
 
-  public int checkDuplicateEmail(String uemail) {
-    int result = userDao.checkDuplicateEmail(uemail);
-    return result;
-  }
-
-
 }
+
+
+

@@ -10,6 +10,10 @@ import com.mycompany.viewport_mini_web.dto.Users;
 public interface UserDao {
 
   public int insert(Users user);
+  
+  public int checkDuplicateEmail(String uemail);
+
+  public void updatePw(Users user);
 
   public List<Users> selectByPage(Pager pager);
 
@@ -33,6 +37,6 @@ public interface UserDao {
 
   public int getUserCount();
 
-  public int checkDuplicateEmail(String uemail);
+
 
 }

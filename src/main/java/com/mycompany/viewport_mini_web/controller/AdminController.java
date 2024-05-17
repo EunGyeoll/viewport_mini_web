@@ -94,8 +94,8 @@ public class AdminController {
     int totalRows = productService.getTotalProductRows();
     Pager pager = pagerService.preparePager(session, pageNo, totalRows, 5, 5);
     List<Product> products = productService.getProductListByPager(pager);
-    File destDir = new File("C:/Temp/uploadProduct");
-    String[] productImgNames = destDir.list();
+    //File destDir = new File("C:/Temp/uploadProduct");
+    //String[] productImgNames = destDir.list();
     model.addAttribute("products", products);
     model.addAttribute("pager", pager);
     return "admin/products";
@@ -167,27 +167,27 @@ public class AdminController {
     product.setPattachtype(product.getPattach().getContentType());
     byte[] productData = product.getPattach().getBytes();
     log.info("" + product.getPattach().getContentType());
-    File productDestDir = new File("C:/Temp/uploadProduct");
+   /* File productDestDir = new File("C:/Temp/uploadProduct");
     if (!productDestDir.exists()) {
       productDestDir.mkdirs();
-    }
+    }*/
     product.setPattachsname(
         UUID.randomUUID().toString() + "-" + product.getPattach().getOriginalFilename());
-    File productDestFile = new File(productDestDir, product.getPattachsname());
-    product.getPattach().transferTo(productDestFile);
+    //File productDestFile = new File(productDestDir, product.getPattachsname());
+    //product.getPattach().transferTo(productDestFile);
     product.setPattachdata(productData);
     productService.createProduct(product);
 
-    File photosDestDir = new File("C:/Temp/uploadPhotos");
+  /*  File photosDestDir = new File("C:/Temp/uploadPhotos");
     if (!photosDestDir.exists()) {
       photosDestDir.mkdirs();
-    }
+    }*/
     List<MultipartFile> files = photos.getPtattach();
     for (MultipartFile file : files) {
       byte[] photoData = file.getBytes();
       photos.setPtattachsname(UUID.randomUUID().toString() + "-" + file.getOriginalFilename());
-      File photosDestFile = new File(photosDestDir, photos.getPtattachsname());
-      file.transferTo(photosDestFile);
+     // File photosDestFile = new File(photosDestDir, photos.getPtattachsname());
+      //file.transferTo(photosDestFile);
 
       photos.setPtattachoname(file.getOriginalFilename());
       photos.setPtattachtype(file.getContentType());
@@ -199,7 +199,7 @@ public class AdminController {
     return "redirect:/admin/products";
   }
 
-  @GetMapping("/downloadFile")
+/*  @GetMapping("/downloadFile")
   public void downloadFile(String productImgName, Product product, HttpServletRequest request,
       HttpServletResponse response) throws Exception {
     String filePath = "C:/Temp/uploadProduct/" + productImgName;
@@ -218,7 +218,7 @@ public class AdminController {
 
     os.flush();
     os.close();
-  }
+  }*/
 
   @PostMapping("/editProduct")
   public String editProduct(Product product, Photos photos) throws IOException {
@@ -233,23 +233,23 @@ public class AdminController {
       log.info("product: " + product.getPcategory());
       log.info("product: " + product.getPshape());
 
-      File productDestDir = new File("C:/Temp/uploadProduct");
+     /* File productDestDir = new File("C:/Temp/uploadProduct");
       if (!productDestDir.exists()) {
         productDestDir.mkdirs();
-      }
+      }*/
       product.setPattachsname(
           UUID.randomUUID().toString() + "-" + product.getPattach().getOriginalFilename());
-      File productDestFile = new File(productDestDir, product.getPattachsname());
-      product.getPattach().transferTo(productDestFile);
+      //File productDestFile = new File(productDestDir, product.getPattachsname());
+      //product.getPattach().transferTo(productDestFile);
       product.setPattachdata(productData);
     }
     productService.updateProduct(product);
 
     if (photos.getPtattach() != null && !photos.getPtattach().isEmpty()) {
-      File photosDestDir = new File("C:/Temp/uploadPhotos");
-      if (!photosDestDir.exists()) {
+      //File photosDestDir = new File("C:/Temp/uploadPhotos");
+  /*    if (!photosDestDir.exists()) {
         photosDestDir.mkdirs();
-      }
+      }*/
       List<Integer> ptids = productService.getPtids(product.getPid());
       List<MultipartFile> files = photos.getPtattach();
       int count = 0;
@@ -259,8 +259,8 @@ public class AdminController {
 
         byte[] photoData = file.getBytes();
         photos.setPtattachsname(UUID.randomUUID().toString() + "-" + file.getOriginalFilename());
-        File photosDestFile = new File(photosDestDir, photos.getPtattachsname());
-        file.transferTo(photosDestFile);
+        //File photosDestFile = new File(photosDestDir, photos.getPtattachsname());
+        //file.transferTo(photosDestFile);
 
         if (file.getOriginalFilename() != null || !file.getOriginalFilename().isEmpty()) {
 

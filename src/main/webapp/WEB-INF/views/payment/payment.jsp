@@ -65,7 +65,9 @@
 					</div>
 					<div class="mt-3">
 						<p>주소*</p>
-						<input type="text" placeholder="기본 주소*" class="form-control" name="oaddress" value="${user.uaddress }" /> <input type="text" placeholder="상세 주소*" class="form-control mt-3" name="oaddressdetail" value=${user.uaddressdetail }> <input type="text" placeholder="우편번호*" class="form-control" name="opostcode" value="${user.upostcode }" />
+						<input type="text" placeholder="기본 주소*" class="form-control" name="oaddress" value="${user.uaddress }" /> 
+						<input type="text" placeholder="상세 주소*" class="form-control mt-3" name="oaddressdetail" value=${user.uaddressdetail }> 
+						<input type="text" placeholder="우편번호*" class="form-control" name="opostcode" value="${user.upostcode }" />
 					</div>
 					<div class="delivery-phonenumber mt-3">
 						<p>휴대전화*</p>
@@ -113,17 +115,17 @@
 					<div class="price-delivery">
 						<ul>
 							<li>상품 금액</li>
-							<li><fmt:formatNumber value="${tempData.totalPrice }" type="currency" currencySymbol="" groupingUsed="true" /> 원</li>
+							<li><fmt:formatNumber value="${tempData.totalPrice }" type="currency" currencySymbol="" groupingUsed="true" maxFractionDigits="0"/> 원</li>
 						</ul>
 						<ul>
 							<li>배송비</li>
-							<li><fmt:formatNumber value="${tempData.deliveryType}" type="currency" currencySymbol="" groupingUsed="true" /> 원</li>
+							<li><fmt:formatNumber value="${tempData.deliveryType}" type="currency" currencySymbol="" groupingUsed="true" maxFractionDigits="0"/> 원</li>
 						</ul>
 					</div>
 					<div>
 						<ul>
 							<li>전체 합계</li>
-							<li><fmt:formatNumber value="${tempData.totalPriceWithDelivery}" type="currency" currencySymbol="" groupingUsed="true" /> 원</li>
+							<li><fmt:formatNumber value="${tempData.totalPriceWithDelivery}" type="currency" currencySymbol="" groupingUsed="true" maxFractionDigits="0"/> 원</li>
 						</ul>
 					</div>
 					<div class="text-center">

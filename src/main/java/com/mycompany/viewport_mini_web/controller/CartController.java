@@ -37,56 +37,62 @@ public class CartController {
   // 카트 페이지
   @GetMapping("")
   public String cart(Authentication authentication, Model model) {
-      Users user = userService.getUser(authentication.getName());
-      List<CartItem> cartItemList = cartService.getCartByUserId(user.getUsid());
+    Users user = userService.getUser(authentication.getName());
+    List<CartItem> cartItemList = cartService.getCartByUserId(user.getUsid());
 
-      if (cartItemList != null) {
-          List<ProductCartData> productDataList = new ArrayList<>();
-          for (CartItem item : cartItemList) {
-              Product product = productService.getProduct(item.getCpid());
-              int quantity = item.getCqty();
-              productDataList.add(new ProductCartData(product, quantity));
-          }
-          model.addAttribute("productDataList", productDataList);
+    if (cartItemList != null) {
+      List<ProductCartData> productDataList = new ArrayList<>();
+      for (CartItem item : cartItemList) {
+        Product product = productService.getProduct(item.getCpid());
+        int quantity = item.getCqty();
+        productDataList.add(new ProductCartData(product, quantity));
       }
-      return "cart/cart";
+
+      model.addAttribute("productDataList", productDataList);
+    }
+    return "cart/cart";
   }
 
   // 카트에 상품 추가
   @PostMapping("/add")
   @ResponseBody
-  public String addProductToCart(@RequestParam("pid") int pid, Authentication authentication) throws Exception {
-      String uemail = authentication.getName();
-      if(uemail == null) {
-        return null;
-      }
-      Product product = productService.getProduct(pid);
-      Users user = userService.getUser(uemail);
-      cartService.addCartProduct(user, product);
-      return "성공";
+  public String addProductToCart(@RequestParam("pid") int pid, Authentication authentication)
+      throws Exception {
+    String uemail = authentication.getName();
+    if (uemail == null) {
+      return null;
+    }
+    Product product = productService.getProduct(pid);
+    Users user = userService.getUser(uemail);
+    cartService.addCartProduct(user, product);
+    return "성공";
   }
 
   // 카트에 존재하는 상품 수량 업데이트
   @PostMapping("/updateQuantity")
   @ResponseBody
-  public String updateQuantity(@RequestBody CartItem cartItem, Authentication authentication) throws Exception {
-      String uemail = authentication.getName();
-      Users user = userService.getUser(uemail);
-      int cartId = cartService.getCartIdByUserIdAndProductId(user.getUsid(), cartItem.getCpid());
-      cartItem.setCid(cartId);
-      cartItem.setCuid(user.getUsid());
+  public String updateQuantity(@RequestBody CartItem cartItem, Authentication authentication)
+      throws Exception {
+    String uemail = authentication.getName();
+    Users user = userService.getUser(uemail);
+    int cartId = cartService.getCartIdByUserIdAndProductId(user.getUsid(), cartItem.getCpid());
+    cartItem.setCid(cartId);
+    cartItem.setCuid(user.getUsid());
 
-      boolean updateResult = cartService.updateCartItemQty(cartItem);
-      return updateResult ? "성공" : "실패";
+    boolean updateResult = cartService.updateCartItemQty(cartItem);
+    return updateResult ? "성공" : "실패";
   }
 
   // 카트에서 상품 삭제
   @PostMapping("/removeProduct")
   @ResponseBody
-  public String removeProduct(@RequestBody CartItem cartItem, Authentication authentication) throws Exception {
-      String uemail = authentication.getName();
-      Users user = userService.getUser(uemail);
-      boolean removeResult = cartService.removeProduct(cartItem);
-      return removeResult ? "성공" : "실패";
+  public String removeProduct(@RequestBody CartItem cartItem, Authentication authentication)
+      throws Exception {
+    String uemail = authentication.getName();
+    Users user = userService.getUser(uemail);
+    cartItem.setCuid(user.getUsid());
+    log.info(cartItem.toString());
+    boolean removeResult = cartService.removeProduct(cartItem);
+    return removeResult ? "성공" : "실패";
   }
 }

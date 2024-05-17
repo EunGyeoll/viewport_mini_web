@@ -57,12 +57,13 @@ public class CartService {
 
   public boolean removeProduct(CartItem cartItem) {
     CartItem existingCartItem = cartItemDao.findRemoveProduct(cartItem);
+    
     if (existingCartItem != null) {
       cartItemDao.removeCartItemByProductId(cartItem);
       log.info("Product removed successfully from cart ID {}", cartItem.getCid());
       return true;
     } else {
-      log.warn("Product not found in cart");
+      log.info("Product not found in cart");
       return false;
     }
   }

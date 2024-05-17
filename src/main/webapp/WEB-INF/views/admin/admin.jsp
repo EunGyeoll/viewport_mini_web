@@ -96,6 +96,7 @@
 					<th scope="col">배송지</th>
 					<th scope="col">주문 상태</th>
 					<th scope="col">주문 날짜</th>
+					<th scope="col">주문 상세보기</th>
 					<th scope="col">주문 상태 변경</th>
 				</tr>
 			</thead>
@@ -107,6 +108,7 @@
 						<td>${order.oaddress}</td>
 						<td id="orderStatus${order.oid}">${order.ostatus}</td>
 						<td><fmt:formatDate value="${order.odate}" pattern="yyyy-MM-dd" /></td>
+						<td><button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#orderDetailModal">주문상세 보기</button></td>
 						<td><c:if test="${order.ostatus eq '주문접수'}">
 								<button type="button" class="btn btn-dark edit-btn btn-sm orderStatusEditBtn" onclick="clickStatusEvent('${order.oid }','상품준비중')">상품준비중</button>
 							</c:if> <c:if test="${order.ostatus eq '상품준비중'}">
@@ -137,7 +139,54 @@
 			</ul>
 		</nav>
 	</section>
+	<div class="modal" id="orderDetailModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
 
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">주문 정보</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+
+				<!-- Modal body -->
+				<form action="editUserData" method="post" class="modal-body" id="userModal">
+					<!-- 데이터 출력 -->
+						<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="uname">유저 이름</label> 
+						<input type="text" id="uname" name="uname" class="form-control form-control-lg"  value="${user.uname}"/> <small id="birthError"></small>
+					</div>
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="uemail">아이디</label> 
+						<input type="text" id="uemail" name="uemail" class="form-control form-control-lg" /> <small id="birthError"></small>
+					</div>
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="upassword">비밀번호</label> 
+						<input type="password" id="upassword" name="upassword" class="form-control form-control-lg" /> <small id="birthError"></small>
+					</div>
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="uphonenumber">전화번호</label> <input type="text" id="uphonenumber" name="uphonenumber" class="form-control form-control-lg" /> <small id="birthError"></small>
+					</div>
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="uaddress">주소</label> <input type="text" id="uaddress" name="uaddress" class="form-control form-control-lg" /> <small id="birthError"></small>
+					</div>
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="uaddressdetail">상세주소</label> <input type="text" id="uaddressdetail" name="uaddressdetail" class="form-control form-control-lg" value="" /> <small id="birthError"></small>
+					</div>
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="ugender">성별</label> <input type="radio" id="man" name="ugender" value="true" />남자 <input type="radio" id="woman" name="ugender" value="false" />여자 <small id="birthError"></small>
+					</div>
+					<div data-mdb-input-init class="form-outline mb-4">
+						<label class="form-label" for="ugender">역할</label> <input type="radio" id="admin" name="urole" value="ROLE_ADMIN" /> 관리자 <input type="radio" id="user" name="urole" value="ROLE_USER" checked /> 유저 <small id="birthError"></small>
+					</div>
+					<button type="submit" class="btn btn-dark">정보 수정</button>
+					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
+				</form>
+
+
+			</div>
+		</div>
+	</div>
 	<script src="/viewport_mini_web/resources/js/admin.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </body>

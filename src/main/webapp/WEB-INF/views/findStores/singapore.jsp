@@ -28,25 +28,25 @@
         <div class="branch mr-3">
             <a href="${pageContext.request.contextPath}/findStores?blocation=대한민국" class="branch">
                 <img src="${pageContext.request.contextPath}/resources/image/bthumbnail/branch1.jpeg" class="rounded-circle" width="85" height="85" alt="..." />
-                <p>대한민국</p>
+                <p class="ps-2">대한민국</p>
             </a>
         </div>
         <div class="branch mr-3">
             <a href="${pageContext.request.contextPath}/findStores?blocation=홍콩" class="branch">
                 <img src="${pageContext.request.contextPath}/resources/image/bthumbnail/branch2.jpeg" class="rounded-circle" width="85" height="85" alt="..." />
-                <p>홍콩</p>
+                <p class="ps-2">홍콩</p>
             </a>
         </div>
         <div class="branch mr-3">
             <a href="${pageContext.request.contextPath}/findStores?blocation=미국" class="branch">
                 <img src="${pageContext.request.contextPath}/resources/image/bthumbnail/branch3.jpeg" class="rounded-circle" width="85" height="85" alt="..." />
-                <p>미국</p>
+                <p class="ps-2">미국</p>
             </a>
         </div>
         <div class="branch">
             <a href="${pageContext.request.contextPath}/findStores?blocation=싱가포르" class="branch">
                 <img src="${pageContext.request.contextPath}/resources/image/bthumbnail/branch4.jpeg" class="rounded-circle" width="85" height="85" alt="..." />
-                <p>싱가포르</p>
+                <p class="ps-2">싱가포르</p>
             </a>
         </div>
     </div>

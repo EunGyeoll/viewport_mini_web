@@ -54,13 +54,15 @@
 										<button type="button" class="btn btn-sm" onclick="editCount(${productData.product.pid}, 'plus')">+</button>
 									</div>
 									<div class="col" data-price="${productData.product.pprice}">
-										<fmt:formatNumber value="${productData.product.pprice}" type="currency" currencySymbol="₩" groupingUsed="true" />
+										<fmt:formatNumber value="${productData.product.pprice}" type="currency" currencySymbol="₩" groupingUsed="true" maxFractionDigits="0" />
 										<span class="close-btn btn btn-sm" onclick="removeItem(${productData.product.pid})">&#10005;</span>
 									</div>
 								</div>
 							</c:forEach>
 						</c:if>
-
+						<c:if test="${empty productDataList}">
+							<p class="text-muted">카트가 비어있습니다.</p>
+						</c:if>
 					</div>
 				</div>
 				<div class="col-md-4 summary">

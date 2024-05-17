@@ -28,6 +28,8 @@
 		<div class="left-sidebox h-75 col-2 bg-dark Regular shadow pt-5 text-center">
 			<h2 class="text-light text-center">ORDER RECEIPT</h2>
 			<p class="text-light text-center">#SDKNO7651907</p>
+			
+			<a class="btn btn-light" href ="/viewport_mini_web">홈으로 돌아가기</a>
 		</div>
 		<div class="col h-75">
 			<div class="item-container h-100 border p-5 Regular shadow  overflow-auto">
@@ -74,18 +76,18 @@
 				</div>
 				<div class="result-box row border-top p-3">
 					<div class="left-result-box col">
-						<p>we'll be sending a shipping confirmation email when the items shipped successfully.</p>
-						<strong>Thank you for joining with us</strong>
+						<p>저희가 상품을 배송할때 확인 이메일을 확인 하실 수 있습니다.</p>
+						<strong>저희 제품을 구매 해주셔서 감사합니다.</strong>
 					</div>
 					<div class="right-result-box col-4">
-						<div class="row mb-2 d-flex">
+				<!-- 		<div class="row mb-2 d-flex">
 							<div class="col">배송</div>
 							<div class="col text-end">0 원</div>
-						</div>
+						</div> -->
 						<div class="row mb-2 d-flex">
 							<div class="col">배송비</div>
 							<div class="col text-end">
-								<fmt:formatNumber value="${orderData.shipment.stype}" type="currency" currencySymbol="" groupingUsed="true" />
+								<fmt:formatNumber value="${orderData.shipment.stype}" type="currency" currencySymbol="" groupingUsed="true" maxFractionDigits="0" />
 								원
 							</div>
 

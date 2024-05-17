@@ -78,4 +78,9 @@ public class OrderService {
     orderDao.updateStatusByOrderId(order);
     
   }
+
+  public Orders getOrderListByOrderIdAndUserId(int orderId, int ouserid) {
+    Orders orderData = orderDao.selectOrdersByOrderIdAndUserId(orderId,ouserid);
+    return orderData;
+  }
 }

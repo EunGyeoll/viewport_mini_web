@@ -2,6 +2,7 @@ package com.mycompany.viewport_mini_web.dao;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import com.mycompany.viewport_mini_web.dto.Orders;
 import com.mycompany.viewport_mini_web.dto.Pager;
 
@@ -21,6 +22,8 @@ public interface OrdersDao {
   public List<Orders> selectByPage(Pager pager);
 
   public void updateStatusByOrderId(Orders order);
+
+  public Orders selectOrdersByOrderIdAndUserId(@Param("oid")int oid, @Param("ouserid")int ouserid);
 
 
 }

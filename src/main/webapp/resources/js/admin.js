@@ -195,3 +195,26 @@ const deleteStylesModalFooter = document.getElementById('deleteStyles-modal-foot
         }
     });
     }
+    
+    $(document).ready(function() {
+      // 주문 상세보기 버튼 클릭 이벤트 핸들러
+      $(".order-detail-btn").click(function() {
+          var orderId = $(this).data("order-id"); 
+          var orderUid = $(this).data("order-ouid"); 
+          
+          $.ajax({
+              url: "admin/orderDetail", 
+              type: "GET",
+              data: { oid: orderId, ouserid: orderUid }, 
+              success: function(data) {
+                  // 모달의 컨텐츠 영역 업데이트
+                  $("#orderDetailContent").html(data);
+              },
+              error: function() {
+                  alert("주문 상세 정보를 불러오는 중 오류가 발생했습니다.");
+              }
+          });
+      });
+  });
+
+

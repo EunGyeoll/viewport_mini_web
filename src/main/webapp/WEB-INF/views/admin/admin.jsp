@@ -7,8 +7,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/global.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/global.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 <title>Admin</title>
 </head>
 <body>
@@ -108,7 +109,9 @@
 						<td>${order.oaddress}</td>
 						<td id="orderStatus${order.oid}">${order.ostatus}</td>
 						<td><fmt:formatDate value="${order.odate}" pattern="yyyy-MM-dd" /></td>
-						<td><button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#orderDetailModal">주문상세 보기</button></td>
+						<td>
+							<button class="btn btn-light btn-sm order-detail-btn" data-order-id="${order.oid}" data-order-ouid="${order.ouserid}" data-bs-toggle="modal" data-bs-target="#orderDetailModal">주문상세 보기</button>
+						</td>
 						<td><c:if test="${order.ostatus eq '주문접수'}">
 								<button type="button" class="btn btn-dark edit-btn btn-sm orderStatusEditBtn" onclick="clickStatusEvent('${order.oid }','상품준비중')">상품준비중</button>
 							</c:if> <c:if test="${order.ostatus eq '상품준비중'}">
@@ -140,7 +143,8 @@
 		</nav>
 	</section>
 	<div class="modal" id="orderDetailModal">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-lg">
+			<!-- modal-lg 클래스를 사용하여 모달 크기를 조절할 수 있습니다 -->
 			<div class="modal-content">
 
 				<!-- Modal Header -->
@@ -149,44 +153,14 @@
 					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 				</div>
 
-				<!-- Modal body -->
-				<form action="editUserData" method="post" class="modal-body" id="userModal">
-					<!-- 데이터 출력 -->
-						<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="uname">유저 이름</label> 
-						<input type="text" id="uname" name="uname" class="form-control form-control-lg"  value="${user.uname}"/> <small id="birthError"></small>
-					</div>
-					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="uemail">아이디</label> 
-						<input type="text" id="uemail" name="uemail" class="form-control form-control-lg" /> <small id="birthError"></small>
-					</div>
-					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="upassword">비밀번호</label> 
-						<input type="password" id="upassword" name="upassword" class="form-control form-control-lg" /> <small id="birthError"></small>
-					</div>
-					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="uphonenumber">전화번호</label> <input type="text" id="uphonenumber" name="uphonenumber" class="form-control form-control-lg" /> <small id="birthError"></small>
-					</div>
-					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="uaddress">주소</label> <input type="text" id="uaddress" name="uaddress" class="form-control form-control-lg" /> <small id="birthError"></small>
-					</div>
-					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="uaddressdetail">상세주소</label> <input type="text" id="uaddressdetail" name="uaddressdetail" class="form-control form-control-lg" value="" /> <small id="birthError"></small>
-					</div>
-					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="ugender">성별</label> <input type="radio" id="man" name="ugender" value="true" />남자 <input type="radio" id="woman" name="ugender" value="false" />여자 <small id="birthError"></small>
-					</div>
-					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="ugender">역할</label> <input type="radio" id="admin" name="urole" value="ROLE_ADMIN" /> 관리자 <input type="radio" id="user" name="urole" value="ROLE_USER" checked /> 유저 <small id="birthError"></small>
-					</div>
-					<button type="submit" class="btn btn-dark">정보 수정</button>
-					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
-				</form>
-
+				<div class="modal-body" id="orderDetailContent">
+					<!-- 주문 상세 내용이 여기에 동적으로 로드됩니다 -->
+				</div>
 
 			</div>
 		</div>
 	</div>
+
 	<script src="/viewport_mini_web/resources/js/admin.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </body>

@@ -82,4 +82,15 @@
 		#{ouserid}
 		order by o.odate desc
 	</select>
+	
+	<select id="selectOrdersByOrderIdAndUserId" parameterType="int" resultMap="OrderResultMap">
+		SELECT o.*, i.*, p.pname
+		FROM orders o
+		JOIN orderitem i
+		ON o.oid = i.oioid
+		JOIN product p ON i.oipid = p.pid
+		WHERE o.ouserid =
+		#{ouserid} and o.oid = #{oid}
+		order by o.odate desc
+	</select>
 </mapper>

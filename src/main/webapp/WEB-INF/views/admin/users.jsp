@@ -51,7 +51,7 @@
 					<th scope="col">이름</th>
 					<th scope="col">이메일</th>
 					<th scope="col">역할</th>
-					<th scope="col"><button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#createUserModal">유저 생성</button></th>
+					<th scope="col"></th>
 
 				</tr>
 			</thead>

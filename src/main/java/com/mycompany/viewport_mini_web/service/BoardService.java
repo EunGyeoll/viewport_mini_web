@@ -49,6 +49,12 @@ public class BoardService {
     return totalRow;
   }
   
+  public int getQnaTotalRows() {
+		int totalQnaRows = qnaDao.count();
+		return totalQnaRows;
+	}
+  
+  
   public List<Qna> getQnaListByPager(Pager pager) {
     List<Qna> qnaList = qnaDao.selectByPage(pager);
     return qnaList;

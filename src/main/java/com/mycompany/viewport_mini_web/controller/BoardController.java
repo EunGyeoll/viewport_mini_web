@@ -83,51 +83,40 @@ public class BoardController {
 		return "/viewport_mini_web/board/qnaList";
 	}
 
-	@GetMapping("/qnaDetail")
-	public String qnaDetail(int qid, Authentication authentication, Model model, HttpServletResponse response,
-			RedirectAttributes redirectAttributes) throws IOException {
-		log.info("실행");
-		if (authentication == null) {
-			redirectAttributes.addFlashAttribute("errorMessage", "로그인을 필요합니다.");
-			return "redirect:/loginForm";
-		}
-    String quemail = userService.getUserByUserId(qna.getQuserid());
-    Users user = userService.getUser(authentication.getName());
-    if (user.getUrole().equals("ROLE_ADMIN")) {
-      qna.setQuemail(quemail);
-      model.addAttribute("user",user);
-      model.addAttribute("qna", qna);
-      return "board/qnaDetail";
-    }
-    log.info(quemail);
-    if (quemail == null || !quemail.equals(authentication.getName())) {
-      redirectAttributes.addFlashAttribute("errorMessage", "권한이 없습니다.");
-      return "redirect:/error403";
-    }
 
-		Qna qna = boardService.getQna(qid);
-		if (qna == null) {
-			redirectAttributes.addFlashAttribute("errorMessage", "해당 게시물을 찾을 수 없습니다.");
-			return "redirect:/board/qnaList";
-		}
+	  @GetMapping("/qnaDetail")
+	  public String qnaDetail(int qid, Authentication authentication, Model model,
+	      HttpServletResponse response, RedirectAttributes redirectAttributes) throws IOException {
+	    log.info("실행");
+	    if (authentication == null) {
+	      redirectAttributes.addFlashAttribute("errorMessage", "로그인을 필요합니다.");
+	      return "redirect:/loginForm";
+	    }
 
-		String quemail = userService.getUserByUserId(qna.getQuserid());
-		Users user = userService.getUser(authentication.getName());
-		if (user.getUrole().equals("ROLE_ADMIN")) {
-			qna.setQuemail(quemail);
-			model.addAttribute("qna", qna);
-			return "board/qnaDetail";
-		}
-		log.info(quemail);
-		if (quemail == null || !quemail.equals(authentication.getName())) {
-			redirectAttributes.addFlashAttribute("errorMessage", "권한이 없습니다.");
-			return "redirect:/error403";
-		}
+	    Qna qna = boardService.getQna(qid);
+	    if (qna == null) {
+	      redirectAttributes.addFlashAttribute("errorMessage", "해당 게시물을 찾을 수 없습니다.");
+	      return "redirect:/board/qnaList";
+	    }
 
-		qna.setQuemail(quemail);
-		model.addAttribute("qna", qna);
-		return "board/qnaDetail";
-	}
+	    String quemail = userService.getUserByUserId(qna.getQuserid());
+	    Users user = userService.getUser(authentication.getName());
+	    if (user.getUrole().equals("ROLE_ADMIN")) {
+	      qna.setQuemail(quemail);
+	      model.addAttribute("user",user);
+	      model.addAttribute("qna", qna);
+	      return "board/qnaDetail";
+	    }
+	    log.info(quemail);
+	    if (quemail == null || !quemail.equals(authentication.getName())) {
+	      redirectAttributes.addFlashAttribute("errorMessage", "권한이 없습니다.");
+	      return "redirect:/error403";
+	    }
+
+	    qna.setQuemail(quemail);
+	    model.addAttribute("qna", qna);
+	    return "board/qnaDetail";
+	  }
 
 	@GetMapping("/attachQnaDownload")
 	public void attachDownload(int qid, HttpServletResponse response) throws Exception {
@@ -150,7 +139,7 @@ public class BoardController {
 		int totalRows = boardService.getTotalNoticeRows(); // 전체 수를 가져옵니다.
 		Pager pager = pagerService.preparePager(session, pageNo, totalRows, 12, 5, "noticeListPager");
 		List<Notice> noticeList = boardService.getNoticeListByPager(pager);
-		
+
 		model.addAttribute("pager", pager);
 		model.addAttribute("noticeList", noticeList);
 		return "board/noticeList";

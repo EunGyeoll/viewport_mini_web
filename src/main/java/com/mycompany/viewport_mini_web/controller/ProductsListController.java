@@ -44,11 +44,16 @@ public class ProductsListController {
 
 		if (category != null || price != null || date != null || shape != null) {
 			totalRows = productService.getProductTotalRowsByFilter(category, price, date, shape); // 전체 수
-			pager = pagerService.preparePager(session, pageNo, totalRows, 9, 5); // 페이지당 행 수 9, 그룹당 페이지 수 5
+			if(category != null && category.equals("선글라스")) {
+			  pager = pagerService.preparePager(session, pageNo, totalRows, 9, 5,"productGlassesListPager"); // 페이지당 행 수 9, 그룹당 페이지 수 5
+			}
+			else {
+			  pager = pagerService.preparePager(session, pageNo, totalRows, 9, 5,"productSunglassesListPager"); // 페이지당 행 수 9, 그룹당 페이지 수 5
+			}
 			products = productService.getProductsByFilterAndPager(category, price, date, shape, pager);
 		} else {
 			totalRows = productService.getProductTotalRows(); // 전체 수
-			pager = pagerService.preparePager(session, pageNo, totalRows, 9, 5); // 페이지당 행 수 9, 그룹당 페이지 수 5
+			pager = pagerService.preparePager(session, pageNo, totalRows, 9, 5,"productListPager"); // 페이지당 행 수 9, 그룹당 페이지 수 5
 			products = productService.getProductListByPager(pager);
 		}
 

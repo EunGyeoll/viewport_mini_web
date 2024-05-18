@@ -63,7 +63,7 @@ public class AdminController {
   public String adminMainPage(@RequestParam(required = false) String pageNo, Model model,
       HttpSession session) {
     int totalRows = orderService.getTotalOrderRows(); // 사용자의 전체 수를 가져옵니다.
-    Pager pager = pagerService.preparePager(session, pageNo, totalRows, 10, 5);
+    Pager pager = pagerService.preparePager(session, pageNo, totalRows, 10, 5,"adminOrderPager");
     int userCount = usersService.getUserCount();
     int totalSalesAmount = orderService.getTotalSalesAmount();
     List<Orders> orderList = orderService.getAllOrderList(pager);
@@ -79,7 +79,7 @@ public class AdminController {
   public String adminUserPage(@RequestParam(required = false) String pageNo, Model model,
       HttpSession session) {
     int totalRows = usersService.getTotalUserRows(); // 사용자의 전체 수를 가져옵니다.
-    Pager pager = pagerService.preparePager(session, pageNo, totalRows, 10, 5); // 페이지당 행 수 10, 그룹당
+    Pager pager = pagerService.preparePager(session, pageNo, totalRows, 10, 5,"adminUsersPager"); // 페이지당 행 수 10, 그룹당
                                                                                 // 페이지 수 5
 
     List<Users> users = usersService.getUserList(pager);
@@ -92,7 +92,7 @@ public class AdminController {
   public String adminProductsPage(@RequestParam(required = false) String pageNo, Model model,
       HttpSession session) {
     int totalRows = productService.getTotalProductRows();
-    Pager pager = pagerService.preparePager(session, pageNo, totalRows, 5, 5);
+    Pager pager = pagerService.preparePager(session, pageNo, totalRows, 5, 5,"adminProductsPager");
     List<Product> products = productService.getProductListByPager(pager);
     // File destDir = new File("C:/Temp/uploadProduct");
     // String[] productImgNames = destDir.list();
@@ -110,7 +110,7 @@ public class AdminController {
   public String adminNoticesPage(@RequestParam(required = false) String pageNo, Model model,
       HttpSession session) {
     int totalRows = boardService.getTotalNoticeRows();
-    Pager pager = pagerService.preparePager(session, pageNo, totalRows, 10, 5); // 페이지당 행 수 10, 그룹당
+    Pager pager = pagerService.preparePager(session, pageNo, totalRows, 10, 5,"adminNoticesPager"); // 페이지당 행 수 10, 그룹당
                                                                                 // 페이지 수 5
 
     List<Notice> notices = boardService.getNoticeList(pager);
@@ -123,7 +123,7 @@ public class AdminController {
   public String adminStylesPage(@RequestParam(required = false) String pageNo, Model model,
       HttpSession session) {
     int totalRows = stylesService.getTotalStylesRows();
-    Pager pager = pagerService.preparePager(session, pageNo, totalRows, 5, 5);
+    Pager pager = pagerService.preparePager(session, pageNo, totalRows, 5, 5,"adminStylesPager");
 
     List<Styles> styles = stylesService.getStylesList(pager);
     List<Product> products = productService.getProductList();

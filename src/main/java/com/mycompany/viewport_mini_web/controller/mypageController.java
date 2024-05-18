@@ -83,7 +83,7 @@ public class mypageController {
   public String showMyQnA(@RequestParam(required = false) String pageNo, Model model, HttpSession session,Authentication authentication) {
     String uemail = authentication.getName();
     int totalRows = boardService.getTotalBoardRows();
-    Pager pager = pagerService.preparePager(session, pageNo, totalRows, 5, 5);
+    Pager pager = pagerService.preparePager(session, pageNo, totalRows, 5, 5,"mypageQnaPager");
     Users user = userService.getUser(uemail);
     List<Qna> qnaList = boardService.getQnaByUser(user.getUsid());
     model.addAttribute("user", user);

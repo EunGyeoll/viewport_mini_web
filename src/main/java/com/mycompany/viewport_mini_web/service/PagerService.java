@@ -6,18 +6,24 @@ import com.mycompany.viewport_mini_web.dto.Pager;
 
 @Service
 public class PagerService {
-  
+
   public Pager preparePager(HttpSession session, String pageNo, int totalRows, int rowsPerPage,
-      int pagesPerGroup) {
-    if (pageNo == null) {
-      pageNo = (String) session.getAttribute("pageNo");
-      if (pageNo == null) {
-        pageNo = "1";
+      int pagesPerGroup, String sessionAttributeKey) {
+
+    Pager pager = (Pager) session.getAttribute(sessionAttributeKey);
+    if (pager == null) {
+      pager = new Pager(rowsPerPage, pagesPerGroup, totalRows, 1); // 페이지 번호를 1로 초기화
+      session.setAttribute(sessionAttributeKey, pager); // 세션에 페이저 객체 저장
+    }
+
+    // 페이지 번호가 요청되었을 때 설정
+    if (pageNo != null && !pageNo.isEmpty()) {
+      int pageNumber = Integer.parseInt(pageNo);
+      if (pageNumber > 0 && pageNumber <= pager.getTotalPageNo()) {
+        pager.setPageNo(pageNumber);
       }
     }
 
-    session.setAttribute("pageNo", pageNo);
-    int intPageNo = Integer.parseInt(pageNo);
-    return new Pager(rowsPerPage, pagesPerGroup, totalRows, intPageNo);
+    return pager;
   }
 }

@@ -50,8 +50,6 @@
 					<th scope="col">이름</th>
 					<th scope="col">가격</th>
 					<th scope="col">사진</th>
-					<th scope="col">설명</th>
-					<th scope="col">상세 설명</th>
 					<th scope="col">카테고리</th>
 					<th scope="col">모양</th>
 					<th scope="col">날짜</th>
@@ -68,11 +66,9 @@
 						<td>
 							<img src="/viewport_mini_web/products/attachProductDownload?pid=${product.pid}" width="100" height="100" />
 						</td>
-						<td>${product.pinfo}</td>
-						<td>${product.pdetail}</td>
 						<td>${product.pcategory}</td>
 						<td>${product.pshape}</td>
-						<td>${product.pdate}</td>
+						<td><fmt:formatDate value="${product.pdate}" pattern="yyyy-MM-dd" /></td>
 						<td>
 							<button type="button" class="btn btn-dark edit-btn btn-sm productDataEditBtn" onclick="clickEventProduct('${product.pid}', '${product.pname}', ${product.pprice},'${product.pinfo}', '${product.pdetail}', '${product.pcategory}', '${product.pshape}')" data-bs-toggle="modal" data-bs-target="#editProductModal">상품 정보 수정</button>
 							<button class="btn btn-danger edit-btn btn-sm" data-bs-toggle="modal" onclick="deleteProduct(${product.pid})" data-bs-target="#deleteUserModal">삭제</button>

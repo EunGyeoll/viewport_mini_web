@@ -60,7 +60,7 @@
 						<!-- text-center 클래스 추가 -->
 						<thead>
 							<tr>
-								<th scope="col">No <i class="fa-solid fa-sort" style="color: #fff;"></i></th>
+								<th scope="col">No <!-- <i class="fa-solid fa-sort" style="color: #fff;"></i> --></th>
 								<th scope="col">카테고리</th>
 								<!--상품 / 주문 / 기타-->
 								<th scope="col">제목</th>

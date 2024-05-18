@@ -56,7 +56,7 @@
 								<th scope="col">카테고리</th>
 								<!--상품 / 주문 / 기타-->
 								<th scope="col">제목</th>
-								<th scope="col">작성날짜 <i class="fa-solid fa-sort" style="color: #fff;"></i></th>
+								<th scope="col">작성날짜<!--  <i class="fa-solid fa-sort" style="color: #fff;"></i> --></th>
 							</tr>
 						</thead>
 						<tbody>

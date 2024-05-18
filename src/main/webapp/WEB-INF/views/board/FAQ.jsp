@@ -64,53 +64,57 @@ transition: 0.9s ease;
 							</tr>
 						</thead>
 						<tbody>
-							<tr data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false">
-								<td>5</td>
-								<td>상품</td>
-								<td colspan=2>선글라스 피팅 문의</td>
+<!-- 							<tr data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false">
+								<td>6</td>
+								<td>주문</td>
+								<td colspan=2>주문을 수정하고 싶어요</td>
 							</tr>
 							<tr id="collapse1" class="collapse">
-								<td colspan="4">내용을 입력하세요...</td>
-							</tr>
+								<td colspan="4">주문을 완료한 상품의 옵션 변경은 불가합니다.주문 취소 후, 원하는 옵션으로 재구매만 가능합니다. <br/>
+								"상품 준비중" 단계 부터는 주문 취소가 불가능하며, 수령 후 반품 및 재구매 부탁드립니다.</td>
+							</tr> -->
 							<tr data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false">
-								<td>4</td>
+								<td>5</td>
 								<td>상품</td>
-								<td colspan=2>안경 피팅 문의</td>
+								<td colspan=2>품절 제품도 재입고가 되나요?</td>
 							</tr>
 							<tr id="collapse2" class="collapse">
-								<td colspan="4">내용을 입력하세요...</td>
+								<td colspan="4">[품절] 상태는 추가 입고 예정이 없는 제품이며, [일시 품절] 은 재입고가 예정된 제품입니다. <br/>
+								단, 재입고 여부 및 날짜는 변경될 수 있습니다.</td>
 							</tr>
 							<tr data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false">
-								<td>3</td>
-								<td>상품</td>
-								<td colspan=2>선글라스 고장 문의</td>
+								<td>4</td>
+								<td>배송</td>
+								<td colspan=2>배송 기간은 얼마나 걸리나요?</td>
 							</tr>
 							<tr id="collapse3" class="collapse">
-								<td colspan="4">내용을 입력하세요...</td>
+								<td colspan="4">주문한 제품은 영업일 기준 1-3일 내에 받아보실 수 있습니다. <br/>
+								택배 사 상황에따라 수령일은 변경될 수 있는 점 참고 부탁드립니다.</td>
 							</tr>
 							<tr data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false">
-								<td>2</td>
+								<td>3</td>
 								<td>주문</td>
-								<td colspan=2>안녕하세요. 주문했는데 옵션 변경하고 싶어요</td>
+								<td colspan=2>선물 포장이 가능한가요?</td>
 							</tr>
 							<tr id="collapse4" class="collapse">
-								<td colspan="4">내용을 입력하세요...</td>
+								<td colspan="4">젠틀몬스터 웹사이트를 포함한 공식 온라인 스토어에서 구매 시, 모든 주문 건에 별도 신청 없이도 선물 포장 서비스가 제공됩니다.</td>
 							</tr>
 							<tr data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false">
-								<td>1</td>
-								<td>기타</td>
-								<td colspan=2>오프라인 매장 문의</td>
+								<td>2</td>
+								<td>주문</td>
+								<td colspan=2>주문 시 쇼핑백도 받을 수 있나요?</td>
 							</tr>
 							<tr id="collapse5" class="collapse">
-								<td colspan="4">내용을 입력하세요...</td>
+								<td colspan="4">온라인 스토어 구매 시 쇼핑백은 동봉되지 않습니다. <br>
+								가까운 오프라인 스토어 (백화점&플래그십 스토어)에 방문하여 주문 내역 확인 후 수령 가능합니다.</td>
 							</tr>
-									<tr data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false">
+							<tr data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false">
 								<td>1</td>
-								<td>기타</td>
-								<td colspan=2>오프라인 매장 문의</td>
+								<td>배송</td>
+								<td colspan=2>합배송이 가능한가요?</td>
 							</tr>
 							<tr id="collapse6" class="collapse">
-								<td colspan="4">내용을 입력하세요...</td>
+								<td colspan="4">주문번호가 상이할 경우 개별 배송이 진행되기 때문에 합배송은 불가능합니다.</td>
 							</tr>
 						</tbody>
 					</table>

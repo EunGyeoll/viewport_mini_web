@@ -93,6 +93,7 @@ public class BoardController {
     Users user = userService.getUser(authentication.getName());
     if (user.getUrole().equals("ROLE_ADMIN")) {
       qna.setQuemail(quemail);
+      model.addAttribute("user",user);
       model.addAttribute("qna", qna);
       return "board/qnaDetail";
     }

@@ -54,8 +54,8 @@ public class OrderService {
     shipmentDao.insertShipmentData(orders.getShipment());
   }
 
-  public List<Orders> getOrderListByUserId(int usid) {
-    List<Orders> ordersList = orderDao.selectAllOrdersByUserId(usid);
+  public List<Orders> getOrderListByUserId(Pager pager,int usid) {
+    List<Orders> ordersList = orderDao.selectAllOrdersByUserId(pager, usid);
     return ordersList;
   }
 
@@ -84,8 +84,8 @@ public class OrderService {
     return orderData;
   }
 
-  public int getTotalBoardRowsById(int usid) {
-    // TODO Auto-generated method stub
-    return 0;
+  public int getTotalOrderRowsById(int usid) {
+    int totalOrderRows = orderDao.totalOrderRowsByUserId(usid);
+    return totalOrderRows;
   }
 }

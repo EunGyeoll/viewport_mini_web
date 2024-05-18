@@ -60,7 +60,7 @@
 														<tbody>
 															<c:forEach var="item" items="${order.orderItems}">
 																<tr>
-																	<td width=100 style="table-layout:fixed;"><img src="/viewport_mini_web/products/attachProductDownload?pid=${item.oipid}" class="img-fluid" alt="${item.oipname}" height="50"></td>
+																	<td width=100 style="table-layout: fixed;"><img src="/viewport_mini_web/products/attachProductDownload?pid=${item.oipid}" class="img-fluid" alt="${item.oipname}" height="50"></td>
 																	<td>${item.oipname}</td>
 																	<td>${item.oiqty}</td>
 																	<td>${item.oiprice}원</td>
@@ -70,16 +70,29 @@
 														</tbody>
 													</table>
 												</div>
-												<a href="#" class="order-detail-btn btn btn-dark btn-sm">주문 상세</a>
-												<a href="#" class="shipment-info-btn btn btn-dark btn-sm">배송 정보</a>
+												<a href="#" class="order-detail-btn btn btn-dark btn-sm">주문 상세</a> <a href="#" class="shipment-info-btn btn btn-dark btn-sm">배송 정보</a>
 											</div>
 										</li>
 									</c:forEach>
 								</ul>
-								<div class="pagination-center">
-									<div class="pagination">
-										<a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">5</a> <a href="#">&raquo;</a>
-									</div>
+								<div class="pagination-center ">
+									<ul class="pagination  d-inline-flex">
+										<c:if test="${pager.groupNo>1 }">
+											<li class="page-item"><a class="page-link" href="admin?pageNo=${pager.startPageNo-1 }">Previous</a></li>
+										</c:if>
+										<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo }">
+											<c:if test="${pager.pageNo!=i }">
+												<li class="page-item"><a class="page-link" href="admin?pageNo=${i}">${i}</a></li>
+											</c:if>
+											<c:if test="${pager.pageNo ==i }">
+												<li class="page-item ative"><a class="page-link" href="admin?pageNo=${i}">${i}</a></li>
+											</c:if>
+										</c:forEach>
+										<c:if test="${pager.groupNo<pager.totalGroupNo}">
+											<li class="page-item"><a class="page-link" href="admin?pageNo=${pager.endPageNo+1}">Next</a></li>
+										</c:if>
+
+									</ul>
 								</div>
 							</div>
 						</div>

@@ -89,4 +89,9 @@ public int getTotalNoticeRows() {
     return totalRows;
 }
 
+public int getTotalBoardRowsByUserId(int usid) {
+  int totalBoardRowsByUserId=boardDao.getTotalBoardRowsByUserId(usid);
+  return totalBoardRowsByUserId;
+}
+
 }

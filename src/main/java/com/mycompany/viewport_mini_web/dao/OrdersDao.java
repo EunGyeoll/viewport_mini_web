@@ -13,7 +13,7 @@ public interface OrdersDao {
 
   public Orders selectOrderDataByOid();
 
-  public List<Orders> selectAllOrdersByUserId(int ouserid);
+  public List<Orders> selectAllOrdersByUserId(@Param("pager")Pager pager,@Param("ouserid")int ouserid);
 
   public int getTotalSalesAmount();
 
@@ -24,6 +24,8 @@ public interface OrdersDao {
   public void updateStatusByOrderId(Orders order);
 
   public Orders selectOrdersByOrderIdAndUserId(@Param("oid")int oid, @Param("ouserid")int ouserid);
+
+  public int totalOrderRowsByUserId(int usid);
 
 
 }

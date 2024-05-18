@@ -16,26 +16,32 @@
 </head>
 <body class="vh-100">
 	<%@ include file="/WEB-INF/views/common/nav.jsp"%>
-	<div class="container mt-5 h-75">
+	<div class="container mt-5 h-100">
 		<div class="row h-100">
 			<div class="col-md-8 offset-md-2 h-75">
 				<div class="card mt-5 h-100">
 					<div class="card-header">
 						<h5 class="card-title mb-3 mt-3">${qna.qtitle }</h5>
-						<p>${qna.qcategory} 관련 문의 사항</p>
-						<p class="card-subtitle text-muted">작성자: ${qna.quemail } | 작성일: <fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd" /></p>
+						<p>${qna.qcategory}관련 문의 사항</p>
+						<p class="card-subtitle text-muted">
+							작성자: ${qna.quemail } | 작성일:
+							<fmt:formatDate value="${qna.qdate}" pattern="yyyy-MM-dd" />
+						</p>
 					</div>
 					<div class="card-body">
-
-						<p class="card-text">${qna.qcontent }</p>
 						<c:if test="${qna.qattachoname != null}">
-								<div class="mb-2">
-									<img src="attachQnaDownload?qid=${qna.qid}" width="300" />
-								</div>
-							</c:if>
+							<div class="mb-2">
+								<img src="attachQnaDownload?qid=${qna.qid}" width="250" />
+							</div>
+						</c:if>
+						<p class="card-text">${qna.qcontent }</p>
+
 					</div>
 					<div class="card-footer">
-						<a href="#" class="btn btn-primary">댓글 작성</a> <a href="#" class="btn btn-secondary">수정</a> <a href="#" class="btn btn-danger">삭제</a>
+						<c:if test="${user.urole eq 'ROLE_ADMIN' }">
+							<a href="#" class="btn btn-primary">댓글 작성</a>
+						</c:if>
+						<a href="#" class="btn btn-secondary">수정</a> <a href="#" class="btn btn-danger">삭제</a>
 					</div>
 				</div>
 			</div>

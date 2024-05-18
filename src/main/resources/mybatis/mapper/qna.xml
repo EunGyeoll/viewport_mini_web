@@ -29,7 +29,10 @@
 	<select id="count">
 		select count(*) from qna
 	</select>
-
+	<select id="getTotalBoardRowsByUserId" parameterType="int">
+		select count(*) from qna
+		where quserid = #{usid}
+	</select>
 	<select id="selectByPage" parameterType="Pager" resultType="Qna">
 		<![CDATA[
 		select qid,qtitle,qdate,qcategory,quserid,qcontent,qattachdata,qattachsname,qattachoname,qattachtype,qattachdata 

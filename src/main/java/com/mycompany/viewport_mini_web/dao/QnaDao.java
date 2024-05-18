@@ -21,4 +21,6 @@ public interface QnaDao {
 
   public List<Qna> selectByPage(Pager pager);
 
+  public int getTotalBoardRowsByUserId(int usid);
+
 }

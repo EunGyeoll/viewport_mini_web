@@ -57,10 +57,11 @@ public class mypageController {
   public String showOrderPage(@RequestParam(required = false) String pageNo,Model model,HttpSession session,Authentication authentication) {
     String uemail = authentication.getName();
     Users user = userService.getUser(uemail);
-    int totalRows = orderService.getTotalBoardRowsById(user.getUsid());
+    int totalRows = orderService.getTotalOrderRowsById(user.getUsid());
     Pager pager = pagerService.preparePager(session, pageNo, totalRows, 5, 5,"mypageQnaPager");
-    List<Orders> ordersList = orderService.getOrderListByUserId(user.getUsid());
+    List<Orders> ordersList = orderService.getOrderListByUserId(pager,user.getUsid());
     model.addAttribute("ordersList",ordersList);
+    model.addAttribute("pager",pager);
     return "mypage/orders";
   }
 
@@ -84,9 +85,9 @@ public class mypageController {
   @GetMapping("/myqna")
   public String showMyQnA(@RequestParam(required = false) String pageNo, Model model, HttpSession session,Authentication authentication) {
     String uemail = authentication.getName();
-    int totalRows = boardService.getTotalBoardRows();
-    Pager pager = pagerService.preparePager(session, pageNo, totalRows, 5, 5,"mypageQnaPager");
     Users user = userService.getUser(uemail);
+    int totalRows = boardService.getTotalBoardRowsByUserId(user.getUsid());
+    Pager pager = pagerService.preparePager(session, pageNo, totalRows, 5, 5,"mypageQnaPager");
     List<Qna> qnaList = boardService.getQnaByUser(user.getUsid());
     model.addAttribute("user", user);
     model.addAttribute("qnaList", qnaList);

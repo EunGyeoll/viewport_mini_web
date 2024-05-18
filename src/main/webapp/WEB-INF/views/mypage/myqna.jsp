@@ -24,10 +24,7 @@
 		<div class="row">
 			<div class="col-md-3 sidebar">
 				<div class="list-group rounded-0">
-					<a href="${pageContext.request.contextPath}/mypage" class="list-group-item list-group-item-action">프로필</a>
-					 <a href="${pageContext.request.contextPath}/mypage/password" class="list-group-item list-group-item-action">비밀번호 변경</a> 
-					 <a href="${pageContext.request.contextPath}/mypage/orders" class="list-group-item list-group-item-action">주문 내역</a> 
-					 <a href="${pageContext.request.contextPath}/mypage/myqna" class="list-group-item list-group-item-action">문의 내역</a> <a href="${pageContext.request.contextPath}/mypage/deleteAccount" class="list-group-item list-group-item-action">회원 탈퇴</a>
+					<a href="${pageContext.request.contextPath}/mypage" class="list-group-item list-group-item-action">프로필</a> <a href="${pageContext.request.contextPath}/mypage/password" class="list-group-item list-group-item-action">비밀번호 변경</a> <a href="${pageContext.request.contextPath}/mypage/orders" class="list-group-item list-group-item-action">주문 내역</a> <a href="${pageContext.request.contextPath}/mypage/myqna" class="list-group-item list-group-item-action">문의 내역</a> <a href="${pageContext.request.contextPath}/mypage/deleteAccount" class="list-group-item list-group-item-action">회원 탈퇴</a>
 				</div>
 			</div>
 			<div class="col-md-9 right-box">
@@ -45,7 +42,7 @@
 													<h5>${qna.qtitle}</h5>
 													<p>${qna.qcontent}</p>
 													<c:if test="${qna.qattachoname != null }">
-													<img src="../board/attachQnaDownload?qid=${qna.qid}" width="150">
+														<img src="../board/attachQnaDownload?qid=${qna.qid}" width="150">
 													</c:if>
 												</div>
 												<c:if test="${qna.qstatus eq '답변완료' }">
@@ -67,7 +64,7 @@
 									</c:if>
 								</ul>
 								<nav aria-label="..." class="d-flex justify-content-center me-5">
-									<ul class="pagination">
+									<ul class="pagination  d-inline-flex">
 										<c:if test="${pager.groupNo>1 }">
 											<li class="page-item"><a class="page-link" href="myqna?pageNo=${pager.startPageNo-1 }">Previous</a></li>
 										</c:if>

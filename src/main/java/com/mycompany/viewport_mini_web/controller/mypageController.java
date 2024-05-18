@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mycompany.viewport_mini_web.dto.Orders;
 import com.mycompany.viewport_mini_web.dto.Pager;
 import com.mycompany.viewport_mini_web.dto.Qna;
+import com.mycompany.viewport_mini_web.dto.Shipment;
 import com.mycompany.viewport_mini_web.dto.Users;
 import com.mycompany.viewport_mini_web.service.BoardService;
 import com.mycompany.viewport_mini_web.service.OrderService;
@@ -63,12 +64,12 @@ public class mypageController {
   }
 
   // 배송 내역 페이지
-  @GetMapping("/shipment")
-  public String showShipment(Model model, HttpSession session) {
+//  @GetMapping("/shipment")
+//  public String showShipment(Model model, HttpSession session) {
 //    List<Shipment> shipments = userService.getUserShipments(session);
 //    model.addAttribute("shipments", shipments);
-    return "mypage/shipment";
-  }
+//    return "mypage/shipment";
+//  }
 
   @PostMapping("/myPageInfo")
   public String mypageInfo(Users user) {

@@ -54,7 +54,7 @@
 
 			<!-- 옆으로 -->
 
-			<div class="overlay-container">
+<!-- 			<div class="overlay-container">
 				<div class="overlay-left">
 					<h2>V I E W P O R T</h2>
 					<p>To keep connected with us, please login with your personal info</p>
@@ -65,7 +65,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 			<!--------------- 모달---------- -->
 			<div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			  <div class="modal-dialog">
@@ -112,7 +112,6 @@
 				</div>
 				<div class="overlay-right">
 					<h2>V I E W P O R T</h2>
-					<button id="seeMore" class="overlay_btn">SEE MORE?</button>
 				</div>
 			</div>
 		</div>

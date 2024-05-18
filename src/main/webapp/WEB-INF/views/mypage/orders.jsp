@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,11 +24,7 @@
 		<div class="row">
 			<div class="col-md-3 sidebar">
 				<div class="list-group rounded-0">
-					<a href="${pageContext.request.contextPath}/mypage" class="list-group-item list-group-item-action">프로필</a> 
-					<a href="${pageContext.request.contextPath}/mypage/password" class="list-group-item list-group-item-action">비밀번호 변경</a> 
-					<a href="${pageContext.request.contextPath}/mypage/orders" class="list-group-item list-group-item-action">주문 내역</a> 
-					<a href="${pageContext.request.contextPath}/mypage/myqna" class="list-group-item list-group-item-action">문의 내역</a> 
-					<a href="${pageContext.request.contextPath}/mypage/deleteAccount" class="list-group-item list-group-item-action">회원 탈퇴</a>
+					<a href="${pageContext.request.contextPath}/mypage" class="list-group-item list-group-item-action">프로필</a> <a href="${pageContext.request.contextPath}/mypage/password" class="list-group-item list-group-item-action">비밀번호 변경</a> <a href="${pageContext.request.contextPath}/mypage/orders" class="list-group-item list-group-item-action">주문 내역</a> <a href="${pageContext.request.contextPath}/mypage/myqna" class="list-group-item list-group-item-action">문의 내역</a> <a href="${pageContext.request.contextPath}/mypage/deleteAccount" class="list-group-item list-group-item-action">회원 탈퇴</a>
 				</div>
 			</div>
 			<div class="col-md-9 right-box">
@@ -49,23 +46,32 @@
 									<c:forEach var="order" items="${ordersList}">
 										<li class="list-group-item">
 											<div class="row">
-												<!-- 주문당 하나의 이미지를 보여줍니다. 첫 번째 주문 아이템의 이미지를 사용합니다. -->
-												<div class="col-md-3">
-													<img src="/viewport_mini_web/products/attachProductDownload?pid=${order.orderItems[0].oipid}" class="img-fluid" alt="${order.orderItems[0].oipname}">
+												<div class="table-responsive">
+													<table class="table table-bordered">
+														<thead class="table-light">
+															<tr>
+																<th>상품이미지</th>
+																<th>상품명</th>
+																<th>수량</th>
+																<th>가격</th>
+																<th>주문 날짜</th>
+															</tr>
+														</thead>
+														<tbody>
+															<c:forEach var="item" items="${order.orderItems}">
+																<tr>
+																	<td width=100 style="table-layout:fixed;"><img src="/viewport_mini_web/products/attachProductDownload?pid=${item.oipid}" class="img-fluid" alt="${item.oipname}" height="50"></td>
+																	<td>${item.oipname}</td>
+																	<td>${item.oiqty}</td>
+																	<td>${item.oiprice}원</td>
+																	<td><fmt:formatDate value="${item.oidate}" pattern="yyyy-MM-dd" /></td>
+																</tr>
+															</c:forEach>
+														</tbody>
+													</table>
 												</div>
-												<div class="col-md-9">
-													<ul class="list-group">
-														<!-- 주문에 포함된 각 아이템 정보 -->
-													
-															<li class="list-group-item">상품명: ${order.orderItems[0].oipname}</li>
-															<li class="list-group-item">가격: ${order.orderItems[0].oiprice}원</li>
-															<li class="list-group-item">수량: ${order.orderItems[0].oiqty}</li>
-													
-														<li class="list-group-item">주문 날짜: ${order.odate}</li>
-														<li class="list-group-item">결제 방식: ${order.opaymethod}</li>
-													</ul>
-													<a href="#" class="btn btn-link">주문 상세보기</a>
-												</div>
+												<a href="#" class="order-detail-btn btn btn-dark btn-sm">주문 상세</a>
+												<a href="#" class="shipment-info-btn btn btn-dark btn-sm">배송 정보</a>
 											</div>
 										</li>
 									</c:forEach>

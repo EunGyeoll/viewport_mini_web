@@ -1,7 +1,8 @@
 @charset "UTF-8";
-
+/* 
 body {
-  font-family: "Jua", sans-serif;
-  font-weight: 400;
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
   font-style: normal;
-}
+} */

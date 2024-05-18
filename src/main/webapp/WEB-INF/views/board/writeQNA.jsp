@@ -57,9 +57,9 @@ textarea {
 	cursor: pointer;
 	float: right;
 }
-.faqbody{
+/* .faqbody{
 	height:950px;
-}
+} */
 
 </style>
 <body class="faqbody">

@@ -54,10 +54,11 @@ public class mypageController {
 
   // 주문내역 페이지
   @GetMapping("/orders")
-  public String showOrderPage(Model model,Authentication authentication) {
+  public String showOrderPage(@RequestParam(required = false) String pageNo,Model model,HttpSession session,Authentication authentication) {
     String uemail = authentication.getName();
-
     Users user = userService.getUser(uemail);
+    int totalRows = orderService.getTotalBoardRowsById(user.getUsid());
+    Pager pager = pagerService.preparePager(session, pageNo, totalRows, 5, 5,"mypageQnaPager");
     List<Orders> ordersList = orderService.getOrderListByUserId(user.getUsid());
     model.addAttribute("ordersList",ordersList);
     return "mypage/orders";

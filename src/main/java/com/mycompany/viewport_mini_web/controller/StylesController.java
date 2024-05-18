@@ -48,7 +48,7 @@ public class StylesController {
 	public String stylesPage(@RequestParam(required = false) String pageNo, Model model, HttpSession session) {
 		int totalRows = stylesService.getStylesTotalRows(); // 전체 수를 가져옵니다.
 		Pager pager = pagerService.preparePager(session, pageNo, totalRows, 12, 5,"stylesListPager"); // 페이지당 행 수 12, 그룹당 페이지 수 5
-
+		log.info(pager.toString());
 		List<Styles> styles = stylesService.getStylesListByPager(pager);
 		List<Product> products = productService.getProductList();
 

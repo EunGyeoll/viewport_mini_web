@@ -83,4 +83,9 @@ public class OrderService {
     Orders orderData = orderDao.selectOrdersByOrderIdAndUserId(orderId,ouserid);
     return orderData;
   }
+
+  public int getTotalBoardRowsById(int usid) {
+    // TODO Auto-generated method stub
+    return 0;
+  }
 }

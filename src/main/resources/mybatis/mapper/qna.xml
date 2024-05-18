@@ -49,4 +49,9 @@
 		
 		]]>
 	</select>
+	
+	<delete id="deleteByQid" parameterType="int">
+		delete from qna where qid=#{qid}
+	</delete>
+		
 </mapper>

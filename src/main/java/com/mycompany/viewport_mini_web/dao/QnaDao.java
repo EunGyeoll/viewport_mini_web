@@ -21,4 +21,6 @@ public interface QnaDao {
 
   public int getTotalBoardRowsByUserId(int usid);
 
+public void deleteByQid(int qid);
+
 }

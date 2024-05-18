@@ -39,7 +39,6 @@ label {
 input[type="text"], textarea {
 	width: 100%;
 	padding: 10px;
-	margin-bottom: 15px;
 	border: 1px solid #ced4da;
 	border-radius: 4px;
 	box-sizing: border-box;
@@ -54,14 +53,12 @@ textarea {
 #subBtn {
 	color: #fff;
 	border: none;
-	padding: 10px 20px;
 	border-radius: 4px;
 	cursor: pointer;
-	font-size: 16px;
 	float: right;
 }
 .faqbody{
-	height:900px;
+	height:950px;
 }
 
 </style>
@@ -76,23 +73,23 @@ textarea {
 			<label for="qtitle">제목</label> <input type="text" id="qtitle" name="qtitle" required>
 		</div>
 
-		<div class="form-group">
+		<div class="form-group mt-4">
 			<label for="qattach">첨부파일</label> <input type="file" id="qattach" name="qattach">
 		</div>
-		<div class="form-group">
+		<div class="form-group mt-4">
 			<label for="qcategory">카테고리</label> <select id="qcategory" name="qcategory" class="form-control">
 				<option value="상품">상품</option>
 				<option value="주문">주문</option>
 				<option value="기타">기타</option>
 			</select>
 		</div>
-		<div class="form-group">
+		<div class="form-group mt-4">
 			<label for="qcontent">내용</label>
 			<textarea id="qcontent" class="summernote" name="qcontent" required></textarea>
 		</div>
 		<div>
-			<a href="qnaList" class="btn btn-dark mt-2 ms-3 p-2" id="subBtn">취소</a>
-			<button class="btn btn-dark mt-2 p-2" id="subBtn">글 작성</button>
+			<a href="qnaList"><button class="btn btn-sm btn-dark mt-2 ms-3 p-2" id="subBtn">취소</button></a>
+			<button class="btn btn-sm btn-dark mt-2 p-2" id="subBtn">글 작성</button>
 		</div>
 	</form>
 

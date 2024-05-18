@@ -133,6 +133,13 @@ public class BoardController {
 		os.flush();
 		os.close();
 	}
+	
+	  @PostMapping("/deleteQna")
+	  public String deleteQna(int qid) {
+	    log.info("deleteQna 실행");
+	    boardService.removeQna(qid);
+	    return "redirect:/board/qnaList";
+	  }	
 
 	@GetMapping("/noticeList")
 	public String NoticeList(@RequestParam(required = false) String pageNo, Model model, HttpSession session) {

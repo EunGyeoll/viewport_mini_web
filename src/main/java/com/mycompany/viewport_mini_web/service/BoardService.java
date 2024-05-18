@@ -99,4 +99,9 @@ public int getTotalBoardRowsByUserId(int usid) {
   return totalBoardRowsByUserId;
 }
 
+
+public void removeQna(int qid) {
+	qnaDao.deleteByQid(qid);
+}
+
 }

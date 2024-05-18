@@ -99,7 +99,7 @@
 				</div>
 			</div>
 			<div class="d-flex justify-content-end">
-				<a href="writeQNA" class="btn btn-dark btn-sm mt-0 text-white" style="margin-left: auto;">글쓰기</a>
+				<a href="${pageContext.request.contextPath}/board/writeQNA" class="btn btn-dark btn-sm mt-0 text-white">글쓰기</a>
 			</div>
 			
 

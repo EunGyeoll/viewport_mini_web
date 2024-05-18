@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +36,10 @@
 							</c:if>
 					</div>
 					<div class="card-footer">
-						<a href="#" class="btn btn-primary">댓글 작성</a> <a href="#" class="btn btn-secondary">수정</a> <a href="#" class="btn btn-danger">삭제</a>
+						<c:if test="${user.urole eq 'ROLE_ADMIN' }">
+							<a href="#" class="btn btn-primary">댓글 작성</a>
+						</c:if>
+						<a href="#" class="btn btn-secondary">수정</a> <a href="#" class="btn btn-danger">삭제</a>
 					</div>
 				</div>
 			</div>

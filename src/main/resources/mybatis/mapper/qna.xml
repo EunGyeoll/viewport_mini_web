@@ -32,17 +32,18 @@
 
 	<select id="selectByPage" parameterType="Pager" resultType="Qna">
 		<![CDATA[
-		select qid,qtitle,qdate,qcategory,quserid,qcontent,qattachdata,qattachsname,qattachoname,qattachtype,qattachdata 
+		select rnum, qid,qtitle,qdate,qcategory,quserid,qcontent,qstatus, qattachdata,qattachsname,qattachoname,qattachtype
 		from (
-			select rownum as rnum, qid,qtitle,qdate,qcategory,quserid,qcontent,qattachdata,qattachsname,qattachoname,qattachtype,qattachdata
+			select rownum as rnum, qid,qtitle,qdate,qcategory,quserid,qcontent,qstatus, qattachdata,qattachsname,qattachoname,qattachtype
 			from (
-				select  qid,qtitle,qdate,qcategory,quserid,qcontent,qattachdata,qattachsname,qattachoname,qattachtype,qattachdata
+				select  *
 				from qna
 				order by qid desc
 				)
 			where rownum <= #{endRowNo}
 			)
 		where rnum >= #{startRowNo}
+		
 		]]>
 	</select>
 </mapper>

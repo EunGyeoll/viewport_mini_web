@@ -11,8 +11,6 @@ public interface QnaDao {
 
   public void insertNewPost(Qna qna);
 
-  public List<Qna> selectQnaAll();
-
   public Qna selectByQid(int qid);
 
   public List<Qna> findPostsByUserId(int quserid);
@@ -20,5 +18,7 @@ public interface QnaDao {
   public int count();
 
   public List<Qna> selectByPage(Pager pager);
+
+  public int getTotalBoardRowsByUserId(int usid);
 
 }

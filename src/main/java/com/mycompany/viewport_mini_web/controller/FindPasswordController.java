@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class FindPasswordController {
-
+	
     @Autowired
     private UserService userService;
 
@@ -51,7 +51,7 @@ public class FindPasswordController {
                response.put("success", false);
                response.put("message", "입력하신 정보와 일치하는 사용자를 찾을 수 없습니다. \n올바른 정보를 입력해 주세요.");
                return ResponseEntity.badRequest().body(response);
-       /*     return ResponseEntity.badRequest().build();*/
+       /*     return ResponseEntity.badRequest().build();*/  
         }
     }
 }

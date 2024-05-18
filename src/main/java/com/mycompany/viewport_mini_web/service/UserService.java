@@ -80,19 +80,15 @@ public class UserService {
 		        userDao.updatePw(user);
 		    }
 
-	   
 
-	 /* -----------------------이 위까지 회원가입, 로그인--------------------------------------------------*/
+	 /* --------------------------------------------------*/
 	  
 	  
 	public Users getUser(String uemail) {
 		Users user = userDao.selectByUemail(uemail);
 		return user;
 	}
-	
-	
 
-   
 	
 	public void createUser(Users user) {
 		int rowNum = userDao.insert(user);

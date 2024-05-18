@@ -62,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	            uname: name,
 	            uemail: email,
 	            uphonenumber: phoneNumber,
-	            // 추가 필드들을 여기에 포함. 예시) ussn: document.getElementById('findPwSsn').value
 	        };
 
 

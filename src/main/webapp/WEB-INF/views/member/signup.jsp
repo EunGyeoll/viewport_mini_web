@@ -29,7 +29,7 @@
 												<h1 class="mb-5 text-uppercase">
 													<b>Sign Up</b>
 												</h1>
-
+												
 												<div data-mdb-input-init class="form-outline mb-5">
 													<label class="form-label" for="uemail">이메일</label>
 													<!-- 이메일 -->

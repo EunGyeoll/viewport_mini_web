@@ -73,7 +73,7 @@
             }
         });
     }
-
+    
     // 회원가입 버튼 클릭 시
     signupForm.addEventListener('submit', function (e) {
         e.preventDefault(); // 폼 전송을 중지하여 페이지가 새로고침되는 것을 방지

@@ -27,7 +27,6 @@
 	    UPDATE users
 	    SET upassword=#{upassword}
 	    WHERE uemail=#{uemail}
-		
 	</update>
 
 

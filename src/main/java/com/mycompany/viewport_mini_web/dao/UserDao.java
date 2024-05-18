@@ -8,7 +8,7 @@ import com.mycompany.viewport_mini_web.dto.Users;
 
 @Mapper
 public interface UserDao {
-
+	
   public int insert(Users user);
   
   public int checkDuplicateEmail(String uemail);

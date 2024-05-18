@@ -306,9 +306,9 @@ public class AdminController {
     if (order.getOstatus().equals("상품출고완료")) {
       log.info("상품출고 실행됨");
       Shipment shipment = shipmentService.getShipmentDataByOrderId(order.getOid());
-      // shipmentService.createShipment(shipment);
+      shipmentService.createShipment(shipment);
     }
-    // orderService.updateStatusByOrderId(order);
+    orderService.updateStatusByOrderId(order);
     return "return success!";
   }
   // AdminController.java

@@ -167,7 +167,7 @@ const deleteStylesModalFooter = document.getElementById('deleteStyles-modal-foot
 		<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>`
     }  
     
-    function deleteStylesData(stid) {
+    function deleteStyles(stid) {
     	deleteStylesModalFooter.innerHTML =`<button type="submit"  name="stid" value="${stid}" class="btn btn-dark">삭제</button>
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>`
       }    

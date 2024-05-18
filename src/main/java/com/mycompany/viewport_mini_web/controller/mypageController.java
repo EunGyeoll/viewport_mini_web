@@ -58,7 +58,7 @@ public class mypageController {
     String uemail = authentication.getName();
     Users user = userService.getUser(uemail);
     int totalRows = orderService.getTotalOrderRowsById(user.getUsid());
-    Pager pager = pagerService.preparePager(session, pageNo, totalRows, 5, 5,"mypageQnaPager");
+    Pager pager = pagerService.preparePager(session, pageNo, totalRows, 5, 5,"mypageOrderPager");
     List<Orders> ordersList = orderService.getOrderListByUserId(pager,user.getUsid());
     model.addAttribute("ordersList",ordersList);
     model.addAttribute("pager",pager);
@@ -89,6 +89,7 @@ public class mypageController {
     int totalRows = boardService.getTotalBoardRowsByUserId(user.getUsid());
     Pager pager = pagerService.preparePager(session, pageNo, totalRows, 5, 5,"mypageQnaPager");
     List<Qna> qnaList = boardService.getQnaByUser(user.getUsid());
+    log.info(pager.toString());
     model.addAttribute("user", user);
     model.addAttribute("qnaList", qnaList);
     model.addAttribute("pager",pager);

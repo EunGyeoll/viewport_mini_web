@@ -11,8 +11,6 @@ public interface QnaDao {
 
   public void insertNewPost(Qna qna);
 
-  public List<Qna> selectQnaAll();
-
   public Qna selectByQid(int qid);
 
   public List<Qna> findPostsByUserId(int quserid);

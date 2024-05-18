@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.UUID;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +31,8 @@ public class BoardController {
   BoardService boardService;
   @Autowired
   UserService userService;
-
+  
+  @Secured("ROLE_USER")
   @GetMapping("/writeQNA")
   public String CreateNewBoard() {
     return "board/writeQNA";
@@ -56,7 +58,7 @@ public class BoardController {
     return "board/qna";
   }
 
-
+  @Secured("ROLE_USER")
   @PostMapping("/writeQNA")
   @ResponseBody
   public String writeQNA(Qna qna, Authentication authentication) throws IOException {
@@ -71,10 +73,11 @@ public class BoardController {
     boardService.insertNewPost(qna, uemail);
     return "/viewport_mini_web/board/qnaList";
   }
-
+  
   @GetMapping("/qnaDetail")
   public String qnaDetail(int qid, Authentication authentication, Model model,
       HttpServletResponse response, RedirectAttributes redirectAttributes) throws IOException {
+    log.info("실행");
     if (authentication == null) {
       redirectAttributes.addFlashAttribute("errorMessage", "로그인을 필요합니다.");
       return "redirect:/loginForm";
@@ -87,15 +90,16 @@ public class BoardController {
     }
 
     String quemail = userService.getUserByUserId(qna.getQuserid());
-    Users user = userService.getUser(quemail);
+    Users user = userService.getUser(authentication.getName());
     if (user.getUrole().equals("ROLE_ADMIN")) {
       qna.setQuemail(quemail);
       model.addAttribute("qna", qna);
       return "board/qnaDetail";
     }
+    log.info(quemail);
     if (quemail == null || !quemail.equals(authentication.getName())) {
       redirectAttributes.addFlashAttribute("errorMessage", "권한이 없습니다.");
-      return "redirect:/board/qnaList";
+      return "redirect:/error403";
     }
 
     qna.setQuemail(quemail);

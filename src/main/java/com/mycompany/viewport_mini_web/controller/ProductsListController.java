@@ -56,7 +56,7 @@ public class ProductsListController {
 			pager = pagerService.preparePager(session, pageNo, totalRows, 9, 5,"productListPager"); // 페이지당 행 수 9, 그룹당 페이지 수 5
 			products = productService.getProductListByPager(pager);
 		}
-
+		
 		model.addAttribute("pager", pager);
 		model.addAttribute("products", products);
 		return "products/productsList";

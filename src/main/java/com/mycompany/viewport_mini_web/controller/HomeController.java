@@ -37,6 +37,10 @@ public class HomeController {
     binder.setValidator(new SignupFormValidator());
   }
 
+  @RequestMapping("/error403")
+  public String error403() {
+    return "error/error403";
+  }
   @RequestMapping("/")
   public String index(Model model) {
     log.info("main 실행");

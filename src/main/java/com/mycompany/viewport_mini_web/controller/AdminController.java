@@ -1,17 +1,11 @@
 package com.mycompany.viewport_mini_web.controller;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +24,6 @@ import com.mycompany.viewport_mini_web.dto.Shipment;
 import com.mycompany.viewport_mini_web.dto.Styles;
 import com.mycompany.viewport_mini_web.dto.Users;
 import com.mycompany.viewport_mini_web.service.BoardService;
-import com.mycompany.viewport_mini_web.service.CommonService;
 import com.mycompany.viewport_mini_web.service.OrderService;
 import com.mycompany.viewport_mini_web.service.PagerService;
 import com.mycompany.viewport_mini_web.service.ProductService;
@@ -41,7 +34,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @Slf4j
-// @Secured("ROLE_ADMIN")
+@Secured("ROLE_ADMIN")
 @RequestMapping("/admin")
 public class AdminController {
   @Autowired

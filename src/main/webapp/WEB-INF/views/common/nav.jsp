@@ -7,8 +7,8 @@
 		<li><a href="${pageContext.request.contextPath}/"><span id="nav-logo-text">VIEWPORT</span></a></li>
 	</ul>
 	<ul id="nav-menu" class="d-flex justify-content-lg-center flex-grow-2">
-		<li class="h-100"><a href="#"><span class="align-middle">안경</span></a></li>
-		<li class="h-100"><a href="#"><span class="align-middle">선글라스</span></a></li>
+		<li class="h-100"><a href="${pageContext.request.contextPath}/products/productsList?category=안경"><span class="align-middle">안경</span></a></li>
+		<li class="h-100"><a href="${pageContext.request.contextPath}/products/productsList?category=선글라스"><span class="align-middle">선글라스</span></a></li>
 		<li class="h-100"><a href="${pageContext.request.contextPath}/styles"><span class="align-middle">스타일</span></a></li>
 		<li class="h-100"><a href="${pageContext.request.contextPath}/findStores?blocation=대한민국"><span class="align-middle">스토어</span></a></li>
 		<%-- <sec:authorize access="hasRole('ROLE_ADMIN')"> --%>

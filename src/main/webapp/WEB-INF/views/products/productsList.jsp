@@ -40,7 +40,7 @@
 		<div class="filter-block">
 			<form action="productsList" method="get">
 				<div class="filter-category">
-					<h5>카테고리</h5>
+					<h6>카테고리</h6>
 					<ul>
 						<li><input type="checkbox" class="form-check-input"
 							id="glasses" name="category" value="안경"> <label
@@ -51,7 +51,7 @@
 					</ul>
 				</div>
 				<div class="filter-price">
-					<h5>가격</h5>
+					<h6>가격</h6>
 					<ul>
 						<li><input type="checkbox" class="form-check-input"
 							id="lowPrice" name="price" value="lowPrice"> <label
@@ -62,7 +62,7 @@
 					</ul>
 				</div>
 				<div class="filter-sort">
-					<h5>정렬</h5>
+					<h6>정렬</h6>
 					<ul>
 						<li><input type="checkbox" class="form-check-input"
 							id="older" name="date" value="older"> <label
@@ -73,7 +73,7 @@
 					</ul>
 				</div>
 				<div class="filter-shape">
-					<h5>모양</h5>
+					<h6>모양</h6>
 					<ul>
 						<li><input type="checkbox" class="form-check-input"
 							id="circle" name="shape" value="원형"> <label
@@ -85,7 +85,8 @@
 							id="oval" name="shape" value="타원형"> <label
 							class="form-check-label" for="oval">타원형</label></li>							
 					</ul>
-				</div>				
+				</div>
+				
 				<div class="filter-button">
 					<button type="reset" id="resetButton">초기화</button>
 					<button type="submit">검색</button>
@@ -100,7 +101,7 @@
 								<img src="attachProductDownload?pid=${product.pid}" />
 							</div>
 							<div>
-								<p>${product.pname}</p>
+								<p class="mt-2 mb-0 fw-bold">${product.pname}</p>
 								<p>
 									<fmt:formatNumber value="${product.pprice}" pattern="#,###" />
 								</p>

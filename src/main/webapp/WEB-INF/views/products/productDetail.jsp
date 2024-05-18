@@ -30,12 +30,10 @@
 
 	<div id="container">
 		<div id="images">
-
 			<img src="attachProductDownload?pid=${product.pid}">
 			<c:forEach var="ptid" items="${ptids}">
 				<img src="attachPhotosDownload?ptid=${ptid}">
 			</c:forEach>
-
 		</div>
 
 		<!-- 사이드바 -->
@@ -47,7 +45,6 @@
 						<fmt:formatNumber value="${product.pprice}" pattern="#,###" />
 						원
 					</div>
-
 				</div>
 
 				<!-- 같은 제품 모음 -->
@@ -87,8 +84,6 @@
 						</div>
 					</div>
 				</div>
-
-
 			</div>
 		</aside>
 	</div>
@@ -108,33 +103,47 @@
 		</div>
 	</div>
 
-
 	<!-- Footer -->
 	<%@ include file="/WEB-INF/views/common/footer.jsp"%>
-	
+
 	<!-- JS 설정 -->
 	<script src="/viewport_mini_web/resources/js/productDetail.js"></script>	
 
 	<!-- JS 설정 -->
-	<script>$(document).ready(function() {
-  $('.btn.btn1').click(function() {
-      const productId = ${product.pid}; 
-      $.ajax({
-          url: '/viewport_mini_web/cart/add',
-          type: 'POST',
-          data: { pid: productId },
-          success: function(response) {
-              $('#myModal1').modal('show');
-          },
-          error: function() {
-              //alert('장바구니에 추가하는데 실패했습니다.');
-            window.location.href = 'http://localhost:8080/viewport_mini_web/loginForm';
-          }
-      });
-  });
-});
-</script>
+	<script>
+	$(document).ready(function() {
+	    $('.btn.btn1').click(function() {
+	        const productId = ${product.pid};
 
-
+	        // 로그인 여부 확인
+	        $.ajax({
+	            url: '/viewport_mini_web/isAuthenticated',
+	            type: 'GET',
+	            success: function(isAuthenticated) {
+	                if (isAuthenticated) {
+	                    // 사용자가 로그인한 경우
+	                    $.ajax({
+	                        url: '/viewport_mini_web/cart/add',
+	                        type: 'POST',
+	                        data: { pid: productId },
+	                        success: function(response) {
+	                            $('#myModal1').modal('show');
+	                        },
+	                        error: function() {
+	                            alert('장바구니에 추가하는데 실패했습니다.');
+	                        }
+	                    });
+	                } else {
+	                    // 사용자가 로그인하지 않은 경우 로그인 페이지로 이동
+	                    window.location.href = '/viewport_mini_web/loginForm';
+	                }
+	            },
+	            error: function() {
+	               
+	            }
+	        });
+	    });
+	});
+	</script>
 </body>
 </html>

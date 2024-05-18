@@ -24,7 +24,7 @@ public class FindStoresController {
 		  Branch branch = findStoresService.selectByLocation(blocation);
 		  
 		  model.addAttribute("branch", branch);
-		  log.info(branch.toString());
+/*		  log.info(branch.toString());*/
 		  
 		  
 		  if(blocation.equals("대한민국")) {

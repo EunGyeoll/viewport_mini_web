@@ -15,6 +15,11 @@ public interface UserDao {
 
   public void updatePw(Users user);
 
+  public Users selectByEmailAndNameAndPhoneNumber(@Param("uemail")String uemail, @Param("uname")String uname, @Param("uphonenumber")String uphonenumber);
+  
+  /*  public String findPassword(String uemail, String uname, String uphonenumber);
+   */
+  
   public List<Users> selectByPage(Pager pager);
 
   public int count();

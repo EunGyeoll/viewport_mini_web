@@ -26,11 +26,11 @@
 										<!-- Right Column - Form -->
 										<div class="col-xl-6 card">
 											<div class="card-body p-md-5 text-black">
-												<h1 class="mb-2 text-uppercase">
+												<h1 class="mb-5 text-uppercase">
 													<b>Sign Up</b>
 												</h1>
 
-												<div data-mdb-input-init class="form-outline mb-4">
+												<div data-mdb-input-init class="form-outline mb-5">
 													<label class="form-label" for="uemail">이메일</label>
 													<!-- 이메일 -->
 													<div class="row">
@@ -60,11 +60,11 @@
 												<!-- 주민번호 -->
 												<div class="column d-flex">
 													<div data-mdb-input-init class="column form-outline mb-4 me-3">
-														<label class="form-label" for="ussn1">주민번호</label> <input type="text" id="ussn1" name="ussn1" placeholder="YYMMDD" class="form-control form-control-md" /> <small id="ussnError"></small>
+														<label class="form-label" for="ussn1">주민번호</label> <input type="text" id="ussn1" name="ussn1" placeholder="YYMMDD" maxlength="6" class="form-control form-control-md" /> <small id="ussnError"></small>
 													</div>
 													<span>-</span>
 													<div data-mdb-input-init class="column form-outline mb-4 mt-2">
-														<label class="form-label" for="ussn2"></label> <input type="password" id="ussn2" name="ussn2" class="form-control form-control-md" /> <small id="ussnError"></small>
+														<label class="form-label" for="ussn2"></label> <input type="password" id="ussn2" name="ussn2" maxlength="7" class="form-control form-control-md" /> <small id="ussnError"></small>
 													</div>
 												</div>
 												<!-- 이름 -->

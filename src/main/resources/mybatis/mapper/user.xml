@@ -29,6 +29,18 @@
 	    WHERE uemail=#{uemail}
 		
 	</update>
+
+
+	<select id="selectByEmailAndNameAndPhoneNumber"
+		resultType="User">
+		SELECT *
+		FROM users
+		WHERE uemail = #{uemail}
+		AND uname = #{uname}
+		AND uphonenumber = #{uphonenumber}
+	</select>
+	
+	
 	
 	<select id="selectByUemail" parameterType="String"
 		resultType="User">

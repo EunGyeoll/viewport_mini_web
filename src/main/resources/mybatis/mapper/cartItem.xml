@@ -15,7 +15,7 @@
 		WHERE cid = #{cid} AND cpid = #{cpid} AND cuid = #{cuid}
 	</select>
 
-	<insert id="createCartWithProduct" parameterType="int">
+	<insert id="createCartWithProduct" parameterType="CartItem">
 		<selectKey keyProperty="cid" order="BEFORE" resultType="int">
 			select seq_cid.nextval from dual
 		</selectKey>

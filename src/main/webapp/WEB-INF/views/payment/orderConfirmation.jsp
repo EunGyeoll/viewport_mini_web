@@ -68,7 +68,7 @@
 
 							<div class="col text-end">
 								₩
-								<fmt:formatNumber value="${productCartData.product.pprice }" type="currency" currencySymbol="" groupingUsed="true" />
+								<fmt:formatNumber value="${productCartData.product.pprice*productCartData.quantity }" type="currency" currencySymbol="" groupingUsed="true" />
 							</div>
 
 						</div>

@@ -27,17 +27,25 @@ import lombok.extern.slf4j.Slf4j;
 @Secured("ROLE_USER")
 @RequestMapping("/cart")
 public class CartController {
+
   @Autowired
   private CartService cartService;
+  
   @Autowired
   private UserService userService;
+  
   @Autowired
   private ProductService productService;
 
   // 카트 페이지
   @GetMapping("")
   public String cart(Authentication authentication, Model model) {
-    Users user = userService.getUser(authentication.getName());
+    Users user = getCurrentUser(authentication);
+    if (user == null) {
+      log.error("User not found");
+      return "error";
+    }
+
     List<CartItem> cartItemList = cartService.getCartByUserId(user.getUsid());
 
     if (cartItemList != null) {
@@ -47,52 +55,80 @@ public class CartController {
         int quantity = item.getCqty();
         productDataList.add(new ProductCartData(product, quantity));
       }
-
       model.addAttribute("productDataList", productDataList);
     }
+
     return "cart/cart";
   }
 
-  // 카트에 상품 추가
+  // 카트에 상품 추가 메소드
   @PostMapping("/add")
   @ResponseBody
-  public String addProductToCart(@RequestParam("pid") int pid, Authentication authentication)
-      throws Exception {
-    String uemail = authentication.getName();
-    if (uemail == null) {
-      return null;
+  public String addProductToCart(@RequestParam("pid") int pid, Authentication authentication) {
+    try {
+      Users user = getCurrentUser(authentication);
+      if (user == null) {
+        log.error("User not authenticated");
+        return "실패";
+      }
+      
+      Product product = productService.getProduct(pid);
+      cartService.addCartProduct(user, product);
+      return "성공";
+    } catch (Exception e) {
+      log.error("Error adding product to cart", e);
+      return "실패";
     }
-    Product product = productService.getProduct(pid);
-    Users user = userService.getUser(uemail);
-    cartService.addCartProduct(user, product);
-    return "성공";
   }
 
-  // 카트에 존재하는 상품 수량 업데이트
+  // 카트에 존재하는 상품 수량 업데이트 메소드
   @PostMapping("/updateQuantity")
   @ResponseBody
-  public String updateQuantity(@RequestBody CartItem cartItem, Authentication authentication)
-      throws Exception {
-    String uemail = authentication.getName();
-    Users user = userService.getUser(uemail);
-    int cartId = cartService.getCartIdByUserIdAndProductId(user.getUsid(), cartItem.getCpid());
-    cartItem.setCid(cartId);
-    cartItem.setCuid(user.getUsid());
+  public String updateQuantity(@RequestBody CartItem cartItem, Authentication authentication) {
+    try {
+      Users user = getCurrentUser(authentication);
+      if (user == null) {
+        log.error("User not authenticated");
+        return "실패";
+      }
 
-    boolean updateResult = cartService.updateCartItemQty(cartItem);
-    return updateResult ? "성공" : "실패";
+      int cartId = cartService.getCartIdByUserIdAndProductId(user.getUsid(), cartItem.getCpid());
+      cartItem.setCid(cartId);
+      cartItem.setCuid(user.getUsid());
+
+      boolean updateResult = cartService.updateCartItemQty(cartItem);
+      return updateResult ? "성공" : "실패";
+    } catch (Exception e) {
+      log.error("Error updating cart item quantity", e);
+      return "실패";
+    }
   }
 
-  // 카트에서 상품 삭제
+  // 카트 상품 삭제 메소드
   @PostMapping("/removeProduct")
   @ResponseBody
-  public String removeProduct(@RequestBody CartItem cartItem, Authentication authentication)
-      throws Exception {
+  public String removeProduct(@RequestBody CartItem cartItem, Authentication authentication) {
+    try {
+      Users user = getCurrentUser(authentication);
+      if (user == null) {
+        log.error("User not authenticated");
+        return "실패";
+      }
+
+      cartItem.setCuid(user.getUsid());
+      log.info(cartItem.toString());
+
+      boolean removeResult = cartService.removeProduct(cartItem);
+      return removeResult ? "성공" : "실패";
+    } catch (Exception e) {
+      log.error("Error removing product from cart", e);
+      return "실패";
+    }
+  }
+
+  // 현재 사용자 정보를 가져오는 메소드
+  private Users getCurrentUser(Authentication authentication) {
     String uemail = authentication.getName();
-    Users user = userService.getUser(uemail);
-    cartItem.setCuid(user.getUsid());
-    log.info(cartItem.toString());
-    boolean removeResult = cartService.removeProduct(cartItem);
-    return removeResult ? "성공" : "실패";
+    return uemail != null ? userService.getUser(uemail) : null;
   }
 }

@@ -21,8 +21,7 @@ public interface CartItemDao {
   public void removeCartItemByProductId(CartItem cartItem);
 
   // 장바구니에 담을때
-  public void createCartWithProduct(@Param("cid") int cid, @Param("cpid") int cpid,
-      @Param("cuid") int cuid);
+  public void createCartWithProduct(CartItem cartItem);
 
   public CartItem findCartByUserIdAndProductId(@Param("cuid") int cuid, @Param("cpid") int cpid);
 

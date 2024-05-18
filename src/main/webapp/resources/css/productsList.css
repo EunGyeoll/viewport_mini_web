@@ -10,15 +10,18 @@
     position: sticky;
     top: 20px;
     padding: 80px;
-    height: 100vh;
+/*     height: 100vh; */
     background-color: #F9F9F9;
     width:390px;
+    min-height: 100vh; /* 고정된 높이 설정 */
 }
 
 .filter-category, .filter-price, .filter-sort {
 	border-bottom: 1px solid #bebdbd;
 	margin-bottom: 30px;
 }
+
+
 
 .filter-button button {
 	background-color: #000;

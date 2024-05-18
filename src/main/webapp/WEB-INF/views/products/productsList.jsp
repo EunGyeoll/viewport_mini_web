@@ -39,7 +39,7 @@
 	<div class="wrap">
 		<div class="filter-block">
 			<form action="productsList" method="get">
-				<div class="filter-category">
+				<div class="filter-category mt-3">
 					<h6>카테고리</h6>
 					<ul>
 						<li><input type="checkbox" class="form-check-input"

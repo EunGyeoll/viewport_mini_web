@@ -69,8 +69,27 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					</table>
 				</div>
+						<!-- pagination -->
+			<div class="pagination-center">
+				<div class="pagination">
+					<c:if test="${pager.groupNo>1}">
+						<a href="${pageContext.request.contextPath}/styles?pageNo=${pager.startPageNo-1}">&laquo;</a>
+					</c:if>
+					<c:forEach var="i" begin="${pager.startPageNo}"
+						end="${pager.endPageNo}">
+						<c:if test="${pager.pageNo != i}">
+							<a href="${pageContext.request.contextPath}/styles?pageNo=${i}">${i}</a>
+						</c:if>
+						<c:if test="${pager.pageNo == i}">
+							<a href="${pageContext.request.contextPath}/styles?pageNo=${i}">${i}</a>
+						</c:if>
+					</c:forEach>
+					<c:if test="${pager.groupNo<pager.totalGroupNo}">
+						<a href="${pageContext.request.contextPath}/styles?pageNo=${pager.endPageNo+1}">&raquo;</a>
+					</c:if>
+				</div>
+			</div>
 			</div>
 		</div>
 

@@ -24,6 +24,8 @@ public class BoardService {
   UserDao userDao;
   @Autowired
   NoticeDao noticeDao;  
+  @Autowired
+  QnaDao qnaDao;    
   
   public void insertNewPost(Qna qna,String uemail) {
     int quserid = userDao.selectByUemail(uemail).getUsid();
@@ -31,10 +33,6 @@ public class BoardService {
     boardDao.insertNewPost(qna);
   }
 
-  public List<Qna> getQnaList() {
-    List<Qna> qnaList =boardDao.selectQnaAll();
-    return qnaList;
-  }
 
   public Qna getQna(int qid) {
     Qna qna = boardDao.selectByQid(qid);
@@ -51,8 +49,8 @@ public class BoardService {
     return totalRow;
   }
   
-  public List<Qna> getUserList(Pager pager) {
-    List<Qna> qnaList = boardDao.selectByPage(pager);
+  public List<Qna> getQnaListByPager(Pager pager) {
+    List<Qna> qnaList = qnaDao.selectByPage(pager);
     return qnaList;
   }
 
@@ -61,10 +59,11 @@ public void createNotice(Notice notice) {
 	log.info("rowNum: " + rowNum + ", nid: " + notice.getNname());
 }
 
-public List<Notice> getNoticeList(Pager pager) {
+public List<Notice> getNoticeListByPager(Pager pager) {
     List<Notice> noticeList = noticeDao.selectByPage(pager);
     return noticeList;
 }
+
 
 public void updateNoticeData(Notice notice) {
 	int rowNum = noticeDao.update(notice);

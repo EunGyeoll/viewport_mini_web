@@ -30,6 +30,7 @@ form {
 	border-radius: 10px;
 	padding: 30px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	padding-bottom: 60px; /* 하단 여백 추가 */
 }
 
 label {
@@ -66,27 +67,29 @@ textarea {
 <body class="faqbody">
 
 	<h2>
-		<b>Q&A</b>
+		<b>Q&A 수정</b>
 	</h2>
 
 	<form method="post" id="qnaForm" class="h-75" novalidate enctype="multipart/form-data">
 		<div class="form-group">
-			<label for="qtitle">제목</label> <input type="text" id="qtitle" name="qtitle" required>
+			<input type="hidden" name="qid" value="${qna.qid}">
+			<label for="qtitle">제목</label> <input type="text" id="qtitle" name="qtitle" value="${qna.qtitle}" required>
 		</div>
 
 		<div class="form-group mt-4">
 			<label for="qattach">첨부파일</label> <input type="file" id="qattach" name="qattach">
 		</div>
 		<div class="form-group mt-4">
-			<label for="qcategory">카테고리</label> <select id="qcategory" name="qcategory" class="form-control">
-				<option value="상품">상품</option>
-				<option value="주문">주문</option>
-				<option value="기타">기타</option>
+			<label for="qcategory">카테고리</label> 
+			<select id="qcategory" name="qcategory" class="form-control">
+				<option value="상품" ${qna.qcategory == "상품" ? "selected" : ""}>상품</option>
+				<option value="주문" ${qna.qcategory == "주문" ? "selected" : ""}>주문</option>
+				<option value="기타" ${qna.qcategory == "기타" ? "selected" : ""}>기타</option>
 			</select>
 		</div>
 		<div class="form-group mt-4">
 			<label for="qcontent">내용</label>
-			<textarea id="qcontent" class="summernote" name="qcontent" required></textarea>
+			<textarea id="qcontent" class="summernote" name="qcontent" required>${qna.qcontent}</textarea>
 		</div>
 		<div>
 			<a href="qnaList"><button class="btn btn-sm btn-dark mt-2 ms-3 p-2" id="subBtn">취소</button></a>
@@ -98,6 +101,6 @@ textarea {
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/summernote-ko-KR.js"></script>
-	<%-- <script src="${pageContext.request.contextPath}/resources/js/editQna.js"></script> --%>
+	<script src="${pageContext.request.contextPath}/resources/js/editQna.js"></script>
 </body>
 </html>

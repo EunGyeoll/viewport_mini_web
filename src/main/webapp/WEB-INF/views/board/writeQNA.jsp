@@ -30,6 +30,7 @@ form {
 	border-radius: 10px;
 	padding: 30px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	padding-bottom: 60px; /* 하단 여백 추가 */
 }
 
 label {
@@ -58,6 +59,7 @@ textarea {
 	cursor: pointer;
 	float: right;
 }
+
 /* .faqbody{
 	height:950px;
 } */

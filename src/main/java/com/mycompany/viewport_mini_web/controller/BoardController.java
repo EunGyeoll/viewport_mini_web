@@ -49,7 +49,10 @@ public class BoardController {
 	
 	@Secured("ROLE_USER")
 	@GetMapping("/editQna")
-	public String editQNA() {
+	public String editQNA(int qid, Model model) {
+		Qna qna = boardService.getQna(qid);
+		log.info(qna.toString());
+		model.addAttribute("qna", qna);
 		return "board/editQna";
 	}
 
@@ -94,9 +97,11 @@ public class BoardController {
 	
 	@Secured("ROLE_USER")
 	@PostMapping("/editQna")
-	public String editQna(int qid) throws IOException {
+	@ResponseBody
+	public String editQna(Qna qna) throws IOException {
 		log.info("editQna 실행");
-		Qna qna = boardService.getQna(qid);
+		log.info(qna.toString());
+		
 		// 첨부 파일이 있는지 여부 조사
 		if (qna.getQattach() != null && !qna.getQattach().isEmpty()) {
 			qna.setQattachoname(qna.getQattach().getOriginalFilename());

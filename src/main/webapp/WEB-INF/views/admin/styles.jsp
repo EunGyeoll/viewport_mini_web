@@ -63,7 +63,7 @@
 						</td>
 <%-- 						<td>${product.pname}</td> --%>
 						<td>
-							<button type="button" class="btn btn-dark edit-btn btn-sm productDataEditBtn" onclick="clickEventProduct('${product.pid}', '${product.pname}', ${product.pprice},'${product.pinfo}', '${product.pdetail}', '${product.pcategory}', '${product.pshape}')" data-bs-toggle="modal" data-bs-target="#editNoticeModal">수정</button>
+							<%-- <button type="button" class="btn btn-dark edit-btn btn-sm productDataEditBtn" onclick="clickEventProduct('${product.pid}', '${product.pname}', ${product.pprice},'${product.pinfo}', '${product.pdetail}', '${product.pcategory}', '${product.pshape}')" data-bs-toggle="modal" data-bs-target="#editNoticeModal">수정</button> --%>
 							<button class="btn btn-danger edit-btn btn-sm" data-bs-toggle="modal" onclick="deleteStyles(${style.stid})" data-bs-target="#deleteUserModal">삭제</button>
 						</td>
 					</tr>

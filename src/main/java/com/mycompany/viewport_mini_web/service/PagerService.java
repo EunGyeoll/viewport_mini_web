@@ -14,7 +14,6 @@ public class PagerService {
     
     Pager pager = (Pager) session.getAttribute(sessionAttributeKey);
     if (pager == null) {
-      log.info("빈페이지");
       pager = new Pager(rowsPerPage, pagesPerGroup, totalRows, 1); // 페이지 번호를 1로 초기화
       session.setAttribute(sessionAttributeKey, pager);   
       return pager;// 세션에 페이저 객체 저장
@@ -22,7 +21,6 @@ public class PagerService {
   
     // 페이지 번호가 요청되었을 때 설정
     if (pageNo != null && !pageNo.isEmpty()) {
-      log.info("페이지 요청 들어옴");
       pager = new Pager(rowsPerPage, pagesPerGroup, totalRows,Integer.parseInt(pageNo));
       int pageNumber = Integer.parseInt(pageNo);
       if (pageNumber > 0 && pageNumber <= pager.getTotalPageNo()) {

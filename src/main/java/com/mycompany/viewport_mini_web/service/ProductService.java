@@ -25,7 +25,6 @@ public class ProductService {
 
 	public void createProduct(Product product) {
 		int rowNum = productDao.insert(product);
-
 	}
 
 	public void createProductImg(Photos photos) {
@@ -39,7 +38,7 @@ public class ProductService {
 		List<Product> products = productDao.selectProductList();
 		return products;
 	}
-
+	
 	public List<Product> getProductListByPager(Pager pager) {
 		List<Product> products = productDao.selectProductListByPager(pager);
 		return products;
@@ -111,7 +110,7 @@ public class ProductService {
 		List<Product> sameModels = productDao.selectSameModelByPname(pname);
 		return sameModels;
 	}
-
+	
 	public List<Product> getProductsByFilterAndPager(String category, String price, String date, String shape, Pager pager) {
 		List<Product> products = productDao.selectProductListByFilterAndPager(category, price, date, shape, pager);
 		return products;

@@ -80,7 +80,7 @@ public class AdminController {
     model.addAttribute("users", users);
     return "admin/users";
   }
-
+  
   @GetMapping("/products")
   public String adminProductsPage(@RequestParam(required = false) String pageNo, Model model,
       HttpSession session) {
@@ -105,7 +105,6 @@ public class AdminController {
     int totalRows = boardService.getTotalNoticeRows();
     Pager pager = pagerService.preparePager(session, pageNo, totalRows, 10, 5,"adminNoticesPager"); // 페이지당 행 수 10, 그룹당
                                                                                 // 페이지 수 5
-
     List<Notice> notices = boardService.getNoticeListByPager(pager);
     model.addAttribute("pager", pager);
     model.addAttribute("notices", notices);

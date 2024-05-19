@@ -37,7 +37,8 @@ public class HomeController {
   public void signupFormValidator(WebDataBinder binder) {
     binder.setValidator(new SignupFormValidator());
   }
-
+  
+  //유저가 로그인을 한 상태인지 확인하는 메소드
   @GetMapping("/isAuthenticated")
   @ResponseBody
   public Boolean isAuthenticated(Authentication authentication) {
@@ -45,7 +46,8 @@ public class HomeController {
     Boolean isAuthenticated = authentication != null && authentication.isAuthenticated();
     return isAuthenticated;
   }
-
+  
+  //403 에러 페이지
   @RequestMapping("/error403")
   public String error403() {
     return "error/error403";
@@ -58,7 +60,6 @@ public class HomeController {
     for (Product product : products) {
       log.info(product.getPid() + "");
     }
-
     List<Styles> styles = stylesService.getStylesListRandomly();
 
     model.addAttribute("products", products);
@@ -82,21 +83,19 @@ public class HomeController {
   }
 
   @PostMapping("/signup")
-  public String signup(@RequestBody @Valid SignupForm usersData) {
-    log.info(usersData.toString());
+  public String signup(@RequestBody @Valid SignupForm userData) {
     // sql 데이터 타입 설정을 변경후에
-    // 생성자로 받는 방식으로 변경해야함
     Users user = new Users();
     user.setUrole("ROLE_USER");
-    user.setUname(usersData.getUname());
-    user.setUemail(usersData.getUemail());
-    user.setUpassword(usersData.getUpassword());
-    user.setUaddress(usersData.getUaddress());
-    user.setUgender(usersData.getUgender());
-    user.setUaddressdetail(usersData.getUaddressdetail());
-    user.setUpostcode(usersData.getUpostcode());
-    user.setUphonenumber(usersData.getUphonenumber());
-    user.setUssn(usersData.getUssn());
+    user.setUname(userData.getUname());
+    user.setUemail(userData.getUemail());
+    user.setUpassword(userData.getUpassword());
+    user.setUaddress(userData.getUaddress());
+    user.setUgender(userData.getUgender());
+    user.setUaddressdetail(userData.getUaddressdetail());
+    user.setUpostcode(userData.getUpostcode());
+    user.setUphonenumber(userData.getUphonenumber());
+    user.setUssn(userData.getUssn());
     log.info(user.toString());
     userService.signup(user);
     log.info(user.toString());

@@ -23,6 +23,7 @@ public class CartService {
   public void addCartProduct(Users user, Product product) {
     log.info("실행");
     CartItem cart = cartItemDao.findCartByUserIdAndProductId(user.getUsid(), product.getPid());
+    //카트에 상품이 없는 경우 새로 카드를 생성 아니라면 기존에 카트에 존재하는 상품인지 확인후 수량 추가
     if (cart == null) {
       cart = new CartItem();
       cart.setCuid(user.getUsid());
@@ -42,7 +43,7 @@ public class CartService {
   public List<CartItem> getAllCartItems(int cuid) {
     return cartItemDao.selectAllCartItems(cuid);
   }
-
+  //js로 전달받은 수량 업데이트
   public boolean updateCartItemQty(CartItem cartItem) {
     CartItem existingCartItem = cartItemDao.findByCartIdAndProductId(cartItem);
     if (existingCartItem != null && cartItem.getCqty() > 0) {

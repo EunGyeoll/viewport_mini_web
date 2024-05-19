@@ -27,13 +27,14 @@ public class OrderService {
   @Autowired
   private ShipmentDao shipmentDao;
 
+  //카트로 부터 전달받은 임시 결제 데이터
   public TempPaymentData addOrderConfirmData(String[] productIds, String[] quantities,
       String totalPriceWithoutDelivery, String totalPriceWithDelivery, String deliveryType) {
     TempPaymentData tempPaymentData = new TempPaymentData();
     tempPaymentData.setTotalPrice(Integer.parseInt(totalPriceWithoutDelivery));
     tempPaymentData.setTotalPriceWithDelivery(Integer.parseInt(totalPriceWithDelivery));
     tempPaymentData.setDeliveryType(Integer.parseInt(deliveryType));
-                                                                    
+
     List<ProductCartData> ItemList = new ArrayList<>();
 
     for (int i = 0; i < productIds.length; i++) {
@@ -44,17 +45,17 @@ public class OrderService {
     tempPaymentData.setItemList(ItemList);
     return tempPaymentData;
   }
-
+  //주문데이터 추가
   public void addOrderData(Orders orders) {
     orderDao.insertOrderData(orders);
     for (OrderItem orderItem : orders.getOrderItems()) {
       orderItemDao.insertOrderItemData(orderItem);
     }
-
+    //배송 요청사항과 기본적인 배송 데이터 생성
     shipmentDao.insertShipmentData(orders.getShipment());
   }
 
-  public List<Orders> getOrderListByUserId(Pager pager,int usid) {
+  public List<Orders> getOrderListByUserId(Pager pager, int usid) {
     List<Orders> ordersList = orderDao.selectAllOrdersByUserId(pager, usid);
     return ordersList;
   }
@@ -66,7 +67,7 @@ public class OrderService {
 
   public int getTotalOrderRows() {
     int totalRows = orderDao.getTotalRows();
-        return totalRows;
+    return totalRows;
   }
 
   public List<Orders> getAllOrderList(Pager pager) {
@@ -76,11 +77,11 @@ public class OrderService {
 
   public void updateStatusByOrderId(Orders order) {
     orderDao.updateStatusByOrderId(order);
-    
+
   }
 
   public Orders getOrderListByOrderIdAndUserId(int orderId, int ouserid) {
-    Orders orderData = orderDao.selectOrdersByOrderIdAndUserId(orderId,ouserid);
+    Orders orderData = orderDao.selectOrdersByOrderIdAndUserId(orderId, ouserid);
     return orderData;
   }
 

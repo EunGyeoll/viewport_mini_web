@@ -53,7 +53,7 @@
 						</sec:authorize>
 						<sec:authorize
 							access="hasRole('ROLE_USER') and !hasRole('ROLE_ADMIN')">
-							<a href="#" class="btn btn-secondary btn-sm me-2">수정</a>
+							<a href="editQna?qid=${qna.qid}" class="btn btn-secondary btn-sm me-2">수정</a>
 						</sec:authorize>
 						<%-- 						<a href="#" class="btn btn-sm btn-danger"  data-bs-toggle="modal" onclick="deleteProduct(${product.pid})" data-bs-target="#deleteUserModal">삭제</a> --%>
 						<button class="btn btn-danger edit-btn btn-sm"
@@ -65,7 +65,7 @@
 		</div>
 	</div>
 	<div class="modal" id="deleteUserModal">
-		<div class="modal-dialog">
+		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
 
 				<!-- Modal Header -->

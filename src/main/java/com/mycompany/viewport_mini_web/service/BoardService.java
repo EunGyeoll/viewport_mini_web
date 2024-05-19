@@ -104,4 +104,9 @@ public void removeQna(int qid) {
 	qnaDao.deleteByQid(qid);
 }
 
+
+public void updateQna(Qna qna) {
+	int rowNum = qnaDao.update(qna);	
+}
+
 }

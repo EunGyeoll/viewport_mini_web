@@ -23,4 +23,6 @@ public interface QnaDao {
 
 public void deleteByQid(int qid);
 
+public int update(Qna qna);
+
 }

@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- 추가할부분 -->
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Insert title here</title>
+<title>VIEWPORT</title>
 
 <!-- Bootstrap 5를 위한 외부 라이브러리 설정 -->
 <link

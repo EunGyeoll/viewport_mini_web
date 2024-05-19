@@ -17,9 +17,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.mycompany.viewport_mini_web.dto.Notice;
 import com.mycompany.viewport_mini_web.dto.Pager;
+import com.mycompany.viewport_mini_web.dto.Photos;
+import com.mycompany.viewport_mini_web.dto.Product;
 import com.mycompany.viewport_mini_web.dto.Qna;
 import com.mycompany.viewport_mini_web.dto.Users;
 import com.mycompany.viewport_mini_web.service.BoardService;
@@ -42,6 +45,12 @@ public class BoardController {
 	@GetMapping("/writeQNA")
 	public String CreateNewBoard() {
 		return "board/writeQNA";
+	}
+	
+	@Secured("ROLE_USER")
+	@GetMapping("/editQna")
+	public String editQNA() {
+		return "board/editQna";
 	}
 
 	@GetMapping("/qnaList")
@@ -82,41 +91,61 @@ public class BoardController {
 		boardService.insertNewPost(qna, uemail);
 		return "/viewport_mini_web/board/qnaList";
 	}
+	
+	@Secured("ROLE_USER")
+	@PostMapping("/editQna")
+	public String editQna(int qid) throws IOException {
+		log.info("editQna 실행");
+		Qna qna = boardService.getQna(qid);
+		// 첨부 파일이 있는지 여부 조사
+		if (qna.getQattach() != null && !qna.getQattach().isEmpty()) {
+			qna.setQattachoname(qna.getQattach().getOriginalFilename());
+			qna.setQattachtype(qna.getQattach().getContentType());
+			byte[] qnaData = qna.getQattach().getBytes();
+			log.info("" + qna.getQattach().getContentType());
+
+			qna.setQattachsname(UUID.randomUUID().toString() + "-" + qna.getQattach().getOriginalFilename());
+			qna.setQattachdata(qnaData);
+		}
+		boardService.updateQna(qna);
 
 
-	  @GetMapping("/qnaDetail")
-	  public String qnaDetail(int qid, Authentication authentication, Model model,
-	      HttpServletResponse response, RedirectAttributes redirectAttributes) throws IOException {
-	    log.info("실행");
-	    if (authentication == null) {
-	      redirectAttributes.addFlashAttribute("errorMessage", "로그인을 필요합니다.");
-	      return "redirect:/loginForm";
-	    }
+		return "/viewport_mini_web/board/qnaList";
+	}
 
-	    Qna qna = boardService.getQna(qid);
-	    if (qna == null) {
-	      redirectAttributes.addFlashAttribute("errorMessage", "해당 게시물을 찾을 수 없습니다.");
-	      return "redirect:/board/qnaList";
-	    }
+	@GetMapping("/qnaDetail")
+	public String qnaDetail(int qid, Authentication authentication, Model model, HttpServletResponse response,
+			RedirectAttributes redirectAttributes) throws IOException {
+		log.info("실행");
+		if (authentication == null) {
+			redirectAttributes.addFlashAttribute("errorMessage", "로그인을 필요합니다.");
+			return "redirect:/loginForm";
+		}
 
-	    String quemail = userService.getUserByUserId(qna.getQuserid());
-	    Users user = userService.getUser(authentication.getName());
-	    if (user.getUrole().equals("ROLE_ADMIN")) {
-	      qna.setQuemail(quemail);
-	      model.addAttribute("user",user);
-	      model.addAttribute("qna", qna);
-	      return "board/qnaDetail";
-	    }
-	    log.info(quemail);
-	    if (quemail == null || !quemail.equals(authentication.getName())) {
-	      redirectAttributes.addFlashAttribute("errorMessage", "권한이 없습니다.");
-	      return "redirect:/error403";
-	    }
+		Qna qna = boardService.getQna(qid);
+		if (qna == null) {
+			redirectAttributes.addFlashAttribute("errorMessage", "해당 게시물을 찾을 수 없습니다.");
+			return "redirect:/board/qnaList";
+		}
 
-	    qna.setQuemail(quemail);
-	    model.addAttribute("qna", qna);
-	    return "board/qnaDetail";
-	  }
+		String quemail = userService.getUserByUserId(qna.getQuserid());
+		Users user = userService.getUser(authentication.getName());
+		if (user.getUrole().equals("ROLE_ADMIN")) {
+			qna.setQuemail(quemail);
+			model.addAttribute("user", user);
+			model.addAttribute("qna", qna);
+			return "board/qnaDetail";
+		}
+		log.info(quemail);
+		if (quemail == null || !quemail.equals(authentication.getName())) {
+			redirectAttributes.addFlashAttribute("errorMessage", "권한이 없습니다.");
+			return "redirect:/error403";
+		}
+
+		qna.setQuemail(quemail);
+		model.addAttribute("qna", qna);
+		return "board/qnaDetail";
+	}
 
 	@GetMapping("/attachQnaDownload")
 	public void attachDownload(int qid, HttpServletResponse response) throws Exception {
@@ -133,13 +162,13 @@ public class BoardController {
 		os.flush();
 		os.close();
 	}
-	
-	  @PostMapping("/deleteQna")
-	  public String deleteQna(int qid) {
-	    log.info("deleteQna 실행");
-	    boardService.removeQna(qid);
-	    return "redirect:/board/qnaList";
-	  }	
+
+	@PostMapping("/deleteQna")
+	public String deleteQna(int qid) {
+		log.info("deleteQna 실행");
+		boardService.removeQna(qid);
+		return "redirect:/board/qnaList";
+	}
 
 	@GetMapping("/noticeList")
 	public String NoticeList(@RequestParam(required = false) String pageNo, Model model, HttpSession session) {

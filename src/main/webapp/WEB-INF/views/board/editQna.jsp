@@ -90,7 +90,7 @@ textarea {
 		</div>
 		<div>
 			<a href="qnaList"><button class="btn btn-sm btn-dark mt-2 ms-3 p-2" id="subBtn">취소</button></a>
-			<button class="btn btn-sm btn-dark mt-2 p-2" id="subBtn">글 작성</button>
+			<button class="btn btn-sm btn-dark mt-2 p-2" id="subBtn">글 수정</button>
 		</div>
 	</form>
 
@@ -98,6 +98,6 @@ textarea {
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/summernote-ko-KR.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/writeQNA.js"></script>
+	<%-- <script src="${pageContext.request.contextPath}/resources/js/editQna.js"></script> --%>
 </body>
 </html>

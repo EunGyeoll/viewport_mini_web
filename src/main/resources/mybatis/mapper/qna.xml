@@ -50,6 +50,19 @@
 		]]>
 	</select>
 	
+	<update id="update" parameterType="Qna">
+		update qna set
+		qtitle=#{qtitle},qcategory=#{qcategory},qcontent=#{qcontent}
+		<if test="qattachoname != null">
+			,
+			qattachoname=#{qattachoname},
+			qattachsname=#{qattachsname},
+			qattachtype=#{qattachtype},
+			qattachdata=#{qattachdata}
+		</if>
+		where qid=#{qid}
+	</update>	
+	
 	<delete id="deleteByQid" parameterType="int">
 		delete from qna where qid=#{qid}
 	</delete>

@@ -36,7 +36,7 @@
 				<div class="row" id="cart-list-container">
 					<div>
 						<h2>주문 확인</h2>
-						<strong>감사합니다, ${user.uname}</strong>
+						<strong>감사합니다, ${user.uname}님</strong>
 						<p>주문은 바로 확인이 되었으며, 배송은 2~3일 정도 소요가 될 것입니다.</p>
 					</div>
 					<div class="row border-top p-4 text-center">
@@ -48,7 +48,7 @@
 						</div>
 						<div class="col">
 							<div>주문 번호</div>
-							<div>${ orderData.shipment.sshipmentnum}</div>
+							<div>${orderData.shipment.sshipmentnum}</div>
 						</div>
 						<div class="col">
 							<div>배송지</div>

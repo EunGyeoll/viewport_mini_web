@@ -9,6 +9,9 @@ html, body {
 .container-fluid {
 	overflow-x: hidden;
 }
+.row {
+	margin-top:70px;
+}
 .right-box {
 	padding-left: 110px;
 	padding-right: 110px;

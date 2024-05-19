@@ -10,11 +10,11 @@
 		</selectKey>
 		insert into styles(
 		stid, stpnum, stuserid,
-		stattachoname,stattachsname,stattachtype,stattachdata
+		stattachoname,stattachsname,stattachtype,stattachdata, sdate
 		) values(
 		#{stid}, #{stpnum},
 		#{stuserid}, #{stattachoname}, #{stattachsname},
-		#{stattachtype},#{stattachdata}
+		#{stattachtype},#{stattachdata}, sysdate
 		)
 	</insert>
 
@@ -22,11 +22,11 @@
 		resultType="Styles">
 	<![CDATA[
 		select rnum, stid, stpnum, stuserid,
-		stattachoname,stattachsname,stattachtype,stattachdata
+		stattachoname,stattachsname,stattachtype,stattachdata, sdate
 		from (
-		    select rownum as rnum, stid, stpnum, stuserid, stattachoname,stattachsname,stattachtype,stattachdata
+		    select rownum as rnum, stid, stpnum, stuserid, stattachoname,stattachsname,stattachtype,stattachdata, sdate
 		    from (
-		        select stid, stpnum, stuserid, stattachoname,stattachsname,stattachtype,stattachdata
+		        select stid, stpnum, stuserid, stattachoname,stattachsname,stattachtype,stattachdata, sdate
 		        from styles
 		        order by stid desc
 		    )
@@ -43,7 +43,7 @@
 	<select id="selectByStid" parameterType="int"
 		resultType="Styles">
 		select stid, stpnum, stuserid,
-		stattachoname,stattachsname,stattachtype,stattachdata
+		stattachoname,stattachsname,stattachtype,stattachdata, sdate
 		from styles
 		where
 		stid=#{stid}

@@ -1,6 +1,7 @@
 package com.mycompany.viewport_mini_web.dto;
 
 import java.sql.Blob;
+import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,6 +17,7 @@ public class Styles {
 	private String stattachtype;
 	private int stpnum;
 	private int stuserid;
+	private Date sdate;
 	
 	private MultipartFile stattach;	
 	}

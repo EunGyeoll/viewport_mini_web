@@ -8,12 +8,13 @@
 
 .filter-block {
     position: sticky;
-    top: 20px;
-    padding: 80px;
-/*     height: 100vh; */
+    top: 40px;
+    padding: 60px;
+	height: 100vh;
     background-color: #F9F9F9;
     width:390px;
-    min-height: 100vh; /* 고정된 높이 설정 */
+   /*  min-height: 100vh; */ /* 고정된 높이 설정 */
+    margin-top: 50px;
 }
 
 .filter-category, .filter-price, .filter-sort {

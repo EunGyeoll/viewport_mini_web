@@ -53,7 +53,7 @@ public class BoardController {
   }
 
   @GetMapping("/qnaList")
-  public String QnaList(@RequestParam(required = false) String pageNo, Model model,
+  public String QnaList(@RequestParam(required = false, defaultValue="1") String pageNo, Model model,
       HttpSession session) {
     int totalRows = boardService.getQnaTotalRows(); // 전체 수를 가져옵니다.
     Pager pager = pagerService.preparePager(session, pageNo, totalRows, 12, 5, "qnaListPager");

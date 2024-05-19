@@ -53,7 +53,7 @@ public class AdminController {
   private ShipmentService shipmentService;
 
   @GetMapping("")
-  public String adminMainPage(@RequestParam(required = false) String pageNo, Model model,
+  public String adminMainPage(@RequestParam(required = false, defaultValue="1") String pageNo, Model model,
       HttpSession session) {
     int totalRows = orderService.getTotalOrderRows(); // 사용자의 전체 수를 가져옵니다.
     Pager pager = pagerService.preparePager(session, pageNo, totalRows, 10, 5, "adminOrderPager");
@@ -69,7 +69,7 @@ public class AdminController {
   }
 
   @GetMapping("/users")
-  public String adminUserPage(@RequestParam(required = false) String pageNo, Model model,
+  public String adminUserPage(@RequestParam(required = false, defaultValue="1") String pageNo, Model model,
       HttpSession session) {
     int totalRows = usersService.getTotalUserRows(); // 사용자의 전체 수를 가져옵니다.
     Pager pager = pagerService.preparePager(session, pageNo, totalRows, 10, 5, "adminUsersPager"); // 페이지당
@@ -86,7 +86,7 @@ public class AdminController {
   }
 
   @GetMapping("/products")
-  public String adminProductsPage(@RequestParam(required = false) String pageNo, Model model,
+  public String adminProductsPage(@RequestParam(required = false, defaultValue="1") String pageNo, Model model,
       HttpSession session) {
     int totalRows = productService.getTotalProductRows();
     Pager pager = pagerService.preparePager(session, pageNo, totalRows, 5, 5, "adminProductsPager");
@@ -104,7 +104,7 @@ public class AdminController {
   }
 
   @GetMapping("/notices")
-  public String adminNoticesPage(@RequestParam(required = false) String pageNo, Model model,
+  public String adminNoticesPage(@RequestParam(required = false, defaultValue="1") String pageNo, Model model,
       HttpSession session) {
     int totalRows = boardService.getTotalNoticeRows();
     Pager pager = pagerService.preparePager(session, pageNo, totalRows, 10, 5, "adminNoticesPager"); // 페이지당
@@ -120,7 +120,7 @@ public class AdminController {
   }
 
   @GetMapping("/styles")
-  public String adminStylesPage(@RequestParam(required = false) String pageNo, Model model,
+  public String adminStylesPage(@RequestParam(required = false, defaultValue="1") String pageNo, Model model,
       HttpSession session) {
     int totalRows = stylesService.getTotalStylesRows();
     Pager pager = pagerService.preparePager(session, pageNo, totalRows, 5, 5, "adminStylesPager");

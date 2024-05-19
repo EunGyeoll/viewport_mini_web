@@ -1,6 +1,5 @@
 package com.mycompany.viewport_mini_web.controller;
 
-import java.security.Principal;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mycompany.viewport_mini_web.dto.Orders;
 import com.mycompany.viewport_mini_web.dto.Pager;
 import com.mycompany.viewport_mini_web.dto.Qna;
-import com.mycompany.viewport_mini_web.dto.Shipment;
 import com.mycompany.viewport_mini_web.dto.Users;
 import com.mycompany.viewport_mini_web.service.BoardService;
 import com.mycompany.viewport_mini_web.service.OrderService;
@@ -55,7 +53,7 @@ public class mypageController {
 
   // 주문내역 페이지
   @GetMapping("/orders")
-  public String showOrderPage(@RequestParam(required = false) String pageNo,Model model,HttpSession session,Authentication authentication) {
+  public String showOrderPage(@RequestParam(required = false, defaultValue="1") String pageNo,Model model,HttpSession session,Authentication authentication) {
     String uemail = authentication.getName();
     Users user = userService.getUser(uemail);
     int totalRows = orderService.getTotalOrderRowsById(user.getUsid());
@@ -84,10 +82,11 @@ public class mypageController {
 
   // 문의 내역 페이지
   @GetMapping("/myqna")
-  public String showMyQnA(@RequestParam(required = false) String pageNo, Model model, HttpSession session,Authentication authentication) {
+  public String showMyQnA(@RequestParam(required = false, defaultValue="1") String pageNo, Model model, HttpSession session,Authentication authentication) {
     String uemail = authentication.getName();
     Users user = userService.getUser(uemail);
     int totalRows = boardService.getTotalBoardRowsByUserId(user.getUsid());
+    log.info(totalRows+"");
     Pager pager = pagerService.preparePager(session, pageNo, totalRows, 5, 5,"mypageQnaPager");
     List<Qna> qnaList = boardService.getQnaByUser(user.getUsid());
     log.info(pager.toString());

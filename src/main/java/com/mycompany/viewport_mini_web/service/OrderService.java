@@ -27,7 +27,7 @@ public class OrderService {
   @Autowired
   private ShipmentDao shipmentDao;
 
-  //카트로 부터 전달받은 임시 결제 데이터
+  // 카트로 부터 전달받은 임시 결제 데이터
   public TempPaymentData addOrderConfirmData(String[] productIds, String[] quantities,
       String totalPriceWithoutDelivery, String totalPriceWithDelivery, String deliveryType) {
     TempPaymentData tempPaymentData = new TempPaymentData();
@@ -45,13 +45,14 @@ public class OrderService {
     tempPaymentData.setItemList(ItemList);
     return tempPaymentData;
   }
-  //주문데이터 추가
+
+  // 주문데이터 추가
   public void addOrderData(Orders orders) {
     orderDao.insertOrderData(orders);
     for (OrderItem orderItem : orders.getOrderItems()) {
       orderItemDao.insertOrderItemData(orderItem);
     }
-    //배송 요청사항과 기본적인 배송 데이터 생성
+    // 배송 요청사항과 기본적인 배송 데이터 생성
     shipmentDao.insertShipmentData(orders.getShipment());
   }
 
@@ -61,7 +62,9 @@ public class OrderService {
   }
 
   public int getTotalSalesAmount() {
-    int totalSalesAmount = orderDao.getTotalSalesAmount();
+    int totalSalesAmount = 0;
+    if (orderDao.getTotalSalesAmount() != null)
+      totalSalesAmount = orderDao.getTotalSalesAmount();
     return totalSalesAmount;
   }
 

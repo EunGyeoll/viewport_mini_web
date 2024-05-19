@@ -27,7 +27,11 @@ public class UsersDetailsService implements UserDetailsService {
     if (member == null) {
       throw new UsernameNotFoundException("아이디가 존재하지 않습니다");
     }
-
+    
+    //삭제를 한 유저인 경우 로그인 불가능
+    if(member.isIsdeleted()) {
+      throw new UsernameNotFoundException("삭제된 계정입니다.");
+    }
 
     List<GrantedAuthority> authorities = new ArrayList<>();
     authorities.add(new SimpleGrantedAuthority(member.getUrole()));

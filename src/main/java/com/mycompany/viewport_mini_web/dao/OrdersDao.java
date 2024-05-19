@@ -15,7 +15,7 @@ public interface OrdersDao {
 
   public List<Orders> selectAllOrdersByUserId(@Param("pager")Pager pager,@Param("ouserid")int ouserid);
 
-  public int getTotalSalesAmount();
+  public Integer getTotalSalesAmount();
 
   public int getTotalRows();
 

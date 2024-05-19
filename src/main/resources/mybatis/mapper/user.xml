@@ -44,7 +44,7 @@
 	<select id="selectByUemail" parameterType="String"
 		resultType="User">
 		select usid,
-		uemail,upassword,uname,ugender,uphonenumber,uaddress,uaddressdetail,urole,uenabled
+		uemail,upassword,uname,ugender,uphonenumber,uaddress,uaddressdetail,urole,uenabled,isdeleted
 		from users
 		where uemail = #{uemail}
 	</select>
@@ -95,9 +95,10 @@
 		update users set upassword=#{upassword} where uemail=#{uemail}
 	</update>
 
-	<delete id="deleteByUemail" parameterType="String">
-	delete from users where uemail=#{uemail}
-	</delete>
+	<update id="deleteByUemail" parameterType="String">
+	update users set isdeleted=true where uemail=#{uemail}
+	
+	</update>
 	<select id="selectByUsid" parameterType="int" resultType="String">
 	select uemail from users where usid =#{usid}
 	</select>

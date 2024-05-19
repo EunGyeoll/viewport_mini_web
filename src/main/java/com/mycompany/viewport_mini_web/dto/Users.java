@@ -18,5 +18,5 @@ public class Users {
   private String ussn;
   private String upostcode;
   private boolean uenabled;
-  
+  private boolean isdeleted;
 }

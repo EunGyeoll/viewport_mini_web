@@ -46,14 +46,15 @@
 								<fmt:formatDate value="${ymd}" pattern="yyyy-MM-dd" />
 							</div>
 						</div>
-						<div class="col">
+						<%-- <div class="col">
 							<div>주문 번호</div>
 							<div>${orderData.shipment.sshipmentnum}</div>
-						</div>
+						</div> --%>
 						<div class="col">
 							<div>배송지</div>
-							<div>${orderData.oaddress }</div>
+							<div>${orderData.opostcode}, ${orderData.oaddress }, ${orderData.oaddressdetail }</div>
 						</div>
+						
 					</div>
 					<c:forEach var="productCartData" items="${productCartDataList}">
 						<div class="row main align-items-center border-top">
@@ -67,10 +68,8 @@
 							</div>
 
 							<div class="col text-end">
-								₩
-								<fmt:formatNumber value="${productCartData.product.pprice*productCartData.quantity }" type="currency" currencySymbol="" groupingUsed="true" />
+								<fmt:formatNumber value="${productCartData.product.pprice*productCartData.quantity }" type="currency" currencySymbol="" groupingUsed="true" />원
 							</div>
-
 						</div>
 					</c:forEach>
 				</div>
@@ -104,7 +103,7 @@
 						<div class="row mb-2 d-flex">
 							<div class="col">총 금액</div>
 							<div class="col text-end">
-								<fmt:formatNumber value="${orderData.ototalprice }" type="currency" currencySymbol="" groupingUsed="true" />
+								<fmt:formatNumber value="${orderData.ototalprice }" type="currency" currencySymbol="" groupingUsed="true" />원
 							</div>
 
 						</div>

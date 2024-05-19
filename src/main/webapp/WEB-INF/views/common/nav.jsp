@@ -92,10 +92,10 @@
 				<li class="nav-item"><a class="nav-link"
 					href="${pageContext.request.contextPath}/findStores?blocation=대한민국">스토어</a>
 				</li>
-				<%-- <sec:authorize access="hasRole('ROLE_ADMIN')"> --%>				
+				 <sec:authorize access="hasRole('ROLE_ADMIN')">				
 				<li class="nav-item"><a class="nav-link"
 					href="${pageContext.request.contextPath}/admin">어드민</a></li>
-				<%-- </sec:authorize> --%>
+				</sec:authorize>
 			</ul>
 			<sec:authorize access="isAuthenticated()">
 			<b class="navbar-text ms-auto  d-none d-lg-block me-3 text-dark">

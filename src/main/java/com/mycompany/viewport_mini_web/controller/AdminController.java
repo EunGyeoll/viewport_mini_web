@@ -72,12 +72,7 @@ public class AdminController {
   public String adminUserPage(@RequestParam(required = false, defaultValue="1") String pageNo, Model model,
       HttpSession session) {
     int totalRows = usersService.getTotalUserRows(); // 사용자의 전체 수를 가져옵니다.
-    Pager pager = pagerService.preparePager(session, pageNo, totalRows, 10, 5, "adminUsersPager"); // 페이지당
-                                                                                                   // 행
-                                                                                                   // 수
-                                                                                                   // 10,
-                                                                                                   // 그룹당
-    // 페이지 수 5
+    Pager pager = pagerService.preparePager(session, pageNo, totalRows, 10, 5, "adminUsersPager");
 
     List<Users> users = usersService.getUserList(pager);
     model.addAttribute("pager", pager);

@@ -56,7 +56,7 @@
                     <div class="mt-3">
                         <p>주소*</p>
                         <input type="text" placeholder="기본 주소*" class="form-control" name="oaddress" value="${user.uaddress}">
-                        <input type="text" placeholder="상세 주소*" class="form-control mt-3" name="oaddressdetail" value="${user.uaddressdetail}">
+                        <input type="text" placeholder="상세 주소" class="form-control mt-3" name="oaddressdetail" value="${user.uaddressdetail}">
                         <input type="text" placeholder="우편번호*" class="form-control" name="opostcode" value="${user.upostcode}">
                     </div>
                     <div class="delivery-phonenumber mt-3">

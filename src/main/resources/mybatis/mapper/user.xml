@@ -44,7 +44,7 @@
 	<select id="selectByUemail" parameterType="String"
 		resultType="User">
 		select usid,
-		uemail,upassword,uname,ugender,uphonenumber,uaddress,uaddressdetail,urole,uenabled,isdeleted
+		uemail,upassword,uname,ugender,uphonenumber,uaddress,uaddressdetail,urole,uenabled,isdeleted,upostcode
 		from users
 		where uemail = #{uemail}
 	</select>

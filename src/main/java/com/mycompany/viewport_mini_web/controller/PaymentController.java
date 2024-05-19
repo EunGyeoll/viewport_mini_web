@@ -21,6 +21,7 @@ import com.mycompany.viewport_mini_web.dto.Users;
 import com.mycompany.viewport_mini_web.service.CartService;
 import com.mycompany.viewport_mini_web.service.OrderService;
 import com.mycompany.viewport_mini_web.service.ProductService;
+import com.mycompany.viewport_mini_web.service.ShipmentService;
 import com.mycompany.viewport_mini_web.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -37,6 +38,8 @@ public class PaymentController {
   private ProductService productService;
   @Autowired
   private CartService cartService;
+  @Autowired
+  private ShipmentService shipmentService;
 
 
   @GetMapping("")
@@ -76,7 +79,7 @@ public class PaymentController {
     Users user = userService.getUser(authentication.getName());
     Orders order = (Orders) session.getAttribute("orderData");
     Boolean isOrderProcessed = (Boolean) session.getAttribute("isOrderProcessed");
-
+    order.setShipment(shipmentService.getShipmentDataByOrderId(order.getOid()));
     if (Boolean.TRUE.equals(isOrderProcessed)) {
       session.removeAttribute("orderData");
       session.removeAttribute("isOrderProcessed");

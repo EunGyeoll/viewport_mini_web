@@ -75,25 +75,30 @@
 										</li>
 									</c:forEach>
 								</ul>
-								<div class="pagination-center ">
-									<ul class="pagination  d-inline-flex">
-										<c:if test="${pager.groupNo>1 }">
-											<li class="page-item"><a class="page-link" href="orders?pageNo=${pager.startPageNo-1 }">Previous</a></li>
-										</c:if>
-										<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo }">
-											<c:if test="${pager.pageNo!=i }">
-												<li class="page-item"><a class="page-link" href="orders?pageNo=${i}">${i}</a></li>
+								<c:if test="${fn:length(ordersList)==0 }">
+									<li class="list-group-item">작성하신 문의사항이 없습니다.</li>
+								</c:if>
+								<c:if test="${fn:length(ordersList)!=0 }">
+									<div class="pagination-center ">
+										<ul class="pagination  d-inline-flex">
+											<c:if test="${pager.groupNo>1 }">
+												<li class="page-item"><a class="page-link" href="orders?pageNo=${pager.startPageNo-1 }">Previous</a></li>
 											</c:if>
-											<c:if test="${pager.pageNo ==i }">
-												<li class="page-item ative"><a class="page-link" href="orders?pageNo=${i}">${i}</a></li>
+											<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo }">
+												<c:if test="${pager.pageNo!=i }">
+													<li class="page-item"><a class="page-link" href="orders?pageNo=${i}">${i}</a></li>
+												</c:if>
+												<c:if test="${pager.pageNo ==i }">
+													<li class="page-item ative"><a class="page-link" href="orders?pageNo=${i}">${i}</a></li>
+												</c:if>
+											</c:forEach>
+											<c:if test="${pager.groupNo<pager.totalGroupNo}">
+												<li class="page-item"><a class="page-link" href="orders?pageNo=${pager.endPageNo+1}">Next</a></li>
 											</c:if>
-										</c:forEach>
-										<c:if test="${pager.groupNo<pager.totalGroupNo}">
-											<li class="page-item"><a class="page-link" href="orders?pageNo=${pager.endPageNo+1}">Next</a></li>
-										</c:if>
 
-									</ul>
-								</div>
+										</ul>
+									</div>
+								</c:if>
 							</div>
 						</div>
 					</div>

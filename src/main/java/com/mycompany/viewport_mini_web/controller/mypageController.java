@@ -28,6 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 public class mypageController {
   @Autowired
   private UserService userService;
+  
   @Autowired
   private BoardService boardService;
 

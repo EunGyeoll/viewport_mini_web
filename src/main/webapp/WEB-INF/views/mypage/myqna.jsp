@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,25 +64,27 @@
 										<li class="list-group-item">작성하신 문의사항이 없습니다.</li>
 									</c:if>
 								</ul>
-								<nav aria-label="..." class="d-flex justify-content-center me-5">
-									<ul class="pagination  d-inline-flex">
-										<c:if test="${pager.groupNo>1 }">
-											<li class="page-item"><a class="page-link" href="myqna?pageNo=${pager.startPageNo-1 }">Previous</a></li>
-										</c:if>
-										<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo }">
-											<c:if test="${pager.pageNo!=i }">
-												<li class="page-item"><a class="page-link" href="myqna?pageNo=${i}">${i}</a></li>
+								<c:if test="${fn:length(qnaList)!=0 }">
+									<nav aria-label="..." class="d-flex justify-content-center me-5">
+										<ul class="pagination  d-inline-flex">
+											<c:if test="${pager.groupNo>1 }">
+												<li class="page-item"><a class="page-link" href="myqna?pageNo=${pager.startPageNo-1 }">Previous</a></li>
 											</c:if>
-											<c:if test="${pager.pageNo ==i }">
-												<li class="page-item ative"><a class="page-link" href="myqna?pageNo=${i}">${i}</a></li>
+											<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo }">
+												<c:if test="${pager.pageNo!=i }">
+													<li class="page-item"><a class="page-link" href="myqna?pageNo=${i}">${i}</a></li>
+												</c:if>
+												<c:if test="${pager.pageNo ==i }">
+													<li class="page-item ative"><a class="page-link" href="myqna?pageNo=${i}">${i}</a></li>
+												</c:if>
+											</c:forEach>
+											<c:if test="${pager.groupNo<pager.totalGroupNo}">
+												<li class="page-item"><a class="page-link" href="myqna?pageNo=${pager.endPageNo+1}">Next</a></li>
 											</c:if>
-										</c:forEach>
-										<c:if test="${pager.groupNo<pager.totalGroupNo}">
-											<li class="page-item"><a class="page-link" href="myqna?pageNo=${pager.endPageNo+1}">Next</a></li>
-										</c:if>
 
-									</ul>
-								</nav>
+										</ul>
+									</nav>
+								</c:if>
 							</div>
 						</div>
 

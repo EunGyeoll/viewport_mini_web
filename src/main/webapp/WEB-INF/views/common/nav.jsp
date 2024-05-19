@@ -73,7 +73,7 @@
 </div> --%>
 
 
-<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #fff;">
+<nav class="navbar navbar-expand-lg navbar-light pe-4" style="background-color: #fff;">
 	<div class="container-fluid">
 		<a class="navbar-brand ms-3" href="${pageContext.request.contextPath}/"><span
 			id="nav-logo-text">VIEWPORT</span></a>

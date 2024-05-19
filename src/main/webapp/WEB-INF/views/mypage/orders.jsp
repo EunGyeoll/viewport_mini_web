@@ -63,7 +63,7 @@
 																	<td width=100 style="table-layout: fixed;"><img src="/viewport_mini_web/products/attachProductDownload?pid=${item.oipid}" class="img-fluid" alt="${item.oipname}" height="50"></td>
 																	<td>${item.oipname}</td>
 																	<td>${item.oiqty}</td>
-																	<td>${item.oiprice}원</td>
+																	<td><fmt:formatNumber value="${item.oiprice}" type="currency" currencySymbol="" groupingUsed="true" maxFractionDigits="0" />원</td>
 																	<td><fmt:formatDate value="${item.oidate}" pattern="yyyy-MM-dd" /></td>
 																</tr>
 															</c:forEach>

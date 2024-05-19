@@ -38,7 +38,7 @@
                                     <tr>
                                         <td>${item.oipname}</td>
                                         <td>${item.oiqty}</td>
-                                        <td>${item.oiprice}원</td>
+                                        <td><fmt:formatNumber value="${item.oiprice}" type="currency" currencySymbol="₩" groupingUsed="true" maxFractionDigits="0" />원</td>
                                         <td><fmt:formatDate value="${item.oidate}" pattern="yyyy-MM-dd" /></td>
                                     </tr>
                                 </c:forEach>

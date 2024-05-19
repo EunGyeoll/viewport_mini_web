@@ -62,7 +62,7 @@
 					<tr>
 						<th scope="row">${product.pid}</th>
 						<td>${product.pname}</td>
-						<td>${product.pprice}</td>
+						<td><fmt:formatNumber value="${product.pprice}" type="currency" currencySymbol="₩" groupingUsed="true" maxFractionDigits="0" /></td>
 						<td>
 							<img src="/viewport_mini_web/products/attachProductDownload?pid=${product.pid}" width="100" height="100" />
 						</td>

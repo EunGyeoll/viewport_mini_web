@@ -30,10 +30,10 @@
 					<input type="text" placeholder="Email" id="uemail" name="uemail" class="logininput mb-4"> <small class="error-message" id="idError"></small> <input type="password" placeholder="Password" id="upassword" name="upassword" class="logininput mb-4"> <small class="error-message" id="pwError"></small>
 
 					<div class="login-remember mb-4 mt-3">
-						<input type="checkbox" name="login-remember" id="login-rememberbox"> 
-						<label for="login-remember">
+						<!-- 	<input type="checkbox" name="login-remember" id="login-rememberbox">  -->
+						<!-- 			<label for="login-remember">
 						Remember ID
-						</label>
+						</label> -->
 					</div>
 
 					<div class="width: 300px mb-3 ">

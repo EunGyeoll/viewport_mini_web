@@ -26,13 +26,13 @@
 	<p>뷰포트와 함께한 다양한 순간을 만나보세요.
 여기에 당신의 스타일을 공유해보세요.</p></div>
 		<div class="row">
-			<div class="col-md-12 d-flex justify-content-end">
-				<select id="sortOptions" class="form-select form-select-sm" style="width: 200px;" aria-label="Sort by">
+			<div class="col-md-12 d-flex justify-content-end mb-4">
+<!-- 				<select id="sortOptions" class="form-select form-select-sm" style="width: 200px;" aria-label="Sort by">
 					<option selected>정렬</option>
 					<option value="newest">최신순</option>
 					<option value="oldest">오래된순</option>
-				</select>
-				<button type="button" class="btn btn-dark me-4" data-bs-toggle="modal" data-bs-target="#createStylesModal" id="createStylesButton">글쓰기</button>
+				</select> -->
+				<button type="button" class="btn btn-dark me-4 " data-bs-toggle="modal" data-bs-target="#createStylesModal" id="createStylesButton">글쓰기</button>
 			</div>
 		</div>
 		<div class="row no-gutters row-cols-4 gx-0 justify-content-center">

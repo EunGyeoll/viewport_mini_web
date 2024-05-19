@@ -54,7 +54,22 @@
 
 	
 	
-	<section class="container text-center">
+	<section class="container text-center" id="conentscontianer">
+<!-- 		<div class="city-selector list-btn content-top__right inline"
+			id="city_input_div" style="display: block;">
+			<div class="list-filter relative">
+				<select name="" id="city_input"
+					class="list-filter__select font--en font--13 font--bd city-select"
+					dir="rtl" aria-label="Choose City">
+					<option value="">지점</option>
+					<option value="Zhengzhou">강남</option>
+					<option value="Qingdao">Qingdao</option>
+					<option value="Ningbo">Ningbo</option>
+					<option value="Beijing">Beijing</option>
+					<option value="Shanghai">Shanghai</option>
+				</select>
+			</div>
+		</div> -->
 		<div class="card mb-3  border-0 mb-5">
 			<div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
 				<div class="carousel-inner">
@@ -77,7 +92,7 @@
 			</div>
 			<div class="d-flex flex-row text-start">
 				<div class="card-body w-50">
-					<h5 class="card-title">${branch.bname}</h5>
+					<h5 class="card-title"><b>${branch.bname}</b></h5>
 					<p class="card-text">${branch.baddress}</p>
 					<p class="card-text">
 						<small class="text-muted">Last updated 3 mins ago</small>

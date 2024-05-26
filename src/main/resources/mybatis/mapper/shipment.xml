@@ -24,4 +24,22 @@
 		SET sshipmentnum =#{sshipmentnum},sdate=sysdate
 		WHERE soid = #{soid}
 	</update>
+	<select id="getTotalShipmentData" parameterType="Pager" resultType="Shipment">
+	<![CDATA[
+		select rnum, sid,sshipmentnum,sdate,sstatus,suserid,srequest,soid, stype
+		from (
+			select rownum as rnum, sid,sshipmentnum,sdate,sstatus,suserid,srequest,soid, stype
+			from (
+				select  *
+				from shipment
+				order by sid desc
+				)
+			where rownum <= #{endRowNo}
+			)
+		where rnum >= #{startRowNo}
+		]]>
+	</select>
+	<select id="getTotalShipmentRows" resultType="int">
+		select count(*) from shipment
+	</select>
 </mapper>

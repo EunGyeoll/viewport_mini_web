@@ -30,97 +30,95 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/payment")
 public class PaymentController {
 
-  @Autowired
-  private UserService userService;
-  @Autowired
-  private OrderService orderService;
-  @Autowired
-  private ProductService productService;
-  @Autowired
-  private CartService cartService;
-  @Autowired
-  private ShipmentService shipmentService;
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private OrderService orderService;
+	@Autowired
+	private ProductService productService;
+	@Autowired
+	private CartService cartService;
+	@Autowired
+	private ShipmentService shipmentService;
 
+	@GetMapping("")
+	public String payment() {
+		log.info("payment() 실행");
+		return "redirect:/";
+	}
 
-  @GetMapping("")
-  public String payment() {
-    log.info("payment() 실행");
-    return "redirect:/";
-  }
+	@PostMapping("")
+	public String getOrderDataFromView(@RequestParam("productIds") String[] productIds,
+			@RequestParam("quantities") String[] quantities,
+			@RequestParam("totalPriceWithoutDelivery") String totalPriceWithoutDelivery,
+			@RequestParam("totalPriceWithDelivery") String totalPriceWithDelivery,
+			@RequestParam("deliveryType") String deliveryType, Authentication authentication, Model model) {
 
-  @PostMapping("")
-  public String getOrderDataFromView(@RequestParam("productIds") String[] productIds,
-      @RequestParam("quantities") String[] quantities,
-      @RequestParam("totalPriceWithoutDelivery") String totalPriceWithoutDelivery,
-      @RequestParam("totalPriceWithDelivery") String totalPriceWithDelivery,
-      @RequestParam("deliveryType") String deliveryType, Authentication authentication,
-      Model model) {
+		// 사용자 정보를 가져오기 위해 인증 객체에서 사용자 이름을 얻음
+		Users user = userService.getUser(authentication.getName());
 
-    // 사용자 정보를 가져오기 위해 인증 객체에서 사용자 이름을 얻음
-    Users user = userService.getUser(authentication.getName());
+		// 주문 확인 데이터를 생성하기 위해 서비스 메서드를 호출
+		TempPaymentData tempPaymentData = orderService.addOrderConfirmData(productIds, quantities,
+				totalPriceWithoutDelivery, totalPriceWithDelivery, deliveryType);
 
-    // 주문 확인 데이터를 생성하기 위해 서비스 메서드를 호출
-    TempPaymentData tempPaymentData = orderService.addOrderConfirmData(productIds, quantities,
-        totalPriceWithoutDelivery, totalPriceWithDelivery, deliveryType);
+		// 생성된 데이터를 모델에 추가하여 뷰로 전달
+		model.addAttribute("tempData", tempPaymentData);
+		model.addAttribute("user", user);
 
-    // 생성된 데이터를 모델에 추가하여 뷰로 전달
-    model.addAttribute("tempData", tempPaymentData);
-    model.addAttribute("user", user);
+		// "payment/payment" 뷰를 반환
+		return "payment/payment";
+	}
 
-    // "payment/payment" 뷰를 반환
-    return "payment/payment";
-  }
+	@Secured("ROLE_USER")
+	@GetMapping("/orderConfirmation")
+	public String orderConfirmation(HttpSession session, Model model, Authentication authentication) {
+		log.info("OrderConfirmation() 실행");
+		Users user = userService.getUser(authentication.getName());
+		Orders order = (Orders) session.getAttribute("orderData");
+		Boolean isOrderProcessed = (Boolean) session.getAttribute("isOrderProcessed");
 
+		if (Boolean.TRUE.equals(isOrderProcessed)) {
+			order.setShipment(shipmentService.getShipmentDataByOrderId(order.getOid()));
+			session.removeAttribute("orderData");
+			session.removeAttribute("isOrderProcessed");
 
-  @Secured("ROLE_USER")
-  @GetMapping("/orderConfirmation")
-  public String orderConfirmation(HttpSession session, Model model, Authentication authentication) {
-    log.info("OrderConfirmation() 실행");
-    Users user = userService.getUser(authentication.getName());
-    Orders order = (Orders) session.getAttribute("orderData");
-    Boolean isOrderProcessed = (Boolean) session.getAttribute("isOrderProcessed");
-    order.setShipment(shipmentService.getShipmentDataByOrderId(order.getOid()));
-    if (Boolean.TRUE.equals(isOrderProcessed)) {
-      session.removeAttribute("orderData");
-      session.removeAttribute("isOrderProcessed");
+			model.addAttribute("user", user);
+			model.addAttribute("orderData", order);
+			model.addAttribute("productCartDataList", getProductCartDataList(order));
+			return "payment/orderConfirmation";
+		} else {
+			return "redirect:/";
+		}
+	}
 
-      model.addAttribute("user", user);
-      model.addAttribute("orderData", order);
-      model.addAttribute("productCartDataList", getProductCartDataList(order));
-      return "payment/orderConfirmation";
-    } else {
-      return "redirect:/";
-    }
-  }
+	@Transactional
+	@PostMapping("/orderConfirmation")
+	public String processOrderData(@ModelAttribute("orders") Orders orders, Authentication authentication,
+			HttpSession session) {
+		Users user = userService.getUser(authentication.getName());
 
-  @Transactional
-  @PostMapping("/orderConfirmation")
-  public String processOrderData(@ModelAttribute("orders") Orders orders,
-      Authentication authentication, HttpSession session) {
-    Users user = userService.getUser(authentication.getName());
+		if (Boolean.TRUE.equals(session.getAttribute("isOrderProcessed"))) {
+			return "redirect:/payment/orderConfirmation";
+		}
 
-    if (Boolean.TRUE.equals(session.getAttribute("isOrderProcessed"))) {
-      return "redirect:/payment/orderConfirmation";
-    }
+		orders.setOuserid(user.getUsid());
+		orders.getShipment().setSuserid(user.getUsid());
+		orders.setOstatus("주문접수");
+		orderService.addOrderData(orders);
 
-    orders.setOuserid(user.getUsid());
-    orders.getShipment().setSuserid(user.getUsid());
-    orders.setOstatus("주문접수");
-    orderService.addOrderData(orders);
+		session.setAttribute("isOrderProcessed", true);
+		session.setAttribute("orderData", orders);
+		cartService.removeCart(user.getUsid());
+		return "redirect:/payment/orderConfirmation";
+	}
 
-    session.setAttribute("isOrderProcessed", true);
-    session.setAttribute("orderData", orders);
-    cartService.removeCart(user.getUsid());
-    return "redirect:/payment/orderConfirmation";
-  }
-
-  public List<ProductCartData> getProductCartDataList(Orders order) {
-    List<ProductCartData> productCartDataList = new ArrayList<>();
-    order.getOrderItems().forEach(item -> {
-      ProductCartData productCartData =
-          new ProductCartData(productService.getProduct(item.getOipid()), item.getOiqty());
-      productCartDataList.add(productCartData);
-    });
-    return productCartDataList;
-  }
+	public List<ProductCartData> getProductCartDataList(Orders order) {
+		List<ProductCartData> productCartDataList = new ArrayList<>();
+		order.getOrderItems().forEach(item -> {
+			ProductCartData productCartData = new ProductCartData(productService.getProduct(item.getOipid()),
+					item.getOiqty());
+			productCartDataList.add(productCartData);
+		});
+		return productCartDataList;
+	}
 }

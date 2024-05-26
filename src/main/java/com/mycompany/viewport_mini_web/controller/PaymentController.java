@@ -76,7 +76,8 @@ public class PaymentController {
 		Users user = userService.getUser(authentication.getName());
 		Orders order = (Orders) session.getAttribute("orderData");
 		Boolean isOrderProcessed = (Boolean) session.getAttribute("isOrderProcessed");
-
+		
+		//초기 화면에서만 보이고 새로고침이나 직접 들어오는 경우에는 home으로 돌아감
 		if (Boolean.TRUE.equals(isOrderProcessed)) {
 			order.setShipment(shipmentService.getShipmentDataByOrderId(order.getOid()));
 			session.removeAttribute("orderData");

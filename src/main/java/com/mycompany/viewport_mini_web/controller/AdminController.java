@@ -95,7 +95,7 @@ public class AdminController {
 
 	@GetMapping("/shippings")
 	public String adminShippingsPage(Model model) {
-		int totalRows = orderService
+		//int totalRows = orderService 테스트
 		return "admin/shippings";
 	}
 

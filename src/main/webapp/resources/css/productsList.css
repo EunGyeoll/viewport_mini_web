@@ -17,7 +17,7 @@
     margin-top: 50px;
 }
 
-.filter-category, .filter-price, .filter-sort {
+.filter-category, .filter-price, .filter-sort, .filter-shape {
 	border-bottom: 1px solid #bebdbd;
 	margin-bottom: 30px;
 }

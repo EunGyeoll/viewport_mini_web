@@ -53,6 +53,12 @@
 						<li><input type="checkbox" class="form-check-input" id="oval" name="shape" value="타원형" <c:if test="${param.shape == '타원형'}">checked</c:if>> <label class="form-check-label" for="oval">타원형</label></li>
 					</ul>
 				</div>
+				
+				<div class="filter-search">
+					<h6>모양</h6>
+					<ul>
+					</ul>
+				</div>
 
 				<div class="filter-button">
 					<button type="reset" id="resetButton">초기화</button>

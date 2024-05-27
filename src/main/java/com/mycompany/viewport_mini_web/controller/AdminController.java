@@ -94,8 +94,13 @@ public class AdminController {
 	}
 
 	@GetMapping("/shippings")
-	public String adminShippingsPage(Model model) {
-		//int totalRows = orderService 테스트
+	public String adminShippingsPage(@RequestParam(required = false, defaultValue = "1") String pageNo,HttpSession session,Model model) {
+		int totalRows = shipmentService.getTotalShipmentRows();
+		Pager pager = pagerService.preparePager(session, pageNo, totalRows, 5, 5, "adminShipmentPager");
+		List<Shipment> shipments = shipmentService.getTotalShipmentByPager(pager);
+		log.info(pager.toString());
+		model.addAttribute("shippings", shipments);
+		model.addAttribute("pager", pager);
 		return "admin/shippings";
 	}
 

@@ -68,6 +68,11 @@
 		</div>
 		<div class="list-block">
 			<ul class="card-list">
+				<c:if test="${pager.totalRows == 0}">
+					<div>
+						<p>현재 찾는 상품이 없습니다.</p>
+					</div>
+				</c:if>
 				<c:forEach var="product" items="${products}">
 					<li><a href="productDetail?pid=${product.pid}">
 							<div>

@@ -13,4 +13,5 @@ public class Shipment {
   private int suserid;
   private int soid;
   private String stype;
+  private String sstatus;
 }

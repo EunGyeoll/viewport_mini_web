@@ -94,7 +94,8 @@ public class AdminController {
 	}
 
 	@GetMapping("/shippings")
-	public String adminShippingsPage(@RequestParam(required = false, defaultValue = "1") String pageNo,HttpSession session,Model model) {
+	public String adminShippingsPage(@RequestParam(required = false, defaultValue = "1") String pageNo,
+			HttpSession session, Model model) {
 		int totalRows = shipmentService.getTotalShipmentRows();
 		Pager pager = pagerService.preparePager(session, pageNo, totalRows, 5, 5, "adminShipmentPager");
 		List<Shipment> shipments = shipmentService.getTotalShipmentByPager(pager);
@@ -109,7 +110,7 @@ public class AdminController {
 			HttpSession session) {
 		int totalRows = boardService.getTotalNoticeRows();
 		Pager pager = pagerService.preparePager(session, pageNo, totalRows, 10, 5, "adminNoticesPager");
-		
+
 		// 페이지 수 5
 		List<Notice> notices = boardService.getNoticeListByPager(pager);
 		model.addAttribute("pager", pager);

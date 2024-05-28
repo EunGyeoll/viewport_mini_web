@@ -21,7 +21,7 @@
 	</select>
 	<update id="updateShipmentByOrderId">
 	UPDATE shipment
-		SET sshipmentnum =#{sshipmentnum},sdate=sysdate
+		SET sshipmentnum =#{sshipmentnum},sdate=sysdate,sstatus='배송중'
 		WHERE soid = #{soid}
 	</update>
 	<select id="getTotalShipmentData" parameterType="Pager" resultType="Shipment">

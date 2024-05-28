@@ -71,11 +71,9 @@
 					<th scope="col">배송ID#</th>
 					<th scope="col">운송번호</th>
 					<th scope="col">요청사항</th>
+					<th scope="col">배송종류</th>
 					<th scope="col">배송상태</th>
-					<th scope="col">배송일자</th>
-					<th scope="col"><button class="btn btn-info"
-							data-bs-toggle="modal" data-bs-target="#createUserModal">배송
-							생성</button></th>
+
 
 				</tr>
 			</thead>
@@ -83,7 +81,13 @@
 				<c:forEach var="shipping" items="${shippings}">
 					<tr>
 						<th scope="row">${shipping.sid}</th>
-						<td>${shipping.sshipmentnum}</td>
+						<c:if test="${shipping.sshipmentnum ==null }">
+							<td>배송번호 발급중...</td>
+						</c:if>
+						<c:if test="${shipping.sshipmentnum !=null }">
+							<td>${shipping.sshipmentnum}</td>
+						</c:if>
+
 						<td>${shipping.srequest}</td>
 						<c:if test="${shipping.stype == 5000}">
 							<td>일반배송</td>
@@ -91,15 +95,8 @@
 						<c:if test="${shipping.stype != 5000}">
 							<td>익스프레스배송</td>
 						</c:if>
-						<td></td>
-						<td>
-							<button type="button"
-								class="btn btn-dark edit-btn btn-sm userDataEditBtn"
-								onclick="clickEvent(${shipping.sid})" data-bs-toggle="modal"
-								data-bs-target="#editUserModal">배송 정보 수정</button>
-							<button class="btn btn-danger edit-btn btn-sm"
-								data-bs-toggle="modal" data-bs-target="#deleteUserModal">삭제</button>
-						</td>
+						<td>${shipping.sstatus }</td>
+
 					</tr>
 				</c:forEach>
 
@@ -108,130 +105,30 @@
 		<nav aria-label="..." class="d-flex justify-content-center me-5">
 			<ul class="pagination">
 				<c:if test="${pager.groupNo>1}">
-					<li class="page-item"><a class="page-link" href="shippings?pageNo=${pager.startPageNo-1}">Previous</a></li>
+					<li class="page-item"><a class="page-link"
+						href="shippings?pageNo=${pager.startPageNo-1}">Previous</a></li>
 				</c:if>
-				<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+				<c:forEach var="i" begin="${pager.startPageNo}"
+					end="${pager.endPageNo}">
 					<c:if test="${pager.pageNo!=i}">
-						<li class="page-item"><a class="page-link" href="shippings?pageNo=${i}">${i}</a></li>
+						<li class="page-item"><a class="page-link"
+							href="shippings?pageNo=${i}">${i}</a></li>
 					</c:if>
 					<c:if test="${pager.pageNo == i}">
-						<li class="page-item ative"><a class="page-link" href="shippings?pageNo=${i}">${i}</a></li>
+						<li class="page-item ative"><a class="page-link"
+							href="shippings?pageNo=${i}">${i}</a></li>
 					</c:if>
 				</c:forEach>
 				<c:if test="${pager.groupNo<pager.totalGroupNo}">
-				<li class="page-item"><a class="page-link" href="shippings?pageNo=${pager.endPageNo+1}">Next</a></li>
+					<li class="page-item"><a class="page-link"
+						href="shippings?pageNo=${pager.endPageNo+1}">Next</a></li>
 				</c:if>
-				
+
 			</ul>
 		</nav>
 
 	</section>
 	<!-- The Modal -->
-	<div class="modal" id="editUserModal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-
-				<!-- Modal Header -->
-				<div class="modal-header">
-					<h4 class="modal-title">유저 정보</h4>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-				</div>
-
-				<!-- Modal body -->
-				<div class="modal-body">
-					<%-- <div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="userNum">유저 번호</label> <input type="text" id="userNum" class="form-control form-control-lg" value="${users[1].uid}" readonly />
-					</div>
-					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="userName">유저 이름</label> <input type="text" id="userName" class="form-control form-control-lg" /> <small id="birthError"></small>
-					</div>
-					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="userId">아이디</label> <input type="text" id="userId" class="form-control form-control-lg" /> <small id="birthError"></small>
-					</div>
-					<div data-mdb-input-init class="form-outline mb-4">
-						<label class="form-label" for="UserRole">역할</label> <input type="text" id="UserRole" class="form-control form-control-lg" /> <small id="birthError"></small>
-					</div> --%>
-				</div>
-
-				<!-- Modal footer -->
-
-				<div class="modal-footer">
-					<a href="#" type="button" class="btn btn-dark"
-						data-bs-dismiss="modal">수정</a>
-					<button type="button" class="btn btn-danger"
-						data-bs-dismiss="modal">취소</button>
-				</div>
-
-			</div>
-		</div>
-	</div>
-	<div class="modal" id="createUserModal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-
-				<!-- Modal Header -->
-				<div class="modal-header">
-					<h4 class="modal-title">유저 생성</h4>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-				</div>
-
-				<!-- Modal body -->
-				<div class="modal-body">
-					<form id="users" method="post" action="editUserData">
-						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="uname">유저 이름</label> <input
-								type="text" id="uname" name="uname"
-								class="form-control form-control-lg" /> <small id="birthError"></small>
-						</div>
-						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="uemail">아이디</label> <input
-								type="text" id="uemail" name="uemail"
-								class="form-control form-control-lg" /> <small id="birthError"></small>
-						</div>
-						<div data-mdb-input-init class="form-outline mb-4">
-							<label class="form-label" for="urole">역할</label> <input
-								type="text" id="urole" name="urole"
-								class="form-control form-control-lg" /> <small id="birthError"></small>
-						</div>
-					</form>
-
-				</div>
-
-				<!-- Modal footer -->
-
-				<div class="modal-footer">
-					<a href="admin/editUserData" type="submit" class="btn btn-dark">생성</a>
-					<button type="button" class="btn btn-danger"
-						data-bs-dismiss="modal">취소</button>
-				</div>
-
-			</div>
-		</div>
-	</div>
-	<div class="modal" id="deleteUserModal">
-		<div class="modal-dialog">
-			<div class="modal-content">
-
-				<!-- Modal Header -->
-				<div class="modal-header">
-					<h4 class="modal-title">유저 삭제</h4>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-				</div>
-
-				<!-- Modal footer -->
-				<div class="modal-body">
-					<p>삭제하시겠습니까?</p>
-				</div>
-				<div class="modal-footer">
-					<a href="/viewport_mini_web/admin/deleteUserData" type="button"
-						class="btn btn-dark">삭제</a>
-					<button type="button" class="btn btn-danger"
-						data-bs-dismiss="modal">취소</button>
-				</div>
-
-			</div>
-		</div>
-	</div>
 	<script src="/viewport_mini_web/resources/js/admin.js"></script>
 </body>
 </html>
